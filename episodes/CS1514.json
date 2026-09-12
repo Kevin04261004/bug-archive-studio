@@ -2,8 +2,18 @@
   "error_code": "CS1514",
   "message": "{ expected",
   "filename": "PlayerStats.cs",
-  "before": ["public class PlayerStats : MonoBehaviour", "", "    int hp = 100;", "}"],
-  "after": ["public class PlayerStats : MonoBehaviour", "{", "    int hp = 100;", "}"],
-  "bug": "../assets/CS1514.png",
-  "focus_line": 2
+  "before": [
+    "public class PlayerStats : MonoBehaviour",
+    "",
+    "    int hp = 100;",
+    "}"
+  ],
+  "after": [
+    "public class PlayerStats : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "}"
+  ],
+  "focus_line": 2,
+  "bug": "../assets/CS1514.png"
 }
