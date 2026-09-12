@@ -1,0 +1,34 @@
+{
+  "episodes": [
+    {
+      "file": "CS0103.json",
+      "path": "episodes/CS0103.json",
+      "error_code": "CS0103",
+      "message": "The name 'scroe' does not exist in the current context",
+      "filename": "ScoreTracker.cs",
+      "lines": 5,
+      "bug": "assets/CS0103.png",
+      "missing": null
+    },
+    {
+      "file": "CS0246.json",
+      "path": "episodes/CS0246.json",
+      "error_code": "CS0246",
+      "message": "The type or namespace name 'List<>' could not be found (are you missing a using directive?)",
+      "filename": "Inventory.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0246.png"
+    },
+    {
+      "file": "CS1002.json",
+      "path": "episodes/CS1002.json",
+      "error_code": "CS1002",
+      "message": "; expected",
+      "filename": "Player.cs",
+      "lines": 4,
+      "bug": "assets/CS1002.png",
+      "missing": null
+    }
+  ]
+}

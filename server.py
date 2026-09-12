@@ -2,15 +2,17 @@
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-import json,subprocess,sys,uuid,threading,webbrowser,argparse
+import json,subprocess,sys,uuid,threading,webbrowser,argparse,base64
 ROOT=Path(__file__).resolve().parent
-ap=argparse.ArgumentParser();ap.add_argument('--port',type=int,default=8765);ap.add_argument('--no-browser',action='store_true');args=ap.parse_args()
+ap=argparse.ArgumentParser();ap.add_argument('--port',type=int,default=8765);ap.add_argument('--no-browser',action='store_true');ap.add_argument('--index',action='store_true',help='Only refresh episodes/index.json and exit');args=ap.parse_args()
 jobs={};pool=ThreadPoolExecutor(max_workers=1);lock=threading.Lock()
 def render(job,config):
     folder=ROOT/'output'/'jobs'/job;folder.mkdir(parents=True,exist_ok=True)
     path=folder/'episode.json';path.write_text(json.dumps(config),encoding='utf-8')
     output=folder/(config['error_code']+'-bug-archive.mp4')
     try:
+        with lock:jobs[job]={'status':'running','progress':'Archiving the episode…'}
+        saved=archive(config)
         with lock:jobs[job]={'status':'running','progress':'Rendering 1080 × 1920 MP4…'}
         p=subprocess.Popen([sys.executable,str(ROOT/'render.py'),str(path),'--output',str(output)],cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
         log=[]
@@ -19,25 +21,45 @@ def render(job,config):
             if line.startswith('frame '):
                 with lock:jobs[job]['progress']=f'Rendering… {min(99,int(int(line.split()[1])/360*100))}%'
         if p.wait()!=0:raise RuntimeError(''.join(log)[-1600:])
-        with lock:jobs[job]={'status':'done','video':'/'+output.relative_to(ROOT).as_posix(),'thumbnail':'/'+output.with_name(output.stem+'-locked.png').relative_to(ROOT).as_posix()}
+        with lock:jobs[job]={'status':'done','video':'/'+output.relative_to(ROOT).as_posix(),'thumbnail':'/'+output.with_name(output.stem+'-locked.png').relative_to(ROOT).as_posix(),'archive':saved[0],'bug':saved[1]}
     except Exception as e:
         with lock:jobs[job]={'status':'failed','error':str(e)}
+INDEX=ROOT/'episodes'/'index.json'
 def episodes():
-    """List episodes/*.json with the bug PNG each one points at, when that file is inside the studio."""
+    """List episodes/*.json with the bug PNG each one points at, when that file is inside the studio.
+
+    Paths are relative to index.html so the same payload works from the local server and from GitHub Pages."""
     out=[]
     for path in sorted((ROOT/'episodes').glob('*.json')):
+        if path==INDEX:continue
         try:c=json.loads(path.read_text(encoding='utf-8'))
         except Exception:continue
         if not isinstance(c,dict):continue
         bug=c.get('bug') if isinstance(c.get('bug'),str) else None
         target=(path.parent/bug).resolve() if bug else None
         inside=bool(target) and target.is_file() and ROOT in target.parents
-        out.append({'file':path.name,'error_code':str(c.get('error_code','')),'message':str(c.get('message','')),
-                    'filename':str(c.get('filename','Player.cs')),
+        out.append({'file':path.name,'path':'episodes/'+path.name,'error_code':str(c.get('error_code','')),
+                    'message':str(c.get('message','')),'filename':str(c.get('filename','Player.cs')),
                     'lines':max(len(c.get('before') or []),len(c.get('after') or [])),
-                    'bug':'/'+target.relative_to(ROOT).as_posix() if inside else None,
+                    'bug':target.relative_to(ROOT).as_posix() if inside else None,
                     'missing':bug if bug and not inside else None})
     return out
+def write_index():
+    """Keep episodes/index.json in step with the folder. GitHub Pages has no API, so it reads this file."""
+    data={'episodes':episodes()}
+    try:INDEX.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    except OSError:pass
+    return data
+def archive(config):
+    """Store the rendered episode as episodes/<CODE>.json plus assets/<CODE>.png so it can be loaded again."""
+    code=config['error_code'];png=ROOT/'assets'/f'{code}.png'
+    png.write_bytes(base64.b64decode(config['bug_data_url'].split(',',1)[1],validate=True))
+    kept={k:config[k] for k in ('error_code','message','filename','before','after') if k in config}
+    if 'focus_line' in config:kept['focus_line']=config['focus_line']
+    kept['bug']=f'../assets/{code}.png'
+    (ROOT/'episodes'/f'{code}.json').write_text(json.dumps(kept,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    write_index()
+    return f'episodes/{code}.json',f'assets/{code}.png'
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self,*a,**k):super().__init__(*a,directory=str(ROOT),**k)
     def local(self):return self.headers.get('Host') in {f'127.0.0.1:{args.port}',f'localhost:{args.port}'}
@@ -49,7 +71,7 @@ class Handler(SimpleHTTPRequestHandler):
             with lock:data=jobs.get(self.path.split('/')[-1])
             return self.send_json(data or {'error':'Unknown job.'},200 if data else 404)
         if self.path=='/api/health':return self.send_json({'ready':True})
-        if self.path=='/api/episodes':return self.send_json({'episodes':episodes()})
+        if self.path=='/api/episodes':return self.send_json(write_index())
         super().do_GET()
     def do_POST(self):
         origin=self.headers.get('Origin')
@@ -68,6 +90,9 @@ class Handler(SimpleHTTPRequestHandler):
             with lock:jobs[job]={'status':'queued','progress':'Queued for rendering…'}
             pool.submit(render,job,c);self.send_json({'job':job},202)
         except Exception as e:self.send_json({'error':str(e)},400)
+if args.index:
+    print('episodes/index.json refreshed with %d episodes.'%len(write_index()['episodes']));sys.exit()
+write_index()
 url=f'http://127.0.0.1:{args.port}/index.html'
 try:server=ThreadingHTTPServer(('127.0.0.1',args.port),Handler)
 except OSError:sys.exit('Port is already in use. Close the old studio or use --port 8766.')

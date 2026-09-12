@@ -11,7 +11,7 @@ parser.add_argument("--preview",action="store_true",help="Generate keyframes and
 parser.add_argument("--batch",help="Render every *.json in a folder, in filename order")
 args=parser.parse_args()
 if args.batch:
-    configs=sorted(Path(args.batch).resolve().glob("*.json"))
+    configs=[c for c in sorted(Path(args.batch).resolve().glob("*.json")) if c.name!="index.json"]
     if not configs:parser.error("Batch folder contains no JSON files.")
     codes=[json.loads(c.read_text(encoding='utf-8-sig'))['error_code'] for c in configs]
     if len(codes)!=len(set(codes)):parser.error('Each batch episode must have a unique error_code.')
