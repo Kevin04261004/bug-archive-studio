@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0019",
+  "message": "Operator '>' cannot be applied to operands of type 'string' and 'int'",
+  "filename": "NameCheck.cs",
+  "before": ["void Start()", "{", "    string name = \"Bug\";", "    bool ok = name > 0;", "    Debug.Log(ok);", "}"],
+  "after": ["void Start()", "{", "    string name = \"Bug\";", "    bool ok = name.Length > 0;", "    Debug.Log(ok);", "}"],
+  "bug": "../assets/CS0019.png",
+  "focus_line": 4
+}
