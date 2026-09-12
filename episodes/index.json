@@ -107,8 +107,8 @@
       "message": "Syntax error, ',' expected",
       "filename": "PlayerMove.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS1003.png"
+      "bug": "assets/CS1003.png",
+      "missing": null
     },
     {
       "file": "CS1026.json",
