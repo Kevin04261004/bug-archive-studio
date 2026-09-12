@@ -49,6 +49,16 @@
       "lines": 4,
       "bug": "assets/CS1513.png",
       "missing": null
+    },
+    {
+      "file": "CS1514.json",
+      "path": "episodes/CS1514.json",
+      "error_code": "CS1514",
+      "message": "{ expected",
+      "filename": "PlayerStats.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1514.png"
     }
   ]
 }
