@@ -2,8 +2,24 @@
   "error_code": "CS0246",
   "message": "The type or namespace name 'List<>' could not be found (are you missing a using directive?)",
   "filename": "Inventory.cs",
-  "before": ["using UnityEngine;", "using System.Collections;", "", "public class Inventory : MonoBehaviour", "{", "    List<int> scores = new List<int>();", "}"],
-  "after": ["using UnityEngine;", "using System.Collections.Generic;", "", "public class Inventory : MonoBehaviour", "{", "    List<int> scores = new List<int>();", "}"],
-  "bug": "../assets/CS0246.png",
-  "focus_line": 2
+  "before": [
+    "using UnityEngine;",
+    "using System.Collections;",
+    "",
+    "public class Inventory : MonoBehaviour",
+    "{",
+    "    List<int> scores = new List<int>();",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "using System.Collections.Generic;",
+    "",
+    "public class Inventory : MonoBehaviour",
+    "{",
+    "    List<int> scores = new List<int>();",
+    "}"
+  ],
+  "focus_line": 2,
+  "bug": "../assets/CS0246.png"
 }
