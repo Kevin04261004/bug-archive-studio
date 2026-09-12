@@ -31,6 +31,16 @@
       "missing": null
     },
     {
+      "file": "CS1026.json",
+      "path": "episodes/CS1026.json",
+      "error_code": "CS1026",
+      "message": ") expected",
+      "filename": "ScoreMath.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1026.png"
+    },
+    {
       "file": "CS1061.json",
       "path": "episodes/CS1061.json",
       "error_code": "CS1061",
