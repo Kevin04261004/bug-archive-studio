@@ -1,6 +1,16 @@
 {
   "episodes": [
     {
+      "file": "CS0029.json",
+      "path": "episodes/CS0029.json",
+      "error_code": "CS0029",
+      "message": "Cannot implicitly convert type 'string' to 'int'",
+      "filename": "ScoreCounter.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0029.png"
+    },
+    {
       "file": "CS0103.json",
       "path": "episodes/CS0103.json",
       "error_code": "CS0103",
@@ -21,6 +31,16 @@
       "missing": null
     },
     {
+      "file": "CS0266.json",
+      "path": "episodes/CS0266.json",
+      "error_code": "CS0266",
+      "message": "Cannot implicitly convert type 'float' to 'int'. An explicit conversion exists",
+      "filename": "MoveSteps.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0266.png"
+    },
+    {
       "file": "CS1002.json",
       "path": "episodes/CS1002.json",
       "error_code": "CS1002",
@@ -29,6 +49,16 @@
       "lines": 4,
       "bug": "assets/CS1002.png",
       "missing": null
+    },
+    {
+      "file": "CS1003.json",
+      "path": "episodes/CS1003.json",
+      "error_code": "CS1003",
+      "message": "Syntax error, ',' expected",
+      "filename": "PlayerMove.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1003.png"
     },
     {
       "file": "CS1026.json",
