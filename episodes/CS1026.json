@@ -2,8 +2,18 @@
   "error_code": "CS1026",
   "message": ") expected",
   "filename": "ScoreMath.cs",
-  "before": ["void Start()", "{", "    Debug.Log(Mathf.Max(3, 5);", "}"],
-  "after": ["void Start()", "{", "    Debug.Log(Mathf.Max(3, 5));", "}"],
-  "bug": "../assets/CS1026.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    Debug.Log(Mathf.Max(3, 5);",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    Debug.Log(Mathf.Max(3, 5));",
+    "}"
+  ],
+  "focus_line": 3,
+  "bug": "../assets/CS1026.png"
 }
