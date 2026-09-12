@@ -22,6 +22,22 @@ def render(job,config):
         with lock:jobs[job]={'status':'done','video':'/'+output.relative_to(ROOT).as_posix(),'thumbnail':'/'+output.with_name(output.stem+'-locked.png').relative_to(ROOT).as_posix()}
     except Exception as e:
         with lock:jobs[job]={'status':'failed','error':str(e)}
+def episodes():
+    """List episodes/*.json with the bug PNG each one points at, when that file is inside the studio."""
+    out=[]
+    for path in sorted((ROOT/'episodes').glob('*.json')):
+        try:c=json.loads(path.read_text(encoding='utf-8'))
+        except Exception:continue
+        if not isinstance(c,dict):continue
+        bug=c.get('bug') if isinstance(c.get('bug'),str) else None
+        target=(path.parent/bug).resolve() if bug else None
+        inside=bool(target) and target.is_file() and ROOT in target.parents
+        out.append({'file':path.name,'error_code':str(c.get('error_code','')),'message':str(c.get('message','')),
+                    'filename':str(c.get('filename','Player.cs')),
+                    'lines':max(len(c.get('before') or []),len(c.get('after') or [])),
+                    'bug':'/'+target.relative_to(ROOT).as_posix() if inside else None,
+                    'missing':bug if bug and not inside else None})
+    return out
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self,*a,**k):super().__init__(*a,directory=str(ROOT),**k)
     def local(self):return self.headers.get('Host') in {f'127.0.0.1:{args.port}',f'localhost:{args.port}'}
@@ -33,6 +49,7 @@ class Handler(SimpleHTTPRequestHandler):
             with lock:data=jobs.get(self.path.split('/')[-1])
             return self.send_json(data or {'error':'Unknown job.'},200 if data else 404)
         if self.path=='/api/health':return self.send_json({'ready':True})
+        if self.path=='/api/episodes':return self.send_json({'episodes':episodes()})
         super().do_GET()
     def do_POST(self):
         origin=self.headers.get('Origin')

@@ -37,6 +37,28 @@ $('play').onclick=()=>{playing=!playing;if(playing&&time>11.9)time=0;$('play').t
 $('thumbnail').onclick=()=>{try{model=build();draw(10.4,true);C.toBlob(b=>download(b,`${model.error_code}-locked.png`),'image/png');draw();status('Gray LOCKED thumbnail saved.');}catch(e){status(e.message,true);}};
 $('longexample').onclick=()=>setConfig(longExample()).catch(e=>status(e.message,true));function longExample(){const a=['using UnityEngine;','','public class Counter : MonoBehaviour','{','    private int score = 0;','    private int bonus = 5;','','    void Start()','    {','        score = 10;','        score += bonus;','        PrintScore();','    }','','    void PrintScore()','    {','        Debug.Log("Score")','        Debug.Log(score);','    }','','    void ResetScore()','    { score = 0; }','','}'];const b=[...a];b[16]+=';';return {...defaults,before:a,after:b,bug_data_url:bugData};}
 $('render').onclick=async()=>{if(location.protocol==='file:'){$('offline').showModal();return;}if(activeJob)return;try{model=build();activeJob=true;$('render').disabled=true;status('Rendering MP4…');const r=await fetch('/api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg())});const result=await r.json();if(!r.ok)throw Error(result.error||'Render failed.');const poll=async()=>{try{const q=await fetch('/api/job/'+result.job),z=await q.json();if(z.status==='done'){status('MP4 and thumbnail are ready.');$('downloads').replaceChildren();for(const [name,url]of[['Download MP4',z.video],['Download thumbnail',z.thumbnail]]){const a=document.createElement('a');a.textContent=name;a.href=url;a.download='';$('downloads').append(a);}activeJob=false;$('render').disabled=false;}else if(z.status==='failed')throw Error(z.error||'Render failed.');else{status(z.progress||'Rendering MP4…');setTimeout(poll,1000);}}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};poll();}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};
+/* Episode browser for the episodes folder of the running studio. */
+const epstatus=(s,error=false)=>{$('episodestatus').textContent=s;$('episodestatus').classList.toggle('error',error);};
+function blobDataUrl(blob){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=()=>reject(Error('Could not read the bug PNG.'));fr.readAsDataURL(blob);});}
+async function listEpisodes(){if(location.protocol==='file:')throw Error('Open START_STUDIO.bat to browse the episodes folder. From a file you can still open a saved JSON.');
+let r;try{r=await fetch('/api/episodes');}catch{throw Error('The studio server did not answer. Start it again with START_STUDIO.bat.');}
+const z=await r.json().catch(()=>({}));if(!r.ok)throw Error(z.error||'Could not read the episodes folder.');return z.episodes||[];}
+async function loadEpisode(row){epstatus(`Loading ${row.file}…`);
+const r=await fetch('/episodes/'+encodeURIComponent(row.file));if(!r.ok)throw Error(`Could not read ${row.file}.`);
+const q=await r.json();
+if(row.bug){const png=await fetch(row.bug);if(!png.ok)throw Error(`Could not read ${row.bug}.`);q.bug_data_url=await blobDataUrl(await png.blob());}
+try{await setConfig(q);}catch(e){throw Error(`${row.file} is not a complete episode. ${e.message}.`);}$('episodes').close();
+status(row.bug?`Loaded ${row.file} with its bug image.`:`Loaded ${row.file}. Its bug PNG ${row.missing||''} is missing, so the previous bug stays in place.`);}
+function episodeRow(row){const b=document.createElement('button');b.className='episoderow'+(row.bug?'':' nobug');
+const code=document.createElement('b');code.textContent=row.error_code||row.file;
+const meta=document.createElement('span');meta.textContent=`${row.filename} · ${row.lines} lines`;
+const msg=document.createElement('em');msg.textContent=row.message;
+b.append(code,meta,msg);b.onclick=()=>loadEpisode(row).catch(e=>epstatus(e.message,true));return b;}
+$('loadepisode').onclick=async()=>{$('episodelist').replaceChildren();epstatus('Reading the episodes folder…');$('episodes').showModal();
+try{const rows=await listEpisodes();$('episodelist').replaceChildren(...rows.map(episodeRow));epstatus(rows.length?'Pick an episode to load it into the editor.':'The episodes folder has no JSON yet.');}
+catch(e){epstatus(e.message,true);}};
+$('closeEpisodes').onclick=()=>$('episodes').close();
+$('episodeopen').onclick=()=>{$('episodes').close();$('projectfile').click();};
 /* AI bug generation. The concept stays the established Bug Archive family; only one slight variation changes. */
 const MOTIFS={CS1002:'a semicolon marking',CS1003:'a missing-token marking',CS0103:'a question-mark marking',CS0246:'a not-found marking',CS1061:'an unknown-member marking',CS0029:'a type-mismatch marking',CS0161:'a missing-return marking',CS0165:'an unassigned-value marking',CS0019:'an operator-mismatch marking',CS1503:'an argument-mismatch marking',CS0201:'an unfinished-statement marking',CS0117:'a missing-name marking',CS1525:'an unexpected-token marking'};
 const VARIATIONS=[['auto','Auto (slight)'],['cheeks','Rounder cheeks'],['antennae','Shorter antennae'],['pose','Playful pose'],['accessory','Small accessory'],['none','No variation']];
