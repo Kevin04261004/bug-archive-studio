@@ -1,6 +1,16 @@
 {
   "episodes": [
     {
+      "file": "CS0019.json",
+      "path": "episodes/CS0019.json",
+      "error_code": "CS0019",
+      "message": "Operator '>' cannot be applied to operands of type 'string' and 'int'",
+      "filename": "NameCheck.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0019.png"
+    },
+    {
       "file": "CS0029.json",
       "path": "episodes/CS0029.json",
       "error_code": "CS0029",
@@ -19,6 +29,46 @@
       "lines": 5,
       "bug": "assets/CS0103.png",
       "missing": null
+    },
+    {
+      "file": "CS0117.json",
+      "path": "episodes/CS0117.json",
+      "error_code": "CS0117",
+      "message": "'Mathf' does not contain a definition for 'Random'",
+      "filename": "Spawner.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0117.png"
+    },
+    {
+      "file": "CS0120.json",
+      "path": "episodes/CS0120.json",
+      "error_code": "CS0120",
+      "message": "An object reference is required for the non-static field 'Game.score'",
+      "filename": "Game.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0120.png"
+    },
+    {
+      "file": "CS0161.json",
+      "path": "episodes/CS0161.json",
+      "error_code": "CS0161",
+      "message": "'GetScore(bool)': not all code paths return a value",
+      "filename": "ScoreRules.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0161.png"
+    },
+    {
+      "file": "CS0176.json",
+      "path": "episodes/CS0176.json",
+      "error_code": "CS0176",
+      "message": "Member 'Enemy.Spawn()' cannot be accessed with an instance reference",
+      "filename": "Battle.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0176.png"
     },
     {
       "file": "CS0246.json",
