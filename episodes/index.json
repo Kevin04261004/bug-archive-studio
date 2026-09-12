@@ -39,6 +39,16 @@
       "lines": 6,
       "bug": "assets/CS1061.png",
       "missing": null
+    },
+    {
+      "file": "CS1513.json",
+      "path": "episodes/CS1513.json",
+      "error_code": "CS1513",
+      "message": "} expected",
+      "filename": "EnemySpawner.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1513.png"
     }
   ]
 }
