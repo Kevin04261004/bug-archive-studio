@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0103",
+  "message": "The name 'scroe' does not exist in the current context",
+  "filename": "ScoreTracker.cs",
+  "before": ["void Start()", "{", "    int score = 10;", "    Debug.Log(scroe);", "}"],
+  "after": ["void Start()", "{", "    int score = 10;", "    Debug.Log(score);", "}"],
+  "bug": "../assets/CS0103.png",
+  "focus_line": 4
+}

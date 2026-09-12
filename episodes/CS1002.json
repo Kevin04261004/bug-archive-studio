@@ -1,0 +1,18 @@
+{
+  "error_code": "CS1002",
+  "message": "; expected",
+  "filename": "Player.cs",
+  "before": [
+    "void Start()",
+    "{",
+    "    Debug.Log(\"Hello\")",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    Debug.Log(\"Hello\");",
+    "}"
+  ],
+  "bug": "../assets/CS1002.png"
+}
