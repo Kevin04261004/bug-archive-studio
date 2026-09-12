@@ -137,7 +137,33 @@ for(const [at,dur,freq,amp,decay]of CUES)if(at>from&&at<=to)tone(dur,freq,amp,de
 for(const [at,dur]of WHOOSH)if(at>from&&at<=to)whoosh(dur);}
 $('sound').onchange=()=>{try{localStorage.setItem('bugarchive-sound',$('sound').checked?'1':'0');}catch{}if($('sound').checked)audio();};
 $('play').onclick=()=>{playing=!playing;if(playing&&time>11.9)time=0;if(playing&&$('sound').checked)audio();$('play').textContent=playing?'Pause':'Play';last=performance.now();};function loop(now){if(playing&&ready){const from=time;time+=(now-last)/1000;if(time>=12){time=11.99;playing=false;$('play').textContent='Play';}playCues(from,time);$('time').value=time;$('clock').textContent=`${time.toFixed(2)} / 12s`;try{draw();}catch(e){playing=false;status(e.message,true);}}last=now;requestAnimationFrame(loop);}requestAnimationFrame(loop);
-$('thumbnail').onclick=()=>{try{model=build();draw(10.4,true);C.toBlob(b=>download(b,`${model.error_code}-locked.png`),'image/png');draw();status('Gray LOCKED thumbnail saved.');}catch(e){status(e.message,true);}};
+/* LOCKED thumbnail. Its own layout, not a video frame: silhouette, rim glow, big error code. */
+function spaced(c,text,cx,baseline,size,color,gap){c.font=`${size}px ArchiveMono`;c.fillStyle=color;c.textAlign='left';c.textBaseline='alphabetic';
+const chars=[...text],w=chars.map(ch=>c.measureText(ch).width),total=w.reduce((a,b)=>a+b,0)+gap*(chars.length-1);
+let x=cx-total/2;chars.forEach((ch,i)=>{c.fillText(ch,x,baseline);x+=w[i]+gap;});return total;}
+function bugMask(color,box){const m=document.createElement('canvas');m.width=1080;m.height=1920;const d=m.getContext('2d');
+const scale=Math.min(box.w/bug.width,box.h/bug.height),w=bug.width*scale,h=bug.height*scale;
+d.drawImage(bug,box.cx-w/2,box.cy-h/2,w,h);d.globalCompositeOperation='source-in';d.fillStyle=color;d.fillRect(0,0,1080,1920);return m;}
+function thumbnailCanvas(){const T=document.createElement('canvas');T.width=1080;T.height=1920;const c=T.getContext('2d'),code=model.error_code;
+const g=c.createRadialGradient(540,900,60,540,900,1250);g.addColorStop(0,'#141c25');g.addColorStop(1,'#080c11');c.fillStyle=g;c.fillRect(0,0,1080,1920);
+c.fillStyle='#222d39';for(let x=36;x<1080;x+=48)for(let y=36;y<1920;y+=48)c.fillRect(x,y,2,2);
+c.strokeStyle='#2c3844';c.lineWidth=2;
+for(const [x,y]of[[64,74],[1016,74],[64,1846],[1016,1846]]){c.beginPath();c.moveTo(x-13,y);c.lineTo(x+13,y);c.moveTo(x,y-13);c.lineTo(x,y+13);c.stroke();}
+spaced(c,'BUG ARCHIVE',96+118,168,29,'#77858f',7);
+c.strokeStyle='#4d5b66';c.lineWidth=3;c.beginPath();c.moveTo(96,196);c.lineTo(160,196);c.stroke();
+c.beginPath();c.roundRect(88,250,904,1450,16);c.strokeStyle='#2b3742';c.lineWidth=2;c.stroke();
+c.strokeStyle='#cfdae2';c.lineWidth=4;
+for(const [x,y,sx,sy]of[[120,282,1,1],[960,282,-1,1],[120,1668,1,-1],[960,1668,-1,-1]]){c.beginPath();c.moveTo(x,y+58*sy);c.lineTo(x,y);c.lineTo(x+58*sx,y);c.stroke();}
+const lw=spaced(c,'LOCKED',540,378,36,'#e9eff3',13);
+c.strokeStyle='#63707b';c.lineWidth=2;c.beginPath();
+c.moveTo(540-lw/2-90,368);c.lineTo(540-lw/2-26,368);c.moveTo(540+lw/2+26,368);c.lineTo(540+lw/2+90,368);c.stroke();
+const box={cx:540,cy:880,w:744,h:800},glowMask=bugMask('#c3ff55',box),solid=bugMask('#07100a',box);
+c.save();for(const [blur,alpha]of[[38,.34],[16,.7],[6,1]]){c.filter=`blur(${blur}px)`;c.globalAlpha=alpha;c.drawImage(glowMask,0,0);}c.restore();
+c.drawImage(solid,0,0);
+spaced(c,code,540,1470,156,'#f4f1e8',10);
+c.strokeStyle='#55616c';c.lineWidth=3;c.beginPath();c.moveTo(480,1546);c.lineTo(600,1546);c.stroke();
+return T;}
+$('thumbnail').onclick=()=>{try{model=build();thumbnailCanvas().toBlob(b=>download(b,`${model.error_code}-locked.png`),'image/png');status('LOCKED thumbnail saved.');}catch(e){status(e.message,true);}};
 $('longexample').onclick=()=>setConfig(longExample()).catch(e=>status(e.message,true));function longExample(){const a=['using UnityEngine;','','public class Counter : MonoBehaviour','{','    private int score = 0;','    private int bonus = 5;','','    void Start()','    {','        score = 10;','        score += bonus;','        PrintScore();','    }','','    void PrintScore()','    {','        Debug.Log("Score")','        Debug.Log(score);','    }','','    void ResetScore()','    { score = 0; }','','}'];const b=[...a];b[16]+=';';return {...defaults,before:a,after:b,bug_data_url:bugData};}
 $('render').onclick=async()=>{if(activeJob)return;if(!localStudio)return renderOnActions().catch(e=>{activeJob=false;$('render').disabled=false;$('startrender').disabled=false;step(e.message,true);});try{model=build();activeJob=true;$('render').disabled=true;status('Rendering MP4…');const r=await fetch('api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg())});const result=await r.json();if(!r.ok)throw Error(result.error||'Render failed.');const poll=async()=>{try{const q=await fetch('api/job/'+result.job),z=await q.json();if(z.status==='done'){status(z.archive?`MP4 ready. The episode was archived as ${z.archive} with ${z.bug}.`:'MP4 and thumbnail are ready.');$('downloads').replaceChildren();for(const [name,url]of[['Download MP4',z.video],['Download thumbnail',z.thumbnail]]){const a=document.createElement('a');a.textContent=name;a.href=url;a.download='';$('downloads').append(a);}activeJob=false;$('render').disabled=false;}else if(z.status==='failed')throw Error(z.error||'Render failed.');else{status(z.progress||'Rendering MP4…');setTimeout(poll,1000);}}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};poll();}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};
 /* Episode browser for the episodes folder of the running studio. */

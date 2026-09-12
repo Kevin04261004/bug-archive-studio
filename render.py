@@ -191,6 +191,46 @@ def spark(im,pt,t,strength=1):
  for j in range(10):
   a=j*math.tau/10;r=18+90*t;px=pt[0]+math.cos(a)*r;py=pt[1]+math.sin(a)*r
   k=max(1,int(5*(1-t)*strength));d.ellipse((px-k,py-k,px+k,py+k),fill=L)
+def spaced(d,cx,baseline,s,n,c,gap):
+ f=font(n,True);widths=[d.textlength(ch,font=f) for ch in s]
+ total=sum(widths)+gap*(len(s)-1);x=cx-total/2
+ for ch,w in zip(s,widths):d.text((x,baseline),ch,font=f,fill=c,anchor='ls');x+=w+gap
+ return total
+def bug_mask(box):
+ """The bug's alpha, scaled into box and centred, on a full canvas."""
+ cx,cy,bw,bh=box;sc=min(bw/bug.width,bh/bug.height)
+ shape=bug.getchannel('A').resize((max(1,round(bug.width*sc)),max(1,round(bug.height*sc))),Image.LANCZOS)
+ mask=Image.new('L',(W,H),0);mask.paste(shape,(round(cx-shape.width/2),round(cy-shape.height/2)))
+ return mask
+def locked_thumbnail():
+ """The download thumbnail: silhouette, rim glow, error code. Its own layout, not a video frame."""
+ y,x=np.mgrid[0:H,0:W]
+ dist=np.clip(np.sqrt((x-540)**2+(y-900)**2)/1250,0,1)[...,None]
+ inner=np.array([20,28,37]);outer=np.array([8,12,17])
+ im=Image.fromarray((inner+(outer-inner)*dist).astype('uint8'),'RGB').convert('RGBA')
+ d=ImageDraw.Draw(im)
+ for gx in range(36,W,48):
+  for gy in range(36,H,48):d.rectangle((gx,gy,gx+1,gy+1),fill='#222D39')
+ for tx_,ty in [(64,74),(1016,74),(64,1846),(1016,1846)]:
+  d.line((tx_-13,ty,tx_+13,ty),fill='#2C3844',width=2);d.line((tx_,ty-13,tx_,ty+13),fill='#2C3844',width=2)
+ spaced(d,96+118,168,'BUG ARCHIVE',29,'#77858F',7)
+ d.line((96,196,160,196),fill='#4D5B66',width=3)
+ d.rounded_rectangle((88,250,992,1700),16,outline='#2B3742',width=2)
+ for bx,by,sx,sy in [(120,282,1,1),(960,282,-1,1),(120,1668,1,-1),(960,1668,-1,-1)]:
+  d.line((bx,by+58*sy,bx,by,bx+58*sx,by),fill='#CFDAE2',width=4)
+ lw=spaced(d,540,378,'LOCKED',36,'#E9EFF3',13)
+ d.line((540-lw/2-90,368,540-lw/2-26,368),fill='#63707B',width=2)
+ d.line((540+lw/2+26,368,540+lw/2+90,368),fill='#63707B',width=2)
+ mask=bug_mask((540,880,744,800))
+ for blur,alpha in [(19,.52),(8,.92),(3,1.0)]:
+  layer=Image.new('RGBA',(W,H),L)
+  layer.putalpha(mask.filter(ImageFilter.GaussianBlur(blur)).point(lambda v:int(v*alpha)))
+  im.alpha_composite(layer)
+ solid=Image.new('RGBA',(W,H),'#07100A');solid.putalpha(mask);im.alpha_composite(solid)
+ d=ImageDraw.Draw(im)
+ spaced(d,540,1470,CODE,156,'#F4F1E8',10)
+ d.line((480,1546,600,1546),fill='#55616C',width=3)
+ return im.convert('RGB')
 def scene(t):
  fixed=t>=6
  im=(solved if fixed else static).copy();d=ImageDraw.Draw(im)
@@ -274,7 +314,7 @@ def scene(t):
  return im.convert('RGB')
 layout={"canvas":[1080,1920],"host_bottom":1904,"content_edges":[120,960],"code_baselines":ys,"line_number_baselines":ys,"code_font_size":cs,"line_number_font_size":cs,"header_center_y":296,"diagnostic_center_y":diag_y,"progress_center_y":bar_y,"countdown_center_y":bar_y,"codex_center":[540,960],"repair_point":[repair_x,repair_y],"visible_lines":[window_start+1,window_end],"code_panel_bottom":card_bottom}
 (P/'layout.json').write_text(json.dumps(layout,indent=2),encoding='utf-8')
-scene(10.4).save(OUTPUT.with_name(OUTPUT.stem+'-locked.png'))
+locked_thumbnail().save(OUTPUT.with_name(OUTPUT.stem+'-locked.png'))
 for tt in [1,4.4,6.6,8.7,9.2,10.2,11.2]:scene(tt).save(P/f'frame-{tt}.jpg')
 if __name__=='__main__':
  import sys
