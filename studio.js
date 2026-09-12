@@ -47,6 +47,60 @@ const assets=(z.assets||[]).map(a=>link(a.name.endsWith('.mp4')?'Download MP4':'
 releaseLine(box,`${code} rendered ${when}. `,...assets,actions);}
 catch(e){box.classList.add('error');releaseLine(box,e.message+' ',actions);}}
 $('recheck').onclick=showRelease;
+/* One button on a published page: commit the episode, run the action, bring the MP4 back. */
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let gh={slug:null,token:''};
+async function api(path,init={}){const r=await fetch(`https://api.github.com/repos/${gh.slug.owner}/${gh.slug.repo}${path}`,
+{...init,headers:{Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',Authorization:'Bearer '+gh.token,...(init.headers||{})}});
+if(r.status===401||r.status===403)throw Error('GitHub refused the token. It needs Contents and Actions set to read and write on this repository.');
+if(!r.ok){let m='';try{m=(await r.json()).message||'';}catch{}throw Error(`GitHub answered ${r.status}. ${m}`.trim());}
+return r.status===204?null:r.json();}
+function episodeFile(code){const q=cfg();delete q.bug_data_url;q.bug=`../assets/${code}.png`;
+const order=['error_code','message','filename','before','after','focus_line','bug'],out={};
+for(const k of order)if(k in q)out[k]=q[k];return JSON.stringify(out,null,2)+'\n';}
+async function commitEpisode(code){const ref=await api('/git/ref/heads/main'),base=ref.object.sha,head=await api('/git/commits/'+base);
+const [json,png]=await Promise.all([
+api('/git/blobs',{method:'POST',body:JSON.stringify({content:episodeFile(code),encoding:'utf-8'})}),
+api('/git/blobs',{method:'POST',body:JSON.stringify({content:bugData.split(',')[1],encoding:'base64'})})]);
+const tree=await api('/git/trees',{method:'POST',body:JSON.stringify({base_tree:head.tree.sha,tree:[
+{path:`episodes/${code}.json`,mode:'100644',type:'blob',sha:json.sha},
+{path:`assets/${code}.png`,mode:'100644',type:'blob',sha:png.sha}]})});
+if(tree.sha===head.tree.sha)return null;
+const made=await api('/git/commits',{method:'POST',body:JSON.stringify({message:`${code} 에피소드 저장 [skip ci]`,tree:tree.sha,parents:[base]})});
+await api('/git/refs/heads/main',{method:'PATCH',body:JSON.stringify({sha:made.sha})});
+return made.sha;}
+async function runAction(code,since){await api('/actions/workflows/render.yml/dispatches',{method:'POST',body:JSON.stringify({ref:'main',inputs:{episode:code}})});
+let run=null;
+for(let i=0;i<20&&!run;i++){await sleep(3000);
+const z=await api('/actions/workflows/render.yml/runs?event=workflow_dispatch&branch=main&per_page=5');
+run=(z.workflow_runs||[]).find(r=>new Date(r.created_at)>=since)||null;}
+if(!run)throw Error('The action did not start. Check that Actions are enabled for this repository.');
+for(let i=0;i<150;i++){const z=await api('/actions/runs/'+run.id);
+if(z.status==='completed'){if(z.conclusion!=='success')throw Error(`The action finished as ${z.conclusion}. Open the run to see why.`);return z;}
+status(`Rendering ${code} on GitHub… ${Math.round((Date.now()-since)/1000)}s`);await sleep(4000);}
+throw Error('The action is taking too long. Check the run on GitHub.');}
+async function fetchRelease(code){for(let i=0;i<10;i++){try{const z=await api('/releases/tags/episode-'+code);
+if((z.assets||[]).some(a=>a.name.endsWith('.mp4')))return z;}catch{}await sleep(3000);}
+throw Error('The render finished but the release has no MP4 yet.');}
+async function renderOnActions(){const slug=repoSlug();
+if(!slug){$('offline').showModal();showRelease();return;}
+const token=($('ghtoken').value||'').trim();
+if(!token){$('offline').showModal();showRelease();$('ghtoken').focus();return status('Paste a GitHub token once and the button does the rest.',true);}
+gh={slug,token};try{sessionStorage.setItem('bugarchive-ghtoken',token);}catch{}
+model=build();const code=model.error_code;activeJob=true;$('render').disabled=true;$('downloads').replaceChildren();
+try{$('offline').close();status(`Saving ${code} to the repository…`);
+const since=new Date(Date.now()-20000),sha=await commitEpisode(code);
+status(sha?`Saved. Starting render.py on GitHub…`:`${code} is already saved. Starting render.py on GitHub…`);
+await runAction(code,since);
+status('Render finished. Fetching the MP4…');
+const release=await fetchRelease(code),video=release.assets.find(a=>a.name.endsWith('.mp4'));
+try{const r=await fetch(video.browser_download_url);if(!r.ok)throw Error('no cors');download(await r.blob(),video.name);}
+catch{link('',video.browser_download_url).click();}
+$('downloads').replaceChildren(...release.assets.map(a=>{const l=link(a.name.endsWith('.mp4')?'Download MP4 again':'Download thumbnail',a.browser_download_url);l.download='';return l;}));
+status(`${code} rendered by render.py and downloaded.${sha?' The episode and its bug PNG are committed too.':''}`);}
+catch(e){status(e.message,true);$('offline').showModal();showRelease();}
+finally{activeJob=false;$('render').disabled=false;}}
+$('startrender').onclick=renderOnActions;
 $('save').onclick=save;$('offlineSave').onclick=save;$('closeDialog').onclick=()=>$('offline').close();$('open').onclick=()=>$('projectfile').click();$('projectfile').onchange=async e=>{try{if(e.target.files[0])await setConfig(JSON.parse(await e.target.files[0].text()));}catch(e){status(e.message,true);}};
 $('choosebug').onclick=()=>$('bugfile').click();$('bugfile').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>8*1024*1024)throw Error('Use a PNG smaller than 8 MB.');const reader=new FileReader();reader.onload=async()=>{try{await setBug(reader.result);update();}catch(e){status(e.message,true);}};reader.readAsDataURL(f);}catch(e){status(e.message,true);}};
 for(const id of ['before','after','errorcode','message','filename','focus'])$(id).oninput=update;
@@ -70,7 +124,7 @@ $('sound').onchange=()=>{try{localStorage.setItem('bugarchive-sound',$('sound').
 $('play').onclick=()=>{playing=!playing;if(playing&&time>11.9)time=0;if(playing&&$('sound').checked)audio();$('play').textContent=playing?'Pause':'Play';last=performance.now();};function loop(now){if(playing&&ready){const from=time;time+=(now-last)/1000;if(time>=12){time=11.99;playing=false;$('play').textContent='Play';}playCues(from,time);$('time').value=time;$('clock').textContent=`${time.toFixed(2)} / 12s`;try{draw();}catch(e){playing=false;status(e.message,true);}}last=now;requestAnimationFrame(loop);}requestAnimationFrame(loop);
 $('thumbnail').onclick=()=>{try{model=build();draw(10.4,true);C.toBlob(b=>download(b,`${model.error_code}-locked.png`),'image/png');draw();status('Gray LOCKED thumbnail saved.');}catch(e){status(e.message,true);}};
 $('longexample').onclick=()=>setConfig(longExample()).catch(e=>status(e.message,true));function longExample(){const a=['using UnityEngine;','','public class Counter : MonoBehaviour','{','    private int score = 0;','    private int bonus = 5;','','    void Start()','    {','        score = 10;','        score += bonus;','        PrintScore();','    }','','    void PrintScore()','    {','        Debug.Log("Score")','        Debug.Log(score);','    }','','    void ResetScore()','    { score = 0; }','','}'];const b=[...a];b[16]+=';';return {...defaults,before:a,after:b,bug_data_url:bugData};}
-$('render').onclick=async()=>{if(!localStudio){$('offline').showModal();showRelease();return;}if(activeJob)return;try{model=build();activeJob=true;$('render').disabled=true;status('Rendering MP4…');const r=await fetch('api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg())});const result=await r.json();if(!r.ok)throw Error(result.error||'Render failed.');const poll=async()=>{try{const q=await fetch('api/job/'+result.job),z=await q.json();if(z.status==='done'){status(z.archive?`MP4 ready. The episode was archived as ${z.archive} with ${z.bug}.`:'MP4 and thumbnail are ready.');$('downloads').replaceChildren();for(const [name,url]of[['Download MP4',z.video],['Download thumbnail',z.thumbnail]]){const a=document.createElement('a');a.textContent=name;a.href=url;a.download='';$('downloads').append(a);}activeJob=false;$('render').disabled=false;}else if(z.status==='failed')throw Error(z.error||'Render failed.');else{status(z.progress||'Rendering MP4…');setTimeout(poll,1000);}}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};poll();}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};
+$('render').onclick=async()=>{if(activeJob)return;if(!localStudio)return renderOnActions().catch(e=>{activeJob=false;$('render').disabled=false;status(e.message,true);});try{model=build();activeJob=true;$('render').disabled=true;status('Rendering MP4…');const r=await fetch('api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg())});const result=await r.json();if(!r.ok)throw Error(result.error||'Render failed.');const poll=async()=>{try{const q=await fetch('api/job/'+result.job),z=await q.json();if(z.status==='done'){status(z.archive?`MP4 ready. The episode was archived as ${z.archive} with ${z.bug}.`:'MP4 and thumbnail are ready.');$('downloads').replaceChildren();for(const [name,url]of[['Download MP4',z.video],['Download thumbnail',z.thumbnail]]){const a=document.createElement('a');a.textContent=name;a.href=url;a.download='';$('downloads').append(a);}activeJob=false;$('render').disabled=false;}else if(z.status==='failed')throw Error(z.error||'Render failed.');else{status(z.progress||'Rendering MP4…');setTimeout(poll,1000);}}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};poll();}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};
 /* Episode browser for the episodes folder of the running studio. */
 const epstatus=(s,error=false)=>{$('episodestatus').textContent=s;$('episodestatus').classList.toggle('error',error);};
 function blobDataUrl(blob){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=()=>reject(Error('Could not read the bug PNG.'));fr.readAsDataURL(blob);});}
@@ -143,5 +197,5 @@ await setBug(url);update();$('aithumb').src=bugData;$('aithumb').hidden=false;$(
 aistatus(trimmed?'Bug applied. Its flat background was removed to get real transparency.':'Bug applied to the preview and to the episode.');status('AI bug generated and applied.');}
 catch(e){aistatus(e.message,true);}finally{$('generate').disabled=false;}};
 $('aisave').onclick=()=>download(dataUrlBlob(bugData),`${($('errorcode').value.trim()||'bug').toUpperCase()}.png`);
-async function init(){try{await Promise.all([new FontFace('ArchiveMono',`url(${STUDIO_ASSETS.DejaVuSansMono})`).load(),new FontFace('ArchiveSans',`url(${STUDIO_ASSETS.DejaVuSans})`).load()].map(async p=>document.fonts.add(await p)));hosts=await Promise.all([0,1,2,3,4].map(i=>loadImage(STUDIO_ASSETS['host-'+i])));await setBug(STUDIO_ASSETS.CS1002);ready=true;let q=defaults;try{const saved=localStorage.getItem('bugarchive-v2');if(saved)q=JSON.parse(saved);}catch{}await setConfig(q);try{$('sound').checked=localStorage.getItem('bugarchive-sound')!=='0';const saved=localStorage.getItem('bugarchive-provider');if(saved)$('provider').value=saved;const key=sessionStorage.getItem('bugarchive-imagekey');if(key)$('apikey').value=key;}catch{}$('provider').onchange();refreshPrompt();try{localStudio=['127.0.0.1','localhost'].includes(location.hostname)&&(await fetch('api/health',{cache:'no-store'})).ok;}catch{localStudio=false;}
+async function init(){try{await Promise.all([new FontFace('ArchiveMono',`url(${STUDIO_ASSETS.DejaVuSansMono})`).load(),new FontFace('ArchiveSans',`url(${STUDIO_ASSETS.DejaVuSans})`).load()].map(async p=>document.fonts.add(await p)));hosts=await Promise.all([0,1,2,3,4].map(i=>loadImage(STUDIO_ASSETS['host-'+i])));await setBug(STUDIO_ASSETS.CS1002);ready=true;let q=defaults;try{const saved=localStorage.getItem('bugarchive-v2');if(saved)q=JSON.parse(saved);}catch{}await setConfig(q);try{$('sound').checked=localStorage.getItem('bugarchive-sound')!=='0';const saved=localStorage.getItem('bugarchive-provider');if(saved)$('provider').value=saved;const key=sessionStorage.getItem('bugarchive-imagekey');if(key)$('apikey').value=key;const gt=sessionStorage.getItem('bugarchive-ghtoken');if(gt)$('ghtoken').value=gt;}catch{}$('provider').onchange();refreshPrompt();try{localStudio=['127.0.0.1','localhost'].includes(location.hostname)&&(await fetch('api/health',{cache:'no-store'})).ok;}catch{localStudio=false;}
 $('mode').textContent=localStudio?'LOCAL RENDER STUDIO':location.protocol==='file:'?'OFFLINE EDITOR':'WEB EDITOR';if(document.modelContext?.registerTool)document.modelContext.registerTool({name:'inspect_episode',description:'Read the current episode and preview layout.',inputSchema:{type:'object',properties:{}},annotations:{readOnlyHint:true},execute:()=>({error_code:model?.error_code,lines:model?.count,visible:model?.visible,time})});}catch(e){status(e.message,true);}}init();

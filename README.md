@@ -41,9 +41,13 @@ Python 실행 명령이 `python`인 PC에서는 아래 터미널 명령을 사�
 페이지에서 되는 것은 에피소드 편집, 에피소드 불러오기, AI 버그 생성, LOCKED 썸네일 저장,
 프로젝트 JSON 저장입니다. 헤더에 `WEB EDITOR`로 표시됩니다.
 
-MP4는 어느 경우에나 `render.py`가 만듭니다. 페이지에서 Render MP4를 누르면 렌더 방법과 함께
-이 오류번호의 렌더 결과가 있는지 확인해 다운로드 링크를 보여줍니다.
-아직 없으면 에피소드 JSON을 커밋하라고 안내합니다. 커밋하면 액션이 알아서 렌더합니다.
+MP4는 어느 경우에나 `render.py`가 만듭니다. 페이지에서는 **Render MP4** 한 번으로 끝납니다.
+페이지가 에피소드 JSON과 버그 PNG를 저장소에 커밋하고, 액션에서 `render.py`를 실행한 뒤,
+완성된 MP4를 그대로 내려받습니다. 보통 2분 안쪽입니다.
+
+처음 한 번만 깃허브 토큰을 붙여넣으면 됩니다. 이 저장소만 대상으로 하는 fine-grained 토큰에
+**Contents**와 **Actions**를 read and write로 주세요. 토큰은 이 탭에만 남고 api.github.com으로만 갑니다.
+토큰 없이 쓰려면 Save project로 JSON을 받아 직접 커밋해도 되고, 내 PC의 `START_STUDIO.bat`을 써도 됩니다.
 
 에피소드 목록은 `episodes/index.json`을 읽습니다. 스튜디오를 켜거나 렌더할 때,
 그리고 액션이 돌 때 자동으로 갱신됩니다. 직접 만들려면 `python server.py --index`를 실행하세요.
@@ -80,10 +84,14 @@ API 호출은 브라우저에서 직접 일어납니다. `file:///`에서 차단
 `episodes` 폴더의 JSON이 `main`에 커밋되면 `.github/workflows/render.yml`이 자동으로 돕니다.
 내 PC를 켜 둘 필요가 없고, 결과물은 로컬에서 렌더한 것과 같은 `render.py` 출력입니다.
 
-1. 에디터에서 Save project로 JSON을 받습니다. AI로 만든 버그는 Save PNG로 함께 받습니다.
-2. JSON은 `episodes/`에, PNG는 `assets/`에 넣고 커밋합니다. JSON의 `bug`는 `../assets/<오류번호>.png`입니다.
-3. 액션이 그 에피소드를 렌더해 `episode-<오류번호>` 릴리스에 MP4와 LOCKED 썸네일을 올립니다.
-4. 페이지에서 Render MP4를 누르면 그 릴리스의 다운로드 링크가 보입니다.
+페이지의 Render MP4 버튼이 이 과정을 대신 해 줍니다. 버튼이 하는 일은 아래와 같습니다.
+
+1. 에피소드 JSON과 버그 PNG를 커밋 하나로 저장소에 올립니다. JSON의 `bug`는 `../assets/<오류번호>.png`입니다.
+2. `Render episodes` 워크플로를 그 오류번호로 실행합니다.
+3. 액션이 `episode-<오류번호>` 릴리스에 MP4와 LOCKED 썸네일을 올립니다.
+4. 페이지가 완성된 MP4를 내려받습니다.
+
+손으로 할 때도 같습니다. Save project로 받은 JSON을 `episodes/`에, PNG를 `assets/`에 넣고 커밋하면 액션이 돕니다.
 
 바뀐 JSON과 PNG에 해당하는 에피소드만 렌더합니다. `render.py`를 고치면 전부 다시 렌더합니다.
 Actions 탭에서 `Render episodes`를 수동 실행할 수도 있고, 오류번호를 적으면 그것만, `all`이면 전부 렌더합니다.
