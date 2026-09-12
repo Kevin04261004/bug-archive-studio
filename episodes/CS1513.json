@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1513",
+  "message": "} expected",
+  "filename": "EnemySpawner.cs",
+  "before": ["void Spawn()", "{", "    Instantiate(enemy);"],
+  "after": ["void Spawn()", "{", "    Instantiate(enemy);", "}"],
+  "bug": "../assets/CS1513.png",
+  "focus_line": 4
+}
