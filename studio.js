@@ -52,9 +52,13 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 let gh={slug:null,token:''};
 async function api(path,init={}){const r=await fetch(`https://api.github.com/repos/${gh.slug.owner}/${gh.slug.repo}${path}`,
 {...init,headers:{Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',Authorization:'Bearer '+gh.token,...(init.headers||{})}});
-if(r.status===401||r.status===403)throw Error('GitHub refused the token. It needs Contents and Actions set to read and write on this repository.');
-if(!r.ok){let m='';try{m=(await r.json()).message||'';}catch{}throw Error(`GitHub answered ${r.status}. ${m}`.trim());}
-return r.status===204?null:r.json();}
+let body=null;if(r.status!==204){try{body=await r.json();}catch{}}
+if(r.ok)return body;
+const why=body&&body.message?` GitHub says: ${body.message}`:'',where=path||'the repository';
+if(r.status===401)throw Error(`GitHub did not accept the token itself (401 on ${where}). Paste the whole github_pat_ string again, and check it has not expired.${why}`);
+if(r.status===403)throw Error(`The token is missing a permission (403 on ${where}). In the token settings give this repository Contents: read and write, and Actions: read and write.${why}`);
+if(r.status===404)throw Error(`GitHub could not find ${where} (404). A fine-grained token that does not list this repository answers 404 as well, so check Repository access is Only select repositories with bug-archive-studio picked.${why}`);
+throw Error(`GitHub answered ${r.status} on ${where}.${why}`);}
 function episodeFile(code){const q=cfg();delete q.bug_data_url;q.bug=`../assets/${code}.png`;
 const order=['error_code','message','filename','before','after','focus_line','bug'],out={};
 for(const k of order)if(k in q)out[k]=q[k];return JSON.stringify(out,null,2)+'\n';}
@@ -93,6 +97,9 @@ if(!token){$('ghtoken').focus();return step('Paste a GitHub token in the box abo
 gh={slug,token};try{sessionStorage.setItem('bugarchive-ghtoken',token);}catch{}
 activeJob=true;$('render').disabled=true;$('startrender').disabled=true;$('downloads').replaceChildren();
 try{model=build();const code=model.error_code;
+step(`Checking the token on ${slug.owner}/${slug.repo}…`);
+const repo=await api('');
+if(!repo.permissions||!repo.permissions.push)throw Error(`This token can read ${slug.owner}/${slug.repo} but cannot write to it. Open the token settings, set Repository access to this repository, and set Contents to read and write.`);
 step(`Saving ${code} to ${slug.owner}/${slug.repo}…`);
 const since=new Date(Date.now()-20000),sha=await commitEpisode(code);
 step(sha?`Saved. Starting render.py on GitHub…`:`${code} was already saved. Starting render.py on GitHub…`);
