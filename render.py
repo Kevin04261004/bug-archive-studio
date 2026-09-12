@@ -38,6 +38,7 @@ OUTPUT=Path(args.output).resolve() if args.output else Path(args.output_dir).res
 OUTPUT.parent.mkdir(parents=True,exist_ok=True)
 P=OUTPUT.parent/(OUTPUT.stem+"-preview");P.mkdir(parents=True,exist_ok=True)
 W,H=1080,1920;FPS=30;DUR=12
+CODEX_LIFT=330  # the codex sits high so a Shorts sticker can take the lower half
 L='#C3FF55';RED='#F27B83';FG='#E9EDF2';MUTED='#83909D';LINE='#333E48'
 mono=str(ROOT/'fonts/DejaVuSansMono.ttf');sans=str(ROOT/'fonts/DejaVuSans.ttf')
 fontcache={}
@@ -310,9 +311,10 @@ def scene(t):
   c.line((215,1110,865,1110),fill=LINE,width=1)
   text(c,540,1154,CODE,78,FG,True,'mt')
   wrapped_message(c,540,1272,MESSAGE,32,650,'center',L if t>10.45 else MUTED)
+  lifted=Image.new('RGBA',(W,H));lifted.paste(card,(0,-CODEX_LIFT));card=lifted
   paste(im,card,(0,int((1-p)*45)),opacity=p)
  return im.convert('RGB')
-layout={"canvas":[1080,1920],"host_bottom":1904,"content_edges":[120,960],"code_baselines":ys,"line_number_baselines":ys,"code_font_size":cs,"line_number_font_size":cs,"header_center_y":296,"diagnostic_center_y":diag_y,"progress_center_y":bar_y,"countdown_center_y":bar_y,"codex_center":[540,960],"repair_point":[repair_x,repair_y],"visible_lines":[window_start+1,window_end],"code_panel_bottom":card_bottom}
+layout={"canvas":[1080,1920],"host_bottom":1904,"content_edges":[120,960],"code_baselines":ys,"line_number_baselines":ys,"code_font_size":cs,"line_number_font_size":cs,"header_center_y":296,"diagnostic_center_y":diag_y,"progress_center_y":bar_y,"countdown_center_y":bar_y,"codex_center":[540,960-CODEX_LIFT],"repair_point":[repair_x,repair_y],"visible_lines":[window_start+1,window_end],"code_panel_bottom":card_bottom}
 (P/'layout.json').write_text(json.dumps(layout,indent=2),encoding='utf-8')
 locked_thumbnail().save(OUTPUT.with_name(OUTPUT.stem+'-locked.png'))
 for tt in [1,4.4,6.6,8.7,9.2,10.2,11.2]:scene(tt).save(P/f'frame-{tt}.jpg')
