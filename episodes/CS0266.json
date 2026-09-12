@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0266",
+  "message": "Cannot implicitly convert type 'float' to 'int'. An explicit conversion exists",
+  "filename": "MoveSteps.cs",
+  "before": ["void Start()", "{", "    float speed = 7.5f;", "    int steps = speed;", "    Debug.Log(steps);", "}"],
+  "after": ["void Start()", "{", "    float speed = 7.5f;", "    int steps = (int)speed;", "    Debug.Log(steps);", "}"],
+  "bug": "../assets/CS0266.png",
+  "focus_line": 4
+}

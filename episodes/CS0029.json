@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0029",
+  "message": "Cannot implicitly convert type 'string' to 'int'",
+  "filename": "ScoreCounter.cs",
+  "before": ["void Start()", "{", "    string text = \"10\";", "    int score = text;", "    Debug.Log(score);", "}"],
+  "after": ["void Start()", "{", "    string text = \"10\";", "    int score = int.Parse(text);", "    Debug.Log(score);", "}"],
+  "bug": "../assets/CS0029.png",
+  "focus_line": 4
+}
