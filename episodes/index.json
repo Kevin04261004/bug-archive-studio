@@ -29,6 +29,16 @@
       "lines": 4,
       "bug": "assets/CS1002.png",
       "missing": null
+    },
+    {
+      "file": "CS1061.json",
+      "path": "episodes/CS1061.json",
+      "error_code": "CS1061",
+      "message": "'List<int>' does not contain a definition for 'Length' and no extension method was found",
+      "filename": "ScoreBoard.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS1061.png"
     }
   ]
 }
