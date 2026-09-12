@@ -47,8 +47,8 @@
       "message": "} expected",
       "filename": "EnemySpawner.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS1513.png"
+      "bug": "assets/CS1513.png",
+      "missing": null
     }
   ]
 }
