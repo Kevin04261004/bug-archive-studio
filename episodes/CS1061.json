@@ -2,8 +2,22 @@
   "error_code": "CS1061",
   "message": "'List<int>' does not contain a definition for 'Length' and no extension method was found",
   "filename": "ScoreBoard.cs",
-  "before": ["void Start()", "{", "    List<int> scores = new List<int>();", "    scores.Add(10);", "    Debug.Log(scores.Length);", "}"],
-  "after": ["void Start()", "{", "    List<int> scores = new List<int>();", "    scores.Add(10);", "    Debug.Log(scores.Count);", "}"],
-  "bug": "../assets/CS1061.png",
-  "focus_line": 5
+  "before": [
+    "void Start()",
+    "{",
+    "    List<int> scores = new List<int>();",
+    "    scores.Add(10);",
+    "    Debug.Log(scores.Length);",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    List<int> scores = new List<int>();",
+    "    scores.Add(10);",
+    "    Debug.Log(scores.Count);",
+    "}"
+  ],
+  "focus_line": 5,
+  "bug": "../assets/CS1061.png"
 }
