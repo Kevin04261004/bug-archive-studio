@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id),C=$('preview'),ctx=C.getContext('2d'),L='#c3ff55',FG='#e9edf2',M='#83909d',R='#f27b83';
 const defaults={error_code:'CS1002',message:'; expected',filename:'Player.cs',before:['void Start()','{','    Debug.Log("Hello")','}'],after:['void Start()','{','    Debug.Log("Hello");','}'],bug:'../assets/CS1002.png'};
-let bugData=STUDIO_ASSETS.CS1002,bug,hosts=[],time=4.4,playing=false,last=0,model,ready=false,activeJob=false,localStudio=false,capturing=false;
+let bugData=STUDIO_ASSETS.CS1002,bug,hosts=[],time=4.4,playing=false,last=0,model,ready=false,activeJob=false,localStudio=false;
 const font=(n,mono=false)=>{ctx.font=`${n}px ${mono?'ArchiveMono':'ArchiveSans'}`;};
 const width=(s,n,mono=true)=>{font(n,mono);return ctx.measureText(s).width;};
 function tx(s,x,cy,n=32,color=FG,mono=false,align='left'){font(n,mono);ctx.fillStyle=color;ctx.textAlign=align;ctx.textBaseline='alphabetic';const m=ctx.measureText(s);ctx.fillText(s,x,cy+(m.actualBoundingBoxAscent-m.actualBoundingBoxDescent)/2);}
@@ -22,13 +22,31 @@ function drawBug(x,y,height=80,gray=false,angle=0){ctx.save();ctx.translate(x,y)
 function archive(t,forceLocked=false){const locked=forceLocked||t<=10.45;rr(160,570,760,780,26,'#1b242a',locked?'#78828a':L);for(const [x,y,sx,sy]of[[183,593,1,1],[897,593,-1,1],[183,1327,1,-1],[897,1327,-1,-1]])line([[x,y+22*sy],[x,y],[x+22*sx,y]],locked?M:L,3);tx(locked?'LOCKED':'UNLOCKED',540,637,27,locked?M:L,true,'center');circle(540,905,180,null,locked?'#3c4348':'#354337');circle(540,905,162,null,locked?'#30383f':'#29372f');if(!locked)glow(540,905,200);drawBug(540,905,260,locked,locked?0:Math.sin((t-10.45)*4)*.035);line([[215,1110],[865,1110]],'#333e48');tx(model.error_code,540,1184,78,FG,true,'center');message(model.message,540,1272,32,650,'center',locked?M:L);}
 function draw(t=time,thumbnail=false){if(!ready||!model)return;ctx.clearRect(0,0,1080,1920);background();if(t>=10||thumbnail){archive(t,thumbnail);}else{const q=model,fix=t>=6;tx('Find the error in the code.',120,205,48);rr(120,266,840,q.bottom-266,18,'#1d242c','#3b4650');rr(120,266,840,60,18,'#252e37');ctx.fillStyle='#252e37';ctx.fillRect(121,306,838,20);tx(q.filename,150,296,25,M,true);tx('C#',930,296,23,M,true,'right');if(q.count>q.visible)tx(`L${q.start+1}–${q.end} / ${q.count}`,780,296,20,M,true,'right');line([[121,326],[959,326]],'#333e48');font(q.size,true);let metrics=ctx.measureText('0123456789Ag'),offset=(metrics.actualBoundingBoxAscent-metrics.actualBoundingBoxDescent)/2;const lines=fix?q.after:q.before;for(let row=q.start;row<Math.min(q.end,lines.length);row++){const y=350+(row-q.start)*q.step,b=y+offset,s=lines[row];if(fix)for(const ch of q.changes.filter(c=>c.row===row)){let x=220+width(s.slice(0,ch.start),q.size),w=Math.max(12,width(s.slice(ch.start,ch.end),q.size));rr(x-2,y-q.size*.62,w+4,q.size*1.24,6,'#354928');}font(q.size,true);ctx.fillStyle='#697987';ctx.textBaseline='alphabetic';ctx.textAlign='right';ctx.fillText(String(row+1),177,b);codeLine(s,220,b,q.size);if(fix)for(const ch of q.changes.filter(c=>c.row===row)){font(q.size,true);ctx.fillStyle=L;ctx.fillText(s.slice(ch.start,ch.end),220+width(s.slice(0,ch.start),q.size),b);}}if(!fix){const f=q.focus,a=q.before[f.row]||'',w=Math.max(24,width(a.slice(f.start,f.oldend),q.size));const x=Math.min(220+width(a.slice(0,f.start),q.size),920-w),y=q.target[1]+q.size*.6,pts=[];for(let k=0;k<=w;k+=6)pts.push([x+k,y+(Math.floor(k/6)%2?3:0)]);line(pts,R,2);}circle(128,q.diag,8,fix?'#52604d':R);tx(q.error_code,155,q.diag,29,fix?M:R,true);const div=155+width(q.error_code,29)+28;line([[div,q.diag-14],[div,q.diag+14]],'#333e48',2);message(q.message,div+28,q.diag,29,960-div-28,'left',fix?M:FG);rr(120,q.bar-3,756,6,3,'#35414d');rr(120,q.bar-3,Math.max(1,756*Math.min(t/6,1)),6,3,fix?L:'#96a6b7');if(t>=3&&t<6)tx(String(3-Math.floor(t-3)),932,q.bar,37,FG,true,'center');else if(fix)line([[917,q.bar-1],[927,q.bar+9],[947,q.bar-11]],L,3);
 const pose=t<4?0:t<5?1:t<6?2:t<8.35?3:4;ctx.save();ctx.translate(660,1694+Math.sin(t*2.6)*3);if(t<6)ctx.rotate(2.5*Math.sin(t*2)*Math.PI/180);if(pose===3)ctx.scale(-1,1);ctx.drawImage(hosts[pose],-210,-210,420,420);ctx.restore();if(t>=3&&t<6)for(let j=0;j<3;j++)circle(390+j*19,1595,j>Math.floor(t*2%3)?3:5,M);if(t>=6&&t<7.9){const f=[781,1631],p=ease((t-6)/.32),a=f.map((v,i)=>v+(q.target[i]-v)*p);line([f,a],'#6f9241',2);circle(...a,5,L);}if(t>=7.5&&t<8.6){let p=ease((t-7.5)/1.1),a=bez(q.target,[340,Math.max(900,q.target[1]+60)],[275,1590],[552,1660],p);glow(...a,60);drawBug(...a,12+68*Math.min(1,(t-7.5)/.25),false,Math.sin(p*12)*.2);}else if(t>=8.6&&t<8.88){glow(552,1660);drawBug(552,1660,60);}else if(t>=8.88&&t<9.48){const p=ease((t-8.88)/.6),a=bez([552,1660],[580,1760],[780,1720],[698,1844],p);glow(...a);drawBug(...a,60*(1-p)+8);}if(t>=9.3&&t<10)glow(698,1844,95*(1-(t-9.3)/.7));}
-if($('guides').checked&&!thumbnail&&!capturing){ctx.fillStyle='#00000065';ctx.fillRect(930,850,150,1070);ctx.fillRect(0,1720,1080,200);tx('UI OVERLAY',970,1190,19,'#ffffff88',true,'center');tx('CHANNEL / CAPTION',540,1790,25,'#ffffff88',true,'center');} }
+if($('guides').checked&&!thumbnail){ctx.fillStyle='#00000065';ctx.fillRect(930,850,150,1070);ctx.fillRect(0,1720,1080,200);tx('UI OVERLAY',970,1190,19,'#ffffff88',true,'center');tx('CHANNEL / CAPTION',540,1790,25,'#ffffff88',true,'center');} }
 function status(s,error=false){$('status').textContent=s;$('status').classList.toggle('error',error);}
 function update(){try{model=build();draw();$('lineinfo').textContent=`${model.count} lines · ${model.visible} visible · ${model.size}px`;status(model.count>28?`Showing lines ${model.start+1}–${model.end} around the repair.`:'Ready.');try{localStorage.setItem('bugarchive-v2',JSON.stringify(cfg()));}catch{}}catch(e){status(e.message,true);model=null;}}
 async function setConfig(q){for(const k of ['error_code','message','before','after'])if(!(k in q))throw Error(`Missing ${k}`);$('errorcode').value=q.error_code;$('filename').value=q.filename||'Player.cs';$('message').value=q.message;$('before').value=q.before.join('\n');$('after').value=q.after.join('\n');$('focus').value=q.focus_line||'';if(q.bug_data_url)await setBug(q.bug_data_url);else if(!q.bug||q.bug.includes('CS1002'))await setBug(STUDIO_ASSETS.CS1002);else status('Choose the bug PNG for this project.');update();}
 async function setBug(src){const im=await loadImage(src),temp=document.createElement('canvas');temp.width=im.width;temp.height=im.height;const d=temp.getContext('2d');d.drawImage(im,0,0);const data=d.getImageData(0,0,im.width,im.height).data;let x0=im.width,y0=im.height,x1=-1,y1=-1,transparent=false;for(let y=0;y<im.height;y++)for(let x=0;x<im.width;x++){const a=data[(y*im.width+x)*4+3];if(a<255)transparent=true;if(a>0){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);}}if(!transparent)throw Error('Choose a PNG with a genuinely transparent background.');if(x1<0)throw Error('The PNG is empty.');let w=x1-x0+1,h=y1-y0+1;const out=document.createElement('canvas');out.width=w;out.height=Math.max(h,Math.ceil(w/1.5));out.getContext('2d').drawImage(im,x0,y0,w,h,0,(out.height-h)/2,w,h);bugData=out.toDataURL('image/png');bug=await loadImage(bugData);$('bugthumb').src=bugData;}
 function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),10000);}
 function save(){try{build();download(new Blob([JSON.stringify(cfg(),null,2)],{type:'application/json'}),`${cfg().error_code}.json`);status('Project saved with its bug image.');}catch(e){status(e.message,true);}}
+/* Rendered files live on releases, made by render.py inside the GitHub Action. */
+function repoSlug(){const m=/^([\w-]+)\.github\.io$/i.exec(location.hostname);if(!m)return null;
+const first=location.pathname.split('/').filter(Boolean)[0];return {owner:m[1],repo:first||`${m[1]}.github.io`};}
+function releaseLine(box,text,...nodes){box.replaceChildren(document.createTextNode(text),...nodes);}
+function link(text,href){const a=document.createElement('a');a.textContent=text;a.href=href;a.target='_blank';a.rel='noopener';return a;}
+async function showRelease(){const box=$('releasebox'),code=($('errorcode').value.trim()||'CS1002').toUpperCase(),slug=repoSlug();
+box.classList.remove('error');
+if(!slug)return releaseLine(box,'Open this editor from its GitHub Pages address to see the rendered files here.');
+const repo=`https://github.com/${slug.owner}/${slug.repo}`,actions=link('Action runs',`${repo}/actions/workflows/render.yml`);
+box.textContent=`Looking for a rendered ${code}…`;
+try{const r=await fetch(`https://api.github.com/repos/${slug.owner}/${slug.repo}/releases/tags/episode-${code}`);
+if(r.status===404)return releaseLine(box,`${code} has not been rendered yet. Commit episodes/${code}.json and the action takes it from there. `,actions);
+if(!r.ok)throw Error(`GitHub answered ${r.status}.`);
+const z=await r.json(),when=new Date(z.published_at||z.created_at).toLocaleString();
+const assets=(z.assets||[]).map(a=>link(a.name.endsWith('.mp4')?'Download MP4':'Download thumbnail',a.browser_download_url));
+releaseLine(box,`${code} rendered ${when}. `,...assets,actions);}
+catch(e){box.classList.add('error');releaseLine(box,e.message+' ',actions);}}
+$('recheck').onclick=showRelease;
 $('save').onclick=save;$('offlineSave').onclick=save;$('closeDialog').onclick=()=>$('offline').close();$('open').onclick=()=>$('projectfile').click();$('projectfile').onchange=async e=>{try{if(e.target.files[0])await setConfig(JSON.parse(await e.target.files[0].text()));}catch(e){status(e.message,true);}};
 $('choosebug').onclick=()=>$('bugfile').click();$('bugfile').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>8*1024*1024)throw Error('Use a PNG smaller than 8 MB.');const reader=new FileReader();reader.onload=async()=>{try{await setBug(reader.result);update();}catch(e){status(e.message,true);}};reader.readAsDataURL(f);}catch(e){status(e.message,true);}};
 for(const id of ['before','after','errorcode','message','filename','focus'])$(id).oninput=update;
@@ -38,13 +56,13 @@ const CUES=[[3,.18,680,.12,9],[4,.18,680,.12,9],[5,.18,680,.12,9],[6,.23,880,.12
 const WHOOSH=[[7.55,.8],[8.9,.5]];
 let ac,master;
 function audio(){if(!ac){const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return null;ac=new Ctx();master=ac.createGain();master.gain.value=1;master.connect(ac.destination);}if(ac.state==='suspended')ac.resume();return ac;}
-function tone(dur,freq,amp,decay,out,at=0){const c=audio();if(!c)return;const t=c.currentTime+at,o=c.createOscillator(),g=c.createGain();out=out||master;o.type='sine';o.frequency.value=freq;
+function tone(dur,freq,amp,decay){const c=audio();if(!c)return;const t=c.currentTime,o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=freq;
 g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(amp,t+.006);g.gain.setTargetAtTime(0,t+.006,1/decay);
-g.gain.setTargetAtTime(0,t+dur,.004);o.connect(g);g.connect(out);o.start(t);o.stop(t+dur+.04);}
-function whoosh(dur,out,at=0){const c=audio();if(!c)return;out=out||master;const n=Math.floor(c.sampleRate*dur),b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);
+g.gain.setTargetAtTime(0,t+dur,.004);o.connect(g);g.connect(master);o.start(t);o.stop(t+dur+.04);}
+function whoosh(dur){const c=audio();if(!c)return;const n=Math.floor(c.sampleRate*dur),b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);
 for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*.03*Math.sin(Math.PI*i/n)**2;
 const s=c.createBufferSource(),lp=c.createBiquadFilter();s.buffer=b;lp.type='lowpass';lp.frequency.value=1900;
-s.connect(lp);lp.connect(out);s.start(c.currentTime+at);}
+s.connect(lp);lp.connect(master);s.start();}
 function playCues(from,to){if(!$('sound').checked||to<=from)return;
 for(const [at,dur,freq,amp,decay]of CUES)if(at>from&&at<=to)tone(dur,freq,amp,decay);
 for(const [at,dur]of WHOOSH)if(at>from&&at<=to)whoosh(dur);}
@@ -52,39 +70,7 @@ $('sound').onchange=()=>{try{localStorage.setItem('bugarchive-sound',$('sound').
 $('play').onclick=()=>{playing=!playing;if(playing&&time>11.9)time=0;if(playing&&$('sound').checked)audio();$('play').textContent=playing?'Pause':'Play';last=performance.now();};function loop(now){if(playing&&ready){const from=time;time+=(now-last)/1000;if(time>=12){time=11.99;playing=false;$('play').textContent='Play';}playCues(from,time);$('time').value=time;$('clock').textContent=`${time.toFixed(2)} / 12s`;try{draw();}catch(e){playing=false;status(e.message,true);}}last=now;requestAnimationFrame(loop);}requestAnimationFrame(loop);
 $('thumbnail').onclick=()=>{try{model=build();draw(10.4,true);C.toBlob(b=>download(b,`${model.error_code}-locked.png`),'image/png');draw();status('Gray LOCKED thumbnail saved.');}catch(e){status(e.message,true);}};
 $('longexample').onclick=()=>setConfig(longExample()).catch(e=>status(e.message,true));function longExample(){const a=['using UnityEngine;','','public class Counter : MonoBehaviour','{','    private int score = 0;','    private int bonus = 5;','','    void Start()','    {','        score = 10;','        score += bonus;','        PrintScore();','    }','','    void PrintScore()','    {','        Debug.Log("Score")','        Debug.Log(score);','    }','','    void ResetScore()','    { score = 0; }','','}'];const b=[...a];b[16]+=';';return {...defaults,before:a,after:b,bug_data_url:bugData};}
-/* Recording the preview in the browser, for pages that have no local render studio. */
-const RECORD_TYPES=['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/mp4;codecs=avc1,mp4a.40.2','video/mp4','video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'];
-const recordType=()=>window.MediaRecorder&&C.captureStream?RECORD_TYPES.find(t=>MediaRecorder.isTypeSupported(t)):undefined;
-function recordPreview(type){return new Promise((resolve,reject)=>{
-const c=audio();if(!c)return reject(Error('This browser has no Web Audio support, so the video would be silent.'));
-const track=c.createMediaStreamDestination();
-for(const [at,dur,freq,amp,decay]of CUES)tone(dur,freq,amp,decay,track,at);
-for(const [at,dur]of WHOOSH)whoosh(dur,track,at);
-const stream=C.captureStream(30);for(const a of track.stream.getAudioTracks())stream.addTrack(a);
-const rec=new MediaRecorder(stream,{mimeType:type,videoBitsPerSecond:12e6,audioBitsPerSecond:160e3}),chunks=[];
-const done=()=>{capturing=false;for(const t of stream.getTracks())t.stop();};
-rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
-rec.onerror=()=>{done();reject(Error('The browser stopped the recording. Try again with this tab in front.'));};
-rec.onstop=()=>{done();chunks.length?resolve(new Blob(chunks,{type:rec.mimeType||type})):reject(Error('The browser recorded nothing. Try again with this tab in front.'));};
-capturing=true;playing=false;$('play').textContent='Play';
-const origin=performance.now();rec.start();
-(function frame(){const elapsed=(performance.now()-origin)/1000,at=Math.min(elapsed,11.99);
-time=at;$('time').value=at;$('clock').textContent=`${at.toFixed(2)} / 12s`;
-try{draw(at);}catch(e){rec.stop();return reject(e);}
-if(elapsed>=12)return rec.stop();
-status(`Recording the preview… ${at.toFixed(1)} / 12 s. Keep this tab in front.`);
-requestAnimationFrame(frame);})();});}
-function blobLinks(items){$('downloads').replaceChildren();for(const [name,blob,file]of items){const a=document.createElement('a');a.textContent=name;a.href=URL.createObjectURL(blob);a.download=file;$('downloads').append(a);}}
-const thumbnailBlob=()=>new Promise(resolve=>{draw(10.4,true);C.toBlob(resolve,'image/png');});
-async function renderHere(){const type=recordType();if(!type){$('offline').showModal();return;}
-model=build();activeJob=true;$('render').disabled=true;$('downloads').replaceChildren();
-try{const video=await recordPreview(type),ext=(video.type||type).includes('mp4')?'mp4':'webm',name=`${model.error_code}-bug-archive`;
-download(video,`${name}.${ext}`);
-const png=await thumbnailBlob();draw();
-blobLinks([[`Download ${ext.toUpperCase()} again`,video,`${name}.${ext}`],['Download thumbnail',png,`${model.error_code}-locked.png`],['Download project JSON',new Blob([JSON.stringify(cfg(),null,2)],{type:'application/json'}),`${model.error_code}.json`]]);
-status(`${ext.toUpperCase()} saved, ${(video.size/1048576).toFixed(1)} MB. Keep the project JSON to archive this episode.`);}
-finally{activeJob=false;$('render').disabled=false;capturing=false;draw();}}
-$('render').onclick=async()=>{if(activeJob)return;if(!localStudio)return renderHere().catch(e=>{activeJob=false;$('render').disabled=false;capturing=false;status(e.message,true);});try{model=build();activeJob=true;$('render').disabled=true;status('Rendering MP4…');const r=await fetch('api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg())});const result=await r.json();if(!r.ok)throw Error(result.error||'Render failed.');const poll=async()=>{try{const q=await fetch('api/job/'+result.job),z=await q.json();if(z.status==='done'){status(z.archive?`MP4 ready. The episode was archived as ${z.archive} with ${z.bug}.`:'MP4 and thumbnail are ready.');$('downloads').replaceChildren();for(const [name,url]of[['Download MP4',z.video],['Download thumbnail',z.thumbnail]]){const a=document.createElement('a');a.textContent=name;a.href=url;a.download='';$('downloads').append(a);}activeJob=false;$('render').disabled=false;}else if(z.status==='failed')throw Error(z.error||'Render failed.');else{status(z.progress||'Rendering MP4…');setTimeout(poll,1000);}}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};poll();}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};
+$('render').onclick=async()=>{if(!localStudio){$('offline').showModal();showRelease();return;}if(activeJob)return;try{model=build();activeJob=true;$('render').disabled=true;status('Rendering MP4…');const r=await fetch('api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg())});const result=await r.json();if(!r.ok)throw Error(result.error||'Render failed.');const poll=async()=>{try{const q=await fetch('api/job/'+result.job),z=await q.json();if(z.status==='done'){status(z.archive?`MP4 ready. The episode was archived as ${z.archive} with ${z.bug}.`:'MP4 and thumbnail are ready.');$('downloads').replaceChildren();for(const [name,url]of[['Download MP4',z.video],['Download thumbnail',z.thumbnail]]){const a=document.createElement('a');a.textContent=name;a.href=url;a.download='';$('downloads').append(a);}activeJob=false;$('render').disabled=false;}else if(z.status==='failed')throw Error(z.error||'Render failed.');else{status(z.progress||'Rendering MP4…');setTimeout(poll,1000);}}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};poll();}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};
 /* Episode browser for the episodes folder of the running studio. */
 const epstatus=(s,error=false)=>{$('episodestatus').textContent=s;$('episodestatus').classList.toggle('error',error);};
 function blobDataUrl(blob){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=()=>reject(Error('Could not read the bug PNG.'));fr.readAsDataURL(blob);});}

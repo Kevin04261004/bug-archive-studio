@@ -1,0 +1,83 @@
+name: Render episodes
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'episodes/*.json'
+      - 'assets/*.png'
+      - 'render.py'
+  workflow_dispatch:
+    inputs:
+      episode:
+        description: 'Error code to render, or all'
+        default: all
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-episodes
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - run: python -m pip install -r requirements.txt
+
+      - name: Work out which episodes to render
+        id: pick
+        env:
+          EVENT: ${{ github.event_name }}
+          WANTED: ${{ inputs.episode }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: python .github/workflows/pick_episodes.py >> "$GITHUB_OUTPUT"
+
+      - name: Render
+        if: steps.pick.outputs.codes != ''
+        run: |
+          for code in ${{ steps.pick.outputs.codes }}; do
+            echo "::group::$code"
+            python render.py "episodes/$code.json" --output-dir output
+            echo "::endgroup::"
+          done
+
+      - name: Attach each MP4 to its own release
+        if: steps.pick.outputs.codes != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for code in ${{ steps.pick.outputs.codes }}; do
+            tag="episode-$code"
+            gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "$code" --notes "Rendered from episodes/$code.json by render.py."
+            gh release upload "$tag" "output/$code-bug-archive.mp4" "output/$code-bug-archive-locked.png" --clobber
+          done
+
+      - uses: actions/upload-artifact@v4
+        if: steps.pick.outputs.codes != ''
+        with:
+          name: episodes
+          path: |
+            output/*.mp4
+            output/*-locked.png
+
+      - name: Refresh the episode list for GitHub Pages
+        run: |
+          python server.py --index
+          git add episodes/index.json
+          if git diff --cached --quiet; then echo 'Episode list already current.'; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m '에피소드 목록 갱신 [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
