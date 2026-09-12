@@ -1,5 +1,5 @@
 """Print the episode codes this run should render, as a GITHUB_OUTPUT line."""
-import os, re, subprocess
+import json, os, re, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -27,10 +27,24 @@ def changed(before, after):
     return sorted(codes)
 
 
+def has_bug(code):
+    """An episode waiting for its bug PNG is skipped, not failed: the PNG lands in a later commit."""
+    try:
+        cfg = json.loads((EPISODES / f'{code}.json').read_text(encoding='utf-8-sig'))
+    except Exception:
+        return False
+    bug = cfg.get('bug') if isinstance(cfg.get('bug'), str) else f'../assets/{code}.png'
+    return (EPISODES / bug).resolve().is_file()
+
+
 if os.environ.get('EVENT') == 'workflow_dispatch':
     wanted = (os.environ.get('WANTED') or 'all').strip()
     codes = known() if wanted in {'', 'all'} else [c for c in known() if c == wanted]
 else:
     codes = changed(os.environ.get('BEFORE', ''), os.environ.get('AFTER', 'HEAD'))
 
-print('codes=' + ' '.join(codes))
+ready = [c for c in codes if has_bug(c)]
+for code in codes:
+    if code not in ready:
+        print(f'{code} has no bug PNG yet, so it is not rendered. Add assets/{code}.png.', file=sys.stderr)
+print('codes=' + ' '.join(ready))
