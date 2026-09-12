@@ -17,8 +17,8 @@
       "message": "The type or namespace name 'List<>' could not be found (are you missing a using directive?)",
       "filename": "Inventory.cs",
       "lines": 7,
-      "bug": null,
-      "missing": "../assets/CS0246.png"
+      "bug": "assets/CS0246.png",
+      "missing": null
     },
     {
       "file": "CS1002.json",
