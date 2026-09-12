@@ -37,8 +37,8 @@
       "message": ") expected",
       "filename": "ScoreMath.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS1026.png"
+      "bug": "assets/CS1026.png",
+      "missing": null
     },
     {
       "file": "CS1061.json",
