@@ -50,14 +50,14 @@ def track_for(code,names):
     so adding or removing other tracks never moves an episode to a different song."""
     return max(names,key=lambda name:(fnv1a(code+'|'+name),name))
 def pick_music(choice,code):
-    choice=(choice or 'none').strip()
+    choice=(choice or 'random').strip()
     if choice.lower()=='none':return None
     files=music_files()
     if not files:return None
     if choice.lower()=='random':return MUSIC_DIR/track_for(code,[f.name for f in files])
     named=MUSIC_DIR/Path(choice).name
     return named if named.is_file() else None
-MUSIC=pick_music(args.music if args.music else cfg.get('music'),CODE)
+MUSIC=pick_music(args.music or cfg.get('music') or 'random',CODE)  # background music is on unless the episode says none
 OUTPUT=Path(args.output).resolve() if args.output else Path(args.output_dir).resolve()/f"{CODE}-bug-archive.mp4"
 OUTPUT.parent.mkdir(parents=True,exist_ok=True)
 P=OUTPUT.parent/(OUTPUT.stem+"-preview");P.mkdir(parents=True,exist_ok=True)
