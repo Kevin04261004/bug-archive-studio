@@ -2,8 +2,27 @@
   "error_code": "CS0136",
   "message": "A local named 'i' cannot be declared in this scope",
   "filename": "LoopScope.cs",
-  "before": ["void Start()", "{", "    int i = 0;", "    for (int i = 0; i < 3; i++)", "    {", "        Debug.Log(\"hi\");", "    }", "}"],
-  "after": ["void Start()", "{", "    int i = 0;", "    for (int k = 0; k < 3; k++)", "    {", "        Debug.Log(\"hi\");", "    }", "}"],
-  "bug": "../assets/CS0136.png",
-  "focus_line": 4
+  "before": [
+    "void Start()",
+    "{",
+    "    int i = 0;",
+    "    for (int i = 0; i < 3; i++)",
+    "    {",
+    "        Debug.Log(\"hi\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int i = 0;",
+    "    for (int k = 0; k < 3; k++)",
+    "    {",
+    "        Debug.Log(\"hi\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0136.png"
 }
