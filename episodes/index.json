@@ -1183,8 +1183,8 @@
       "message": "Cannot convert type 'string' to 'int'",
       "filename": "Convert.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0030.png",
+      "bug": "assets/CS0030.png",
+      "missing": null,
       "order": 101,
       "tier": 3
     },
