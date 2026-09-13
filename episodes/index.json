@@ -1867,8 +1867,8 @@
       "message": "Inconsistent accessibility: return type 'Item' is less accessible than method 'Bag.Get()'",
       "filename": "Access.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0050.png",
+      "bug": "assets/CS0050.png",
+      "missing": null,
       "order": 161,
       "tier": 4
     },
