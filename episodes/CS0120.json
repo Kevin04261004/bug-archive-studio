@@ -2,8 +2,27 @@
   "error_code": "CS0120",
   "message": "An object reference is required for the non-static field 'Game.score'",
   "filename": "Game.cs",
-  "before": ["public class Game", "{", "    int score = 10;", "    static void Show()", "    {", "        Debug.Log(score);", "    }", "}"],
-  "after": ["public class Game", "{", "    static int score = 10;", "    static void Show()", "    {", "        Debug.Log(score);", "    }", "}"],
-  "bug": "../assets/CS0120.png",
-  "focus_line": 3
+  "before": [
+    "public class Game",
+    "{",
+    "    int score = 10;",
+    "    static void Show()",
+    "    {",
+    "        Debug.Log(score);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "public class Game",
+    "{",
+    "    static int score = 10;",
+    "    static void Show()",
+    "    {",
+    "        Debug.Log(score);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0120.png"
 }
