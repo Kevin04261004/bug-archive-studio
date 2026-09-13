@@ -1075,8 +1075,8 @@
       "message": "Wrong number of indices inside [], expected 1",
       "filename": "Arrays.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0022.png",
+      "bug": "assets/CS0022.png",
+      "missing": null,
       "order": 92,
       "tier": 2
     },
@@ -1087,8 +1087,8 @@
       "message": "Cannot apply indexing with [] to an expression of type 'int'",
       "filename": "Arrays.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0021.png",
+      "bug": "assets/CS0021.png",
+      "missing": null,
       "order": 93,
       "tier": 2
     },
@@ -1315,8 +1315,8 @@
       "message": "Operator '!' cannot be applied to operand of type 'int'",
       "filename": "Logic.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0023.png",
+      "bug": "assets/CS0023.png",
+      "missing": null,
       "order": 112,
       "tier": 3
     },
