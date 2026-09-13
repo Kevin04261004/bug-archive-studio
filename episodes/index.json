@@ -71,6 +71,16 @@
       "missing": "../assets/CS0027.png"
     },
     {
+      "file": "CS0028.json",
+      "path": "episodes/CS0028.json",
+      "error_code": "CS0028",
+      "message": "'Program.Main(string)' has the wrong signature to be an entry point",
+      "filename": "EntryPoint.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0028.png"
+    },
+    {
       "file": "CS0029.json",
       "path": "episodes/CS0029.json",
       "error_code": "CS0029",
@@ -891,6 +901,26 @@
       "missing": "../assets/CS0178.png"
     },
     {
+      "file": "CS0181.json",
+      "path": "episodes/CS0181.json",
+      "error_code": "CS0181",
+      "message": "Attribute constructor parameter 'v' has type 'decimal', which is not valid",
+      "filename": "Attributes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0181.png"
+    },
+    {
+      "file": "CS0182.json",
+      "path": "episodes/CS0182.json",
+      "error_code": "CS0182",
+      "message": "An attribute argument must be a constant expression, typeof or array creation",
+      "filename": "Attributes.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0182.png"
+    },
+    {
       "file": "CS0183.json",
       "path": "episodes/CS0183.json",
       "error_code": "CS0183",
@@ -949,6 +979,26 @@
       "lines": 6,
       "bug": null,
       "missing": "../assets/CS0192.png"
+    },
+    {
+      "file": "CS0193.json",
+      "path": "episodes/CS0193.json",
+      "error_code": "CS0193",
+      "message": "The * or -> operator must be applied to a pointer",
+      "filename": "Unsafe.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0193.png"
+    },
+    {
+      "file": "CS0196.json",
+      "path": "episodes/CS0196.json",
+      "error_code": "CS0196",
+      "message": "A pointer must be indexed by only one value",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0196.png"
     },
     {
       "file": "CS0197.json",
@@ -1021,6 +1071,26 @@
       "missing": "../assets/CS0206.png"
     },
     {
+      "file": "CS0208.json",
+      "path": "episodes/CS0208.json",
+      "error_code": "CS0208",
+      "message": "Cannot declare a pointer to the managed type 'Player'",
+      "filename": "Unsafe.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0208.png"
+    },
+    {
+      "file": "CS0209.json",
+      "path": "episodes/CS0209.json",
+      "error_code": "CS0209",
+      "message": "The type of a local declared in a fixed statement must be a pointer type",
+      "filename": "Unsafe.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0209.png"
+    },
+    {
       "file": "CS0210.json",
       "path": "episodes/CS0210.json",
       "error_code": "CS0210",
@@ -1029,6 +1099,76 @@
       "lines": 6,
       "bug": null,
       "missing": "../assets/CS0210.png"
+    },
+    {
+      "file": "CS0211.json",
+      "path": "episodes/CS0211.json",
+      "error_code": "CS0211",
+      "message": "Cannot take the address of the given expression",
+      "filename": "Unsafe.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0211.png"
+    },
+    {
+      "file": "CS0212.json",
+      "path": "episodes/CS0212.json",
+      "error_code": "CS0212",
+      "message": "You can only take the address of an unfixed expression inside a fixed statement",
+      "filename": "Unsafe.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0212.png"
+    },
+    {
+      "file": "CS0213.json",
+      "path": "episodes/CS0213.json",
+      "error_code": "CS0213",
+      "message": "You cannot use the fixed statement to take the address of an already fixed expression",
+      "filename": "Unsafe.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0213.png"
+    },
+    {
+      "file": "CS0214.json",
+      "path": "episodes/CS0214.json",
+      "error_code": "CS0214",
+      "message": "Pointers and fixed size buffers may only be used in an unsafe context",
+      "filename": "Unsafe.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0214.png"
+    },
+    {
+      "file": "CS0215.json",
+      "path": "episodes/CS0215.json",
+      "error_code": "CS0215",
+      "message": "The return type of operator true or operator false must be bool",
+      "filename": "Operators.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0215.png"
+    },
+    {
+      "file": "CS0216.json",
+      "path": "episodes/CS0216.json",
+      "error_code": "CS0216",
+      "message": "The operator 'F.operator ==(F, F)' requires a matching operator '!=' to be defined",
+      "filename": "Operators.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0216.png"
+    },
+    {
+      "file": "CS0217.json",
+      "path": "episodes/CS0217.json",
+      "error_code": "CS0217",
+      "message": "To be usable as a short circuit operator, operator & must return type 'F'",
+      "filename": "Operators.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0217.png"
     },
     {
       "file": "CS0219.json",
@@ -1061,6 +1201,16 @@
       "missing": "../assets/CS0221.png"
     },
     {
+      "file": "CS0227.json",
+      "path": "episodes/CS0227.json",
+      "error_code": "CS0227",
+      "message": "Unsafe code may only appear if compiling with the unsafe option",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0227.png"
+    },
+    {
       "file": "CS0229.json",
       "path": "episodes/CS0229.json",
       "error_code": "CS0229",
@@ -1079,6 +1229,16 @@
       "lines": 7,
       "bug": null,
       "missing": "../assets/CS0230.png"
+    },
+    {
+      "file": "CS0233.json",
+      "path": "episodes/CS0233.json",
+      "error_code": "CS0233",
+      "message": "'Point' does not have a predefined size, so sizeof needs an unsafe context",
+      "filename": "Unsafe.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0233.png"
     },
     {
       "file": "CS0234.json",
@@ -1121,6 +1281,26 @@
       "missing": "../assets/CS0239.png"
     },
     {
+      "file": "CS0242.json",
+      "path": "episodes/CS0242.json",
+      "error_code": "CS0242",
+      "message": "The operation in question is undefined on void pointers",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0242.png"
+    },
+    {
+      "file": "CS0244.json",
+      "path": "episodes/CS0244.json",
+      "error_code": "CS0244",
+      "message": "Neither 'is' nor 'as' is valid on pointer types",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0244.png"
+    },
+    {
       "file": "CS0245.json",
       "path": "episodes/CS0245.json",
       "error_code": "CS0245",
@@ -1139,6 +1319,26 @@
       "lines": 7,
       "bug": "assets/CS0246.png",
       "missing": null
+    },
+    {
+      "file": "CS0247.json",
+      "path": "episodes/CS0247.json",
+      "error_code": "CS0247",
+      "message": "Cannot use a negative size with stackalloc",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0247.png"
+    },
+    {
+      "file": "CS0248.json",
+      "path": "episodes/CS0248.json",
+      "error_code": "CS0248",
+      "message": "Cannot create an array with a negative size",
+      "filename": "Arrays.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0248.png"
     },
     {
       "file": "CS0249.json",
@@ -1169,6 +1369,16 @@
       "lines": 6,
       "bug": null,
       "missing": "../assets/CS0252.png"
+    },
+    {
+      "file": "CS0255.json",
+      "path": "episodes/CS0255.json",
+      "error_code": "CS0255",
+      "message": "stackalloc may not be used in a catch or finally block",
+      "filename": "Unsafe.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0255.png"
     },
     {
       "file": "CS0260.json",
@@ -1591,6 +1801,36 @@
       "missing": "../assets/CS0428.png"
     },
     {
+      "file": "CS0430.json",
+      "path": "episodes/CS0430.json",
+      "error_code": "CS0430",
+      "message": "The extern alias 'Lib' was not specified in a reference option",
+      "filename": "Alias.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0430.png"
+    },
+    {
+      "file": "CS0432.json",
+      "path": "episodes/CS0432.json",
+      "error_code": "CS0432",
+      "message": "Alias 'Lib' not found",
+      "filename": "Alias.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0432.png"
+    },
+    {
+      "file": "CS0439.json",
+      "path": "episodes/CS0439.json",
+      "error_code": "CS0439",
+      "message": "An extern alias declaration must precede all other elements",
+      "filename": "Alias.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0439.png"
+    },
+    {
       "file": "CS0441.json",
       "path": "episodes/CS0441.json",
       "error_code": "CS0441",
@@ -1639,6 +1879,16 @@
       "lines": 7,
       "bug": null,
       "missing": "../assets/CS0446.png"
+    },
+    {
+      "file": "CS0448.json",
+      "path": "episodes/CS0448.json",
+      "error_code": "CS0448",
+      "message": "The return type for the ++ or -- operator must match the parameter type",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0448.png"
     },
     {
       "file": "CS0449.json",
@@ -2101,6 +2351,116 @@
       "missing": "../assets/CS0551.png"
     },
     {
+      "file": "CS0552.json",
+      "path": "episodes/CS0552.json",
+      "error_code": "CS0552",
+      "message": "User-defined conversions to or from an interface are not allowed",
+      "filename": "Conversions.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0552.png"
+    },
+    {
+      "file": "CS0553.json",
+      "path": "episodes/CS0553.json",
+      "error_code": "CS0553",
+      "message": "User-defined conversion from a base class is not allowed",
+      "filename": "Conversions.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0553.png"
+    },
+    {
+      "file": "CS0554.json",
+      "path": "episodes/CS0554.json",
+      "error_code": "CS0554",
+      "message": "User-defined conversion from a derived class is not allowed",
+      "filename": "Conversions.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0554.png"
+    },
+    {
+      "file": "CS0555.json",
+      "path": "episodes/CS0555.json",
+      "error_code": "CS0555",
+      "message": "User-defined conversion cannot convert the enclosing type to itself",
+      "filename": "Conversions.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0555.png"
+    },
+    {
+      "file": "CS0556.json",
+      "path": "episodes/CS0556.json",
+      "error_code": "CS0556",
+      "message": "User-defined conversion must convert to or from the enclosing type",
+      "filename": "Conversions.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0556.png"
+    },
+    {
+      "file": "CS0557.json",
+      "path": "episodes/CS0557.json",
+      "error_code": "CS0557",
+      "message": "Duplicate user-defined conversion in type 'F'",
+      "filename": "Conversions.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0557.png"
+    },
+    {
+      "file": "CS0558.json",
+      "path": "episodes/CS0558.json",
+      "error_code": "CS0558",
+      "message": "User-defined operator 'F.operator +(F, F)' must be declared static and public",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0558.png"
+    },
+    {
+      "file": "CS0559.json",
+      "path": "episodes/CS0559.json",
+      "error_code": "CS0559",
+      "message": "The parameter type for the ++ or -- operator must be the containing type",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0559.png"
+    },
+    {
+      "file": "CS0562.json",
+      "path": "episodes/CS0562.json",
+      "error_code": "CS0562",
+      "message": "The parameter of a unary operator must be the containing type",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0562.png"
+    },
+    {
+      "file": "CS0563.json",
+      "path": "episodes/CS0563.json",
+      "error_code": "CS0563",
+      "message": "One of the parameters of a binary operator must be the containing type",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0563.png"
+    },
+    {
+      "file": "CS0564.json",
+      "path": "episodes/CS0564.json",
+      "error_code": "CS0564",
+      "message": "The first operand of an overloaded shift operator must be the containing type",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0564.png"
+    },
+    {
       "file": "CS0572.json",
       "path": "episodes/CS0572.json",
       "error_code": "CS0572",
@@ -2131,6 +2491,76 @@
       "missing": "../assets/CS0575.png"
     },
     {
+      "file": "CS0576.json",
+      "path": "episodes/CS0576.json",
+      "error_code": "CS0576",
+      "message": "Namespace contains a definition conflicting with alias 'Player'",
+      "filename": "Alias.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0576.png"
+    },
+    {
+      "file": "CS0577.json",
+      "path": "episodes/CS0577.json",
+      "error_code": "CS0577",
+      "message": "The Conditional attribute is not valid on a constructor",
+      "filename": "Attributes.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0577.png"
+    },
+    {
+      "file": "CS0578.json",
+      "path": "episodes/CS0578.json",
+      "error_code": "CS0578",
+      "message": "The Conditional attribute is not valid because the return type is not void",
+      "filename": "Attributes.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0578.png"
+    },
+    {
+      "file": "CS0579.json",
+      "path": "episodes/CS0579.json",
+      "error_code": "CS0579",
+      "message": "Duplicate 'MyAttr' attribute",
+      "filename": "Attributes.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0579.png"
+    },
+    {
+      "file": "CS0582.json",
+      "path": "episodes/CS0582.json",
+      "error_code": "CS0582",
+      "message": "The Conditional attribute is not valid on interface members",
+      "filename": "Attributes.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0582.png"
+    },
+    {
+      "file": "CS0590.json",
+      "path": "episodes/CS0590.json",
+      "error_code": "CS0590",
+      "message": "User-defined operators cannot return void",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0590.png"
+    },
+    {
+      "file": "CS0592.json",
+      "path": "episodes/CS0592.json",
+      "error_code": "CS0592",
+      "message": "Attribute 'MyAttr' is not valid on this declaration type",
+      "filename": "Attributes.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0592.png"
+    },
+    {
       "file": "CS0594.json",
       "path": "episodes/CS0594.json",
       "error_code": "CS0594",
@@ -2151,6 +2581,46 @@
       "missing": "../assets/CS0595.png"
     },
     {
+      "file": "CS0596.json",
+      "path": "episodes/CS0596.json",
+      "error_code": "CS0596",
+      "message": "The ComImport attribute must be specified on the interface that has a Guid",
+      "filename": "Attributes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0596.png"
+    },
+    {
+      "file": "CS0601.json",
+      "path": "episodes/CS0601.json",
+      "error_code": "CS0601",
+      "message": "The DllImport attribute must be specified on a method marked static and extern",
+      "filename": "Attributes.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0601.png"
+    },
+    {
+      "file": "CS0610.json",
+      "path": "episodes/CS0610.json",
+      "error_code": "CS0610",
+      "message": "Field or property cannot be of type 'System.TypedReference'",
+      "filename": "FieldTypes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0610.png"
+    },
+    {
+      "file": "CS0611.json",
+      "path": "episodes/CS0611.json",
+      "error_code": "CS0611",
+      "message": "Array elements cannot be of type 'System.TypedReference'",
+      "filename": "FieldTypes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0611.png"
+    },
+    {
       "file": "CS0612.json",
       "path": "episodes/CS0612.json",
       "error_code": "CS0612",
@@ -2159,6 +2629,26 @@
       "lines": 13,
       "bug": null,
       "missing": "../assets/CS0612.png"
+    },
+    {
+      "file": "CS0616.json",
+      "path": "episodes/CS0616.json",
+      "error_code": "CS0616",
+      "message": "'Player' is not an attribute class",
+      "filename": "Attributes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0616.png"
+    },
+    {
+      "file": "CS0617.json",
+      "path": "episodes/CS0617.json",
+      "error_code": "CS0617",
+      "message": "'n' is not a valid named attribute argument; it must not be readonly or static",
+      "filename": "Attributes.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0617.png"
     },
     {
       "file": "CS0618.json",
@@ -2201,6 +2691,16 @@
       "missing": "../assets/CS0621.png"
     },
     {
+      "file": "CS0625.json",
+      "path": "episodes/CS0625.json",
+      "error_code": "CS0625",
+      "message": "Instance field 'Data.a' must have a FieldOffset attribute",
+      "filename": "Attributes.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0625.png"
+    },
+    {
       "file": "CS0628.json",
       "path": "episodes/CS0628.json",
       "error_code": "CS0628",
@@ -2211,6 +2711,46 @@
       "missing": "../assets/CS0628.png"
     },
     {
+      "file": "CS0629.json",
+      "path": "episodes/CS0629.json",
+      "error_code": "CS0629",
+      "message": "Conditional member 'Boss.Hit()' cannot implement interface member 'IHit.Hit()'",
+      "filename": "Attributes.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0629.png"
+    },
+    {
+      "file": "CS0636.json",
+      "path": "episodes/CS0636.json",
+      "error_code": "CS0636",
+      "message": "The FieldOffset attribute is only valid on types marked StructLayout(Explicit)",
+      "filename": "Attributes.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0636.png"
+    },
+    {
+      "file": "CS0637.json",
+      "path": "episodes/CS0637.json",
+      "error_code": "CS0637",
+      "message": "The FieldOffset attribute is not allowed on static or const fields",
+      "filename": "Attributes.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0637.png"
+    },
+    {
+      "file": "CS0641.json",
+      "path": "episodes/CS0641.json",
+      "error_code": "CS0641",
+      "message": "Attribute 'AttributeUsage' is only valid on classes derived from System.Attribute",
+      "filename": "Attributes.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0641.png"
+    },
+    {
       "file": "CS0642.json",
       "path": "episodes/CS0642.json",
       "error_code": "CS0642",
@@ -2219,6 +2759,16 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS0642.png"
+    },
+    {
+      "file": "CS0643.json",
+      "path": "episodes/CS0643.json",
+      "error_code": "CS0643",
+      "message": "'n' duplicate named attribute argument",
+      "filename": "Attributes.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0643.png"
     },
     {
       "file": "CS0649.json",
@@ -2239,6 +2789,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0650.png"
+    },
+    {
+      "file": "CS0653.json",
+      "path": "episodes/CS0653.json",
+      "error_code": "CS0653",
+      "message": "Cannot apply attribute class 'MyAttr' because it is abstract",
+      "filename": "Attributes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0653.png"
     },
     {
       "file": "CS0658.json",
@@ -2301,6 +2861,36 @@
       "missing": "../assets/CS0666.png"
     },
     {
+      "file": "CS0668.json",
+      "path": "episodes/CS0668.json",
+      "error_code": "CS0668",
+      "message": "Two indexers have different names; IndexerName must match within a type",
+      "filename": "Indexers.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0668.png"
+    },
+    {
+      "file": "CS0670.json",
+      "path": "episodes/CS0670.json",
+      "error_code": "CS0670",
+      "message": "Field cannot have void type",
+      "filename": "FieldTypes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0670.png"
+    },
+    {
+      "file": "CS0673.json",
+      "path": "episodes/CS0673.json",
+      "error_code": "CS0673",
+      "message": "System.Void cannot be used from C#; use typeof(void) instead",
+      "filename": "FieldTypes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0673.png"
+    },
+    {
       "file": "CS0675.json",
       "path": "episodes/CS0675.json",
       "error_code": "CS0675",
@@ -2309,6 +2899,46 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS0675.png"
+    },
+    {
+      "file": "CS0677.json",
+      "path": "episodes/CS0677.json",
+      "error_code": "CS0677",
+      "message": "'Player.hp': a volatile field cannot be of the type 'long'",
+      "filename": "FieldTypes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0677.png"
+    },
+    {
+      "file": "CS0678.json",
+      "path": "episodes/CS0678.json",
+      "error_code": "CS0678",
+      "message": "'Player.hp': a field cannot be both volatile and readonly",
+      "filename": "FieldTypes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0678.png"
+    },
+    {
+      "file": "CS0681.json",
+      "path": "episodes/CS0681.json",
+      "error_code": "CS0681",
+      "message": "The modifier 'abstract' is not valid on fields; try using a property instead",
+      "filename": "FieldTypes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0681.png"
+    },
+    {
+      "file": "CS0687.json",
+      "path": "episodes/CS0687.json",
+      "error_code": "CS0687",
+      "message": "The namespace alias qualifier '::' always resolves to a type or namespace",
+      "filename": "Alias.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0687.png"
     },
     {
       "file": "CS0689.json",
@@ -2961,6 +3591,26 @@
       "missing": "../assets/CS1013.png"
     },
     {
+      "file": "CS1019.json",
+      "path": "episodes/CS1019.json",
+      "error_code": "CS1019",
+      "message": "Overloadable unary operator expected",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1019.png"
+    },
+    {
+      "file": "CS1020.json",
+      "path": "episodes/CS1020.json",
+      "error_code": "CS1020",
+      "message": "Overloadable binary operator expected",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1020.png"
+    },
+    {
       "file": "CS1021.json",
       "path": "episodes/CS1021.json",
       "error_code": "CS1021",
@@ -3059,6 +3709,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS1035.png"
+    },
+    {
+      "file": "CS1037.json",
+      "path": "episodes/CS1037.json",
+      "error_code": "CS1037",
+      "message": "Overloadable operator expected",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1037.png"
     },
     {
       "file": "CS1038.json",
@@ -3451,6 +4111,36 @@
       "missing": "../assets/CS1529.png"
     },
     {
+      "file": "CS1534.json",
+      "path": "episodes/CS1534.json",
+      "error_code": "CS1534",
+      "message": "Overloaded binary operator '+' takes two parameters",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1534.png"
+    },
+    {
+      "file": "CS1535.json",
+      "path": "episodes/CS1535.json",
+      "error_code": "CS1535",
+      "message": "Overloaded unary operator '!' takes one parameter",
+      "filename": "Operators.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1535.png"
+    },
+    {
+      "file": "CS1537.json",
+      "path": "episodes/CS1537.json",
+      "error_code": "CS1537",
+      "message": "The using alias 'A' appeared previously in this namespace",
+      "filename": "Alias.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1537.png"
+    },
+    {
       "file": "CS1540.json",
       "path": "episodes/CS1540.json",
       "error_code": "CS1540",
@@ -3469,6 +4159,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS1551.png"
+    },
+    {
+      "file": "CS1558.json",
+      "path": "episodes/CS1558.json",
+      "error_code": "CS1558",
+      "message": "'Program' does not have a suitable static Main method",
+      "filename": "EntryPoint.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1558.png"
     },
     {
       "file": "CS1570.json",
@@ -3519,6 +4219,16 @@
       "lines": 3,
       "bug": null,
       "missing": "../assets/CS1574.png"
+    },
+    {
+      "file": "CS1575.json",
+      "path": "episodes/CS1575.json",
+      "error_code": "CS1575",
+      "message": "A stackalloc expression requires [] after type",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1575.png"
     },
     {
       "file": "CS1579.json",
@@ -3751,6 +4461,26 @@
       "missing": "../assets/CS1637.png"
     },
     {
+      "file": "CS1641.json",
+      "path": "episodes/CS1641.json",
+      "error_code": "CS1641",
+      "message": "A fixed size buffer field must have the array size specifier after the field name",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1641.png"
+    },
+    {
+      "file": "CS1642.json",
+      "path": "episodes/CS1642.json",
+      "error_code": "CS1642",
+      "message": "Fixed size buffer fields may only be members of structs",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1642.png"
+    },
+    {
       "file": "CS1643.json",
       "path": "episodes/CS1643.json",
       "error_code": "CS1643",
@@ -3801,6 +4531,26 @@
       "missing": "../assets/CS1662.png"
     },
     {
+      "file": "CS1663.json",
+      "path": "episodes/CS1663.json",
+      "error_code": "CS1663",
+      "message": "Fixed size buffer type must be a primitive type such as int, char or float",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1663.png"
+    },
+    {
+      "file": "CS1665.json",
+      "path": "episodes/CS1665.json",
+      "error_code": "CS1665",
+      "message": "Fixed size buffers must have a length greater than zero",
+      "filename": "Unsafe.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1665.png"
+    },
+    {
       "file": "CS1673.json",
       "path": "episodes/CS1673.json",
       "error_code": "CS1673",
@@ -3819,6 +4569,16 @@
       "lines": 8,
       "bug": null,
       "missing": "../assets/CS1674.png"
+    },
+    {
+      "file": "CS1686.json",
+      "path": "episodes/CS1686.json",
+      "error_code": "CS1686",
+      "message": "Local 'n' cannot have its address taken and be used inside a lambda expression",
+      "filename": "Unsafe.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS1686.png"
     },
     {
       "file": "CS1688.json",
