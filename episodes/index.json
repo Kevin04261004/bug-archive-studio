@@ -1195,8 +1195,8 @@
       "message": "Constant value '300' cannot be converted to a 'byte'",
       "filename": "Bytes.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0031.png",
+      "bug": "assets/CS0031.png",
+      "missing": null,
       "order": 102,
       "tier": 3
     },
