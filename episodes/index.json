@@ -259,8 +259,8 @@
       "message": "A local named 'i' cannot be declared in this scope",
       "filename": "LoopScope.cs",
       "lines": 8,
-      "bug": null,
-      "missing": "../assets/CS0136.png",
+      "bug": "assets/CS0136.png",
+      "missing": null,
       "order": 22,
       "tier": 1
     },
