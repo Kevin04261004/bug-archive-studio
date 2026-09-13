@@ -2851,8 +2851,8 @@
       "message": "The event 'Unit.Died' can only appear on the left hand side of += or -=",
       "filename": "Events.cs",
       "lines": 12,
-      "bug": null,
-      "missing": "../assets/CS0070.png",
+      "bug": "assets/CS0070.png",
+      "missing": null,
       "order": 245,
       "tier": 4
     },
