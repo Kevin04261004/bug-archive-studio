@@ -2,8 +2,29 @@
   "error_code": "CS1729",
   "message": "'Enemy' does not contain a constructor that takes 0 arguments",
   "filename": "Spawn.cs",
-  "before": ["class Enemy", "{", "    public Enemy(int hp) { }", "}", "", "void Start()", "{", "    Enemy e = new Enemy();", "}"],
-  "after": ["class Enemy", "{", "    public Enemy(int hp) { }", "}", "", "void Start()", "{", "    Enemy e = new Enemy(100);", "}"],
-  "bug": "../assets/CS1729.png",
-  "focus_line": 8
+  "before": [
+    "class Enemy",
+    "{",
+    "    public Enemy(int hp) { }",
+    "}",
+    "",
+    "void Start()",
+    "{",
+    "    Enemy e = new Enemy();",
+    "}"
+  ],
+  "after": [
+    "class Enemy",
+    "{",
+    "    public Enemy(int hp) { }",
+    "}",
+    "",
+    "void Start()",
+    "{",
+    "    Enemy e = new Enemy(100);",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS1729.png"
 }
