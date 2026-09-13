@@ -1291,8 +1291,8 @@
       "message": "To cast a negative value, you must enclose the value in parentheses",
       "filename": "Casts.cs",
       "lines": 9,
-      "bug": null,
-      "missing": "../assets/CS0075.png",
+      "bug": "assets/CS0075.png",
+      "missing": null,
       "order": 110,
       "tier": 3
     },
@@ -2875,8 +2875,8 @@
       "message": "An add or remove accessor must have a body",
       "filename": "Events.cs",
       "lines": 8,
-      "bug": null,
-      "missing": "../assets/CS0073.png",
+      "bug": "assets/CS0073.png",
+      "missing": null,
       "order": 247,
       "tier": 4
     },
