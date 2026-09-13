@@ -25,6 +25,27 @@ def render(job,config):
     except Exception as e:
         with lock:jobs[job]={'status':'failed','error':str(e)}
 INDEX=ROOT/'episodes'/'index.json'
+MUSIC_DIR=ROOT/'music'
+MUSIC_INDEX=MUSIC_DIR/'index.json'
+MUSIC_TYPES={'.mp3':'audio/mpeg','.wav':'audio/wav','.ogg':'audio/ogg','.m4a':'audio/mp4','.opus':'audio/ogg','.flac':'audio/flac'}
+def tracks():
+    """Background music the renderer can use. Paths are relative to index.html, like the episode list."""
+    out=[]
+    for path in sorted(MUSIC_DIR.glob('*')):
+        if path.suffix.lower() not in MUSIC_TYPES:continue
+        out.append({'file':path.name,'path':'music/'+path.name,'size':path.stat().st_size})
+    return out
+def write_music_index():
+    data={'tracks':tracks()}
+    try:
+        MUSIC_DIR.mkdir(exist_ok=True)
+        MUSIC_INDEX.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    except OSError:pass
+    return data
+def safe_track(name):
+    name=Path(str(name)).name
+    if not name or name.startswith('.') or Path(name).suffix.lower() not in MUSIC_TYPES:raise ValueError('Use an audio file such as .mp3 or .wav.')
+    return MUSIC_DIR/name
 def episodes():
     """List episodes/*.json with the bug PNG each one points at, when that file is inside the studio.
 
@@ -46,6 +67,7 @@ def episodes():
     return out
 def write_index():
     """Keep episodes/index.json in step with the folder. GitHub Pages has no API, so it reads this file."""
+    write_music_index()
     data={'episodes':episodes()}
     try:INDEX.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     except OSError:pass
@@ -56,6 +78,7 @@ def archive(config):
     png.write_bytes(base64.b64decode(config['bug_data_url'].split(',',1)[1],validate=True))
     kept={k:config[k] for k in ('error_code','message','filename','before','after') if k in config}
     if 'focus_line' in config:kept['focus_line']=config['focus_line']
+    if config.get('music'):kept['music']=config['music']
     kept['bug']=f'../assets/{code}.png'
     (ROOT/'episodes'/f'{code}.json').write_text(json.dumps(kept,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     write_index()
@@ -72,10 +95,27 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(data or {'error':'Unknown job.'},200 if data else 404)
         if self.path=='/api/health':return self.send_json({'ready':True})
         if self.path=='/api/episodes':return self.send_json(write_index())
+        if self.path=='/api/music':return self.send_json(write_music_index())
         super().do_GET()
+    def do_music(self):
+        try:
+            length=int(self.headers.get('Content-Length','0'))
+            if not 0<length<40*1024*1024:raise ValueError('Use an audio file under 40 MB.')
+            body=json.loads(self.rfile.read(length))
+            path=safe_track(body.get('name'))
+            if self.path.endswith('/delete'):
+                path.unlink(missing_ok=True)
+            else:
+                data=str(body.get('data_url') or '')
+                if ',' not in data or not data.startswith('data:'):raise ValueError('Send the file as a data URL.')
+                MUSIC_DIR.mkdir(exist_ok=True)
+                path.write_bytes(base64.b64decode(data.split(',',1)[1],validate=True))
+            return self.send_json(write_music_index())
+        except Exception as e:return self.send_json({'error':str(e)},400)
     def do_POST(self):
         origin=self.headers.get('Origin')
         if not self.local() or origin not in {None,f'http://127.0.0.1:{args.port}',f'http://localhost:{args.port}'}:return self.send_json({'error':'Local origin required.'},403)
+        if self.path in {'/api/music','/api/music/delete'}:return self.do_music()
         if self.path!='/api/render':return self.send_json({'error':'Unknown action.'},404)
         try:
             length=int(self.headers.get('Content-Length','0'))
@@ -85,7 +125,7 @@ class Handler(SimpleHTTPRequestHandler):
             import re
             if not re.fullmatch(r'CS\d{4}',c.get('error_code','')):raise ValueError('Invalid error code.')
             if not isinstance(c.get('bug_data_url'),str) or not c['bug_data_url'].startswith('data:image/png;base64,'):raise ValueError('Save an embedded PNG first.')
-            c={k:v for k,v in c.items() if k in {'error_code','filename','message','before','after','focus_line','bug_data_url'}}
+            c={k:v for k,v in c.items() if k in {'error_code','filename','message','before','after','focus_line','bug_data_url','music'}}
             job=uuid.uuid4().hex
             with lock:jobs[job]={'status':'queued','progress':'Queued for rendering…'}
             pool.submit(render,job,c);self.send_json({'job':job},202)

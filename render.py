@@ -9,6 +9,7 @@ parser.add_argument("--output",help="Output MP4 path")
 parser.add_argument("--output-dir",default=str(ROOT/"output"))
 parser.add_argument("--preview",action="store_true",help="Generate keyframes and layout.json only")
 parser.add_argument("--batch",help="Render every *.json in a folder, in filename order")
+parser.add_argument("--music",help="Background music file name, 'random', or 'none'")
 args=parser.parse_args()
 if args.batch:
     configs=[c for c in sorted(Path(args.batch).resolve().glob("*.json")) if c.name!="index.json"]
@@ -34,6 +35,21 @@ if not 1<=max(len(before),len(after))<=200 or not before or not after:parser.err
 if before==after:parser.error("before and after are identical; no repair to show.")
 before=[s.replace("\t","    ") for s in before];after=[s.replace("\t","    ") for s in after]
 bugpath=Path(args.bug).resolve() if args.bug else (configpath.parent/cfg.get('bug','../assets/CS1002.png')).resolve()
+MUSIC_DIR=ROOT/'music'
+MUSIC_TYPES={'.mp3','.wav','.ogg','.m4a','.opus','.flac'}
+MUSIC_GAIN=.22
+def music_files():
+    return sorted(p for p in MUSIC_DIR.glob('*') if p.suffix.lower() in MUSIC_TYPES)
+def pick_music(choice,code):
+    """'random' keeps picking the same track for a given error code, so a re-render sounds the same."""
+    choice=(choice or 'none').strip()
+    if choice.lower()=='none':return None
+    files=music_files()
+    if not files:return None
+    if choice.lower()=='random':return files[sum(ord(c) for c in code)%len(files)]
+    named=MUSIC_DIR/Path(choice).name
+    return named if named.is_file() else None
+MUSIC=pick_music(args.music if args.music else cfg.get('music'),CODE)
 OUTPUT=Path(args.output).resolve() if args.output else Path(args.output_dir).resolve()/f"{CODE}-bug-archive.mp4"
 OUTPUT.parent.mkdir(parents=True,exist_ok=True)
 P=OUTPUT.parent/(OUTPUT.stem+"-preview");P.mkdir(parents=True,exist_ok=True)
@@ -341,7 +357,14 @@ if __name__=='__main__':
    import imageio_ffmpeg
    ffmpeg=imageio_ffmpeg.get_ffmpeg_exe()
   except ImportError:parser.error('Install dependencies: python -m pip install -r requirements.txt')
- cmd=[ffmpeg,'-y','-v','error','-f','rawvideo','-pix_fmt','rgb24','-s','1080x1920','-r','30','-i','-','-i',str(P/'sound.wav'),'-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-movflags','+faststart','-shortest',str(OUTPUT)]
+ cmd=[ffmpeg,'-y','-v','error','-f','rawvideo','-pix_fmt','rgb24','-s','1080x1920','-r','30','-i','-','-i',str(P/'sound.wav')]
+ if MUSIC:cmd+=['-stream_loop','-1','-i',str(MUSIC)]
+ cmd+=['-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-movflags','+faststart','-t',str(DUR)]
+ if MUSIC:
+  print('music',MUSIC.name,flush=True)
+  cmd+=['-filter_complex',f'[2:a]volume={MUSIC_GAIN},afade=t=in:d=0.8,afade=t=out:st={DUR-1.4}:d=1.4[bed];[1:a][bed]amix=inputs=2:duration=first:normalize=0[mix]','-map','0:v','-map','[mix]']
+ else:cmd+=['-map','0:v','-map','1:a']
+ cmd+=[str(OUTPUT)]
  proc=subprocess.Popen(cmd,stdin=subprocess.PIPE)
  for i in range(FPS*DUR):
   proc.stdin.write(scene(i/FPS).tobytes())

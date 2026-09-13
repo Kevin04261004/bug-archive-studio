@@ -13,7 +13,7 @@ const ease=p=>{p=Math.max(0,Math.min(1,p));return p*p*(3-2*p);};
 const bez=(a,b,c,d,p)=>[0,1].map(i=>(1-p)**3*a[i]+3*(1-p)**2*p*b[i]+3*(1-p)*p*p*c[i]+p**3*d[i]);
 function loadImage(src){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Could not load image.'));im.src=src;});}
 function message(s,x,y,maxsize,maxw,align='left',color=FG){let lines=[],size=maxsize;for(;size>=23;size--){lines=[];let str='';for(const word of s.split(/\s+/)){const z=(str+' '+word).trim();if(width(z,size)<=maxw)str=z;else{if(str)lines.push(str);str=word;}}if(str)lines.push(str);if(lines.length<=2&&lines.every(z=>width(z,size)<=maxw))break;}if(size<23)throw Error('Compiler message is too long for the two-line area.');lines.forEach((z,i)=>tx(z,x,y+(i-(lines.length-1)/2)*(size+7),size,color,true,align));}
-function cfg(){const out={error_code:$('errorcode').value.trim(),filename:$('filename').value.trim()||'Player.cs',message:$('message').value,before:$('before').value.replace(/\t/g,'    ').split('\n'),after:$('after').value.replace(/\t/g,'    ').split('\n'),bug:'embedded.png',bug_data_url:bugData};if($('focus').value)out.focus_line=Number($('focus').value);return out;}
+function cfg(){const out={error_code:$('errorcode').value.trim(),filename:$('filename').value.trim()||'Player.cs',message:$('message').value,before:$('before').value.replace(/\t/g,'    ').split('\n'),after:$('after').value.replace(/\t/g,'    ').split('\n'),bug:'embedded.png',bug_data_url:bugData};if($('focus').value)out.focus_line=Number($('focus').value);if(musicChoice)out.music=musicChoice;return out;}
 function build(){const q=cfg();if(!/^CS\d{4}$/.test(q.error_code))throw Error('Use an error code such as CS1002.');if(!q.message.trim()||q.message.includes('\n'))throw Error('Enter a compiler message.');const count=Math.max(q.before.length,q.after.length);if(count>200)throw Error('Up to 200 source lines are supported.');let changes=[];for(let row=0;row<count;row++){const a=q.before[row]||'',b=q.after[row]||'';if(a===b)continue;let p=0;while(p<Math.min(a.length,b.length)&&a[p]===b[p])p++;let ae=a.length,be=b.length;while(ae>p&&be>p&&a[ae-1]===b[be-1]){ae--;be--;}changes.push({row,start:p,oldend:ae,end:be});}if(!changes.length)throw Error('Before and After must contain a correction.');const focus=changes.find(c=>c.row===q.focus_line-1)||changes[0],visible=Math.min(count,28),start=Math.max(0,Math.min(count-visible,focus.row-Math.floor(visible/2))),end=start+visible;let size=40;for(;size>=26;size--){if([...q.before.slice(start,end),...q.after.slice(start,end)].every(s=>width(s,size)<=704))break;}if(size<26)throw Error('A visible code line is too wide. Shorten that line.');size=Math.min(size,Math.floor(980/visible)-5);const step=Math.min(58,size+9),bottom=Math.max(690,350+(visible-1)*step+54);const target=[Math.min(922,220+width((q.after[focus.row]||'').slice(0,focus.start),size)+Math.max(width((q.after[focus.row]||'').slice(focus.start,focus.end),size),12)/2),350+(focus.row-start)*step];return {...q,count,changes,focus,visible,start,end,size,step,bottom,diag:bottom+54,bar:bottom+106,target};}
 function background(){const g=ctx.createRadialGradient(540,850,30,540,850,1300);g.addColorStop(0,'#181e25');g.addColorStop(1,'#0e1217');ctx.fillStyle=g;ctx.fillRect(0,0,1080,1920);for(let x=120;x<=960;x+=60)for(let y=90;y<=1900;y+=60){ctx.fillStyle='#303942';ctx.fillRect(x,y,1,1);}for(const x of [80,1000])line([[x,80],[x,1900]],'#283039');for(const y of [80,1900]){line([[80,y],[110,y]],'#4c5862',2);line([[970,y],[1000,y]],'#4c5862',2);}tx('BUG ARCHIVE',120,109,23,M,true);line([[120,143],[960,143]],'#333e48');}
 const keywords=new Set('void int float double string bool public private class return new if else null true false static var using'.split(' '));
@@ -25,8 +25,8 @@ function draw(t=time,thumbnail=false){if(!ready||!model)return;ctx.clearRect(0,0
 const pose=t<4?0:t<5?1:t<6?2:t<8.35?3:4;ctx.save();ctx.translate(660,1694+Math.sin(t*2.6)*3);if(t<6)ctx.rotate(2.5*Math.sin(t*2)*Math.PI/180);if(pose===3)ctx.scale(-1,1);ctx.drawImage(hosts[pose],-210,-210,420,420);ctx.restore();if(t>=3&&t<6)for(let j=0;j<3;j++)circle(390+j*19,1595,j>Math.floor(t*2%3)?3:5,M);if(t>=6&&t<7.9){const f=[781,1631],p=ease((t-6)/.32),a=f.map((v,i)=>v+(q.target[i]-v)*p);line([f,a],'#6f9241',2);circle(...a,5,L);}if(t>=7.5&&t<8.6){let p=ease((t-7.5)/1.1),a=bez(q.target,[340,Math.max(900,q.target[1]+60)],[275,1590],[552,1660],p);glow(...a,60);drawBug(...a,12+68*Math.min(1,(t-7.5)/.25),false,Math.sin(p*12)*.2);}else if(t>=8.6&&t<8.88){glow(552,1660);drawBug(552,1660,60);}else if(t>=8.88&&t<9.48){const p=ease((t-8.88)/.6),a=bez([552,1660],[580,1760],[780,1720],[698,1844],p);glow(...a);drawBug(...a,60*(1-p)+8);}if(t>=9.3&&t<10)glow(698,1844,95*(1-(t-9.3)/.7));}
 if($('guides').checked&&!thumbnail){ctx.fillStyle='#00000065';ctx.fillRect(930,850,150,1070);ctx.fillRect(0,1720,1080,200);tx('UI OVERLAY',970,1190,19,'#ffffff88',true,'center');tx('CHANNEL / CAPTION',540,1790,25,'#ffffff88',true,'center');} }
 function status(s,error=false){$('status').textContent=s;$('status').classList.toggle('error',error);}
-function update(){try{model=build();draw();$('lineinfo').textContent=`${model.count} lines · ${model.visible} visible · ${model.size}px`;status(model.count>28?`Showing lines ${model.start+1}–${model.end} around the repair.`:'Ready.');try{localStorage.setItem('bugarchive-v2',JSON.stringify(cfg()));}catch{}}catch(e){status(e.message,true);model=null;}}
-async function setConfig(q){for(const k of ['error_code','message','before','after'])if(!(k in q))throw Error(`Missing ${k}`);$('errorcode').value=q.error_code;$('filename').value=q.filename||'Player.cs';$('message').value=q.message;$('before').value=q.before.join('\n');$('after').value=q.after.join('\n');$('focus').value=q.focus_line||'';if(q.bug_data_url)await setBug(q.bug_data_url);else if(!q.bug||q.bug.includes('CS1002'))await setBug(STUDIO_ASSETS.CS1002);else status('Choose the bug PNG for this project.');update();}
+function update(){try{model=build();draw();refreshMusic();$('lineinfo').textContent=`${model.count} lines · ${model.visible} visible · ${model.size}px`;status(model.count>28?`Showing lines ${model.start+1}–${model.end} around the repair.`:'Ready.');try{localStorage.setItem('bugarchive-v2',JSON.stringify(cfg()));}catch{}}catch(e){status(e.message,true);model=null;}}
+async function setConfig(q){for(const k of ['error_code','message','before','after'])if(!(k in q))throw Error(`Missing ${k}`);$('errorcode').value=q.error_code;$('filename').value=q.filename||'Player.cs';$('message').value=q.message;$('before').value=q.before.join('\n');$('after').value=q.after.join('\n');$('focus').value=q.focus_line||'';musicChoice=q.music||'';refreshMusic();if(q.bug_data_url)await setBug(q.bug_data_url);else if(!q.bug||q.bug.includes('CS1002'))await setBug(STUDIO_ASSETS.CS1002);else status('Choose the bug PNG for this project.');update();}
 async function setBug(src){const im=await loadImage(src),temp=document.createElement('canvas');temp.width=im.width;temp.height=im.height;const d=temp.getContext('2d');d.drawImage(im,0,0);const data=d.getImageData(0,0,im.width,im.height).data;let x0=im.width,y0=im.height,x1=-1,y1=-1,transparent=false;for(let y=0;y<im.height;y++)for(let x=0;x<im.width;x++){const a=data[(y*im.width+x)*4+3];if(a<255)transparent=true;if(a>0){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);}}if(!transparent)throw Error('Choose a PNG with a genuinely transparent background.');if(x1<0)throw Error('The PNG is empty.');let w=x1-x0+1,h=y1-y0+1;const out=document.createElement('canvas');out.width=w;out.height=Math.max(h,Math.ceil(w/1.5));out.getContext('2d').drawImage(im,x0,y0,w,h,0,(out.height-h)/2,w,h);bugData=out.toDataURL('image/png');bug=await loadImage(bugData);$('bugthumb').src=bugData;}
 function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),10000);}
 function save(){try{build();download(new Blob([JSON.stringify(cfg(),null,2)],{type:'application/json'}),`${cfg().error_code}.json`);status('Project saved with its bug image.');}catch(e){status(e.message,true);}}
@@ -61,19 +61,22 @@ if(r.status===403)throw Error(`The token is missing a permission (403 on ${where
 if(r.status===404)throw Error(`GitHub could not find ${where} (404). A fine-grained token that does not list this repository answers 404 as well, so check Repository access is Only select repositories with bug-archive-studio picked.${why}`);
 throw Error(`GitHub answered ${r.status} on ${where}.${why}`);}
 function episodeFile(code){const q=cfg();delete q.bug_data_url;q.bug=`../assets/${code}.png`;
-const order=['error_code','message','filename','before','after','focus_line','bug'],out={};
+const order=['error_code','message','filename','before','after','focus_line','music','bug'],out={};
 for(const k of order)if(k in q)out[k]=q[k];return JSON.stringify(out,null,2)+'\n';}
-async function commitEpisode(code){const ref=await api('/git/ref/heads/main'),base=ref.object.sha,head=await api('/git/commits/'+base);
-const [json,png]=await Promise.all([
-api('/git/blobs',{method:'POST',body:JSON.stringify({content:episodeFile(code),encoding:'utf-8'})}),
-api('/git/blobs',{method:'POST',body:JSON.stringify({content:bugData.split(',')[1],encoding:'base64'})})]);
-const tree=await api('/git/trees',{method:'POST',body:JSON.stringify({base_tree:head.tree.sha,tree:[
-{path:`episodes/${code}.json`,mode:'100644',type:'blob',sha:json.sha},
-{path:`assets/${code}.png`,mode:'100644',type:'blob',sha:png.sha}]})});
-if(tree.sha===head.tree.sha)return null;
-const made=await api('/git/commits',{method:'POST',body:JSON.stringify({message:`${code} 에피소드 저장 [skip ci]`,tree:tree.sha,parents:[base]})});
+/* One commit for a set of files. Each entry adds or replaces a path, or removes it with drop:true. */
+async function commitFiles(message,files){const ref=await api('/git/ref/heads/main'),base=ref.object.sha,head=await api('/git/commits/'+base),tree=[];
+for(const f of files){
+if(f.drop){tree.push({path:f.path,mode:'100644',type:'blob',sha:null});continue;}
+const blob=await api('/git/blobs',{method:'POST',body:JSON.stringify({content:f.content,encoding:f.encoding||'utf-8'})});
+tree.push({path:f.path,mode:'100644',type:'blob',sha:blob.sha});}
+const built=await api('/git/trees',{method:'POST',body:JSON.stringify({base_tree:head.tree.sha,tree})});
+if(built.sha===head.tree.sha)return null;
+const made=await api('/git/commits',{method:'POST',body:JSON.stringify({message,tree:built.sha,parents:[base]})});
 await api('/git/refs/heads/main',{method:'PATCH',body:JSON.stringify({sha:made.sha})});
 return made.sha;}
+const commitEpisode=code=>commitFiles(`${code} 에피소드 저장 [skip ci]`,[
+{path:`episodes/${code}.json`,content:episodeFile(code)},
+{path:`assets/${code}.png`,content:bugData.split(',')[1],encoding:'base64'}]);
 async function runAction(code,since){await api('/actions/workflows/render.yml/dispatches',{method:'POST',body:JSON.stringify({ref:'main',inputs:{episode:code}})});
 let run=null;
 for(let i=0;i<20&&!run;i++){await sleep(3000);
@@ -120,7 +123,79 @@ $('startrender').onclick=()=>renderOnActions().catch(e=>step(e.message,true));
 $('save').onclick=save;$('offlineSave').onclick=save;$('closeDialog').onclick=()=>$('offline').close();$('open').onclick=()=>$('projectfile').click();$('projectfile').onchange=async e=>{try{if(e.target.files[0])await setConfig(JSON.parse(await e.target.files[0].text()));}catch(e){status(e.message,true);}};
 $('choosebug').onclick=()=>$('bugfile').click();$('bugfile').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>8*1024*1024)throw Error('Use a PNG smaller than 8 MB.');const reader=new FileReader();reader.onload=async()=>{try{await setBug(reader.result);update();}catch(e){status(e.message,true);}};reader.readAsDataURL(f);}catch(e){status(e.message,true);}};
 for(const id of ['before','after','errorcode','message','filename','focus'])$(id).oninput=update;
-$('time').oninput=()=>{playing=false;$('play').textContent='Play';time=Number($('time').value);$('clock').textContent=`${time.toFixed(2)} / 12s`;draw();};$('guides').onchange=()=>draw();document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>{$('time').value=b.dataset.time;$('time').oninput();});
+$('time').oninput=()=>{playing=false;bgmStop();$('play').textContent='Play';time=Number($('time').value);$('clock').textContent=`${time.toFixed(2)} / 12s`;draw();};$('guides').onchange=()=>draw();document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>{$('time').value=b.dataset.time;$('time').oninput();});
+/* Background music: a list you keep in the music folder, chosen per episode or left to chance. */
+let musicChoice='',tracks=[],bgm=null,bgmSrc='';
+const MUSIC_GAIN=.22;
+const mstatus=(s,error=false)=>{$('musicstatus').textContent=s;$('musicstatus').classList.toggle('error',error);};
+const trackByName=n=>tracks.find(t=>t.file===n)||null;
+function pickRandom(){if(!tracks.length)return null;const code=($('errorcode').value.trim()||'CS1002').toUpperCase();
+return tracks[[...code].reduce((a,c)=>a+c.charCodeAt(0),0)%tracks.length];}
+function resolvedTrack(){if(musicChoice==='random')return pickRandom();return musicChoice?trackByName(musicChoice):null;}
+function musicLabel(){if(!musicChoice)return'None';const t=resolvedTrack();
+if(musicChoice==='random')return t?`Random · ${t.file}`:'Random · no tracks yet';
+return t?t.file:`${musicChoice} · missing`;}
+function refreshMusic(){$('musicnow').textContent=musicLabel();}
+async function loadTracks(){if(location.protocol==='file:')return tracks;
+const source=localStudio?'api/music':'music/index.json';
+try{const r=await fetch(source,{cache:'no-store'});if(!r.ok)throw 0;tracks=(await r.json()).tracks||[];}catch{tracks=[];}
+refreshMusic();return tracks;}
+function trackRow(label,value,track){const b=document.createElement('button');b.className='trackrow'+(musicChoice===value?' on':'');
+const dot=document.createElement('span');dot.className='dot';
+const name=document.createElement('span');name.className='name';name.textContent=label;
+b.append(dot,name);
+if(track){const size=document.createElement('span');size.className='size';size.textContent=`${(track.size/1048576).toFixed(1)} MB`;
+const drop=document.createElement('button');drop.className='trackdrop';drop.textContent='✕';drop.title=`Remove ${track.file}`;
+drop.onclick=e=>{e.stopPropagation();removeTrack(track).catch(err=>mstatus(err.message,true));};
+b.append(size,drop);}
+b.onclick=()=>{musicChoice=value;refreshMusic();update();drawTracks();mstatus(value?`Using ${musicLabel()}.`:'The render keeps only the sound effects.');};
+return b;}
+function drawTracks(){const list=$('tracklist');
+list.replaceChildren(trackRow('None · effects only','',null),trackRow('Random · picked from this list','random',null),
+...tracks.map(t=>trackRow(t.file,t.file,t)));}
+async function openMusic(){$('musicdlg').showModal();mstatus('Reading the music folder…');
+await loadTracks();drawTracks();
+mstatus(location.protocol==='file:'?'A page opened from a file cannot read the music folder. Use START_STUDIO.bat or the published site.'
+:tracks.length?`${tracks.length} track${tracks.length>1?'s':''} in the music folder.`:'No tracks yet. Add one below.',location.protocol==='file:');}
+async function saveTrack(name,dataUrl,bytes){
+if(localStudio){const r=await fetch('api/music',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,data_url:dataUrl})});
+const z=await r.json();if(!r.ok)throw Error(z.error||'Could not save the track.');tracks=z.tracks||[];return;}
+const slug=repoSlug();if(!slug)throw Error('Open the published site to add tracks from the browser.');
+const token=($('ghtoken').value||'').trim();if(!token)throw Error('Adding a track commits it to the repository. Paste a GitHub token in the Render MP4 window first.');
+gh={slug,token};
+const next=[...tracks.filter(t=>t.file!==name),{file:name,path:'music/'+name,size:bytes}].sort((a,b)=>a.file.localeCompare(b.file));
+await commitFiles(`배경음 ${name} 추가 [skip ci]`,[{path:'music/'+name,content:dataUrl.split(',')[1],encoding:'base64'},
+{path:'music/index.json',content:JSON.stringify({tracks:next},null,2)+'\n'}]);
+tracks=next;}
+async function removeTrack(track){if(!confirm(`Remove ${track.file} from the music folder?`))return;
+mstatus(`Removing ${track.file}…`);
+if(localStudio){const r=await fetch('api/music/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:track.file})});
+const z=await r.json();if(!r.ok)throw Error(z.error||'Could not remove the track.');tracks=z.tracks||[];}
+else{const slug=repoSlug();if(!slug)throw Error('Open the published site to manage tracks from the browser.');
+const token=($('ghtoken').value||'').trim();if(!token)throw Error('Removing a track commits to the repository. Paste a GitHub token in the Render MP4 window first.');
+gh={slug,token};const next=tracks.filter(t=>t.file!==track.file);
+await commitFiles(`배경음 ${track.file} 삭제 [skip ci]`,[{path:'music/'+track.file,drop:true},
+{path:'music/index.json',content:JSON.stringify({tracks:next},null,2)+'\n'}]);
+tracks=next;}
+if(musicChoice===track.file)musicChoice='';
+drawTracks();refreshMusic();update();mstatus(`${track.file} removed.`);}
+$('musiclist').onclick=()=>openMusic().catch(e=>mstatus(e.message,true));
+$('closeMusic').onclick=()=>$('musicdlg').close();
+$('addtrack').onclick=()=>$('musicfile').click();
+$('musicfile').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
+try{if(f.size>40*1024*1024)throw Error('Use a track under 40 MB.');
+const name=f.name.replace(/[^\w.\- ]+/g,'_');
+mstatus(`Adding ${name}…`);
+const dataUrl=await blobDataUrl(f);
+await saveTrack(name,dataUrl,f.size);
+musicChoice=name;drawTracks();refreshMusic();update();mstatus(`${name} added and selected.`);}
+catch(err){mstatus(err.message,true);}};
+/* The preview plays the same track under the effects, at the gain the render uses. */
+function bgmStart(){const t=resolvedTrack();if(!t||!$('sound').checked)return;
+if(!bgm||bgmSrc!==t.path){bgm=new Audio(t.path);bgm.loop=true;bgmSrc=t.path;}
+bgm.volume=MUSIC_GAIN;try{bgm.currentTime=time%(bgm.duration||12);}catch{}
+bgm.play().catch(()=>{});}
+function bgmStop(){if(bgm)bgm.pause();}
 /* Preview sound. Same cues, times and shapes the rendered MP4 carries, rebuilt with Web Audio. */
 const CUES=[[3,.18,680,.12,9],[4,.18,680,.12,9],[5,.18,680,.12,9],[6,.23,880,.12,9],[6.1,.32,1174,.12,9],[7.5,.18,1400,.07,9],[8.6,.1,1100,.14,9],[9.35,.35,520,.12,9],[10.45,.6,660,.12,6],[10.55,.6,880,.12,6],[10.68,.6,1320,.12,6]];
 const WHOOSH=[[7.55,.8],[8.9,.5]];
@@ -136,8 +211,8 @@ s.connect(lp);lp.connect(master);s.start();}
 function playCues(from,to){if(!$('sound').checked||to<=from)return;
 for(const [at,dur,freq,amp,decay]of CUES)if(at>from&&at<=to)tone(dur,freq,amp,decay);
 for(const [at,dur]of WHOOSH)if(at>from&&at<=to)whoosh(dur);}
-$('sound').onchange=()=>{try{localStorage.setItem('bugarchive-sound',$('sound').checked?'1':'0');}catch{}if($('sound').checked)audio();};
-$('play').onclick=()=>{playing=!playing;if(playing&&time>11.9)time=0;if(playing&&$('sound').checked)audio();$('play').textContent=playing?'Pause':'Play';last=performance.now();};function loop(now){if(playing&&ready){const from=time;time+=(now-last)/1000;if(time>=12){time=11.99;playing=false;$('play').textContent='Play';}playCues(from,time);$('time').value=time;$('clock').textContent=`${time.toFixed(2)} / 12s`;try{draw();}catch(e){playing=false;status(e.message,true);}}last=now;requestAnimationFrame(loop);}requestAnimationFrame(loop);
+$('sound').onchange=()=>{try{localStorage.setItem('bugarchive-sound',$('sound').checked?'1':'0');}catch{}if($('sound').checked){audio();if(playing)bgmStart();}else bgmStop();};
+$('play').onclick=()=>{playing=!playing;if(playing&&time>11.9)time=0;if(playing&&$('sound').checked)audio();if(playing)bgmStart();else bgmStop();$('play').textContent=playing?'Pause':'Play';last=performance.now();};function loop(now){if(playing&&ready){const from=time;time+=(now-last)/1000;if(time>=12){time=11.99;playing=false;$('play').textContent='Play';bgmStop();}playCues(from,time);$('time').value=time;$('clock').textContent=`${time.toFixed(2)} / 12s`;try{draw();}catch(e){playing=false;status(e.message,true);}}last=now;requestAnimationFrame(loop);}requestAnimationFrame(loop);
 /* LOCKED thumbnail. Its own layout, not a video frame: silhouette, rim glow, big error code. */
 function spaced(c,text,cx,baseline,size,color,gap){c.font=`${size}px ArchiveMono`;c.fillStyle=color;c.textAlign='left';c.textBaseline='alphabetic';
 const chars=[...text],w=chars.map(ch=>c.measureText(ch).width),total=w.reduce((a,b)=>a+b,0)+gap*(chars.length-1);
@@ -240,4 +315,4 @@ aistatus(trimmed?'Bug applied. Its flat background was removed to get real trans
 catch(e){aistatus(e.message,true);}finally{$('generate').disabled=false;}};
 $('aisave').onclick=()=>download(dataUrlBlob(bugData),`${($('errorcode').value.trim()||'bug').toUpperCase()}.png`);
 async function init(){try{await Promise.all([new FontFace('ArchiveMono',`url(${STUDIO_ASSETS.DejaVuSansMono})`).load(),new FontFace('ArchiveSans',`url(${STUDIO_ASSETS.DejaVuSans})`).load()].map(async p=>document.fonts.add(await p)));hosts=await Promise.all([0,1,2,3,4].map(i=>loadImage(STUDIO_ASSETS['host-'+i])));await setBug(STUDIO_ASSETS.CS1002);ready=true;let q=defaults;try{const saved=localStorage.getItem('bugarchive-v2');if(saved)q=JSON.parse(saved);}catch{}await setConfig(q);try{$('sound').checked=localStorage.getItem('bugarchive-sound')!=='0';const saved=localStorage.getItem('bugarchive-provider');if(saved)$('provider').value=saved;const key=sessionStorage.getItem('bugarchive-imagekey');if(key)$('apikey').value=key;const gt=sessionStorage.getItem('bugarchive-ghtoken');if(gt)$('ghtoken').value=gt;}catch{}$('provider').onchange();refreshPrompt();try{localStudio=['127.0.0.1','localhost'].includes(location.hostname)&&(await fetch('api/health',{cache:'no-store'})).ok;}catch{localStudio=false;}
-$('mode').textContent=localStudio?'LOCAL RENDER STUDIO':location.protocol==='file:'?'OFFLINE EDITOR':'WEB EDITOR';if(document.modelContext?.registerTool)document.modelContext.registerTool({name:'inspect_episode',description:'Read the current episode and preview layout.',inputSchema:{type:'object',properties:{}},annotations:{readOnlyHint:true},execute:()=>({error_code:model?.error_code,lines:model?.count,visible:model?.visible,time})});}catch(e){status(e.message,true);}}init();
+$('mode').textContent=localStudio?'LOCAL RENDER STUDIO':location.protocol==='file:'?'OFFLINE EDITOR':'WEB EDITOR';await loadTracks();if(document.modelContext?.registerTool)document.modelContext.registerTool({name:'inspect_episode',description:'Read the current episode and preview layout.',inputSchema:{type:'object',properties:{}},annotations:{readOnlyHint:true},execute:()=>({error_code:model?.error_code,lines:model?.count,visible:model?.visible,time})});}catch(e){status(e.message,true);}}init();
