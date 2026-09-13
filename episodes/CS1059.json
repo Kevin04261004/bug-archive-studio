@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1059",
+  "message": "The operand of an increment or decrement operator must be a variable",
+  "filename": "Assign.cs",
+  "before": ["void Start()", "{", "    int hp = 100;", "    (hp + 1)++;", "}"],
+  "after": ["void Start()", "{", "    int hp = 100;", "    hp++;", "}"],
+  "bug": "../assets/CS1059.png",
+  "focus_line": 4
+}

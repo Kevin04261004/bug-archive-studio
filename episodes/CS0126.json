@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0126",
+  "message": "An object of a type convertible to 'int' is required",
+  "filename": "Returns.cs",
+  "before": ["int GetHp()", "{", "    int hp = 100;", "    return;", "}"],
+  "after": ["int GetHp()", "{", "    int hp = 100;", "    return hp;", "}"],
+  "bug": "../assets/CS0126.png",
+  "focus_line": 4
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1528",
+  "message": "Expected ; or = after a field declaration",
+  "filename": "Fields.cs",
+  "before": ["class Player", "{", "    int hp(100);", "}"],
+  "after": ["class Player", "{", "    int hp = 100;", "}"],
+  "bug": "../assets/CS1528.png",
+  "focus_line": 3
+}

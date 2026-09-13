@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1001",
+  "message": "Identifier expected",
+  "filename": "Fields.cs",
+  "before": ["class Player", "{", "    public int = 100;", "}"],
+  "after": ["class Player", "{", "    public int hp = 100;", "}"],
+  "bug": "../assets/CS1001.png",
+  "focus_line": 3
+}

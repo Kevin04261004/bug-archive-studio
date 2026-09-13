@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1529",
+  "message": "A using clause must precede all other elements defined in the namespace",
+  "filename": "Usings.cs",
+  "before": ["", "class Bag", "{", "}", "using System;"],
+  "after": ["using System;", "class Bag", "{", "}", ""],
+  "bug": "../assets/CS1529.png",
+  "focus_line": 1
+}

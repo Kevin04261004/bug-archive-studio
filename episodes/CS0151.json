@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0151",
+  "message": "A switch expression of an integral type is required",
+  "filename": "Switches.cs",
+  "before": ["void Check(float n)", "{", "    switch (n)", "    {", "        case 1:", "            break;", "    }", "}"],
+  "after": ["void Check(int n)", "{", "    switch (n)", "    {", "        case 1:", "            break;", "    }", "}"],
+  "bug": "../assets/CS0151.png",
+  "focus_line": 1
+}

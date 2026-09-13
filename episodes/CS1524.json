@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1524",
+  "message": "Expected catch or finally",
+  "filename": "Guard.cs",
+  "before": ["void Start()", "{", "    try", "    {", "        Load();", "    }", "", "}"],
+  "after": ["void Start()", "{", "    try", "    {", "        Load();", "    }", "    catch { }", "}"],
+  "bug": "../assets/CS1524.png",
+  "focus_line": 7
+}

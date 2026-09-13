@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0152",
+  "message": "The switch statement contains more than one case with the label 1",
+  "filename": "Switches.cs",
+  "before": ["void Check(int n)", "{", "    switch (n)", "    {", "        case 1:", "            break;", "        case 1:", "            break;", "    }", "}"],
+  "after": ["void Check(int n)", "{", "    switch (n)", "    {", "        case 1:", "            break;", "        case 2:", "            break;", "    }", "}"],
+  "bug": "../assets/CS0152.png",
+  "focus_line": 7
+}

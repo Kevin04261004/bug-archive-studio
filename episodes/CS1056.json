@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1056",
+  "message": "Unexpected character '#'",
+  "filename": "Names.cs",
+  "before": ["void Start()", "{", "    int #hp = 100;", "}"],
+  "after": ["void Start()", "{", "    int hp = 100;", "}"],
+  "bug": "../assets/CS1056.png",
+  "focus_line": 3
+}

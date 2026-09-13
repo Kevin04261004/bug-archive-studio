@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0202",
+  "message": "foreach requires GetEnumerator to return a type with Current and MoveNext",
+  "filename": "Each.cs",
+  "before": ["void Start()", "{", "    Bag bag = new Bag();", "    foreach (int n in bag)", "    {", "    }", "}"],
+  "after": ["void Start()", "{", "    Bag bag = new Bag();", "    foreach (int n in bag.Items)", "    {", "    }", "}"],
+  "bug": "../assets/CS0202.png",
+  "focus_line": 4
+}

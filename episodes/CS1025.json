@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1025",
+  "message": "Single-line comment or end-of-line expected",
+  "filename": "Flags.cs",
+  "before": ["void Start()", "{", "#if UNITY_EDITOR yes", "#endif", "}"],
+  "after": ["void Start()", "{", "#if UNITY_EDITOR", "#endif", "}"],
+  "bug": "../assets/CS1025.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1527",
+  "message": "Elements defined in a namespace cannot be explicitly declared as private",
+  "filename": "Types.cs",
+  "before": ["namespace Game", "{", "    private class Enemy { }", "}"],
+  "after": ["namespace Game", "{", "    class Enemy { }", "}"],
+  "bug": "../assets/CS1527.png",
+  "focus_line": 3
+}

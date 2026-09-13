@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0156",
+  "message": "A throw statement with no arguments is not allowed outside of a catch clause",
+  "filename": "Guard.cs",
+  "before": ["void Start()", "{", "    throw;", "}"],
+  "after": ["void Start()", "{", "    throw new Exception();", "}"],
+  "bug": "../assets/CS0156.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1011",
+  "message": "Empty character literal",
+  "filename": "Keys.cs",
+  "before": ["void Start()", "{", "    char key = '';", "}"],
+  "after": ["void Start()", "{", "    char key = 'A';", "}"],
+  "bug": "../assets/CS1011.png",
+  "focus_line": 3
+}

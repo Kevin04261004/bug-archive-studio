@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0158",
+  "message": "The label \"top\" shadows another label by the same name in an inner scope",
+  "filename": "Jumps.cs",
+  "before": ["void Start()", "{", "top:", "    {", "top:", "        Debug.Log(1);", "    }", "}"],
+  "after": ["void Start()", "{", "top:", "    {", "inner:", "        Debug.Log(1);", "    }", "}"],
+  "bug": "../assets/CS0158.png",
+  "focus_line": 5
+}

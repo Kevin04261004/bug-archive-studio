@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0443",
+  "message": "Syntax error; value expected",
+  "filename": "Arrays.cs",
+  "before": ["void Start()", "{", "    int[] hits = { 1, 2 };", "    Debug.Log(hits[]);", "}"],
+  "after": ["void Start()", "{", "    int[] hits = { 1, 2 };", "    Debug.Log(hits[0]);", "}"],
+  "bug": "../assets/CS0443.png",
+  "focus_line": 4
+}

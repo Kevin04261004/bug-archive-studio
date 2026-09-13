@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1004",
+  "message": "Duplicate 'static' modifier",
+  "filename": "Modifiers.cs",
+  "before": ["class Tools", "{", "    static static void Run() { }", "}"],
+  "after": ["class Tools", "{", "    static void Run() { }", "}"],
+  "bug": "../assets/CS1004.png",
+  "focus_line": 3
+}

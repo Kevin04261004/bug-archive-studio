@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1041",
+  "message": "Identifier expected; 'class' is a keyword",
+  "filename": "Names.cs",
+  "before": ["void Start()", "{", "    int class = 100;", "}"],
+  "after": ["void Start()", "{", "    int level = 100;", "}"],
+  "bug": "../assets/CS1041.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1024",
+  "message": "Preprocessor directive expected",
+  "filename": "Flags.cs",
+  "before": ["void Start()", "{", "#", "    Debug.Log(1);", "}"],
+  "after": ["void Start()", "{", "#pragma warning disable", "    Debug.Log(1);", "}"],
+  "bug": "../assets/CS1024.png",
+  "focus_line": 3
+}

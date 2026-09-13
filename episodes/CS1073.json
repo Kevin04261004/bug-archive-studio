@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1073",
+  "message": "Unexpected token 'int'",
+  "filename": "Calls.cs",
+  "before": ["void Start()", "{", "    int hp = 100;", "    hp = int 50;", "}"],
+  "after": ["void Start()", "{", "    int hp = 100;", "    hp = 50;", "}"],
+  "bug": "../assets/CS1073.png",
+  "focus_line": 4
+}

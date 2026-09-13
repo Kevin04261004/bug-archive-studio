@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1013",
+  "message": "Invalid number",
+  "filename": "Numbers.cs",
+  "before": ["void Start()", "{", "    int hp = 0x;", "}"],
+  "after": ["void Start()", "{", "    int hp = 0x1F;", "}"],
+  "bug": "../assets/CS1013.png",
+  "focus_line": 3
+}

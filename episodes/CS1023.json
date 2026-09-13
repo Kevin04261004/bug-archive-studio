@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1023",
+  "message": "Embedded statement cannot be a declaration or labeled statement",
+  "filename": "Branches.cs",
+  "before": ["void Start()", "{", "    if (true)", "        int hp = 100;", "}"],
+  "after": ["void Start()", "{", "    if (true)", "        Debug.Log(100);", "}"],
+  "bug": "../assets/CS1023.png",
+  "focus_line": 4
+}

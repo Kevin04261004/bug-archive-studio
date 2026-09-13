@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1586",
+  "message": "Array creation must have array size or array initializer",
+  "filename": "Arrays.cs",
+  "before": ["void Start()", "{", "    int[] hits = new int[];", "}"],
+  "after": ["void Start()", "{", "    int[] hits = new int[3];", "}"],
+  "bug": "../assets/CS1586.png",
+  "focus_line": 3
+}

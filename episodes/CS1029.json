@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1029",
+  "message": "#error: build stopped here",
+  "filename": "Flags.cs",
+  "before": ["void Start()", "{", "#error build stopped here", "}"],
+  "after": ["void Start()", "{", "#warning build stopped here", "}"],
+  "bug": "../assets/CS1029.png",
+  "focus_line": 3
+}

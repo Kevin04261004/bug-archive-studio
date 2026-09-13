@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1010",
+  "message": "Newline in constant",
+  "filename": "Lines.cs",
+  "before": ["void Start()", "{", "    string title = \"Bug", "        Archive\";", "}"],
+  "after": ["void Start()", "{", "    string title = \"Bug \" +", "        \"Archive\";", "}"],
+  "bug": "../assets/CS1010.png",
+  "focus_line": 3
+}

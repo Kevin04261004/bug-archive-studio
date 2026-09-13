@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1035",
+  "message": "End-of-file found, \"*/\" expected",
+  "filename": "Notes.cs",
+  "before": ["void Start()", "{", "    /* set up the run", "}"],
+  "after": ["void Start()", "{", "    /* set up the run */", "}"],
+  "bug": "../assets/CS1035.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1515",
+  "message": "'in' expected",
+  "filename": "Each.cs",
+  "before": ["void Start()", "{", "    int[] a = { 1, 2 };", "    foreach (int n a)", "    {", "    }", "}"],
+  "after": ["void Start()", "{", "    int[] a = { 1, 2 };", "    foreach (int n in a)", "    {", "    }", "}"],
+  "bug": "../assets/CS1515.png",
+  "focus_line": 4
+}

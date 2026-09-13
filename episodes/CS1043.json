@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1043",
+  "message": "{ or ; expected",
+  "filename": "Props.cs",
+  "before": ["class Player", "{", "    public int Hp =>", "}"],
+  "after": ["class Player", "{", "    public int Hp => 100;", "}"],
+  "bug": "../assets/CS1043.png",
+  "focus_line": 3
+}

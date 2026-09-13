@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0022",
+  "message": "Wrong number of indices inside [], expected 1",
+  "filename": "Arrays.cs",
+  "before": ["void Start()", "{", "    int[] hits = { 1, 2 };", "    Debug.Log(hits[0, 1]);", "}"],
+  "after": ["void Start()", "{", "    int[] hits = { 1, 2 };", "    Debug.Log(hits[0]);", "}"],
+  "bug": "../assets/CS0022.png",
+  "focus_line": 4
+}

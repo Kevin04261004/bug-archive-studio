@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1040",
+  "message": "Preprocessor directives must appear as the first non-whitespace character on a line",
+  "filename": "Flags.cs",
+  "before": ["void Start()", "{", "    int hp = 100; #if UNITY_EDITOR", "#endif", "}"],
+  "after": ["void Start()", "{", "    int hp = 100;", "#endif", "}"],
+  "bug": "../assets/CS1040.png",
+  "focus_line": 3
+}

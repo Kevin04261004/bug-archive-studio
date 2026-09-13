@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0270",
+  "message": "Array size cannot be specified in a variable declaration",
+  "filename": "Arrays.cs",
+  "before": ["void Start()", "{", "    int[3] hits;", "}"],
+  "after": ["void Start()", "{", "    int[] hits = new int[3];", "}"],
+  "bug": "../assets/CS0270.png",
+  "focus_line": 3
+}

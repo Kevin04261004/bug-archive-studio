@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0178",
+  "message": "Invalid rank specifier: expected , or ]",
+  "filename": "Arrays.cs",
+  "before": ["void Start()", "{", "    int[] hits = new int[3, ];", "}"],
+  "after": ["void Start()", "{", "    int[,] hits = new int[3, 2];", "}"],
+  "bug": "../assets/CS0178.png",
+  "focus_line": 3
+}

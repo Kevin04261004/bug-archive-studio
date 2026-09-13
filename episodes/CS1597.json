@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1597",
+  "message": "Semicolon after method or accessor block is not valid",
+  "filename": "Methods.cs",
+  "before": ["class Player", "{", "    void Heal() { };", "}"],
+  "after": ["class Player", "{", "    void Heal() { }", "}"],
+  "bug": "../assets/CS1597.png",
+  "focus_line": 3
+}

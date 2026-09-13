@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0140",
+  "message": "The label 'top' is a duplicate",
+  "filename": "Labels.cs",
+  "before": ["void Start()", "{", "top:", "    Debug.Log(1);", "top:", "    Debug.Log(2);", "}"],
+  "after": ["void Start()", "{", "top:", "    Debug.Log(1);", "next:", "    Debug.Log(2);", "}"],
+  "bug": "../assets/CS0140.png",
+  "focus_line": 5
+}

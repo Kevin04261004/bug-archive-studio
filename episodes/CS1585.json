@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1585",
+  "message": "Member modifier must precede the member type and name",
+  "filename": "Modifiers.cs",
+  "before": ["class Player", "{", "    void public Heal() { }", "}"],
+  "after": ["class Player", "{", "    public void Heal() { }", "}"],
+  "bug": "../assets/CS1585.png",
+  "focus_line": 3
+}

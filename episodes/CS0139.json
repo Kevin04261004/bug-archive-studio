@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0139",
+  "message": "No enclosing loop out of which to break or continue",
+  "filename": "Loops.cs",
+  "before": ["void Start()", "{", "    break;", "}"],
+  "after": ["void Start()", "{", "    return;", "}"],
+  "bug": "../assets/CS0139.png",
+  "focus_line": 3
+}

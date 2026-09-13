@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1517",
+  "message": "Invalid preprocessor expression",
+  "filename": "Flags.cs",
+  "before": ["void Start()", "{", "#if &&", "#endif", "}"],
+  "after": ["void Start()", "{", "#if UNITY_EDITOR", "#endif", "}"],
+  "bug": "../assets/CS1517.png",
+  "focus_line": 3
+}
