@@ -7,8 +7,8 @@
       "message": "Operator '>' cannot be applied to operands of type 'string' and 'int'",
       "filename": "NameCheck.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0019.png"
+      "bug": "assets/CS0019.png",
+      "missing": null
     },
     {
       "file": "CS0029.json",
