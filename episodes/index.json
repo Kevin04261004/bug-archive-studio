@@ -811,6 +811,26 @@
       "missing": "../assets/CS0178.png"
     },
     {
+      "file": "CS0183.json",
+      "path": "episodes/CS0183.json",
+      "error_code": "CS0183",
+      "message": "The given expression is always of the provided type 'object'",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0183.png"
+    },
+    {
+      "file": "CS0184.json",
+      "path": "episodes/CS0184.json",
+      "error_code": "CS0184",
+      "message": "The given expression is never of the provided type 'string'",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0184.png"
+    },
+    {
       "file": "CS0186.json",
       "path": "episodes/CS0186.json",
       "error_code": "CS0186",
@@ -909,6 +929,16 @@
       "lines": 13,
       "bug": null,
       "missing": "../assets/CS0206.png"
+    },
+    {
+      "file": "CS0210.json",
+      "path": "episodes/CS0210.json",
+      "error_code": "CS0210",
+      "message": "You must provide an initializer in a fixed or using statement declaration",
+      "filename": "Using.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0210.png"
     },
     {
       "file": "CS0220.json",
@@ -1541,6 +1571,16 @@
       "missing": "../assets/CS0456.png"
     },
     {
+      "file": "CS0458.json",
+      "path": "episodes/CS0458.json",
+      "error_code": "CS0458",
+      "message": "The result of the expression is always null of type 'int?'",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0458.png"
+    },
+    {
       "file": "CS0460.json",
       "path": "episodes/CS0460.json",
       "error_code": "CS0460",
@@ -1569,6 +1609,26 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0463.png"
+    },
+    {
+      "file": "CS0464.json",
+      "path": "episodes/CS0464.json",
+      "error_code": "CS0464",
+      "message": "Comparing with null of type 'int?' always produces false",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0464.png"
+    },
+    {
+      "file": "CS0472.json",
+      "path": "episodes/CS0472.json",
+      "error_code": "CS0472",
+      "message": "The result is always true since a value of type 'int' is never equal to null",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0472.png"
     },
     {
       "file": "CS0500.json",
@@ -3181,6 +3241,76 @@
       "missing": "../assets/CS1620.png"
     },
     {
+      "file": "CS1621.json",
+      "path": "episodes/CS1621.json",
+      "error_code": "CS1621",
+      "message": "The yield statement cannot be used inside a lambda expression",
+      "filename": "Iterator.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1621.png"
+    },
+    {
+      "file": "CS1622.json",
+      "path": "episodes/CS1622.json",
+      "error_code": "CS1622",
+      "message": "Cannot return a value from an iterator; use the yield return statement",
+      "filename": "Iterator.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1622.png"
+    },
+    {
+      "file": "CS1623.json",
+      "path": "episodes/CS1623.json",
+      "error_code": "CS1623",
+      "message": "Iterators cannot have ref, in or out parameters",
+      "filename": "Iterator.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1623.png"
+    },
+    {
+      "file": "CS1624.json",
+      "path": "episodes/CS1624.json",
+      "error_code": "CS1624",
+      "message": "The body of 'Get()' cannot be an iterator block because 'int' is not an iterator type",
+      "filename": "Iterator.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1624.png"
+    },
+    {
+      "file": "CS1625.json",
+      "path": "episodes/CS1625.json",
+      "error_code": "CS1625",
+      "message": "Cannot yield in the body of a finally clause",
+      "filename": "Iterator.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS1625.png"
+    },
+    {
+      "file": "CS1626.json",
+      "path": "episodes/CS1626.json",
+      "error_code": "CS1626",
+      "message": "Cannot yield a value in the body of a try block with a catch clause",
+      "filename": "Iterator.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1626.png"
+    },
+    {
+      "file": "CS1627.json",
+      "path": "episodes/CS1627.json",
+      "error_code": "CS1627",
+      "message": "Expression expected after yield return",
+      "filename": "Iterator.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1627.png"
+    },
+    {
       "file": "CS1628.json",
       "path": "episodes/CS1628.json",
       "error_code": "CS1628",
@@ -3191,6 +3321,16 @@
       "missing": "../assets/CS1628.png"
     },
     {
+      "file": "CS1631.json",
+      "path": "episodes/CS1631.json",
+      "error_code": "CS1631",
+      "message": "Cannot yield a value in the body of a catch clause",
+      "filename": "Iterator.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS1631.png"
+    },
+    {
       "file": "CS1632.json",
       "path": "episodes/CS1632.json",
       "error_code": "CS1632",
@@ -3199,6 +3339,36 @@
       "lines": 7,
       "bug": null,
       "missing": "../assets/CS1632.png"
+    },
+    {
+      "file": "CS1636.json",
+      "path": "episodes/CS1636.json",
+      "error_code": "CS1636",
+      "message": "__arglist is not allowed in the parameter list of iterators",
+      "filename": "Iterator.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1636.png"
+    },
+    {
+      "file": "CS1637.json",
+      "path": "episodes/CS1637.json",
+      "error_code": "CS1637",
+      "message": "Iterators cannot have unsafe parameters or yield types",
+      "filename": "Iterator.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1637.png"
+    },
+    {
+      "file": "CS1643.json",
+      "path": "episodes/CS1643.json",
+      "error_code": "CS1643",
+      "message": "Not all code paths return a value in lambda expression of type 'Func<int>'",
+      "filename": "Lambdas.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS1643.png"
     },
     {
       "file": "CS1648.json",
@@ -3249,6 +3419,16 @@
       "lines": 9,
       "bug": null,
       "missing": "../assets/CS1673.png"
+    },
+    {
+      "file": "CS1674.json",
+      "path": "episodes/CS1674.json",
+      "error_code": "CS1674",
+      "message": "'Player': type used in a using statement must be convertible to IDisposable",
+      "filename": "Using.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS1674.png"
     },
     {
       "file": "CS1688.json",
@@ -3341,6 +3521,86 @@
       "missing": "../assets/CS1955.png"
     },
     {
+      "file": "CS1994.json",
+      "path": "episodes/CS1994.json",
+      "error_code": "CS1994",
+      "message": "The async modifier can only be used in methods that have a body",
+      "filename": "AsyncLoad.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1994.png"
+    },
+    {
+      "file": "CS1996.json",
+      "path": "episodes/CS1996.json",
+      "error_code": "CS1996",
+      "message": "Cannot await in the body of a lock statement",
+      "filename": "AsyncLoad.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS1996.png"
+    },
+    {
+      "file": "CS1998.json",
+      "path": "episodes/CS1998.json",
+      "error_code": "CS1998",
+      "message": "This async method lacks await operators and will run synchronously",
+      "filename": "AsyncLoad.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1998.png"
+    },
+    {
+      "file": "CS4008.json",
+      "path": "episodes/CS4008.json",
+      "error_code": "CS4008",
+      "message": "Cannot await 'void'",
+      "filename": "AsyncLoad.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS4008.png"
+    },
+    {
+      "file": "CS4009.json",
+      "path": "episodes/CS4009.json",
+      "error_code": "CS4009",
+      "message": "A void or int returning entry point cannot be async",
+      "filename": "AsyncLoad.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS4009.png"
+    },
+    {
+      "file": "CS4014.json",
+      "path": "episodes/CS4014.json",
+      "error_code": "CS4014",
+      "message": "Because this call is not awaited, execution continues before the call completes",
+      "filename": "AsyncLoad.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS4014.png"
+    },
+    {
+      "file": "CS4032.json",
+      "path": "episodes/CS4032.json",
+      "error_code": "CS4032",
+      "message": "The 'await' operator can only be used within an async method",
+      "filename": "AsyncLoad.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS4032.png"
+    },
+    {
+      "file": "CS4033.json",
+      "path": "episodes/CS4033.json",
+      "error_code": "CS4033",
+      "message": "The 'await' operator can only be used within an async method",
+      "filename": "AsyncLoad.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS4033.png"
+    },
+    {
       "file": "CS7036.json",
       "path": "episodes/CS7036.json",
       "error_code": "CS7036",
@@ -3349,6 +3609,236 @@
       "lines": 9,
       "bug": null,
       "missing": "../assets/CS7036.png"
+    },
+    {
+      "file": "CS8400.json",
+      "path": "episodes/CS8400.json",
+      "error_code": "CS8400",
+      "message": "Feature 'index operator' is not available in C# 7.3; use version 8.0 or greater",
+      "filename": "Modern.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS8400.png"
+    },
+    {
+      "file": "CS8509.json",
+      "path": "episodes/CS8509.json",
+      "error_code": "CS8509",
+      "message": "The switch expression does not handle all possible values of its input type",
+      "filename": "Switch.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS8509.png"
+    },
+    {
+      "file": "CS8510.json",
+      "path": "episodes/CS8510.json",
+      "error_code": "CS8510",
+      "message": "The pattern is unreachable; it has already been handled by a previous arm",
+      "filename": "Switch.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS8510.png"
+    },
+    {
+      "file": "CS8524.json",
+      "path": "episodes/CS8524.json",
+      "error_code": "CS8524",
+      "message": "The switch expression does not handle some values of its input type 'Team'",
+      "filename": "Switch.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS8524.png"
+    },
+    {
+      "file": "CS8600.json",
+      "path": "episodes/CS8600.json",
+      "error_code": "CS8600",
+      "message": "Converting null literal or possible null value to non-nullable type",
+      "filename": "Nullable.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS8600.png"
+    },
+    {
+      "file": "CS8601.json",
+      "path": "episodes/CS8601.json",
+      "error_code": "CS8601",
+      "message": "Possible null reference assignment",
+      "filename": "Nullable.cs",
+      "lines": 11,
+      "bug": null,
+      "missing": "../assets/CS8601.png"
+    },
+    {
+      "file": "CS8602.json",
+      "path": "episodes/CS8602.json",
+      "error_code": "CS8602",
+      "message": "Dereference of a possibly null reference",
+      "filename": "Nullable.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS8602.png"
+    },
+    {
+      "file": "CS8603.json",
+      "path": "episodes/CS8603.json",
+      "error_code": "CS8603",
+      "message": "Possible null reference return",
+      "filename": "Nullable.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS8603.png"
+    },
+    {
+      "file": "CS8604.json",
+      "path": "episodes/CS8604.json",
+      "error_code": "CS8604",
+      "message": "Possible null reference argument for parameter 's'",
+      "filename": "Nullable.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS8604.png"
+    },
+    {
+      "file": "CS8618.json",
+      "path": "episodes/CS8618.json",
+      "error_code": "CS8618",
+      "message": "Non-nullable field 'name' must contain a non-null value when exiting constructor",
+      "filename": "Nullable.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS8618.png"
+    },
+    {
+      "file": "CS8619.json",
+      "path": "episodes/CS8619.json",
+      "error_code": "CS8619",
+      "message": "Nullability of 'List<string?>' does not match target type 'List<string>'",
+      "filename": "Nullable.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS8619.png"
+    },
+    {
+      "file": "CS8620.json",
+      "path": "episodes/CS8620.json",
+      "error_code": "CS8620",
+      "message": "Argument of type 'List<string?>' cannot be used for parameter 'List<string>'",
+      "filename": "Nullable.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS8620.png"
+    },
+    {
+      "file": "CS8625.json",
+      "path": "episodes/CS8625.json",
+      "error_code": "CS8625",
+      "message": "Cannot convert null literal to non-nullable reference type",
+      "filename": "Nullable.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS8625.png"
+    },
+    {
+      "file": "CS8629.json",
+      "path": "episodes/CS8629.json",
+      "error_code": "CS8629",
+      "message": "Nullable value type may be null",
+      "filename": "Nullable.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS8629.png"
+    },
+    {
+      "file": "CS8632.json",
+      "path": "episodes/CS8632.json",
+      "error_code": "CS8632",
+      "message": "The ? annotation should only be used in code within a #nullable context",
+      "filename": "Nullable.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS8632.png"
+    },
+    {
+      "file": "CS8641.json",
+      "path": "episodes/CS8641.json",
+      "error_code": "CS8641",
+      "message": "'else' cannot start a statement",
+      "filename": "Modern.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS8641.png"
+    },
+    {
+      "file": "CS8652.json",
+      "path": "episodes/CS8652.json",
+      "error_code": "CS8652",
+      "message": "The feature 'collection expressions' is currently in Preview and unsupported",
+      "filename": "Modern.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS8652.png"
+    },
+    {
+      "file": "CS8714.json",
+      "path": "episodes/CS8714.json",
+      "error_code": "CS8714",
+      "message": "The type 'string?' does not match the 'notnull' constraint on type parameter 'T'",
+      "filename": "Nullable.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS8714.png"
+    },
+    {
+      "file": "CS8803.json",
+      "path": "episodes/CS8803.json",
+      "error_code": "CS8803",
+      "message": "Top-level statements must precede namespace and type declarations",
+      "filename": "Modern.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS8803.png"
+    },
+    {
+      "file": "CS8862.json",
+      "path": "episodes/CS8862.json",
+      "error_code": "CS8862",
+      "message": "A constructor in a type with a parameter list must have a this constructor initializer",
+      "filename": "Modern.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS8862.png"
+    },
+    {
+      "file": "CS8865.json",
+      "path": "episodes/CS8865.json",
+      "error_code": "CS8865",
+      "message": "Only records may inherit from records",
+      "filename": "Records.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS8865.png"
+    },
+    {
+      "file": "CS8866.json",
+      "path": "episodes/CS8866.json",
+      "error_code": "CS8866",
+      "message": "Record member 'Unit.hp' must be a readable instance property to match parameter 'hp'",
+      "filename": "Records.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS8866.png"
+    },
+    {
+      "file": "CS9035.json",
+      "path": "episodes/CS9035.json",
+      "error_code": "CS9035",
+      "message": "Required member 'Player.name' must be set in the object initializer",
+      "filename": "Records.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS9035.png"
     }
   ]
 }
