@@ -34,9 +34,9 @@
       "file": "CS0117.json",
       "path": "episodes/CS0117.json",
       "error_code": "CS0117",
-      "message": "'Mathf' does not contain a definition for 'Random'",
-      "filename": "Spawner.cs",
-      "lines": 4,
+      "message": "'Score' does not contain a definition for 'Max'",
+      "filename": "GameScore.cs",
+      "lines": 9,
       "bug": null,
       "missing": "../assets/CS0117.png"
     },
