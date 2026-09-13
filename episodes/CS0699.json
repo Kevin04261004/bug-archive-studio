@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0699",
+  "message": "'Box<T>' does not define type parameter 'U'",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T> where U : class", "{", "}"],
+  "after": ["class Box<T> where T : class", "{", "}"],
+  "bug": "../assets/CS0699.png",
+  "focus_line": 1
+}

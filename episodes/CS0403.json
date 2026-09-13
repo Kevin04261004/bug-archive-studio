@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0403",
+  "message": "Cannot convert null to type parameter 'T'; it could be a non-nullable value type",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T>", "{", "    public T Get() => null;", "}"],
+  "after": ["class Box<T>", "{", "    public T Get() => default;", "}"],
+  "bug": "../assets/CS0403.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0411",
+  "message": "The type arguments for method 'Make<T>()' cannot be inferred from the usage",
+  "filename": "Generics.cs",
+  "before": ["T Make<T>() => default;", "", "void Start()", "{", "    var v = Make();", "}"],
+  "after": ["T Make<T>() => default;", "", "void Start()", "{", "    var v = Make<int>();", "}"],
+  "bug": "../assets/CS0411.png",
+  "focus_line": 5
+}

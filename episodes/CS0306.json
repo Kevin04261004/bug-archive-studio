@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0306",
+  "message": "The type 'int*' may not be used as a type argument",
+  "filename": "Generics.cs",
+  "before": ["void Start()", "{", "    var list = new List<int*>();", "}"],
+  "after": ["void Start()", "{", "    var list = new List<IntPtr>();", "}"],
+  "bug": "../assets/CS0306.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1109",
+  "message": "Extension methods must be defined in a top level static class",
+  "filename": "Extensions.cs",
+  "before": ["class Outer", "{", "    static class Tools", "    {", "        static void Up(this int n) { }", "    }", "}"],
+  "after": ["class Outer", "{", "    static class Tools", "    {", "        static void Up(int n) { }", "    }", "}"],
+  "bug": "../assets/CS1109.png",
+  "focus_line": 5
+}

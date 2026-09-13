@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0454",
+  "message": "Circular constraint dependency involving 'T' and 'U'",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T, U> where T : U where U : T", "{", "}"],
+  "after": ["class Box<T, U> where U : T", "{", "}"],
+  "bug": "../assets/CS0454.png",
+  "focus_line": 1
+}

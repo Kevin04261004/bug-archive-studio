@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1105",
+  "message": "Extension method 'Tools.Up(int)' must be static",
+  "filename": "Extensions.cs",
+  "before": ["static class Tools", "{", "    public void Up(this int n) { }", "}"],
+  "after": ["static class Tools", "{", "    public static void Up(this int n) { }", "}"],
+  "bug": "../assets/CS1105.png",
+  "focus_line": 3
+}

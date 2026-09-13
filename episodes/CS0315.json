@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0315",
+  "message": "There is no boxing conversion from 'int' to 'Enemy'",
+  "filename": "Constraints.cs",
+  "before": ["class Enemy { }", "", "class Pool<T> where T : Enemy { }", "", "void Start()", "{", "    var p = new Pool<int>();", "}"],
+  "after": ["class Enemy { }", "", "class Pool<T> where T : Enemy { }", "", "void Start()", "{", "    var p = new Pool<Enemy>();", "}"],
+  "bug": "../assets/CS0315.png",
+  "focus_line": 7
+}

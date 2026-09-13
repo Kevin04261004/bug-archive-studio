@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0689",
+  "message": "Cannot derive from 'T' because it is a type parameter",
+  "filename": "Generics.cs",
+  "before": ["class Box<T> : T", "{", "}"],
+  "after": ["class Box<T>", "{", "}"],
+  "bug": "../assets/CS0689.png",
+  "focus_line": 1
+}

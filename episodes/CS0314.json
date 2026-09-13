@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0314",
+  "message": "There is no boxing conversion or type parameter conversion from 'T' to 'Unit'",
+  "filename": "Constraints.cs",
+  "before": ["class Unit { }", "", "class Box<T> where T : Unit { }", "", "class Bag<T>", "{", "    Box<T> b;", "}"],
+  "after": ["class Unit { }", "", "class Box<T> where T : Unit { }", "", "class Bag<T> where T : Unit", "{", "    Box<T> b;", "}"],
+  "bug": "../assets/CS0314.png",
+  "focus_line": 5
+}

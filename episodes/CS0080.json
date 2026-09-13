@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0080",
+  "message": "Constraints are not allowed on non-generic declarations",
+  "filename": "Constraints.cs",
+  "before": ["class Box where T : class", "{", "}"],
+  "after": ["class Box<T> where T : class", "{", "}"],
+  "bug": "../assets/CS0080.png",
+  "focus_line": 1
+}

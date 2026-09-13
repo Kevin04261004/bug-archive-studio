@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0854",
+  "message": "An expression tree may not contain a call that uses optional arguments",
+  "filename": "ExprTree.cs",
+  "before": ["int Add(int a, int b = 2) => a + b;", "", "void Start()", "{", "    Expression<Func<int>> e =", "        () => Add(1);", "}"],
+  "after": ["int Add(int a, int b = 2) => a + b;", "", "void Start()", "{", "    Expression<Func<int>> e =", "        () => Add(1, 2);", "}"],
+  "bug": "../assets/CS0854.png",
+  "focus_line": 6
+}

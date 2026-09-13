@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0742",
+  "message": "A query body must end with a select clause or a group clause",
+  "filename": "Linq.cs",
+  "before": ["void Start()", "{", "    var list = new List<int>();", "    var q = from n in list", "            where n > 1;", "}"],
+  "after": ["void Start()", "{", "    var list = new List<int>();", "    var q = from n in list", "            where n > 1 select n;", "}"],
+  "bug": "../assets/CS0742.png",
+  "focus_line": 5
+}

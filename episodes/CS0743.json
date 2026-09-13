@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0743",
+  "message": "Expected contextual keyword 'on'",
+  "filename": "Linq.cs",
+  "before": ["void Start()", "{", "    var xs = new int[2];", "    var ys = new int[2];", "", "    var q = from a in xs", "            join b in ys a equals b", "            select a;", "}"],
+  "after": ["void Start()", "{", "    var xs = new int[2];", "    var ys = new int[2];", "", "    var q = from a in xs", "            join b in ys on a equals b", "            select a;", "}"],
+  "bug": "../assets/CS0743.png",
+  "focus_line": 7
+}

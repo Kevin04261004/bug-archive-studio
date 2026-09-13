@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0692",
+  "message": "Duplicate type parameter 'T'",
+  "filename": "Generics.cs",
+  "before": ["class Box<T, T>", "{", "}"],
+  "after": ["class Box<T, U>", "{", "}"],
+  "bug": "../assets/CS0692.png",
+  "focus_line": 1
+}

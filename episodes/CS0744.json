@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0744",
+  "message": "Expected contextual keyword 'equals'",
+  "filename": "Linq.cs",
+  "before": ["void Start()", "{", "    var xs = new int[2];", "    var ys = new int[2];", "", "    var q = from a in xs", "            join b in ys on a == b", "            select a;", "}"],
+  "after": ["void Start()", "{", "    var xs = new int[2];", "    var ys = new int[2];", "", "    var q = from a in xs", "            join b in ys on a equals b", "            select a;", "}"],
+  "bug": "../assets/CS0744.png",
+  "focus_line": 7
+}

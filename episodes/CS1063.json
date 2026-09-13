@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1063",
+  "message": "Cannot initialize 'Bag' with a collection initializer; no suitable Add method",
+  "filename": "Initializers.cs",
+  "before": ["class Bag : IEnumerable", "{", "", "}", "", "void Start()", "{", "    var b = new Bag { 1 };", "}"],
+  "after": ["class Bag : IEnumerable", "{", "    public void Add(int n) { }", "}", "", "void Start()", "{", "    var b = new Bag { 1 };", "}"],
+  "bug": "../assets/CS1063.png",
+  "focus_line": 3
+}

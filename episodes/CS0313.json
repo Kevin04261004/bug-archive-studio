@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0313",
+  "message": "The nullable type 'Unit?' does not satisfy the constraint 'IRun'",
+  "filename": "Constraints.cs",
+  "before": ["interface IRun { }", "", "struct Unit : IRun { }", "", "class Box<T> where T : IRun { }", "", "void Start()", "{", "    var b = new Box<Unit?>();", "}"],
+  "after": ["interface IRun { }", "", "struct Unit : IRun { }", "", "class Box<T> where T : IRun { }", "", "void Start()", "{", "    var b = new Box<Unit>();", "}"],
+  "bug": "../assets/CS0313.png",
+  "focus_line": 9
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1929",
+  "message": "The extension method 'Tools.Up' requires a receiver of type 'string'",
+  "filename": "Extensions.cs",
+  "before": ["static class Tools", "{", "    public static void Up(this string s) { }", "}", "", "void Start()", "{", "    int n = 1;", "    n.Up();", "}"],
+  "after": ["static class Tools", "{", "    public static void Up(this string s) { }", "}", "", "void Start()", "{", "    int n = 1;", "    n.ToString().Up();", "}"],
+  "bug": "../assets/CS1929.png",
+  "focus_line": 9
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0834",
+  "message": "A lambda expression with a statement body cannot be converted to an expression tree",
+  "filename": "ExprTree.cs",
+  "before": ["void Start()", "{", "    Expression<Func<int>> e =", "        () => { return 1; };", "}"],
+  "after": ["void Start()", "{", "    Expression<Func<int>> e =", "        () => 1;", "}"],
+  "bug": "../assets/CS0834.png",
+  "focus_line": 4
+}

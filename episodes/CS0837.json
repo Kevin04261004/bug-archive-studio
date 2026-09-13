@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0837",
+  "message": "The first operand of an 'is' or 'as' operator may not be a lambda expression",
+  "filename": "Lambdas.cs",
+  "before": ["void Start()", "{", "    Func<int> f = () => 1;", "    bool b = (() => 1) is Func<int>;", "}"],
+  "after": ["void Start()", "{", "    Func<int> f = () => 1;", "    bool b = f is Func<int>;", "}"],
+  "bug": "../assets/CS0837.png",
+  "focus_line": 4
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0081",
+  "message": "Type parameter declaration must be an identifier not a type",
+  "filename": "Generics.cs",
+  "before": ["class Box<int>", "{", "}"],
+  "after": ["class Box<T>", "{", "}"],
+  "bug": "../assets/CS0081.png",
+  "focus_line": 1
+}

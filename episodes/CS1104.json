@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1104",
+  "message": "A parameter array cannot be used with the 'this' modifier on an extension method",
+  "filename": "Extensions.cs",
+  "before": ["static class Tools", "{", "    static void Up(this params int[] a) { }", "}"],
+  "after": ["static class Tools", "{", "    static void Up(this int[] a) { }", "}"],
+  "bug": "../assets/CS1104.png",
+  "focus_line": 3
+}

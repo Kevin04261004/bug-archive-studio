@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0406",
+  "message": "The class type constraint 'Unit' must come before any other constraints",
+  "filename": "Constraints.cs",
+  "before": ["interface IRun { }", "class Unit { }", "", "class Box<T> where T : IRun, Unit", "{", "}"],
+  "after": ["interface IRun { }", "class Unit { }", "", "class Box<T> where T : Unit, IRun", "{", "}"],
+  "bug": "../assets/CS0406.png",
+  "focus_line": 4
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0413",
+  "message": "The type parameter 'T' cannot be used with 'as'; it has no class type constraint",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T>", "{", "    public T Cast(object o) => o as T;", "}"],
+  "after": ["class Box<T> where T : class", "{", "    public T Cast(object o) => o as T;", "}"],
+  "bug": "../assets/CS0413.png",
+  "focus_line": 1
+}

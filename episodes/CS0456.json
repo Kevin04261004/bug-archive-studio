@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0456",
+  "message": "Type parameter 'U' has the struct constraint so 'U' cannot be used as a constraint",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T, U>", "    where T : U", "    where U : struct", "{", "}"],
+  "after": ["class Box<T, U>", "    where T : U", "    where U : class", "{", "}"],
+  "bug": "../assets/CS0456.png",
+  "focus_line": 3
+}

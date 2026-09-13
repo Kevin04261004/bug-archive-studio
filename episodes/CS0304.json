@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0304",
+  "message": "Cannot create an instance of 'T' because it does not have the new() constraint",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T>", "{", "    public T Make() => new T();", "}"],
+  "after": ["class Box<T> where T : new()", "{", "    public T Make() => new T();", "}"],
+  "bug": "../assets/CS0304.png",
+  "focus_line": 1
+}

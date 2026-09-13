@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0311",
+  "message": "There is no implicit reference conversion from 'string' to 'Unit'",
+  "filename": "Constraints.cs",
+  "before": ["class Unit { }", "", "class Box<T> where T : Unit { }", "", "void Start()", "{", "    var b = new Box<string>();", "}"],
+  "after": ["class Unit { }", "", "class Box<T> where T : Unit { }", "", "void Start()", "{", "    var b = new Box<Unit>();", "}"],
+  "bug": "../assets/CS0311.png",
+  "focus_line": 7
+}

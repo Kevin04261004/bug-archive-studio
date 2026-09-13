@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1662",
+  "message": "Cannot convert lambda expression; the return type is not implicitly convertible",
+  "filename": "Lambdas.cs",
+  "before": ["void Start()", "{", "    Func<int> f = () => \"x\";", "}"],
+  "after": ["void Start()", "{", "    Func<int> f = () => 1;", "}"],
+  "bug": "../assets/CS1662.png",
+  "focus_line": 3
+}

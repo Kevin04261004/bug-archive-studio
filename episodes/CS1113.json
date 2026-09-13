@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1113",
+  "message": "Extension method 'Tools.Up(Point)' on value type 'Point' cannot create delegates",
+  "filename": "Extensions.cs",
+  "before": ["struct Point { }", "", "static class Tools", "{", "    public static void Up(this Point p) { }", "}", "", "void Start()", "{", "    Point p = new Point();", "    Action a = p.Up;", "}"],
+  "after": ["struct Point { }", "", "static class Tools", "{", "    public static void Up(this Point p) { }", "}", "", "void Start()", "{", "    Point p = new Point();", "    Action a = () => p.Up();", "}"],
+  "bug": "../assets/CS1113.png",
+  "focus_line": 11
+}

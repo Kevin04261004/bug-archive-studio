@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1103",
+  "message": "The first parameter of an extension method cannot be of type 'dynamic'",
+  "filename": "Extensions.cs",
+  "before": ["static class Tools", "{", "    static void Up(this dynamic d) { }", "}"],
+  "after": ["static class Tools", "{", "    static void Up(this object d) { }", "}"],
+  "bug": "../assets/CS1103.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1673",
+  "message": "Lambda expressions inside structs cannot access instance members of 'this'",
+  "filename": "Lambdas.cs",
+  "before": ["struct Point", "{", "    public int x;", "", "    public void Go()", "    {", "        Action a = () => Debug.Log(x);", "    }", "}"],
+  "after": ["class Point", "{", "    public int x;", "", "    public void Go()", "    {", "        Action a = () => Debug.Log(x);", "    }", "}"],
+  "bug": "../assets/CS1673.png",
+  "focus_line": 1
+}

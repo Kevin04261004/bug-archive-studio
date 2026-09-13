@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0703",
+  "message": "Inconsistent accessibility: constraint type 'Unit' is less accessible than 'Box<T>'",
+  "filename": "Constraints.cs",
+  "before": ["class Unit { }", "", "public class Box<T> where T : Unit", "{", "}"],
+  "after": ["public class Unit { }", "", "public class Box<T> where T : Unit", "{", "}"],
+  "bug": "../assets/CS0703.png",
+  "focus_line": 1
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0702",
+  "message": "Constraint cannot be special class 'object'",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T> where T : object", "{", "}"],
+  "after": ["class Box<T> where T : class", "{", "}"],
+  "bug": "../assets/CS0702.png",
+  "focus_line": 1
+}

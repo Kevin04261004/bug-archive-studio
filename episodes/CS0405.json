@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0405",
+  "message": "Duplicate constraint 'class' for type parameter 'T'",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T> where T : class, class", "{", "}"],
+  "after": ["class Box<T> where T : class, new()", "{", "}"],
+  "bug": "../assets/CS0405.png",
+  "focus_line": 1
+}

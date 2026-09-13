@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1106",
+  "message": "Extension method must be defined in a non-generic static class",
+  "filename": "Extensions.cs",
+  "before": ["class Tools", "{", "    public static void Up(this int n) { }", "}"],
+  "after": ["static class Tools", "{", "    public static void Up(this int n) { }", "}"],
+  "bug": "../assets/CS1106.png",
+  "focus_line": 1
+}

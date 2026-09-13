@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0832",
+  "message": "An expression tree may not contain an assignment operator",
+  "filename": "ExprTree.cs",
+  "before": ["void Start()", "{", "    int n = 0;", "    Expression<Func<int>> e =", "        () => n = 1;", "}"],
+  "after": ["void Start()", "{", "    int n = 0;", "    Expression<Func<int>> e =", "        () => n + 1;", "}"],
+  "bug": "../assets/CS0832.png",
+  "focus_line": 5
+}

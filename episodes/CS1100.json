@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1100",
+  "message": "Method 'Go' has a parameter modifier 'this' which is not on the first parameter",
+  "filename": "Extensions.cs",
+  "before": ["static class Tools", "{", "    static void Go(int a, this int b) { }", "}"],
+  "after": ["static class Tools", "{", "    static void Go(this int a, int b) { }", "}"],
+  "bug": "../assets/CS1100.png",
+  "focus_line": 3
+}

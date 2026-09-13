@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0310",
+  "message": "'Item' must be a non-abstract type with a public parameterless constructor",
+  "filename": "Constraints.cs",
+  "before": ["class Item", "{", "    public Item(int n) { }", "}", "", "class Box<T> where T : new() { }", "", "void Start()", "{", "    var b = new Box<Item>();", "}"],
+  "after": ["class Item", "{", "    public Item() { }", "}", "", "class Box<T> where T : new() { }", "", "void Start()", "{", "    var b = new Box<Item>();", "}"],
+  "bug": "../assets/CS0310.png",
+  "focus_line": 3
+}

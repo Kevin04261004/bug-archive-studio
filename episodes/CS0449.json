@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0449",
+  "message": "The class or struct constraint must come before any other constraints",
+  "filename": "Constraints.cs",
+  "before": ["interface IRun { }", "", "class Box<T> where T : IRun, class", "{", "}"],
+  "after": ["interface IRun { }", "", "class Box<T> where T : class, IRun", "{", "}"],
+  "bug": "../assets/CS0449.png",
+  "focus_line": 3
+}

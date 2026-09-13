@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0307",
+  "message": "The variable 'n' cannot be used with type arguments",
+  "filename": "Generics.cs",
+  "before": ["void Start()", "{", "    int n = 1;", "    Debug.Log(n<int>);", "}"],
+  "after": ["void Start()", "{", "    int n = 1;", "    Debug.Log(n);", "}"],
+  "bug": "../assets/CS0307.png",
+  "focus_line": 4
+}

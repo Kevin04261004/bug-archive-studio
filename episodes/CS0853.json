@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0853",
+  "message": "An expression tree may not contain a named argument specification",
+  "filename": "ExprTree.cs",
+  "before": ["int Add(int a, int b) => a + b;", "", "void Start()", "{", "    Expression<Func<int>> e =", "        () => Add(a: 1, b: 2);", "}"],
+  "after": ["int Add(int a, int b) => a + b;", "", "void Start()", "{", "    Expression<Func<int>> e =", "        () => Add(1, 2);", "}"],
+  "bug": "../assets/CS0853.png",
+  "focus_line": 6
+}

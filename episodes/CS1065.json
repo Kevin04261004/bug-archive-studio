@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1065",
+  "message": "Default values are not valid in this context",
+  "filename": "Lambdas.cs",
+  "before": ["void Start()", "{", "    Action<int> a = (int n = 1) => { };", "}"],
+  "after": ["void Start()", "{", "    Action<int> a = (int n) => { };", "}"],
+  "bug": "../assets/CS1065.png",
+  "focus_line": 3
+}

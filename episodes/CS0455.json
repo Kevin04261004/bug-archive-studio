@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0455",
+  "message": "Type parameter 'T' inherits conflicting constraints 'struct' and 'class'",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T, U>", "    where T : class, U", "    where U : struct", "{", "}"],
+  "after": ["class Box<T, U>", "    where T : class, U", "    where U : class", "{", "}"],
+  "bug": "../assets/CS0455.png",
+  "focus_line": 3
+}

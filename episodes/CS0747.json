@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0747",
+  "message": "Invalid initializer member declarator",
+  "filename": "Initializers.cs",
+  "before": ["class Player", "{", "    public int hp;", "}", "", "void Start()", "{", "    var p = new Player { 10 };", "}"],
+  "after": ["class Player", "{", "    public int hp;", "}", "", "void Start()", "{", "    var p = new Player { hp = 10 };", "}"],
+  "bug": "../assets/CS0747.png",
+  "focus_line": 8
+}

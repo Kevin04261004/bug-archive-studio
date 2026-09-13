@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1628",
+  "message": "Cannot use ref or out parameter 'n' inside a lambda expression",
+  "filename": "Lambdas.cs",
+  "before": ["void Add(ref int n)", "{", "    Action a = () => Debug.Log(n);", "}"],
+  "after": ["void Add(int n)", "{", "    Action a = () => Debug.Log(n);", "}"],
+  "bug": "../assets/CS1628.png",
+  "focus_line": 1
+}

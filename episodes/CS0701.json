@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0701",
+  "message": "'Unit' is not a valid constraint; a sealed class cannot be used as a constraint",
+  "filename": "Constraints.cs",
+  "before": ["sealed class Unit { }", "", "class Box<T> where T : Unit", "{", "}"],
+  "after": ["class Unit { }", "", "class Box<T> where T : Unit", "{", "}"],
+  "bug": "../assets/CS0701.png",
+  "focus_line": 1
+}

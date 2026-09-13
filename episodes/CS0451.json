@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0451",
+  "message": "The new() constraint cannot be used with the struct constraint",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T> where T : struct, new()", "{", "}"],
+  "after": ["class Box<T> where T : struct", "{", "}"],
+  "bug": "../assets/CS0451.png",
+  "focus_line": 1
+}

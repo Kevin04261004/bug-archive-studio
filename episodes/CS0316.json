@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0316",
+  "message": "The parameter name 'value' conflicts with an automatically-generated parameter name",
+  "filename": "Generics.cs",
+  "before": ["class Bag", "{", "    public int this[int value] => 0;", "}"],
+  "after": ["class Bag", "{", "    public int this[int i] => 0;", "}"],
+  "bug": "../assets/CS0316.png",
+  "focus_line": 3
+}

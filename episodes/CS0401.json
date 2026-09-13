@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0401",
+  "message": "The new() constraint must be the last constraint specified",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T> where T : new(), class", "{", "}"],
+  "after": ["class Box<T> where T : class, new()", "{", "}"],
+  "bug": "../assets/CS0401.png",
+  "focus_line": 1
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0425",
+  "message": "The constraints for type parameter 'T' of 'Boss.Hit<T>()' must match the interface",
+  "filename": "Constraints.cs",
+  "before": ["interface IHit", "{", "    void Hit<T>() where T : class;", "}", "", "class Boss : IHit", "{", "    void IHit.Hit<T>() where T : struct { }", "}"],
+  "after": ["interface IHit", "{", "    void Hit<T>() where T : class;", "}", "", "class Boss : IHit", "{", "    void IHit.Hit<T>() where T : class { }", "}"],
+  "bug": "../assets/CS0425.png",
+  "focus_line": 8
+}

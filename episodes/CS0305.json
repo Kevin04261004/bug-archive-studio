@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0305",
+  "message": "Using the generic type 'Box<T>' requires 1 type arguments",
+  "filename": "Generics.cs",
+  "before": ["class Box<T> { }", "", "void Start()", "{", "    Box b = new Box<int>();", "}"],
+  "after": ["class Box<T> { }", "", "void Start()", "{", "    Box<int> b = new Box<int>();", "}"],
+  "bug": "../assets/CS0305.png",
+  "focus_line": 5
+}

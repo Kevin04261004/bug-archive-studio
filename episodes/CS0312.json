@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0312",
+  "message": "There is no boxing conversion or type parameter conversion from 'int' to 'U'",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T, U> where T : U { }", "", "void Start()", "{", "    var b = new Box<int, string>();", "}"],
+  "after": ["class Box<T, U> where T : U { }", "", "void Start()", "{", "    var b = new Box<string, string>();", "}"],
+  "bug": "../assets/CS0312.png",
+  "focus_line": 5
+}

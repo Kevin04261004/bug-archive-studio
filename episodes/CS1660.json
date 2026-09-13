@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1660",
+  "message": "Cannot convert lambda expression to type 'int'; it is not a delegate type",
+  "filename": "Lambdas.cs",
+  "before": ["void Start()", "{", "    int f = () => 1;", "}"],
+  "after": ["void Start()", "{", "    Func<int> f = () => 1;", "}"],
+  "bug": "../assets/CS1660.png",
+  "focus_line": 3
+}

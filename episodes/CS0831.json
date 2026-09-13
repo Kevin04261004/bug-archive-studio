@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0831",
+  "message": "An expression tree may not contain a base access",
+  "filename": "ExprTree.cs",
+  "before": ["class Enemy", "{", "    public int hp;", "}", "", "class Boss : Enemy", "{", "    void Go()", "    {", "        Expression<Func<int>> e =", "            () => base.hp;", "    }", "}"],
+  "after": ["class Enemy", "{", "    public int hp;", "}", "", "class Boss : Enemy", "{", "    void Go()", "    {", "        Expression<Func<int>> e =", "            () => hp;", "    }", "}"],
+  "bug": "../assets/CS0831.png",
+  "focus_line": 11
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0706",
+  "message": "Invalid constraint type 'int'; use an interface, a class or a type parameter",
+  "filename": "Constraints.cs",
+  "before": ["class Box<T> where T : int", "{", "}"],
+  "after": ["class Box<T> where T : class", "{", "}"],
+  "bug": "../assets/CS0706.png",
+  "focus_line": 1
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1688",
+  "message": "Cannot convert anonymous method without a parameter list; it has out parameters",
+  "filename": "Lambdas.cs",
+  "before": ["delegate void Handler(out int n);", "", "void Start()", "{", "    Handler h = delegate { };", "}"],
+  "after": ["delegate void Handler(int n);", "", "void Start()", "{", "    Handler h = delegate { };", "}"],
+  "bug": "../assets/CS1688.png",
+  "focus_line": 1
+}

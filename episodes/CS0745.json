@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0745",
+  "message": "Expected contextual keyword 'by'",
+  "filename": "Linq.cs",
+  "before": ["void Start()", "{", "    var xs = new int[2];", "", "    var q = from n in xs", "            group n n;", "}"],
+  "after": ["void Start()", "{", "    var xs = new int[2];", "", "    var q = from n in xs", "            group n by n;", "}"],
+  "bug": "../assets/CS0745.png",
+  "focus_line": 6
+}
