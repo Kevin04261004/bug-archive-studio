@@ -5995,8 +5995,8 @@
       "message": "'Program.Main(string)' has the wrong signature to be an entry point",
       "filename": "EntryPoint.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0028.png",
+      "bug": "assets/CS0028.png",
+      "missing": null,
       "order": 521,
       "tier": 9
     },
