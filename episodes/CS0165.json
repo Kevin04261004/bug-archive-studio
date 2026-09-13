@@ -2,8 +2,21 @@
   "error_code": "CS0165",
   "message": "Use of unassigned local variable 'score'",
   "filename": "ScoreInit.cs",
-  "before": ["void Start()", "{", "    int score;", "    Debug.Log(score);", "}"],
-  "after": ["void Start()", "{", "    int score = 0;", "    Debug.Log(score);", "}"],
-  "bug": "../assets/CS0165.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    int score;",
+    "    Debug.Log(score);",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int score = 0;",
+    "    Debug.Log(score);",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0165.png"
 }
