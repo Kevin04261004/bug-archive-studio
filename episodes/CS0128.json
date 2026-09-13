@@ -2,8 +2,20 @@
   "error_code": "CS0128",
   "message": "A local variable named 'hp' is already defined in this scope",
   "filename": "Stats.cs",
-  "before": ["void Start()", "{", "    int hp = 100;", "    int hp = 50;", "}"],
-  "after": ["void Start()", "{", "    int hp = 100;", "    int shield = 50;", "}"],
-  "bug": "../assets/CS0128.png",
-  "focus_line": 4
+  "before": [
+    "void Start()",
+    "{",
+    "    int hp = 100;",
+    "    int hp = 50;",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int hp = 100;",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0128.png"
 }
