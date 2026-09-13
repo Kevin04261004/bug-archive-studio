@@ -1219,8 +1219,8 @@
       "message": "Cannot convert type 'Dog' to 'Cat' via a reference conversion",
       "filename": "Casts.cs",
       "lines": 8,
-      "bug": null,
-      "missing": "../assets/CS0039.png",
+      "bug": "assets/CS0039.png",
+      "missing": null,
       "order": 104,
       "tier": 3
     },
