@@ -2827,8 +2827,8 @@
       "message": "'Unit.Died': event property must have both add and remove accessors",
       "filename": "Events.cs",
       "lines": 8,
-      "bug": null,
-      "missing": "../assets/CS0065.png",
+      "bug": "assets/CS0065.png",
+      "missing": null,
       "order": 243,
       "tier": 4
     },
