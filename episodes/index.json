@@ -57,8 +57,8 @@
       "message": "'GetScore(bool)': not all code paths return a value",
       "filename": "ScoreRules.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0161.png"
+      "bug": "assets/CS0161.png",
+      "missing": null
     },
     {
       "file": "CS0176.json",
