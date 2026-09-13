@@ -251,6 +251,26 @@
       "missing": "../assets/CS0079.png"
     },
     {
+      "file": "CS0080.json",
+      "path": "episodes/CS0080.json",
+      "error_code": "CS0080",
+      "message": "Constraints are not allowed on non-generic declarations",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0080.png"
+    },
+    {
+      "file": "CS0081.json",
+      "path": "episodes/CS0081.json",
+      "error_code": "CS0081",
+      "message": "Type parameter declaration must be an identifier not a type",
+      "filename": "Generics.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0081.png"
+    },
+    {
       "file": "CS0101.json",
       "path": "episodes/CS0101.json",
       "error_code": "CS0101",
@@ -1161,6 +1181,166 @@
       "missing": "../assets/CS0283.png"
     },
     {
+      "file": "CS0304.json",
+      "path": "episodes/CS0304.json",
+      "error_code": "CS0304",
+      "message": "Cannot create an instance of 'T' because it does not have the new() constraint",
+      "filename": "Constraints.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0304.png"
+    },
+    {
+      "file": "CS0305.json",
+      "path": "episodes/CS0305.json",
+      "error_code": "CS0305",
+      "message": "Using the generic type 'Box<T>' requires 1 type arguments",
+      "filename": "Generics.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0305.png"
+    },
+    {
+      "file": "CS0306.json",
+      "path": "episodes/CS0306.json",
+      "error_code": "CS0306",
+      "message": "The type 'int*' may not be used as a type argument",
+      "filename": "Generics.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0306.png"
+    },
+    {
+      "file": "CS0307.json",
+      "path": "episodes/CS0307.json",
+      "error_code": "CS0307",
+      "message": "The variable 'n' cannot be used with type arguments",
+      "filename": "Generics.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0307.png"
+    },
+    {
+      "file": "CS0308.json",
+      "path": "episodes/CS0308.json",
+      "error_code": "CS0308",
+      "message": "The non-generic method 'Show()' cannot be used with type arguments",
+      "filename": "Generics.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0308.png"
+    },
+    {
+      "file": "CS0310.json",
+      "path": "episodes/CS0310.json",
+      "error_code": "CS0310",
+      "message": "'Item' must be a non-abstract type with a public parameterless constructor",
+      "filename": "Constraints.cs",
+      "lines": 11,
+      "bug": null,
+      "missing": "../assets/CS0310.png"
+    },
+    {
+      "file": "CS0311.json",
+      "path": "episodes/CS0311.json",
+      "error_code": "CS0311",
+      "message": "There is no implicit reference conversion from 'string' to 'Unit'",
+      "filename": "Constraints.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0311.png"
+    },
+    {
+      "file": "CS0312.json",
+      "path": "episodes/CS0312.json",
+      "error_code": "CS0312",
+      "message": "There is no boxing conversion or type parameter conversion from 'int' to 'U'",
+      "filename": "Constraints.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0312.png"
+    },
+    {
+      "file": "CS0313.json",
+      "path": "episodes/CS0313.json",
+      "error_code": "CS0313",
+      "message": "The nullable type 'Unit?' does not satisfy the constraint 'IRun'",
+      "filename": "Constraints.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0313.png"
+    },
+    {
+      "file": "CS0314.json",
+      "path": "episodes/CS0314.json",
+      "error_code": "CS0314",
+      "message": "There is no boxing conversion or type parameter conversion from 'T' to 'Unit'",
+      "filename": "Constraints.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0314.png"
+    },
+    {
+      "file": "CS0315.json",
+      "path": "episodes/CS0315.json",
+      "error_code": "CS0315",
+      "message": "There is no boxing conversion from 'int' to 'Enemy'",
+      "filename": "Constraints.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0315.png"
+    },
+    {
+      "file": "CS0316.json",
+      "path": "episodes/CS0316.json",
+      "error_code": "CS0316",
+      "message": "The parameter name 'value' conflicts with an automatically-generated parameter name",
+      "filename": "Generics.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0316.png"
+    },
+    {
+      "file": "CS0401.json",
+      "path": "episodes/CS0401.json",
+      "error_code": "CS0401",
+      "message": "The new() constraint must be the last constraint specified",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0401.png"
+    },
+    {
+      "file": "CS0403.json",
+      "path": "episodes/CS0403.json",
+      "error_code": "CS0403",
+      "message": "Cannot convert null to type parameter 'T'; it could be a non-nullable value type",
+      "filename": "Constraints.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0403.png"
+    },
+    {
+      "file": "CS0405.json",
+      "path": "episodes/CS0405.json",
+      "error_code": "CS0405",
+      "message": "Duplicate constraint 'class' for type parameter 'T'",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0405.png"
+    },
+    {
+      "file": "CS0406.json",
+      "path": "episodes/CS0406.json",
+      "error_code": "CS0406",
+      "message": "The class type constraint 'Unit' must come before any other constraints",
+      "filename": "Constraints.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0406.png"
+    },
+    {
       "file": "CS0407.json",
       "path": "episodes/CS0407.json",
       "error_code": "CS0407",
@@ -1169,6 +1349,56 @@
       "lines": 6,
       "bug": null,
       "missing": "../assets/CS0407.png"
+    },
+    {
+      "file": "CS0409.json",
+      "path": "episodes/CS0409.json",
+      "error_code": "CS0409",
+      "message": "A constraint clause has already been specified for type parameter 'T'",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0409.png"
+    },
+    {
+      "file": "CS0411.json",
+      "path": "episodes/CS0411.json",
+      "error_code": "CS0411",
+      "message": "The type arguments for method 'Make<T>()' cannot be inferred from the usage",
+      "filename": "Generics.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0411.png"
+    },
+    {
+      "file": "CS0412.json",
+      "path": "episodes/CS0412.json",
+      "error_code": "CS0412",
+      "message": "'T': a local variable cannot have the same name as a method type parameter",
+      "filename": "Generics.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0412.png"
+    },
+    {
+      "file": "CS0413.json",
+      "path": "episodes/CS0413.json",
+      "error_code": "CS0413",
+      "message": "The type parameter 'T' cannot be used with 'as'; it has no class type constraint",
+      "filename": "Constraints.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0413.png"
+    },
+    {
+      "file": "CS0425.json",
+      "path": "episodes/CS0425.json",
+      "error_code": "CS0425",
+      "message": "The constraints for type parameter 'T' of 'Boss.Hit<T>()' must match the interface",
+      "filename": "Constraints.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0425.png"
     },
     {
       "file": "CS0428.json",
@@ -1229,6 +1459,96 @@
       "lines": 7,
       "bug": null,
       "missing": "../assets/CS0446.png"
+    },
+    {
+      "file": "CS0449.json",
+      "path": "episodes/CS0449.json",
+      "error_code": "CS0449",
+      "message": "The class or struct constraint must come before any other constraints",
+      "filename": "Constraints.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0449.png"
+    },
+    {
+      "file": "CS0450.json",
+      "path": "episodes/CS0450.json",
+      "error_code": "CS0450",
+      "message": "'Unit': cannot specify both a constraint class and the class or struct constraint",
+      "filename": "Constraints.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0450.png"
+    },
+    {
+      "file": "CS0451.json",
+      "path": "episodes/CS0451.json",
+      "error_code": "CS0451",
+      "message": "The new() constraint cannot be used with the struct constraint",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0451.png"
+    },
+    {
+      "file": "CS0452.json",
+      "path": "episodes/CS0452.json",
+      "error_code": "CS0452",
+      "message": "The type 'int' must be a reference type in order to use it as parameter 'T'",
+      "filename": "Constraints.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0452.png"
+    },
+    {
+      "file": "CS0453.json",
+      "path": "episodes/CS0453.json",
+      "error_code": "CS0453",
+      "message": "The type 'string' must be a non-nullable value type to use it as parameter 'T'",
+      "filename": "Constraints.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0453.png"
+    },
+    {
+      "file": "CS0454.json",
+      "path": "episodes/CS0454.json",
+      "error_code": "CS0454",
+      "message": "Circular constraint dependency involving 'T' and 'U'",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0454.png"
+    },
+    {
+      "file": "CS0455.json",
+      "path": "episodes/CS0455.json",
+      "error_code": "CS0455",
+      "message": "Type parameter 'T' inherits conflicting constraints 'struct' and 'class'",
+      "filename": "Constraints.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0455.png"
+    },
+    {
+      "file": "CS0456.json",
+      "path": "episodes/CS0456.json",
+      "error_code": "CS0456",
+      "message": "Type parameter 'U' has the struct constraint so 'U' cannot be used as a constraint",
+      "filename": "Constraints.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0456.png"
+    },
+    {
+      "file": "CS0460.json",
+      "path": "episodes/CS0460.json",
+      "error_code": "CS0460",
+      "message": "Constraints for an override method are inherited from the base method",
+      "filename": "Constraints.cs",
+      "lines": 11,
+      "bug": null,
+      "missing": "../assets/CS0460.png"
     },
     {
       "file": "CS0462.json",
@@ -1671,6 +1991,86 @@
       "missing": "../assets/CS0666.png"
     },
     {
+      "file": "CS0689.json",
+      "path": "episodes/CS0689.json",
+      "error_code": "CS0689",
+      "message": "Cannot derive from 'T' because it is a type parameter",
+      "filename": "Generics.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0689.png"
+    },
+    {
+      "file": "CS0692.json",
+      "path": "episodes/CS0692.json",
+      "error_code": "CS0692",
+      "message": "Duplicate type parameter 'T'",
+      "filename": "Generics.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0692.png"
+    },
+    {
+      "file": "CS0694.json",
+      "path": "episodes/CS0694.json",
+      "error_code": "CS0694",
+      "message": "Type parameter 'Box' has the same name as the containing type",
+      "filename": "Generics.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0694.png"
+    },
+    {
+      "file": "CS0699.json",
+      "path": "episodes/CS0699.json",
+      "error_code": "CS0699",
+      "message": "'Box<T>' does not define type parameter 'U'",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0699.png"
+    },
+    {
+      "file": "CS0701.json",
+      "path": "episodes/CS0701.json",
+      "error_code": "CS0701",
+      "message": "'Unit' is not a valid constraint; a sealed class cannot be used as a constraint",
+      "filename": "Constraints.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0701.png"
+    },
+    {
+      "file": "CS0702.json",
+      "path": "episodes/CS0702.json",
+      "error_code": "CS0702",
+      "message": "Constraint cannot be special class 'object'",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0702.png"
+    },
+    {
+      "file": "CS0703.json",
+      "path": "episodes/CS0703.json",
+      "error_code": "CS0703",
+      "message": "Inconsistent accessibility: constraint type 'Unit' is less accessible than 'Box<T>'",
+      "filename": "Constraints.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0703.png"
+    },
+    {
+      "file": "CS0706.json",
+      "path": "episodes/CS0706.json",
+      "error_code": "CS0706",
+      "message": "Invalid constraint type 'int'; use an interface, a class or a type parameter",
+      "filename": "Constraints.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0706.png"
+    },
+    {
       "file": "CS0708.json",
       "path": "episodes/CS0708.json",
       "error_code": "CS0708",
@@ -1769,6 +2169,76 @@
       "lines": 6,
       "bug": null,
       "missing": "../assets/CS0723.png"
+    },
+    {
+      "file": "CS0742.json",
+      "path": "episodes/CS0742.json",
+      "error_code": "CS0742",
+      "message": "A query body must end with a select clause or a group clause",
+      "filename": "Linq.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0742.png"
+    },
+    {
+      "file": "CS0743.json",
+      "path": "episodes/CS0743.json",
+      "error_code": "CS0743",
+      "message": "Expected contextual keyword 'on'",
+      "filename": "Linq.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0743.png"
+    },
+    {
+      "file": "CS0744.json",
+      "path": "episodes/CS0744.json",
+      "error_code": "CS0744",
+      "message": "Expected contextual keyword 'equals'",
+      "filename": "Linq.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0744.png"
+    },
+    {
+      "file": "CS0745.json",
+      "path": "episodes/CS0745.json",
+      "error_code": "CS0745",
+      "message": "Expected contextual keyword 'by'",
+      "filename": "Linq.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0745.png"
+    },
+    {
+      "file": "CS0746.json",
+      "path": "episodes/CS0746.json",
+      "error_code": "CS0746",
+      "message": "Invalid anonymous type member declarator; use a member assignment",
+      "filename": "Initializers.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0746.png"
+    },
+    {
+      "file": "CS0747.json",
+      "path": "episodes/CS0747.json",
+      "error_code": "CS0747",
+      "message": "Invalid initializer member declarator",
+      "filename": "Initializers.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0747.png"
+    },
+    {
+      "file": "CS0748.json",
+      "path": "episodes/CS0748.json",
+      "error_code": "CS0748",
+      "message": "Inconsistent lambda parameter usage; parameter types must be all explicit",
+      "filename": "Lambdas.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0748.png"
     },
     {
       "file": "CS0751.json",
@@ -1911,6 +2381,26 @@
       "missing": "../assets/CS0828.png"
     },
     {
+      "file": "CS0831.json",
+      "path": "episodes/CS0831.json",
+      "error_code": "CS0831",
+      "message": "An expression tree may not contain a base access",
+      "filename": "ExprTree.cs",
+      "lines": 13,
+      "bug": null,
+      "missing": "../assets/CS0831.png"
+    },
+    {
+      "file": "CS0832.json",
+      "path": "episodes/CS0832.json",
+      "error_code": "CS0832",
+      "message": "An expression tree may not contain an assignment operator",
+      "filename": "ExprTree.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0832.png"
+    },
+    {
       "file": "CS0833.json",
       "path": "episodes/CS0833.json",
       "error_code": "CS0833",
@@ -1921,6 +2411,16 @@
       "missing": "../assets/CS0833.png"
     },
     {
+      "file": "CS0834.json",
+      "path": "episodes/CS0834.json",
+      "error_code": "CS0834",
+      "message": "A lambda expression with a statement body cannot be converted to an expression tree",
+      "filename": "ExprTree.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0834.png"
+    },
+    {
       "file": "CS0836.json",
       "path": "episodes/CS0836.json",
       "error_code": "CS0836",
@@ -1929,6 +2429,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0836.png"
+    },
+    {
+      "file": "CS0837.json",
+      "path": "episodes/CS0837.json",
+      "error_code": "CS0837",
+      "message": "The first operand of an 'is' or 'as' operator may not be a lambda expression",
+      "filename": "Lambdas.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0837.png"
     },
     {
       "file": "CS0839.json",
@@ -1961,6 +2471,16 @@
       "missing": "../assets/CS0843.png"
     },
     {
+      "file": "CS0845.json",
+      "path": "episodes/CS0845.json",
+      "error_code": "CS0845",
+      "message": "An expression tree lambda may not contain a coalescing operator with a null left side",
+      "filename": "ExprTree.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0845.png"
+    },
+    {
       "file": "CS0846.json",
       "path": "episodes/CS0846.json",
       "error_code": "CS0846",
@@ -1979,6 +2499,26 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0847.png"
+    },
+    {
+      "file": "CS0853.json",
+      "path": "episodes/CS0853.json",
+      "error_code": "CS0853",
+      "message": "An expression tree may not contain a named argument specification",
+      "filename": "ExprTree.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0853.png"
+    },
+    {
+      "file": "CS0854.json",
+      "path": "episodes/CS0854.json",
+      "error_code": "CS0854",
+      "message": "An expression tree may not contain a call that uses optional arguments",
+      "filename": "ExprTree.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0854.png"
     },
     {
       "file": "CS1001.json",
@@ -2271,6 +2811,26 @@
       "missing": null
     },
     {
+      "file": "CS1063.json",
+      "path": "episodes/CS1063.json",
+      "error_code": "CS1063",
+      "message": "Cannot initialize 'Bag' with a collection initializer; no suitable Add method",
+      "filename": "Initializers.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1063.png"
+    },
+    {
+      "file": "CS1065.json",
+      "path": "episodes/CS1065.json",
+      "error_code": "CS1065",
+      "message": "Default values are not valid in this context",
+      "filename": "Lambdas.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1065.png"
+    },
+    {
       "file": "CS1073.json",
       "path": "episodes/CS1073.json",
       "error_code": "CS1073",
@@ -2279,6 +2839,76 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS1073.png"
+    },
+    {
+      "file": "CS1100.json",
+      "path": "episodes/CS1100.json",
+      "error_code": "CS1100",
+      "message": "Method 'Go' has a parameter modifier 'this' which is not on the first parameter",
+      "filename": "Extensions.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1100.png"
+    },
+    {
+      "file": "CS1103.json",
+      "path": "episodes/CS1103.json",
+      "error_code": "CS1103",
+      "message": "The first parameter of an extension method cannot be of type 'dynamic'",
+      "filename": "Extensions.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1103.png"
+    },
+    {
+      "file": "CS1104.json",
+      "path": "episodes/CS1104.json",
+      "error_code": "CS1104",
+      "message": "A parameter array cannot be used with the 'this' modifier on an extension method",
+      "filename": "Extensions.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1104.png"
+    },
+    {
+      "file": "CS1105.json",
+      "path": "episodes/CS1105.json",
+      "error_code": "CS1105",
+      "message": "Extension method 'Tools.Up(int)' must be static",
+      "filename": "Extensions.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1105.png"
+    },
+    {
+      "file": "CS1106.json",
+      "path": "episodes/CS1106.json",
+      "error_code": "CS1106",
+      "message": "Extension method must be defined in a non-generic static class",
+      "filename": "Extensions.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1106.png"
+    },
+    {
+      "file": "CS1109.json",
+      "path": "episodes/CS1109.json",
+      "error_code": "CS1109",
+      "message": "Extension methods must be defined in a top level static class",
+      "filename": "Extensions.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS1109.png"
+    },
+    {
+      "file": "CS1113.json",
+      "path": "episodes/CS1113.json",
+      "error_code": "CS1113",
+      "message": "Extension method 'Tools.Up(Point)' on value type 'Point' cannot create delegates",
+      "filename": "Extensions.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS1113.png"
     },
     {
       "file": "CS1501.json",
@@ -2551,6 +3181,26 @@
       "missing": "../assets/CS1620.png"
     },
     {
+      "file": "CS1628.json",
+      "path": "episodes/CS1628.json",
+      "error_code": "CS1628",
+      "message": "Cannot use ref or out parameter 'n' inside a lambda expression",
+      "filename": "Lambdas.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1628.png"
+    },
+    {
+      "file": "CS1632.json",
+      "path": "episodes/CS1632.json",
+      "error_code": "CS1632",
+      "message": "Control cannot leave the body of an anonymous method or lambda expression",
+      "filename": "Lambdas.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS1632.png"
+    },
+    {
       "file": "CS1648.json",
       "path": "episodes/CS1648.json",
       "error_code": "CS1648",
@@ -2559,6 +3209,56 @@
       "lines": 10,
       "bug": null,
       "missing": "../assets/CS1648.png"
+    },
+    {
+      "file": "CS1660.json",
+      "path": "episodes/CS1660.json",
+      "error_code": "CS1660",
+      "message": "Cannot convert lambda expression to type 'int'; it is not a delegate type",
+      "filename": "Lambdas.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1660.png"
+    },
+    {
+      "file": "CS1661.json",
+      "path": "episodes/CS1661.json",
+      "error_code": "CS1661",
+      "message": "Cannot convert lambda to 'Action<int>'; the parameter types do not match",
+      "filename": "Lambdas.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1661.png"
+    },
+    {
+      "file": "CS1662.json",
+      "path": "episodes/CS1662.json",
+      "error_code": "CS1662",
+      "message": "Cannot convert lambda expression; the return type is not implicitly convertible",
+      "filename": "Lambdas.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1662.png"
+    },
+    {
+      "file": "CS1673.json",
+      "path": "episodes/CS1673.json",
+      "error_code": "CS1673",
+      "message": "Lambda expressions inside structs cannot access instance members of 'this'",
+      "filename": "Lambdas.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1673.png"
+    },
+    {
+      "file": "CS1688.json",
+      "path": "episodes/CS1688.json",
+      "error_code": "CS1688",
+      "message": "Cannot convert anonymous method without a parameter list; it has out parameters",
+      "filename": "Lambdas.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS1688.png"
     },
     {
       "file": "CS1729.json",
@@ -2619,6 +3319,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS1750.png"
+    },
+    {
+      "file": "CS1929.json",
+      "path": "episodes/CS1929.json",
+      "error_code": "CS1929",
+      "message": "The extension method 'Tools.Up' requires a receiver of type 'string'",
+      "filename": "Extensions.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1929.png"
     },
     {
       "file": "CS1955.json",
