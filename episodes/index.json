@@ -223,8 +223,8 @@
       "message": "'Enemy' does not contain a constructor that takes 0 arguments",
       "filename": "Spawn.cs",
       "lines": 9,
-      "bug": null,
-      "missing": "../assets/CS1729.png",
+      "bug": "assets/CS1729.png",
+      "missing": null,
       "order": 19,
       "tier": 1
     },
