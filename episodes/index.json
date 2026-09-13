@@ -199,8 +199,8 @@
       "message": "No overload for method 'Fire' takes 0 arguments",
       "filename": "Weapon.cs",
       "lines": 10,
-      "bug": null,
-      "missing": "../assets/CS1501.png",
+      "bug": "assets/CS1501.png",
+      "missing": null,
       "order": 17,
       "tier": 1
     },
