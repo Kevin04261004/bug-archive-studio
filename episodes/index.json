@@ -283,8 +283,8 @@
       "message": "Type 'Gun' already defines a member called 'Fire' with the same parameter types",
       "filename": "Weapons.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0111.png",
+      "bug": "assets/CS0111.png",
+      "missing": null,
       "order": 24,
       "tier": 1
     },
