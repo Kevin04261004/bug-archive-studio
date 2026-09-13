@@ -51,11 +51,16 @@ $('recheck').onclick=showRelease;
 /* One button on a published page: commit the episode, run the action, bring the MP4 back. */
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 let gh={slug:null,token:''};
-async function api(path,init={}){const r=await fetch(`https://api.github.com/repos/${gh.slug.owner}/${gh.slug.repo}${path}`,
+async function api(path,init={},tries=3){let r,body;
+for(let attempt=1;;attempt++){
+r=await fetch(`https://api.github.com/repos/${gh.slug.owner}/${gh.slug.repo}${path}`,
 {...init,headers:{Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',Authorization:'Bearer '+gh.token,...(init.headers||{})}});
-let body=null;if(r.status!==204){try{body=await r.json();}catch{}}
+body=null;if(r.status!==204){try{body=await r.json();}catch{}}
+if(r.status<500||attempt>=tries)break;/* 5xx is GitHub's own hiccup, not the token. Give it a moment. */
+await sleep(attempt*2500);}
 if(r.ok)return body;
 const why=body&&body.message?` GitHub says: ${body.message}`:'',where=path||'the repository';
+if(r.status>=500)throw Error(`GitHub itself failed on ${where} (${r.status}), so this is not your token or your settings.${why} This usually clears on its own. If it keeps happening, open the Actions tab and press Run workflow once — that wakes the workflow up again.`);
 if(r.status===401)throw Error(`GitHub did not accept the token itself (401 on ${where}). Paste the whole github_pat_ string again, and check it has not expired.${why}`);
 if(r.status===403)throw Error(`The token is missing a permission (403 on ${where}). In the token settings give this repository Contents: read and write, and Actions: read and write.${why}`);
 if(r.status===404)throw Error(`GitHub could not find ${where} (404). A fine-grained token that does not list this repository answers 404 as well, so check Repository access is Only select repositories with bug-archive-studio picked.${why}`);
