@@ -2839,8 +2839,8 @@
       "message": "'Unit.Died': event must be of a delegate type",
       "filename": "Events.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0066.png",
+      "bug": "assets/CS0066.png",
+      "missing": null,
       "order": 244,
       "tier": 4
     },
