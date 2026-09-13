@@ -2,8 +2,20 @@
   "error_code": "CS0101",
   "message": "The namespace 'Game' already contains a definition for 'Enemy'",
   "filename": "Enemies.cs",
-  "before": ["namespace Game", "{", "    class Enemy { }", "    class Enemy { }", "}"],
-  "after": ["namespace Game", "{", "    class Enemy { }", "    class Boss { }", "}"],
-  "bug": "../assets/CS0101.png",
-  "focus_line": 4
+  "before": [
+    "namespace Game",
+    "{",
+    "    class Enemy { }",
+    "    class Enemy { }",
+    "}"
+  ],
+  "after": [
+    "namespace Game",
+    "{",
+    "    class Enemy { }",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0101.png"
 }
