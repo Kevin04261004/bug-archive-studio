@@ -37,8 +37,8 @@
       "message": "'Score' does not contain a definition for 'Max'",
       "filename": "GameScore.cs",
       "lines": 9,
-      "bug": null,
-      "missing": "../assets/CS0117.png"
+      "bug": "assets/CS0117.png",
+      "missing": null
     },
     {
       "file": "CS0120.json",
