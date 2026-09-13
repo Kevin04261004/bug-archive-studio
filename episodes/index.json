@@ -1303,8 +1303,8 @@
       "message": "The as operator must be used with a reference type or nullable type",
       "filename": "Casts.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0077.png",
+      "bug": "assets/CS0077.png",
+      "missing": null,
       "order": 111,
       "tier": 3
     },
