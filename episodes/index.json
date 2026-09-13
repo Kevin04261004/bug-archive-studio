@@ -47,8 +47,8 @@
       "message": "An object reference is required for the non-static field 'Game.score'",
       "filename": "Game.cs",
       "lines": 8,
-      "bug": null,
-      "missing": "../assets/CS0120.png"
+      "bug": "assets/CS0120.png",
+      "missing": null
     },
     {
       "file": "CS0161.json",
