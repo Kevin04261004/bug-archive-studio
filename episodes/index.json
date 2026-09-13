@@ -403,8 +403,8 @@
       "message": "Program has more than one entry point defined",
       "filename": "Program.cs",
       "lines": 9,
-      "bug": null,
-      "missing": "../assets/CS0017.png",
+      "bug": "assets/CS0017.png",
+      "missing": null,
       "order": 34,
       "tier": 1
     },
