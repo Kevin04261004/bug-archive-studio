@@ -187,8 +187,8 @@
       "message": "Use of unassigned local variable 'score'",
       "filename": "ScoreInit.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0165.png",
+      "bug": "assets/CS0165.png",
+      "missing": null,
       "order": 16,
       "tier": 1
     },
