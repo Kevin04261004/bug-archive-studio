@@ -2467,8 +2467,8 @@
       "message": "Keyword 'this' is not valid in a static property, static method, or static field",
       "filename": "ThisRef.cs",
       "lines": 9,
-      "bug": null,
-      "missing": "../assets/CS0026.png",
+      "bug": "assets/CS0026.png",
+      "missing": null,
       "order": 213,
       "tier": 4
     },
