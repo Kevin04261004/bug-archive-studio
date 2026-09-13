@@ -2,7 +2,7 @@
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-import json,subprocess,sys,uuid,threading,webbrowser,argparse,base64
+import json,re,subprocess,sys,uuid,threading,webbrowser,argparse,base64
 ROOT=Path(__file__).resolve().parent
 ap=argparse.ArgumentParser();ap.add_argument('--port',type=int,default=8765);ap.add_argument('--no-browser',action='store_true');ap.add_argument('--index',action='store_true',help='Only refresh episodes/index.json and exit');args=ap.parse_args()
 jobs={};pool=ThreadPoolExecutor(max_workers=1);lock=threading.Lock()
@@ -46,11 +46,23 @@ def safe_track(name):
     name=Path(str(name)).name
     if not name or name.startswith('.') or Path(name).suffix.lower() not in MUSIC_TYPES:raise ValueError('Use an audio file such as .mp3 or .wav.')
     return MUSIC_DIR/name
+CHECKLIST=ROOT/'cs-error-series-checklist.md'
+def checklist_order():
+    """Map CS code -> (number, tier) from the checklist so the load list matches the plan, not the filenames."""
+    order={};tier=0
+    try:text=CHECKLIST.read_text(encoding='utf-8')
+    except OSError:return order
+    for line in text.split('\n'):
+        head=re.match(r'^##\s*(\d+)티어',line)
+        if head:tier=int(head.group(1));continue
+        item=re.match(r'^- \[[ x]\]\s*(\d+)\.\s*\*\*(CS\d+)\*\*',line)
+        if item:order.setdefault(item.group(2),(int(item.group(1)),tier))
+    return order
 def episodes():
     """List episodes/*.json with the bug PNG each one points at, when that file is inside the studio.
 
     Paths are relative to index.html so the same payload works from the local server and from GitHub Pages."""
-    out=[]
+    out=[];order=checklist_order()
     for path in sorted((ROOT/'episodes').glob('*.json')):
         if path==INDEX:continue
         try:c=json.loads(path.read_text(encoding='utf-8'))
@@ -64,6 +76,9 @@ def episodes():
                     'lines':max(len(c.get('before') or []),len(c.get('after') or [])),
                     'bug':target.relative_to(ROOT).as_posix() if inside else None,
                     'missing':bug if bug and not inside else None})
+        n,tier=order.get(str(c.get('error_code','')),(0,0))
+        out[-1]['order']=n;out[-1]['tier']=tier
+    out.sort(key=lambda e:(e['order'] or 10**6,e['file']))
     return out
 def write_index():
     """Keep episodes/index.json in step with the folder. GitHub Pages has no API, so it reads this file."""

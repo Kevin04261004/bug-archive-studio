@@ -263,11 +263,18 @@ try{await setConfig(q);}catch(e){throw Error(`${row.file} is not a complete epis
 status(row.bug?`Loaded ${row.file} with its bug image.`:`Loaded ${row.file}. Its bug PNG ${row.missing||''} is missing, so the previous bug stays in place.`);}
 function episodeRow(row){const b=document.createElement('button');b.className='episoderow'+(row.bug?'':' nobug');
 const code=document.createElement('b');code.textContent=row.error_code||row.file;
+if(row.order){const n=document.createElement('i');n.className='epnum';n.textContent=row.order;b.append(n);}
 const meta=document.createElement('span');meta.textContent=`${row.filename} · ${row.lines} lines`;
 const msg=document.createElement('em');msg.textContent=row.message;
 b.append(code,meta,msg);b.onclick=()=>loadEpisode(row).catch(e=>epstatus(e.message,true));return b;}
+function episodeNodes(rows){/* Rows arrive in checklist order; break them into the same tiers the checklist uses. */
+const out=[];let tier=null;
+for(const row of rows){const t=row.tier||0;
+if(t!==tier){tier=t;const h=document.createElement('p');h.className='tierhead';h.textContent=t?`TIER ${t}`:'NOT ON THE CHECKLIST';out.push(h);}
+out.push(episodeRow(row));}
+return out;}
 $('loadepisode').onclick=async()=>{$('episodelist').replaceChildren();epstatus('Reading the episodes folder…');$('episodes').showModal();
-try{const rows=await listEpisodes();$('episodelist').replaceChildren(...rows.map(episodeRow));epstatus(rows.length?'Pick an episode to load it into the editor.':'The episodes folder has no JSON yet.');}
+try{const rows=await listEpisodes();$('episodelist').replaceChildren(...episodeNodes(rows));epstatus(rows.length?`${rows.length} episodes, in checklist order. Pick one to load it into the editor.`:'The episodes folder has no JSON yet.');}
 catch(e){epstatus(e.message,true);}};
 $('closeEpisodes').onclick=()=>$('episodes').close();
 $('episodeopen').onclick=()=>{$('episodes').close();$('projectfile').click();};
