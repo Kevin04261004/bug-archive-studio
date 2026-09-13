@@ -247,8 +247,8 @@
       "message": "A local variable named 'hp' is already defined in this scope",
       "filename": "Stats.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0128.png",
+      "bug": "assets/CS0128.png",
+      "missing": null,
       "order": 21,
       "tier": 1
     },
