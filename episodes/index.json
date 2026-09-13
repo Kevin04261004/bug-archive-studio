@@ -201,6 +201,16 @@
       "missing": "../assets/CS0066.png"
     },
     {
+      "file": "CS0067.json",
+      "path": "episodes/CS0067.json",
+      "error_code": "CS0067",
+      "message": "The event 'Unit.Died' is never used",
+      "filename": "Unused.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0067.png"
+    },
+    {
       "file": "CS0070.json",
       "path": "episodes/CS0070.json",
       "error_code": "CS0070",
@@ -239,6 +249,16 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS0077.png"
+    },
+    {
+      "file": "CS0078.json",
+      "path": "episodes/CS0078.json",
+      "error_code": "CS0078",
+      "message": "The 'l' suffix is easily confused with the digit '1'; use 'L' instead",
+      "filename": "Literals.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0078.png"
     },
     {
       "file": "CS0079.json",
@@ -321,6 +341,16 @@
       "missing": "../assets/CS0106.png"
     },
     {
+      "file": "CS0108.json",
+      "path": "episodes/CS0108.json",
+      "error_code": "CS0108",
+      "message": "'Boss.hp' hides inherited member 'Enemy.hp'; use the new keyword if intended",
+      "filename": "Hiding.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0108.png"
+    },
+    {
       "file": "CS0110.json",
       "path": "episodes/CS0110.json",
       "error_code": "CS0110",
@@ -359,6 +389,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0113.png"
+    },
+    {
+      "file": "CS0114.json",
+      "path": "episodes/CS0114.json",
+      "error_code": "CS0114",
+      "message": "'Boss.Hit()' hides inherited member 'Enemy.Hit()'; add the override keyword",
+      "filename": "Hiding.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0114.png"
     },
     {
       "file": "CS0115.json",
@@ -711,6 +751,16 @@
       "missing": null
     },
     {
+      "file": "CS0162.json",
+      "path": "episodes/CS0162.json",
+      "error_code": "CS0162",
+      "message": "Unreachable code detected",
+      "filename": "Flow.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0162.png"
+    },
+    {
       "file": "CS0163.json",
       "path": "episodes/CS0163.json",
       "error_code": "CS0163",
@@ -721,6 +771,16 @@
       "missing": "../assets/CS0163.png"
     },
     {
+      "file": "CS0164.json",
+      "path": "episodes/CS0164.json",
+      "error_code": "CS0164",
+      "message": "This label has not been referenced",
+      "filename": "Unused.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0164.png"
+    },
+    {
       "file": "CS0165.json",
       "path": "episodes/CS0165.json",
       "error_code": "CS0165",
@@ -729,6 +789,26 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS0165.png"
+    },
+    {
+      "file": "CS0168.json",
+      "path": "episodes/CS0168.json",
+      "error_code": "CS0168",
+      "message": "The variable 'n' is declared but never used",
+      "filename": "Unused.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0168.png"
+    },
+    {
+      "file": "CS0169.json",
+      "path": "episodes/CS0169.json",
+      "error_code": "CS0169",
+      "message": "The field 'Player.hp' is never used",
+      "filename": "Unused.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0169.png"
     },
     {
       "file": "CS0170.json",
@@ -871,6 +951,16 @@
       "missing": "../assets/CS0192.png"
     },
     {
+      "file": "CS0197.json",
+      "path": "episodes/CS0197.json",
+      "error_code": "CS0197",
+      "message": "Passing 'Player.hp' as ref or out may cause a runtime exception",
+      "filename": "Threading.cs",
+      "lines": 11,
+      "bug": null,
+      "missing": "../assets/CS0197.png"
+    },
+    {
       "file": "CS0198.json",
       "path": "episodes/CS0198.json",
       "error_code": "CS0198",
@@ -939,6 +1029,16 @@
       "lines": 6,
       "bug": null,
       "missing": "../assets/CS0210.png"
+    },
+    {
+      "file": "CS0219.json",
+      "path": "episodes/CS0219.json",
+      "error_code": "CS0219",
+      "message": "The variable 'n' is assigned but its value is never used",
+      "filename": "Unused.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0219.png"
     },
     {
       "file": "CS0220.json",
@@ -1049,6 +1149,26 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0249.png"
+    },
+    {
+      "file": "CS0251.json",
+      "path": "episodes/CS0251.json",
+      "error_code": "CS0251",
+      "message": "Indexing an array with a negative index",
+      "filename": "Arrays.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0251.png"
+    },
+    {
+      "file": "CS0252.json",
+      "path": "episodes/CS0252.json",
+      "error_code": "CS0252",
+      "message": "Possible unintended reference comparison; cast the left side to type 'string'",
+      "filename": "Compare.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0252.png"
     },
     {
       "file": "CS0260.json",
@@ -1199,6 +1319,16 @@
       "lines": 9,
       "bug": null,
       "missing": "../assets/CS0277.png"
+    },
+    {
+      "file": "CS0282.json",
+      "path": "episodes/CS0282.json",
+      "error_code": "CS0282",
+      "message": "There is no defined ordering between fields in multiple declarations of 'Point'",
+      "filename": "Partial.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0282.png"
     },
     {
       "file": "CS0283.json",
@@ -1421,6 +1551,26 @@
       "missing": "../assets/CS0413.png"
     },
     {
+      "file": "CS0414.json",
+      "path": "episodes/CS0414.json",
+      "error_code": "CS0414",
+      "message": "The field 'Player.hp' is assigned but its value is never used",
+      "filename": "Unused.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0414.png"
+    },
+    {
+      "file": "CS0420.json",
+      "path": "episodes/CS0420.json",
+      "error_code": "CS0420",
+      "message": "'Player.hp': a reference to a volatile field will not be treated as volatile",
+      "filename": "Threading.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0420.png"
+    },
+    {
       "file": "CS0425.json",
       "path": "episodes/CS0425.json",
       "error_code": "CS0425",
@@ -1619,6 +1769,16 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS0464.png"
+    },
+    {
+      "file": "CS0465.json",
+      "path": "episodes/CS0465.json",
+      "error_code": "CS0465",
+      "message": "Introducing a Finalize method can interfere with destructor invocation",
+      "filename": "Finalizers.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0465.png"
     },
     {
       "file": "CS0472.json",
@@ -1991,6 +2151,36 @@
       "missing": "../assets/CS0595.png"
     },
     {
+      "file": "CS0612.json",
+      "path": "episodes/CS0612.json",
+      "error_code": "CS0612",
+      "message": "'Player.Old()' is obsolete",
+      "filename": "Obsolete.cs",
+      "lines": 13,
+      "bug": null,
+      "missing": "../assets/CS0612.png"
+    },
+    {
+      "file": "CS0618.json",
+      "path": "episodes/CS0618.json",
+      "error_code": "CS0618",
+      "message": "'Player.Old()' is obsolete: 'Use New()'",
+      "filename": "Obsolete.cs",
+      "lines": 13,
+      "bug": null,
+      "missing": "../assets/CS0618.png"
+    },
+    {
+      "file": "CS0619.json",
+      "path": "episodes/CS0619.json",
+      "error_code": "CS0619",
+      "message": "'Player.Old()' is obsolete: 'Removed'",
+      "filename": "Obsolete.cs",
+      "lines": 13,
+      "bug": null,
+      "missing": "../assets/CS0619.png"
+    },
+    {
       "file": "CS0620.json",
       "path": "episodes/CS0620.json",
       "error_code": "CS0620",
@@ -2011,6 +2201,36 @@
       "missing": "../assets/CS0621.png"
     },
     {
+      "file": "CS0628.json",
+      "path": "episodes/CS0628.json",
+      "error_code": "CS0628",
+      "message": "'Player.hp': new protected member declared in sealed type",
+      "filename": "Members.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0628.png"
+    },
+    {
+      "file": "CS0642.json",
+      "path": "episodes/CS0642.json",
+      "error_code": "CS0642",
+      "message": "Possible mistaken empty statement",
+      "filename": "Flow.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0642.png"
+    },
+    {
+      "file": "CS0649.json",
+      "path": "episodes/CS0649.json",
+      "error_code": "CS0649",
+      "message": "Field 'Player.hp' is never assigned to, and will always have its default value",
+      "filename": "Unused.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0649.png"
+    },
+    {
       "file": "CS0650.json",
       "path": "episodes/CS0650.json",
       "error_code": "CS0650",
@@ -2019,6 +2239,26 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0650.png"
+    },
+    {
+      "file": "CS0658.json",
+      "path": "episodes/CS0658.json",
+      "error_code": "CS0658",
+      "message": "'x' is not a recognized attribute location; use 'method' or 'return'",
+      "filename": "Attributes.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0658.png"
+    },
+    {
+      "file": "CS0661.json",
+      "path": "episodes/CS0661.json",
+      "error_code": "CS0661",
+      "message": "'P' defines operator == or != but does not override Object.GetHashCode()",
+      "filename": "Operators.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0661.png"
     },
     {
       "file": "CS0663.json",
@@ -2041,6 +2281,16 @@
       "missing": "../assets/CS0664.png"
     },
     {
+      "file": "CS0665.json",
+      "path": "episodes/CS0665.json",
+      "error_code": "CS0665",
+      "message": "Assignment in conditional expression is always constant; did you mean == ?",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0665.png"
+    },
+    {
       "file": "CS0666.json",
       "path": "episodes/CS0666.json",
       "error_code": "CS0666",
@@ -2049,6 +2299,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0666.png"
+    },
+    {
+      "file": "CS0675.json",
+      "path": "episodes/CS0675.json",
+      "error_code": "CS0675",
+      "message": "Bitwise-or operator used on a sign-extended operand",
+      "filename": "Literals.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0675.png"
     },
     {
       "file": "CS0689.json",
@@ -2069,6 +2329,16 @@
       "lines": 3,
       "bug": null,
       "missing": "../assets/CS0692.png"
+    },
+    {
+      "file": "CS0693.json",
+      "path": "episodes/CS0693.json",
+      "error_code": "CS0693",
+      "message": "Type parameter 'T' has the same name as the type parameter from outer type 'Box<T>'",
+      "filename": "Generics.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0693.png"
     },
     {
       "file": "CS0694.json",
@@ -2231,6 +2501,16 @@
       "missing": "../assets/CS0723.png"
     },
     {
+      "file": "CS0728.json",
+      "path": "episodes/CS0728.json",
+      "error_code": "CS0728",
+      "message": "Possibly incorrect assignment to local 'p' which is the argument to a using",
+      "filename": "Using.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0728.png"
+    },
+    {
       "file": "CS0742.json",
       "path": "episodes/CS0742.json",
       "error_code": "CS0742",
@@ -2349,6 +2629,16 @@
       "lines": 6,
       "bug": null,
       "missing": "../assets/CS0768.png"
+    },
+    {
+      "file": "CS0809.json",
+      "path": "episodes/CS0809.json",
+      "error_code": "CS0809",
+      "message": "Obsolete member 'Boss.Hit()' overrides non-obsolete member 'Enemy.Hit()'",
+      "filename": "Obsolete.cs",
+      "lines": 11,
+      "bug": null,
+      "missing": "../assets/CS0809.png"
     },
     {
       "file": "CS0815.json",
@@ -2851,6 +3141,16 @@
       "missing": "../assets/CS1057.png"
     },
     {
+      "file": "CS1058.json",
+      "path": "episodes/CS1058.json",
+      "error_code": "CS1058",
+      "message": "A previous catch clause already catches all exceptions",
+      "filename": "Exceptions.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS1058.png"
+    },
+    {
       "file": "CS1059.json",
       "path": "episodes/CS1059.json",
       "error_code": "CS1059",
@@ -2881,6 +3181,16 @@
       "missing": "../assets/CS1063.png"
     },
     {
+      "file": "CS1064.json",
+      "path": "episodes/CS1064.json",
+      "error_code": "CS1064",
+      "message": "The best Add method 'Bag.Add(int)' for the collection initializer is obsolete",
+      "filename": "Initializers.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS1064.png"
+    },
+    {
       "file": "CS1065.json",
       "path": "episodes/CS1065.json",
       "error_code": "CS1065",
@@ -2889,6 +3199,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS1065.png"
+    },
+    {
+      "file": "CS1066.json",
+      "path": "episodes/CS1066.json",
+      "error_code": "CS1066",
+      "message": "The default value for 'n' will have no effect in an interface implementation",
+      "filename": "Interfaces.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1066.png"
     },
     {
       "file": "CS1073.json",
@@ -3151,6 +3471,56 @@
       "missing": "../assets/CS1551.png"
     },
     {
+      "file": "CS1570.json",
+      "path": "episodes/CS1570.json",
+      "error_code": "CS1570",
+      "message": "XML comment has badly formed XML",
+      "filename": "XmlDoc.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1570.png"
+    },
+    {
+      "file": "CS1571.json",
+      "path": "episodes/CS1571.json",
+      "error_code": "CS1571",
+      "message": "XML comment has a duplicate param tag for 'n'",
+      "filename": "XmlDoc.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS1571.png"
+    },
+    {
+      "file": "CS1572.json",
+      "path": "episodes/CS1572.json",
+      "error_code": "CS1572",
+      "message": "XML comment has a param tag for 'x', but there is no parameter by that name",
+      "filename": "XmlDoc.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS1572.png"
+    },
+    {
+      "file": "CS1573.json",
+      "path": "episodes/CS1573.json",
+      "error_code": "CS1573",
+      "message": "Parameter 'm' has no matching param tag in the XML comment",
+      "filename": "XmlDoc.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS1573.png"
+    },
+    {
+      "file": "CS1574.json",
+      "path": "episodes/CS1574.json",
+      "error_code": "CS1574",
+      "message": "XML comment has cref attribute 'Heal' that could not be resolved",
+      "filename": "XmlDoc.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS1574.png"
+    },
+    {
       "file": "CS1579.json",
       "path": "episodes/CS1579.json",
       "error_code": "CS1579",
@@ -3179,6 +3549,26 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS1586.png"
+    },
+    {
+      "file": "CS1587.json",
+      "path": "episodes/CS1587.json",
+      "error_code": "CS1587",
+      "message": "XML comment is not placed on a valid language element",
+      "filename": "XmlDoc.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1587.png"
+    },
+    {
+      "file": "CS1591.json",
+      "path": "episodes/CS1591.json",
+      "error_code": "CS1591",
+      "message": "Missing XML comment for publicly visible type or member 'Player'",
+      "filename": "XmlDoc.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1591.png"
     },
     {
       "file": "CS1593.json",
@@ -3441,6 +3831,26 @@
       "missing": "../assets/CS1688.png"
     },
     {
+      "file": "CS1717.json",
+      "path": "episodes/CS1717.json",
+      "error_code": "CS1717",
+      "message": "Assignment made to same variable; did you mean to assign something else?",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1717.png"
+    },
+    {
+      "file": "CS1718.json",
+      "path": "episodes/CS1718.json",
+      "error_code": "CS1718",
+      "message": "Comparison made to same variable; did you mean to compare something else?",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1718.png"
+    },
+    {
       "file": "CS1729.json",
       "path": "episodes/CS1729.json",
       "error_code": "CS1729",
@@ -3519,6 +3929,16 @@
       "lines": 10,
       "bug": null,
       "missing": "../assets/CS1955.png"
+    },
+    {
+      "file": "CS1981.json",
+      "path": "episodes/CS1981.json",
+      "error_code": "CS1981",
+      "message": "Using 'is' to test compatibility with 'dynamic' is identical to testing 'object'",
+      "filename": "Compare.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1981.png"
     },
     {
       "file": "CS1994.json",
