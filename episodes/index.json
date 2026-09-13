@@ -211,8 +211,8 @@
       "message": "Argument 1: cannot convert from 'string' to 'float'",
       "filename": "Timing.cs",
       "lines": 9,
-      "bug": null,
-      "missing": "../assets/CS1503.png",
+      "bug": "assets/CS1503.png",
+      "missing": null,
       "order": 18,
       "tier": 1
     },
