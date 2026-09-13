@@ -56,11 +56,11 @@ for(let attempt=1;;attempt++){
 r=await fetch(`https://api.github.com/repos/${gh.slug.owner}/${gh.slug.repo}${path}`,
 {...init,headers:{Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',Authorization:'Bearer '+gh.token,...(init.headers||{})}});
 body=null;if(r.status!==204){try{body=await r.json();}catch{}}
-if(r.status<500||attempt>=tries)break;/* 5xx is GitHub's own hiccup, not the token. Give it a moment. */
-await sleep(attempt*2500);}
+if(r.status<500||attempt>=tries)break;/* 5xx here is GitHub's own hiccup, not the token. Back off, do not hammer. */
+await sleep(attempt*attempt*5000);}
 if(r.ok)return body;
 const why=body&&body.message?` GitHub says: ${body.message}`:'',where=path||'the repository';
-if(r.status>=500)throw Error(`GitHub itself failed on ${where} (${r.status}), so this is not your token or your settings.${why} This usually clears on its own. If it keeps happening, open the Actions tab and press Run workflow once — that wakes the workflow up again.`);
+if(r.status>=500)throw Error(`GitHub itself failed on ${where} (${r.status}), so this is not your token or your settings.${why} Saving the episode already committed it, and that commit starts the render on its own — open the Actions tab to watch it, then press Render MP4 again in a few minutes to pick up the MP4.`);
 if(r.status===401)throw Error(`GitHub did not accept the token itself (401 on ${where}). Paste the whole github_pat_ string again, and check it has not expired.${why}`);
 if(r.status===403)throw Error(`The token is missing a permission (403 on ${where}). In the token settings give this repository Contents: read and write, and Actions: read and write.${why}`);
 if(r.status===404)throw Error(`GitHub could not find ${where} (404). A fine-grained token that does not list this repository answers 404 as well, so check Repository access is Only select repositories with bug-archive-studio picked.${why}`);
@@ -79,19 +79,29 @@ if(built.sha===head.tree.sha)return null;
 const made=await api('/git/commits',{method:'POST',body:JSON.stringify({message,tree:built.sha,parents:[base]})});
 await api('/git/refs/heads/main',{method:'PATCH',body:JSON.stringify({sha:made.sha})});
 return made.sha;}
-const commitEpisode=code=>commitFiles(`${code} 에피소드 저장 [skip ci]`,[
+/* No [skip ci] here on purpose: episodes/*.json and assets/*.png are in the workflow's push
+   trigger, so this commit is what starts the render. No dispatch call needed. */
+const commitEpisode=code=>commitFiles(`${code} 에피소드 저장`,[
 {path:`episodes/${code}.json`,content:episodeFile(code)},
 {path:`assets/${code}.png`,content:bugData.split(',')[1],encoding:'base64'}]);
-async function runAction(code,since){await api('/actions/workflows/render.yml/dispatches',{method:'POST',body:JSON.stringify({ref:'main',inputs:{episode:code}})});
-let run=null;
-for(let i=0;i<20&&!run;i++){await sleep(3000);
-const z=await api('/actions/workflows/render.yml/runs?event=workflow_dispatch&branch=main&per_page=5');
-run=(z.workflow_runs||[]).find(r=>new Date(r.created_at)>=since)||null;}
-if(!run)throw Error('The action did not start. Check that Actions are enabled for this repository.');
-for(let i=0;i<150;i++){const z=await api('/actions/runs/'+run.id);
+async function findRun(match,tries=20){for(let i=0;i<tries;i++){await sleep(3000);
+const z=await api('/actions/workflows/render.yml/runs?branch=main&per_page=10');
+const run=(z.workflow_runs||[]).find(match);if(run)return run;}
+return null;}
+async function watchRun(run,code,since){for(let i=0;i<150;i++){const z=await api('/actions/runs/'+run.id);
 if(z.status==='completed'){if(z.conclusion!=='success')throw Error(`The action finished as ${z.conclusion}. Open the run to see why.`);return z;}
 step(`Rendering ${code} on GitHub… ${Math.round((Date.now()-since)/1000)}s`);await sleep(4000);}
 throw Error('The action is taking too long. Check the run on GitHub.');}
+async function runAction(code,since,sha){
+/* The commit above already started the workflow. Watch that run. Only a commit that changed
+   nothing leaves no run to watch, and that is the one case worth dispatching by hand. */
+let run=sha?await findRun(r=>r.head_sha===sha):null;
+if(!run){await api('/actions/workflows/render.yml/dispatches',{method:'POST',body:JSON.stringify({ref:'main',inputs:{episode:code}})});
+run=await findRun(r=>r.event==='workflow_dispatch'&&new Date(r.created_at)>=since);}
+if(!run)throw Error('The action did not start. Check that Actions are enabled for this repository.');
+return watchRun(run,code,since);}
+async function existingRelease(code){try{const z=await api('/releases/tags/episode-'+code);
+return (z.assets||[]).some(a=>a.name.endsWith('.mp4'))?z:null;}catch{return null;}}
 async function fetchRelease(code){for(let i=0;i<10;i++){try{const z=await api('/releases/tags/episode-'+code);
 if((z.assets||[]).some(a=>a.name.endsWith('.mp4')))return z;}catch{}await sleep(3000);}
 throw Error('The render finished but the release has no MP4 yet.');}
@@ -111,10 +121,13 @@ const repo=await api('');
 if(!repo.permissions||!repo.permissions.push)throw Error(`This token can read ${slug.owner}/${slug.repo} but cannot write to it. Open the token settings, set Repository access to this repository, and set Contents to read and write.`);
 step(`Saving ${code} to ${slug.owner}/${slug.repo}…`);
 const since=new Date(Date.now()-20000),sha=await commitEpisode(code);
-step(sha?`Saved. Starting render.py on GitHub…`:`${code} was already saved. Starting render.py on GitHub…`);
-await runAction(code,since);
+let release=sha?null:await existingRelease(code);
+if(release)step(`${code} is unchanged since its last render. Fetching that MP4…`);
+else{step(sha?'Saved. That commit starts render.py on GitHub…':`${code} was already saved. Starting render.py on GitHub…`);
+await runAction(code,since,sha);
 step('Render finished. Fetching the MP4…');
-const release=await fetchRelease(code),video=release.assets.find(a=>a.name.endsWith('.mp4'));
+release=await fetchRelease(code);}
+const video=release.assets.find(a=>a.name.endsWith('.mp4'));
 try{const r=await fetch(video.browser_download_url);if(!r.ok)throw Error('no cors');download(await r.blob(),video.name);}
 catch{link('',video.browser_download_url).click();}
 $('downloads').replaceChildren(...release.assets.map(a=>{const l=link(a.name.endsWith('.mp4')?'Download MP4 again':'Download thumbnail',a.browser_download_url);l.download='';return l;}));
