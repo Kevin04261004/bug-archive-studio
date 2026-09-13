@@ -87,8 +87,8 @@
       "message": "Cannot implicitly convert type 'float' to 'int'. An explicit conversion exists",
       "filename": "MoveSteps.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0266.png"
+      "bug": "assets/CS0266.png",
+      "missing": null
     },
     {
       "file": "CS1002.json",
