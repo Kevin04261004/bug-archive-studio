@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0768",
+  "message": "Constructor 'Player.Player(int)' cannot call itself through another constructor",
+  "filename": "Ctors.cs",
+  "before": ["class Player", "{", "    public Player() : this(0) { }", "", "    public Player(int hp) : this() { }", "}"],
+  "after": ["class Player", "{", "    public Player() : this(0) { }", "", "    public Player(int hp) { }", "}"],
+  "bug": "../assets/CS0768.png",
+  "focus_line": 5
+}

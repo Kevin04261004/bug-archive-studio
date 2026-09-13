@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0229",
+  "message": "Ambiguity between 'IA.n' and 'IB.n'",
+  "filename": "Ambiguous.cs",
+  "before": ["interface IA { int n { get; } }", "interface IB { int n { get; } }", "", "interface IC : IA, IB { }", "", "void Use(IC c)", "{", "    Debug.Log(c.n);", "}"],
+  "after": ["interface IA { int n { get; } }", "interface IB { int n { get; } }", "", "interface IC : IA, IB { }", "", "void Use(IC c)", "{", "    Debug.Log(((IA)c).n);", "}"],
+  "bug": "../assets/CS0229.png",
+  "focus_line": 8
+}

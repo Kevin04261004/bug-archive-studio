@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0051",
+  "message": "Inconsistent accessibility: parameter type 'Item' is less accessible than method",
+  "filename": "Access.cs",
+  "before": ["class Item { }", "", "public class Bag", "{", "    public void Put(Item i) { }", "}"],
+  "after": ["public class Item { }", "", "public class Bag", "{", "    public void Put(Item i) { }", "}"],
+  "bug": "../assets/CS0051.png",
+  "focus_line": 1
+}

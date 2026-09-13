@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0264",
+  "message": "Partial declarations of 'Box<T>' must have the same type parameter names",
+  "filename": "Partial.cs",
+  "before": ["partial class Box<T>", "{", "}", "", "partial class Box<U>", "{", "}"],
+  "after": ["partial class Box<T>", "{", "}", "", "partial class Box<T>", "{", "}"],
+  "bug": "../assets/CS0264.png",
+  "focus_line": 5
+}

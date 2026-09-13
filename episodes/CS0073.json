@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0073",
+  "message": "An add or remove accessor must have a body",
+  "filename": "Events.cs",
+  "before": ["class Unit", "{", "    public event Action Died", "    {", "        add;", "        remove { }", "    }", "}"],
+  "after": ["class Unit", "{", "    public event Action Died", "    {", "        add { }", "        remove { }", "    }", "}"],
+  "bug": "../assets/CS0073.png",
+  "focus_line": 5
+}

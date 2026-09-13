@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0407",
+  "message": "'int Get()' has the wrong return type for delegate 'Action'",
+  "filename": "Delegates.cs",
+  "before": ["int Get() => 1;", "", "void Start()", "{", "    Action a = Get;", "}"],
+  "after": ["int Get() => 1;", "", "void Start()", "{", "    Func<int> a = Get;", "}"],
+  "bug": "../assets/CS0407.png",
+  "focus_line": 5
+}

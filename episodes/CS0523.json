@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0523",
+  "message": "Struct member 'Node.next' of type 'Node' causes a cycle in the struct layout",
+  "filename": "Structs.cs",
+  "before": ["struct Node", "{", "    public Node next;", "}"],
+  "after": ["class Node", "{", "    public Node next;", "}"],
+  "bug": "../assets/CS0523.png",
+  "focus_line": 1
+}

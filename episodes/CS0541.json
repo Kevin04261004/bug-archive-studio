@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0541",
+  "message": "'Boss.IHit.Hit()': explicit interface declaration can only be declared in a class",
+  "filename": "Interfaces.cs",
+  "before": ["interface IHit", "{", "    void Hit();", "}", "", "interface IBoss : IHit", "{", "    void IHit.Hit() { }", "}"],
+  "after": ["interface IHit", "{", "    void Hit();", "}", "", "class Boss : IHit", "{", "    void IHit.Hit() { }", "}"],
+  "bug": "../assets/CS0541.png",
+  "focus_line": 6
+}

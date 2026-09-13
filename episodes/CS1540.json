@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1540",
+  "message": "Cannot access protected member 'Enemy.hp' through a qualifier of type 'Enemy'",
+  "filename": "Ambiguous.cs",
+  "before": ["class Enemy", "{", "    protected int hp;", "}", "", "class Boss : Enemy", "{", "    void Copy(Enemy e)", "    {", "        Debug.Log(e.hp);", "    }", "}"],
+  "after": ["class Enemy", "{", "    protected int hp;", "}", "", "class Boss : Enemy", "{", "    void Copy(Boss e)", "    {", "        Debug.Log(e.hp);", "    }", "}"],
+  "bug": "../assets/CS1540.png",
+  "focus_line": 8
+}

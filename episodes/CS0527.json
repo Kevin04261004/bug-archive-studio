@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0527",
+  "message": "Type 'Clock' in interface list is not an interface",
+  "filename": "Interfaces.cs",
+  "before": ["class Clock { }", "", "interface ITick : Clock", "{", "}"],
+  "after": ["interface Clock { }", "", "interface ITick : Clock", "{", "}"],
+  "bug": "../assets/CS0527.png",
+  "focus_line": 1
+}

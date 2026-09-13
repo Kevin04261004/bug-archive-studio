@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0714",
+  "message": "'Tools': static classes cannot implement interfaces",
+  "filename": "StaticClass.cs",
+  "before": ["interface IRun { }", "", "static class Tools : IRun", "{", "}"],
+  "after": ["interface IRun { }", "", "static class Tools", "{", "}"],
+  "bug": "../assets/CS0714.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0709",
+  "message": "'Boss': cannot derive from static class 'Tools'",
+  "filename": "StaticClass.cs",
+  "before": ["static class Tools { }", "", "class Boss : Tools", "{", "}"],
+  "after": ["class Tools { }", "", "class Boss : Tools", "{", "}"],
+  "bug": "../assets/CS0709.png",
+  "focus_line": 1
+}

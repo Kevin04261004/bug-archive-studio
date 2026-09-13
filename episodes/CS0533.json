@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0533",
+  "message": "'Boss.Hit()' hides inherited abstract member 'Enemy.Hit()'",
+  "filename": "Abstract.cs",
+  "before": ["abstract class Enemy", "{", "    public abstract void Hit();", "}", "", "class Boss : Enemy", "{", "    public new void Hit() { }", "}"],
+  "after": ["abstract class Enemy", "{", "    public abstract void Hit();", "}", "", "class Boss : Enemy", "{", "    public override void Hit() { }", "}"],
+  "bug": "../assets/CS0533.png",
+  "focus_line": 8
+}

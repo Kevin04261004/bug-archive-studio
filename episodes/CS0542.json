@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0542",
+  "message": "'Player': member names cannot be the same as their enclosing type",
+  "filename": "Members.cs",
+  "before": ["class Player", "{", "    public void Player() { }", "}"],
+  "after": ["class Player", "{", "    public void Reset() { }", "}"],
+  "bug": "../assets/CS0542.png",
+  "focus_line": 3
+}

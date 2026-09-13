@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0263",
+  "message": "Partial declarations of 'Boss' must not specify different base classes",
+  "filename": "Partial.cs",
+  "before": ["class Enemy { }", "class Unit { }", "", "partial class Boss : Enemy", "{", "}", "", "partial class Boss : Unit", "{", "}"],
+  "after": ["class Enemy { }", "class Unit { }", "", "partial class Boss : Enemy", "{", "}", "", "partial class Boss : Enemy", "{", "}"],
+  "bug": "../assets/CS0263.png",
+  "focus_line": 8
+}

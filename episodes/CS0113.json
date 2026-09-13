@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0113",
+  "message": "A member marked as override cannot be marked as new or virtual",
+  "filename": "Override.cs",
+  "before": ["class Boss : Enemy", "{", "    public override virtual void Hit() { }", "}"],
+  "after": ["class Boss : Enemy", "{", "    public override void Hit() { }", "}"],
+  "bug": "../assets/CS0113.png",
+  "focus_line": 3
+}

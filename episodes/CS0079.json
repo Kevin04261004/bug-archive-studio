@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0079",
+  "message": "The event 'Unit.Died' can only appear on the left hand side of += or -=",
+  "filename": "Events.cs",
+  "before": ["class Unit", "{", "    public event Action Died;", "}", "", "class Boss : Unit", "{", "    void Show() { }", "", "    void Go()", "    {", "        Died = Show;", "    }", "}"],
+  "after": ["class Unit", "{", "    public event Action Died;", "}", "", "class Boss : Unit", "{", "    void Show() { }", "", "    void Go()", "    {", "        Died += Show;", "    }", "}"],
+  "bug": "../assets/CS0079.png",
+  "focus_line": 12
+}

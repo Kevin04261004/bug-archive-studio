@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0621",
+  "message": "'Player.Hit()': virtual or abstract members cannot be private",
+  "filename": "Members.cs",
+  "before": ["class Player", "{", "    private virtual void Hit() { }", "}"],
+  "after": ["class Player", "{", "    internal virtual void Hit() { }", "}"],
+  "bug": "../assets/CS0621.png",
+  "focus_line": 3
+}

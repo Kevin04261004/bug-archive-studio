@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0132",
+  "message": "'Player.Player(int)': a static constructor must be parameterless",
+  "filename": "Ctors.cs",
+  "before": ["class Player", "{", "    static Player(int hp) { }", "}"],
+  "after": ["class Player", "{", "    static Player() { }", "}"],
+  "bug": "../assets/CS0132.png",
+  "focus_line": 3
+}

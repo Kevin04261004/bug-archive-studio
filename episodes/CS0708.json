@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0708",
+  "message": "'Tools.hp': cannot declare instance members in a static class",
+  "filename": "StaticClass.cs",
+  "before": ["static class Tools", "{", "    public int hp;", "}"],
+  "after": ["static class Tools", "{", "    public static int hp;", "}"],
+  "bug": "../assets/CS0708.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0205",
+  "message": "Cannot call an abstract base member: 'Enemy.Hit()'",
+  "filename": "BaseRef.cs",
+  "before": ["abstract class Enemy", "{", "    public abstract void Hit();", "}", "", "class Boss : Enemy", "{", "    public int hp;", "", "    public override void Hit()", "    {", "        base.Hit();", "    }", "}"],
+  "after": ["abstract class Enemy", "{", "    public abstract void Hit();", "}", "", "class Boss : Enemy", "{", "    public int hp;", "", "    public override void Hit()", "    {", "        hp = 0;", "    }", "}"],
+  "bug": "../assets/CS0205.png",
+  "focus_line": 12
+}

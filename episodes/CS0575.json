@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0575",
+  "message": "Only class types can contain destructors",
+  "filename": "Finalizers.cs",
+  "before": ["struct Point", "{", "    ~Point() { }", "}"],
+  "after": ["class Point", "{", "    ~Point() { }", "}"],
+  "bug": "../assets/CS0575.png",
+  "focus_line": 1
+}

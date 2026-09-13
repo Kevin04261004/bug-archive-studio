@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0516",
+  "message": "Constructor 'Player.Player()' cannot call itself",
+  "filename": "Ctors.cs",
+  "before": ["class Player", "{", "    public Player() : this() { }", "", "    public Player(int hp) { }", "}"],
+  "after": ["class Player", "{", "    public Player() : this(0) { }", "", "    public Player(int hp) { }", "}"],
+  "bug": "../assets/CS0516.png",
+  "focus_line": 3
+}

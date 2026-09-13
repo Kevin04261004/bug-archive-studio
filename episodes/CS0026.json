@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0026",
+  "message": "Keyword 'this' is not valid in a static property, static method, or static field",
+  "filename": "ThisRef.cs",
+  "before": ["class Player", "{", "    public int hp;", "", "    static void Reset()", "    {", "        this.hp = 0;", "    }", "}"],
+  "after": ["class Player", "{", "    public int hp;", "", "    void Reset()", "    {", "        this.hp = 0;", "    }", "}"],
+  "bug": "../assets/CS0026.png",
+  "focus_line": 5
+}

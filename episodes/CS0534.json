@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0534",
+  "message": "'Boss' does not implement inherited abstract member 'Enemy.Hit()'",
+  "filename": "Abstract.cs",
+  "before": ["abstract class Enemy", "{", "    public abstract void Hit();", "}", "", "class Boss : Enemy", "{", "", "}"],
+  "after": ["abstract class Enemy", "{", "    public abstract void Hit();", "}", "", "class Boss : Enemy", "{", "    public override void Hit() { }", "}"],
+  "bug": "../assets/CS0534.png",
+  "focus_line": 8
+}

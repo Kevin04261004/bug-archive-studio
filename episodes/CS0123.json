@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0123",
+  "message": "No overload for 'Show' matches delegate 'Action'",
+  "filename": "Delegates.cs",
+  "before": ["void Show(int n) { }", "", "void Start()", "{", "    Action a = Show;", "}"],
+  "after": ["void Show(int n) { }", "", "void Start()", "{", "    Action<int> a = Show;", "}"],
+  "bug": "../assets/CS0123.png",
+  "focus_line": 5
+}

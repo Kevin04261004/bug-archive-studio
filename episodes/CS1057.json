@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1057",
+  "message": "'Tools.hp': static classes cannot contain protected members",
+  "filename": "StaticClass.cs",
+  "before": ["static class Tools", "{", "    protected static int hp;", "}"],
+  "after": ["static class Tools", "{", "    internal static int hp;", "}"],
+  "bug": "../assets/CS1057.png",
+  "focus_line": 3
+}

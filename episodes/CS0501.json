@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0501",
+  "message": "'Enemy.Hit()' must declare a body because it is not marked abstract or extern",
+  "filename": "Abstract.cs",
+  "before": ["class Enemy", "{", "    public void Hit();", "}"],
+  "after": ["class Enemy", "{", "    public void Hit() { }", "}"],
+  "bug": "../assets/CS0501.png",
+  "focus_line": 3
+}

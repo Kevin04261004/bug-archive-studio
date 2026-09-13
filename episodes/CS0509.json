@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0509",
+  "message": "'Boss' cannot derive from sealed type 'Enemy'",
+  "filename": "Sealed.cs",
+  "before": ["sealed class Enemy { }", "", "class Boss : Enemy", "{", "}"],
+  "after": ["class Enemy { }", "", "class Boss : Enemy", "{", "}"],
+  "bug": "../assets/CS0509.png",
+  "focus_line": 1
+}

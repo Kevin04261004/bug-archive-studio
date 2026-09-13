@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0188",
+  "message": "The 'this' object cannot be used before all of its fields are assigned",
+  "filename": "Structs.cs",
+  "before": ["struct Point", "{", "    public int x;", "", "    public Point(int v)", "    {", "", "        Log();", "    }", "", "    void Log() { }", "}"],
+  "after": ["struct Point", "{", "    public int x;", "", "    public Point(int v)", "    {", "        x = v;", "        Log();", "    }", "", "    void Log() { }", "}"],
+  "bug": "../assets/CS0188.png",
+  "focus_line": 7
+}

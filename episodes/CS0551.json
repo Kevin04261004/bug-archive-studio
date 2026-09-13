@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0551",
+  "message": "Explicit interface implementation 'Boss.IHp.Hp' is missing accessor 'IHp.Hp.set'",
+  "filename": "Props.cs",
+  "before": ["interface IHp", "{", "    int Hp { get; set; }", "}", "", "class Boss : IHp", "{", "    int IHp.Hp { get; }", "}"],
+  "after": ["interface IHp", "{", "    int Hp { get; set; }", "}", "", "class Boss : IHp", "{", "    int IHp.Hp { get; set; }", "}"],
+  "bug": "../assets/CS0551.png",
+  "focus_line": 8
+}

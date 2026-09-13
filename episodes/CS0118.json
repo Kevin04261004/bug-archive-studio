@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0118",
+  "message": "'Player' is a type but is used like a variable",
+  "filename": "Ambiguous.cs",
+  "before": ["class Player { }", "", "void Start()", "{", "    Player = new Player();", "}"],
+  "after": ["class Player { }", "", "void Start()", "{", "    Player p = new Player();", "}"],
+  "bug": "../assets/CS0118.png",
+  "focus_line": 5
+}

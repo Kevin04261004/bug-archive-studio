@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0713",
+  "message": "Static class 'Tools' cannot derive from type 'Base'; it must derive from object",
+  "filename": "StaticClass.cs",
+  "before": ["class Base { }", "", "static class Tools : Base", "{", "}"],
+  "after": ["class Base { }", "", "static class Tools", "{", "}"],
+  "bug": "../assets/CS0713.png",
+  "focus_line": 3
+}

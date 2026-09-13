@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0267",
+  "message": "The partial modifier can only appear immediately before class, struct or interface",
+  "filename": "Partial.cs",
+  "before": ["partial static class Tools", "{", "}"],
+  "after": ["static partial class Tools", "{", "}"],
+  "bug": "../assets/CS0267.png",
+  "focus_line": 1
+}

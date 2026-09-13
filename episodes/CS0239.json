@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0239",
+  "message": "'Boss.Hit()' cannot override inherited member because it is sealed",
+  "filename": "Sealed.cs",
+  "before": ["class Enemy", "{", "    public sealed override void Hit() { }", "}", "", "class Boss : Enemy", "{", "    public override void Hit() { }", "}"],
+  "after": ["class Enemy", "{", "    public override void Hit() { }", "}", "", "class Boss : Enemy", "{", "    public override void Hit() { }", "}"],
+  "bug": "../assets/CS0239.png",
+  "focus_line": 3
+}

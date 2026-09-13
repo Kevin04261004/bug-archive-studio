@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0277",
+  "message": "'Boss' does not implement interface member 'IHit.Hit()'; it is not public",
+  "filename": "Interfaces.cs",
+  "before": ["interface IHit", "{", "    void Hit();", "}", "", "class Boss : IHit", "{", "    void Hit() { }", "}"],
+  "after": ["interface IHit", "{", "    void Hit();", "}", "", "class Boss : IHit", "{", "    public void Hit() { }", "}"],
+  "bug": "../assets/CS0277.png",
+  "focus_line": 8
+}

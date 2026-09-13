@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0548",
+  "message": "'Player.Hp': property or indexer must have at least one accessor",
+  "filename": "Props.cs",
+  "before": ["class Player", "{", "    public int Hp { }", "}"],
+  "after": ["class Player", "{", "    public int Hp { get; set; }", "}"],
+  "bug": "../assets/CS0548.png",
+  "focus_line": 3
+}

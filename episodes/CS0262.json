@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0262",
+  "message": "Partial declarations of 'Player' have conflicting accessibility modifiers",
+  "filename": "Partial.cs",
+  "before": ["public partial class Player", "{", "}", "", "internal partial class Player", "{", "}"],
+  "after": ["public partial class Player", "{", "}", "", "public partial class Player", "{", "}"],
+  "bug": "../assets/CS0262.png",
+  "focus_line": 5
+}

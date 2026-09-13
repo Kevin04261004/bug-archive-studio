@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0245",
+  "message": "Destructors and object.Finalize cannot be called directly",
+  "filename": "Finalizers.cs",
+  "before": ["class Player", "{", "    ~Player() { }", "}", "", "void Start()", "{", "    Player p = new Player();", "    p.Finalize();", "}"],
+  "after": ["class Player", "{", "    ~Player() { }", "}", "", "void Start()", "{", "    Player p = new Player();", "    p = null;", "}"],
+  "bug": "../assets/CS0245.png",
+  "focus_line": 9
+}

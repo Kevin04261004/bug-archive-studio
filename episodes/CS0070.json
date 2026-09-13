@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0070",
+  "message": "The event 'Unit.Died' can only appear on the left hand side of += or -=",
+  "filename": "Events.cs",
+  "before": ["class Unit", "{", "    public event Action Died;", "}", "", "void Show() { }", "", "void Start()", "{", "    Unit u = new Unit();", "    u.Died = Show;", "}"],
+  "after": ["class Unit", "{", "    public event Action Died;", "}", "", "void Show() { }", "", "void Start()", "{", "    Unit u = new Unit();", "    u.Died += Show;", "}"],
+  "bug": "../assets/CS0070.png",
+  "focus_line": 11
+}

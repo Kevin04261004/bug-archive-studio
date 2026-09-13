@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0663",
+  "message": "'Player' cannot define an overload that differs only on ref, out and in",
+  "filename": "Ambiguous.cs",
+  "before": ["class Player", "{", "    public void Hit(ref int v) { }", "    public void Hit(out int v) => v = 0;", "}"],
+  "after": ["class Player", "{", "    public void Hit(ref int v) { }", "    public void Damage(out int v) => v = 0;", "}"],
+  "bug": "../assets/CS0663.png",
+  "focus_line": 4
+}

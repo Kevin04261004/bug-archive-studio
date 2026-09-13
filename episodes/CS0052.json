@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0052",
+  "message": "Inconsistent accessibility: field type 'Item' is less accessible than field 'Bag.slot'",
+  "filename": "Access.cs",
+  "before": ["class Item { }", "", "public class Bag", "{", "    public Item slot;", "}"],
+  "after": ["public class Item { }", "", "public class Bag", "{", "    public Item slot;", "}"],
+  "bug": "../assets/CS0052.png",
+  "focus_line": 1
+}

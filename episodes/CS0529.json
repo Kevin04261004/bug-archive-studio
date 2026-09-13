@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0529",
+  "message": "Inherited interface 'IB' causes a cycle in the interface hierarchy of 'IA'",
+  "filename": "Interfaces.cs",
+  "before": ["interface IA : IB", "{", "}", "", "interface IB : IA", "{", "}"],
+  "after": ["interface IA : IB", "{", "}", "", "interface IB", "{", "}"],
+  "bug": "../assets/CS0529.png",
+  "focus_line": 5
+}

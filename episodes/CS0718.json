@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0718",
+  "message": "'Tools': static types cannot be used as type arguments",
+  "filename": "StaticClass.cs",
+  "before": ["static class Tools { }", "", "void Start()", "{", "    var list = new List<Tools>();", "}"],
+  "after": ["static class Tools { }", "", "void Start()", "{", "    var list = new List<int>();", "}"],
+  "bug": "../assets/CS0718.png",
+  "focus_line": 5
+}

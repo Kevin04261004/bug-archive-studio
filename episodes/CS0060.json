@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0060",
+  "message": "Inconsistent accessibility: base class 'Base' is less accessible than class 'Child'",
+  "filename": "Access.cs",
+  "before": ["class Base { }", "", "public class Child : Base", "{", "}"],
+  "after": ["public class Base { }", "", "public class Child : Base", "{", "}"],
+  "bug": "../assets/CS0060.png",
+  "focus_line": 1
+}

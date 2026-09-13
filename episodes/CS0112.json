@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0112",
+  "message": "A static member cannot be marked as override, virtual or abstract",
+  "filename": "Override.cs",
+  "before": ["class Enemy", "{", "    public static virtual void Hit() { }", "}"],
+  "after": ["class Enemy", "{", "    public static void Hit() { }", "}"],
+  "bug": "../assets/CS0112.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0547",
+  "message": "'Player.Hp': property or indexer cannot have void type",
+  "filename": "Props.cs",
+  "before": ["class Player", "{", "    public void Hp { get; set; }", "}"],
+  "after": ["class Player", "{", "    public int Hp { get; set; }", "}"],
+  "bug": "../assets/CS0547.png",
+  "focus_line": 3
+}

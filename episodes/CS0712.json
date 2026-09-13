@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0712",
+  "message": "Cannot create an instance of the static class 'Tools'",
+  "filename": "StaticClass.cs",
+  "before": ["static class Tools { }", "", "void Start()", "{", "    Tools t = new Tools();", "}"],
+  "after": ["class Tools { }", "", "void Start()", "{", "    Tools t = new Tools();", "}"],
+  "bug": "../assets/CS0712.png",
+  "focus_line": 1
+}

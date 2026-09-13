@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0143",
+  "message": "The type 'void' has no constructors defined",
+  "filename": "Types.cs",
+  "before": ["void Start()", "{", "    var v = new System.Void();", "}"],
+  "after": ["void Start()", "{", "    var v = new object();", "}"],
+  "bug": "../assets/CS0143.png",
+  "focus_line": 3
+}

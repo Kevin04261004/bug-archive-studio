@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1593",
+  "message": "Delegate 'Action' does not take 1 arguments",
+  "filename": "Delegates.cs",
+  "before": ["void Start()", "{", "    Action a = (n) => { };", "}"],
+  "after": ["void Start()", "{", "    Action<int> a = (n) => { };", "}"],
+  "bug": "../assets/CS1593.png",
+  "focus_line": 3
+}

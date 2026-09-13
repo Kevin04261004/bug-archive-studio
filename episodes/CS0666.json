@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0666",
+  "message": "'Point.hp': new protected member declared in struct",
+  "filename": "Structs.cs",
+  "before": ["struct Point", "{", "    protected int hp;", "}"],
+  "after": ["struct Point", "{", "    internal int hp;", "}"],
+  "bug": "../assets/CS0666.png",
+  "focus_line": 3
+}

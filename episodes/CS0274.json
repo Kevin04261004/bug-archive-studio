@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0274",
+  "message": "Cannot specify accessibility modifiers for both accessors of 'Player.Hp'",
+  "filename": "Props.cs",
+  "before": ["class Player", "{", "    public int Hp", "    {", "        private get;", "        private set;", "    }", "}"],
+  "after": ["class Player", "{", "    public int Hp", "    {", "        private get;", "        set;", "    }", "}"],
+  "bug": "../assets/CS0274.png",
+  "focus_line": 6
+}

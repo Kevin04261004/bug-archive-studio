@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0572",
+  "message": "'Inner': cannot reference a type through an expression",
+  "filename": "Ambiguous.cs",
+  "before": ["class Outer", "{", "    public class Inner { }", "}", "", "void Start()", "{", "    Outer o = new Outer();", "    var i = new o.Inner();", "}"],
+  "after": ["class Outer", "{", "    public class Inner { }", "}", "", "void Start()", "{", "    Outer o = new Outer();", "    var i = new Outer.Inner();", "}"],
+  "bug": "../assets/CS0572.png",
+  "focus_line": 9
+}

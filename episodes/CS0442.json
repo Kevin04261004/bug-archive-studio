@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0442",
+  "message": "'Player.Hp': abstract properties cannot have private accessors",
+  "filename": "Props.cs",
+  "before": ["abstract class Player", "{", "    public abstract int Hp", "    {", "        get;", "        private set;", "    }", "}"],
+  "after": ["abstract class Player", "{", "    public abstract int Hp", "    {", "        get;", "        set;", "    }", "}"],
+  "bug": "../assets/CS0442.png",
+  "focus_line": 6
+}

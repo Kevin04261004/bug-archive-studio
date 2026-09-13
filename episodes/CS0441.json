@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0441",
+  "message": "'Tools': a class cannot be both static and sealed",
+  "filename": "StaticClass.cs",
+  "before": ["static sealed class Tools", "{", "}"],
+  "after": ["static class Tools", "{", "}"],
+  "bug": "../assets/CS0441.png",
+  "focus_line": 1
+}

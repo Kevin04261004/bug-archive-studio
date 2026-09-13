@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1511",
+  "message": "Keyword 'base' is not available in a static method",
+  "filename": "BaseRef.cs",
+  "before": ["class Enemy", "{", "    public void Reset() { }", "}", "", "class Boss : Enemy", "{", "    static void Show()", "    {", "        base.Reset();", "    }", "}"],
+  "after": ["class Enemy", "{", "    public void Reset() { }", "}", "", "class Boss : Enemy", "{", "    void Show()", "    {", "        base.Reset();", "    }", "}"],
+  "bug": "../assets/CS1511.png",
+  "focus_line": 8
+}

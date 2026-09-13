@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0539",
+  "message": "'Boss.Jump()' in explicit interface declaration is not a member of interface",
+  "filename": "Interfaces.cs",
+  "before": ["interface IMove", "{", "    void Move();", "}", "", "class Boss : IMove", "{", "    void IMove.Jump() { }", "}"],
+  "after": ["interface IMove", "{", "    void Move();", "}", "", "class Boss : IMove", "{", "    void IMove.Move() { }", "}"],
+  "bug": "../assets/CS0539.png",
+  "focus_line": 8
+}

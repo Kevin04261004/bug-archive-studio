@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1955",
+  "message": "Non-invocable member 'Player.hp' cannot be used like a method",
+  "filename": "Ambiguous.cs",
+  "before": ["class Player", "{", "    public int hp;", "}", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p.hp());", "}"],
+  "after": ["class Player", "{", "    public int hp;", "}", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p.hp);", "}"],
+  "bug": "../assets/CS1955.png",
+  "focus_line": 9
+}

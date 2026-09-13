@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0513",
+  "message": "'Enemy.Hit()' is abstract but it is contained in non-abstract type 'Enemy'",
+  "filename": "Abstract.cs",
+  "before": ["class Enemy", "{", "    public abstract void Hit();", "}"],
+  "after": ["abstract class Enemy", "{", "    public abstract void Hit();", "}"],
+  "bug": "../assets/CS0513.png",
+  "focus_line": 1
+}

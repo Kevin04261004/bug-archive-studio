@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0759",
+  "message": "No defining declaration found for implementing declaration of 'Player.OnHit()'",
+  "filename": "Partial.cs",
+  "before": ["partial class Player", "{", "", "    partial void OnHit() { }", "}"],
+  "after": ["partial class Player", "{", "    partial void OnHit();", "    partial void OnHit() { }", "}"],
+  "bug": "../assets/CS0759.png",
+  "focus_line": 3
+}

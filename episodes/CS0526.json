@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0526",
+  "message": "Interfaces cannot contain instance constructors",
+  "filename": "Interfaces.cs",
+  "before": ["interface IUnit", "{", "    IUnit() { }", "}"],
+  "after": ["interface IUnit", "{", "    void Init();", "}"],
+  "bug": "../assets/CS0526.png",
+  "focus_line": 3
+}

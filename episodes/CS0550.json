@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0550",
+  "message": "'Boss.IHp.Hp.set' adds an accessor not found in interface member 'IHp.Hp'",
+  "filename": "Props.cs",
+  "before": ["interface IHp", "{", "    int Hp { get; }", "}", "", "class Boss : IHp", "{", "    int IHp.Hp { get; set; }", "}"],
+  "after": ["interface IHp", "{", "    int Hp { get; }", "}", "", "class Boss : IHp", "{", "    int IHp.Hp { get; }", "}"],
+  "bug": "../assets/CS0550.png",
+  "focus_line": 8
+}

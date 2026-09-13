@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0507",
+  "message": "'Boss.Hit()' cannot change access modifiers when overriding inherited member",
+  "filename": "Override.cs",
+  "before": ["class Enemy", "{", "    internal virtual void Hit() { }", "}", "", "class Boss : Enemy", "{", "    public override void Hit() { }", "}"],
+  "after": ["class Enemy", "{", "    internal virtual void Hit() { }", "}", "", "class Boss : Enemy", "{", "    internal override void Hit() { }", "}"],
+  "bug": "../assets/CS0507.png",
+  "focus_line": 8
+}

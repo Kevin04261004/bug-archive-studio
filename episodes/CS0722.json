@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0722",
+  "message": "'Tools': static types cannot be used as return types",
+  "filename": "StaticClass.cs",
+  "before": ["static class Tools { }", "", "Tools Make()", "{", "    return null;", "}"],
+  "after": ["static class Tools { }", "", "object Make()", "{", "    return null;", "}"],
+  "bug": "../assets/CS0722.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0538",
+  "message": "'Enemy' in explicit interface declaration is not an interface",
+  "filename": "Interfaces.cs",
+  "before": ["class Enemy", "{", "    public void Hit() { }", "}", "", "class Boss", "{", "    void Enemy.Hit() { }", "}"],
+  "after": ["class Enemy", "{", "    public void Hit() { }", "}", "", "class Boss", "{", "    public void Hit() { }", "}"],
+  "bug": "../assets/CS0538.png",
+  "focus_line": 8
+}

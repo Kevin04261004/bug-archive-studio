@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0508",
+  "message": "'Boss.Hit()' return type must be 'bool' to match overridden member 'Enemy.Hit()'",
+  "filename": "Override.cs",
+  "before": ["class Enemy", "{", "    public virtual bool Hit() => default;", "}", "", "class Boss : Enemy", "{", "    public override int Hit() => default;", "}"],
+  "after": ["class Enemy", "{", "    public virtual bool Hit() => default;", "}", "", "class Boss : Enemy", "{", "    public override bool Hit() => default;", "}"],
+  "bug": "../assets/CS0508.png",
+  "focus_line": 8
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0502",
+  "message": "'Enemy.Hit()' cannot be both abstract and sealed",
+  "filename": "Abstract.cs",
+  "before": ["abstract class Enemy", "{", "    public abstract sealed void Hit();", "}"],
+  "after": ["abstract class Enemy", "{", "    public abstract void Hit();", "}"],
+  "bug": "../assets/CS0502.png",
+  "focus_line": 3
+}

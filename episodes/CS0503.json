@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0503",
+  "message": "'Enemy.Hit()' cannot be both abstract and virtual",
+  "filename": "Abstract.cs",
+  "before": ["abstract class Enemy", "{", "    public abstract virtual void Hit();", "}"],
+  "after": ["abstract class Enemy", "{", "    public abstract void Hit();", "}"],
+  "bug": "../assets/CS0503.png",
+  "focus_line": 3
+}

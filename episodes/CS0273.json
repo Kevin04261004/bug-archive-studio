@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0273",
+  "message": "The accessibility modifier of 'Player.Hp.set' must be more restrictive than 'Player.Hp'",
+  "filename": "Props.cs",
+  "before": ["class Player", "{", "    private int Hp { get; public set; }", "}"],
+  "after": ["class Player", "{", "    private int Hp { get; set; }", "}"],
+  "bug": "../assets/CS0273.png",
+  "focus_line": 3
+}

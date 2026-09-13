@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0104",
+  "message": "'Random' is an ambiguous reference between 'System.Random' and 'UnityEngine.Random'",
+  "filename": "Ambiguous.cs",
+  "before": ["using System;", "using UnityEngine;", "", "void Start()", "{", "    Random r = new Random();", "}"],
+  "after": ["using System;", "", "", "void Start()", "{", "    Random r = new Random();", "}"],
+  "bug": "../assets/CS0104.png",
+  "focus_line": 2
+}

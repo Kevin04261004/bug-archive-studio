@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0751",
+  "message": "A partial method must be declared within a partial class or partial struct",
+  "filename": "Partial.cs",
+  "before": ["class Player", "{", "    partial void OnHit();", "}"],
+  "after": ["partial class Player", "{", "    partial void OnHit();", "}"],
+  "bug": "../assets/CS0751.png",
+  "focus_line": 1
+}

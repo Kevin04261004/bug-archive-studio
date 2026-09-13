@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0238",
+  "message": "'Enemy.Hit()' cannot be sealed because it is not an override",
+  "filename": "Sealed.cs",
+  "before": ["class Enemy", "{", "    public sealed void Hit() { }", "}"],
+  "after": ["class Enemy", "{", "    public void Hit() { }", "}"],
+  "bug": "../assets/CS0238.png",
+  "focus_line": 3
+}

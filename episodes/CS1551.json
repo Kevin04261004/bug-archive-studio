@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1551",
+  "message": "An indexer must have at least one parameter",
+  "filename": "Indexers.cs",
+  "before": ["class Bag", "{", "    public int this[] => 0;", "}"],
+  "after": ["class Bag", "{", "    public int this[int i] => 0;", "}"],
+  "bug": "../assets/CS1551.png",
+  "focus_line": 3
+}

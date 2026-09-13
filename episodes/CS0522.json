@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0522",
+  "message": "'Point.Point(int)': structs cannot call base class constructors",
+  "filename": "Ctors.cs",
+  "before": ["struct Point", "{", "    public int x;", "", "    public Point(int v) : base()", "    {", "        x = v;", "    }", "}"],
+  "after": ["struct Point", "{", "    public int x;", "", "    public Point(int v)", "    {", "        x = v;", "    }", "}"],
+  "bug": "../assets/CS0522.png",
+  "focus_line": 5
+}

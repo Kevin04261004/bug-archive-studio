@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0500",
+  "message": "'Enemy.Hit()' cannot declare a body because it is marked abstract",
+  "filename": "Abstract.cs",
+  "before": ["abstract class Enemy", "{", "    public abstract void Hit() { }", "}"],
+  "after": ["abstract class Enemy", "{", "    public abstract void Hit();", "}"],
+  "bug": "../assets/CS0500.png",
+  "focus_line": 3
+}

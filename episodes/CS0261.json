@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0261",
+  "message": "Partial declarations of 'Player' must be all classes or all structs",
+  "filename": "Partial.cs",
+  "before": ["partial class Player", "{", "}", "", "partial struct Player", "{", "}"],
+  "after": ["partial class Player", "{", "}", "", "partial class Player", "{", "}"],
+  "bug": "../assets/CS0261.png",
+  "focus_line": 5
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0249",
+  "message": "Do not override object.Finalize; provide a destructor instead",
+  "filename": "Finalizers.cs",
+  "before": ["class Player", "{", "    protected override void Finalize() { }", "}"],
+  "after": ["class Player", "{", "    ~Player() { }", "}"],
+  "bug": "../assets/CS0249.png",
+  "focus_line": 3
+}

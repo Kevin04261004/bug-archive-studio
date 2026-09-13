@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0540",
+  "message": "'Boss.IHit.Hit()': containing type does not implement interface 'IHit'",
+  "filename": "Interfaces.cs",
+  "before": ["interface IHit", "{", "    void Hit();", "}", "", "class Boss", "{", "    void IHit.Hit() { }", "}"],
+  "after": ["interface IHit", "{", "    void Hit();", "}", "", "class Boss : IHit", "{", "    void IHit.Hit() { }", "}"],
+  "bug": "../assets/CS0540.png",
+  "focus_line": 6
+}

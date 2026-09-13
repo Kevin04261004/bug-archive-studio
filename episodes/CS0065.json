@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0065",
+  "message": "'Unit.Died': event property must have both add and remove accessors",
+  "filename": "Events.cs",
+  "before": ["class Unit", "{", "    public event Action Died", "    {", "        add { }", "", "    }", "}"],
+  "after": ["class Unit", "{", "    public event Action Died", "    {", "        add { }", "        remove { }", "    }", "}"],
+  "bug": "../assets/CS0065.png",
+  "focus_line": 6
+}

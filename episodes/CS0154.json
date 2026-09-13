@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0154",
+  "message": "The property 'Player.Hp' cannot be used in this context; it lacks the get accessor",
+  "filename": "Props.cs",
+  "before": ["class Player", "{", "    public int Hp { set { } }", "}", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p.Hp);", "}"],
+  "after": ["class Player", "{", "    public int Hp { get; set; }", "}", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p.Hp);", "}"],
+  "bug": "../assets/CS0154.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0721",
+  "message": "'Tools': static types cannot be used as parameters",
+  "filename": "StaticClass.cs",
+  "before": ["static class Tools { }", "", "void Use(Tools t)", "{", "}"],
+  "after": ["static class Tools { }", "", "void Use(int t)", "{", "}"],
+  "bug": "../assets/CS0721.png",
+  "focus_line": 3
+}

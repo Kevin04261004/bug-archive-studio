@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0149",
+  "message": "Method name expected",
+  "filename": "Delegates.cs",
+  "before": ["void Show() { }", "", "void Start()", "{", "    Action a = new Action(1);", "}"],
+  "after": ["void Show() { }", "", "void Start()", "{", "    Action a = new Action(Show);", "}"],
+  "bug": "../assets/CS0149.png",
+  "focus_line": 5
+}

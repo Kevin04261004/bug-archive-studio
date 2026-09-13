@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0053",
+  "message": "Inconsistent accessibility: property type 'Item' is less accessible than property",
+  "filename": "Access.cs",
+  "before": ["class Item { }", "", "public class Bag", "{", "    public Item Slot { get; set; }", "}"],
+  "after": ["public class Item { }", "", "public class Bag", "{", "    public Item Slot { get; set; }", "}"],
+  "bug": "../assets/CS0053.png",
+  "focus_line": 1
+}

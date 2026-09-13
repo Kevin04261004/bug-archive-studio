@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0620",
+  "message": "Indexers cannot have void type",
+  "filename": "Indexers.cs",
+  "before": ["class Bag", "{", "    public void this[int i]", "    {", "        get { return 0; }", "    }", "}"],
+  "after": ["class Bag", "{", "    public int this[int i]", "    {", "        get { return 0; }", "    }", "}"],
+  "bug": "../assets/CS0620.png",
+  "focus_line": 3
+}

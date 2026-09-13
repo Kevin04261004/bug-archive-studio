@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0528",
+  "message": "'IRun' is already listed in the interface list",
+  "filename": "Interfaces.cs",
+  "before": ["interface IRun { }", "", "class Boss : IRun, IRun", "{", "}"],
+  "after": ["interface IRun { }", "", "class Boss : IRun", "{", "}"],
+  "bug": "../assets/CS0528.png",
+  "focus_line": 3
+}

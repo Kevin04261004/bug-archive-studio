@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0171",
+  "message": "Field 'Point.y' must be fully assigned before control is returned to the caller",
+  "filename": "Structs.cs",
+  "before": ["struct Point", "{", "    public int x;", "    public int y;", "", "    public Point(int v)", "    {", "        x = v;", "", "    }", "}"],
+  "after": ["struct Point", "{", "    public int x;", "    public int y;", "", "    public Point(int v)", "    {", "        x = v;", "        y = v;", "    }", "}"],
+  "bug": "../assets/CS0171.png",
+  "focus_line": 9
+}

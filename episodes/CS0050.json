@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0050",
+  "message": "Inconsistent accessibility: return type 'Item' is less accessible than method 'Bag.Get()'",
+  "filename": "Access.cs",
+  "before": ["class Item { }", "", "public class Bag", "{", "    public Item Get() => null;", "}"],
+  "after": ["public class Item { }", "", "public class Bag", "{", "    public Item Get() => null;", "}"],
+  "bug": "../assets/CS0050.png",
+  "focus_line": 1
+}

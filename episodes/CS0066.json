@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0066",
+  "message": "'Unit.Died': event must be of a delegate type",
+  "filename": "Events.cs",
+  "before": ["class Unit", "{", "    public event int Died;", "}"],
+  "after": ["class Unit", "{", "    public event Action Died;", "}"],
+  "bug": "../assets/CS0066.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0260",
+  "message": "Missing partial modifier on declaration of type 'Player'",
+  "filename": "Partial.cs",
+  "before": ["partial class Player", "{", "}", "", "class Player", "{", "}"],
+  "after": ["partial class Player", "{", "}", "", "partial class Player", "{", "}"],
+  "bug": "../assets/CS0260.png",
+  "focus_line": 5
+}

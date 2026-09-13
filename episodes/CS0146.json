@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0146",
+  "message": "Circular base type dependency involving 'Boss' and 'Hero'",
+  "filename": "Inherit.cs",
+  "before": ["class Hero : Boss", "{", "}", "", "class Boss : Hero", "{", "}"],
+  "after": ["class Hero : Boss", "{", "}", "", "class Boss", "{", "}"],
+  "bug": "../assets/CS0146.png",
+  "focus_line": 5
+}

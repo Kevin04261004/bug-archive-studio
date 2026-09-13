@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0236",
+  "message": "A field initializer cannot reference the non-static field 'hp'",
+  "filename": "ThisRef.cs",
+  "before": ["class Player", "{", "    public int hp = 10;", "    public int copy = hp;", "}"],
+  "after": ["class Player", "{", "    public int hp = 10;", "    public int copy = 10;", "}"],
+  "bug": "../assets/CS0236.png",
+  "focus_line": 4
+}

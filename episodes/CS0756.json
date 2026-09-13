@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0756",
+  "message": "A partial method may not have multiple defining declarations",
+  "filename": "Partial.cs",
+  "before": ["partial class Player", "{", "    partial void OnHit();", "    partial void OnHit();", "}"],
+  "after": ["partial class Player", "{", "    partial void OnHit();", "    partial void OnHit() { }", "}"],
+  "bug": "../assets/CS0756.png",
+  "focus_line": 4
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0574",
+  "message": "Name of destructor must match name of class",
+  "filename": "Finalizers.cs",
+  "before": ["class Player", "{", "    ~Enemy() { }", "}"],
+  "after": ["class Player", "{", "    ~Player() { }", "}"],
+  "bug": "../assets/CS0574.png",
+  "focus_line": 3
+}

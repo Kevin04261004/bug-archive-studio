@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0175",
+  "message": "Use of keyword 'base' is not valid in this context",
+  "filename": "BaseRef.cs",
+  "before": ["class Enemy", "{", "    public int hp;", "}", "", "class Boss : Enemy", "{", "    void Show()", "    {", "        Debug.Log(base);", "    }", "}"],
+  "after": ["class Enemy", "{", "    public int hp;", "}", "", "class Boss : Enemy", "{", "    void Show()", "    {", "        Debug.Log(base.hp);", "    }", "}"],
+  "bug": "../assets/CS0175.png",
+  "focus_line": 10
+}

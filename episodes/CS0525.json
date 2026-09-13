@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0525",
+  "message": "Interfaces cannot contain instance fields",
+  "filename": "Interfaces.cs",
+  "before": ["interface IUnit", "{", "    int hp;", "}"],
+  "after": ["interface IUnit", "{", "    int hp { get; set; }", "}"],
+  "bug": "../assets/CS0525.png",
+  "focus_line": 3
+}

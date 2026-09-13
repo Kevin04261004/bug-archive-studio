@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0119",
+  "message": "'Player' is a type, which is not valid in the given context",
+  "filename": "Ambiguous.cs",
+  "before": ["class Player { }", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(Player);", "}"],
+  "after": ["class Player { }", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p);", "}"],
+  "bug": "../assets/CS0119.png",
+  "focus_line": 6
+}

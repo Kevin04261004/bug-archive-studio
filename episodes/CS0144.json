@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0144",
+  "message": "Cannot create an instance of the abstract type or interface 'Enemy'",
+  "filename": "Abstract.cs",
+  "before": ["abstract class Enemy { }", "", "void Start()", "{", "    Enemy e = new Enemy();", "}"],
+  "after": ["class Enemy { }", "", "void Start()", "{", "    Enemy e = new Enemy();", "}"],
+  "bug": "../assets/CS0144.png",
+  "focus_line": 1
+}

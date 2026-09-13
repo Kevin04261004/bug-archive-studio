@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0757",
+  "message": "A partial method may not have multiple implementing declarations",
+  "filename": "Partial.cs",
+  "before": ["partial class Player", "{", "    partial void OnHit() { }", "    partial void OnHit() { }", "}"],
+  "after": ["partial class Player", "{", "    partial void OnHit();", "    partial void OnHit() { }", "}"],
+  "bug": "../assets/CS0757.png",
+  "focus_line": 3
+}
