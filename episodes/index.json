@@ -4723,8 +4723,8 @@
       "message": "The event 'Unit.Died' is never used",
       "filename": "Unused.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0067.png",
+      "bug": "assets/CS0067.png",
+      "missing": null,
       "order": 403,
       "tier": 8
     },
