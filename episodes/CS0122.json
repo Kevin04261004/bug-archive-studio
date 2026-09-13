@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0122",
+  "message": "'Enemy.hp' is inaccessible due to its protection level",
+  "filename": "Health.cs",
+  "before": ["class Enemy", "{", "    int hp = 100;", "}", "", "void Start()", "{", "    Debug.Log(new Enemy().hp);", "}"],
+  "after": ["class Enemy", "{", "    public int hp = 100;", "}", "", "void Start()", "{", "    Debug.Log(new Enemy().hp);", "}"],
+  "bug": "../assets/CS0122.png",
+  "focus_line": 3
+}

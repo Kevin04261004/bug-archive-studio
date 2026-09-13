@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1519",
+  "message": "Invalid token '==' in class, record, struct, or interface member declaration",
+  "filename": "Fields.cs",
+  "before": ["class Player", "{", "    public int hp == 100;", "}"],
+  "after": ["class Player", "{", "    public int hp = 100;", "}"],
+  "bug": "../assets/CS1519.png",
+  "focus_line": 3
+}

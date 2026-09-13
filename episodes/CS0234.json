@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0234",
+  "message": "The type or namespace name 'Collection' does not exist in the namespace 'System'",
+  "filename": "Bag.cs",
+  "before": ["using System.Collection;", "", "public class Bag", "{", "    int size;", "}"],
+  "after": ["using System.Collections;", "", "public class Bag", "{", "    int size;", "}"],
+  "bug": "../assets/CS0234.png",
+  "focus_line": 1
+}

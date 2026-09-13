@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0106",
+  "message": "The modifier 'public' is not valid for this item",
+  "filename": "Helpers.cs",
+  "before": ["void Start()", "{", "    public void Helper() { }", "    Helper();", "}"],
+  "after": ["void Start()", "{", "    void Helper() { }", "    Helper();", "}"],
+  "bug": "../assets/CS0106.png",
+  "focus_line": 3
+}

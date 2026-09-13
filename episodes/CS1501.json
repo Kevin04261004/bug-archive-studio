@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1501",
+  "message": "No overload for method 'Fire' takes 0 arguments",
+  "filename": "Weapon.cs",
+  "before": ["class Gun", "{", "    public void Fire(int p) { }", "    public void Fire(int p, int n) { }", "}", "", "void Start()", "{", "    new Gun().Fire();", "}"],
+  "after": ["class Gun", "{", "    public void Fire(int p) { }", "    public void Fire(int p, int n) { }", "}", "", "void Start()", "{", "    new Gun().Fire(10);", "}"],
+  "bug": "../assets/CS1501.png",
+  "focus_line": 9
+}

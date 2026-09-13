@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1525",
+  "message": "Invalid expression term ';'",
+  "filename": "Setup.cs",
+  "before": ["void Start()", "{", "    int hp = ;", "}"],
+  "after": ["void Start()", "{", "    int hp = 100;", "}"],
+  "bug": "../assets/CS1525.png",
+  "focus_line": 3
+}
