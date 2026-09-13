@@ -17,8 +17,8 @@
       "message": "Cannot implicitly convert type 'string' to 'int'",
       "filename": "ScoreCounter.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0029.png"
+      "bug": "assets/CS0029.png",
+      "missing": null
     },
     {
       "file": "CS0103.json",
