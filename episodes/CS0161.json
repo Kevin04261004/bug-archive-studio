@@ -2,8 +2,22 @@
   "error_code": "CS0161",
   "message": "'GetScore(bool)': not all code paths return a value",
   "filename": "ScoreRules.cs",
-  "before": ["int GetScore(bool win)", "{", "    if (win)", "        return 10;", "", "}"],
-  "after": ["int GetScore(bool win)", "{", "    if (win)", "        return 10;", "    return 0;", "}"],
-  "bug": "../assets/CS0161.png",
-  "focus_line": 5
+  "before": [
+    "int GetScore(bool win)",
+    "{",
+    "    if (win)",
+    "        return 10;",
+    "}"
+  ],
+  "after": [
+    "int GetScore(bool win)",
+    "{",
+    "    if (win)",
+    "        return 10;",
+    "    return 0;",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0161.png"
 }
