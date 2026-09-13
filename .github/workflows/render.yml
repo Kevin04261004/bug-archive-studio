@@ -79,5 +79,13 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m '에피소드 목록 갱신 [skip ci]'
-          git pull --rebase origin main
-          git push origin HEAD:main
+          # The studio pushes to main too, and GitHub sometimes answers 500 here.
+          # Rebase and retry instead of failing the whole render on a lost race.
+          for wait in 0 5 15 30 60; do
+            sleep "$wait"
+            git fetch origin main || continue
+            git rebase origin/main || { git rebase --abort || true; continue; }
+            git push origin HEAD:main && exit 0
+          done
+          echo 'Could not push the refreshed episode list after 5 tries.' >&2
+          exit 1
