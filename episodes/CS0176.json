@@ -2,8 +2,8 @@
   "error_code": "CS0176",
   "message": "Member 'Enemy.Spawn()' cannot be accessed with an instance reference",
   "filename": "Battle.cs",
-  "before": ["void Start()", "{", "    Enemy e = new Enemy();", "    e.Spawn();", "}"],
-  "after": ["void Start()", "{", "    Enemy e = new Enemy();", "    Enemy.Spawn();", "}"],
+  "before": ["class Enemy", "{", "    public static void Spawn() { }", "}", "", "void Start()", "{", "    Enemy e = new Enemy();", "    e.Spawn();", "}"],
+  "after": ["class Enemy", "{", "    public static void Spawn() { }", "}", "", "void Start()", "{", "    Enemy e = new Enemy();", "    Enemy.Spawn();", "}"],
   "bug": "../assets/CS0176.png",
-  "focus_line": 4
+  "focus_line": 9
 }
