@@ -296,6 +296,33 @@ try{const rows=await listEpisodes();$('episodelist').replaceChildren(...episodeN
 catch(e){epstatus(e.message,true);}};
 $('closeEpisodes').onclick=()=>$('episodes').close();
 $('episodeopen').onclick=()=>{$('episodes').close();$('projectfile').click();};
+/* ChatGPT subscriptions cannot be called as a browser API. This two-step bridge loads the next
+   ready-made episode, sends its image prompt to ChatGPT, then accepts the downloaded PNG and
+   hands the complete episode to the existing GitHub Actions renderer. */
+const plusstatus=(s,error=false)=>{$('plusstatus').textContent=s;$('plusstatus').classList.toggle('error',error);};
+function subscriptionPrompt(){return `${bugPrompt()}\n\nGenerate the image now. Return exactly one downloadable PNG with a genuinely transparent background. Do not explain the error and do not add any caption, letters, numbers, border, card, scenery, floor, or cast shadow.`;}
+async function copySubscriptionPrompt(){const prompt=subscriptionPrompt();$('plusprompt').value=prompt;
+try{await navigator.clipboard.writeText(prompt);plusstatus('Prompt copied. Paste it into ChatGPT if it is not already filled in.');return true;}
+catch{$('plusprompt').focus();$('plusprompt').select();plusstatus('Automatic copy was blocked. The prompt is selected; copy it once.',true);return false;}}
+async function prepareNextShort(openChat=true){const chat=openChat?window.open('https://chatgpt.com/','_blank'):null;if(chat)chat.opener=null;
+$('plusflow').showModal();$('flowtitle').textContent='Preparing the next Short…';$('flowcopy').textContent='Finding the first episode without a bug PNG.';plusstatus('Reading 506 episode records…');
+try{const rows=await listEpisodes(),row=rows.find(x=>!x.bug);if(!row)throw Error('Every episode already has a bug PNG. There is nothing left in the queue.');
+await loadEpisode(row);refreshPrompt();$('plusprompt').value=subscriptionPrompt();$('flowtitle').textContent=`${row.error_code} is ready`;
+$('flowcopy').textContent=`#${row.order||'?'} · ${row.message} · before/after loaded automatically`;
+await copySubscriptionPrompt();if(openChat&&!chat)plusstatus('Your browser blocked the ChatGPT tab. Press “1 · Open ChatGPT” once.',true);}
+catch(e){if(chat)chat.close();plusstatus(e.message,true);$('flowtitle').textContent='Could not prepare the next Short';}}
+async function useSubscriptionPng(file){if(!file)return;if(file.type!=='image/png'&&!/\.png$/i.test(file.name))throw Error('Choose the PNG downloaded from ChatGPT.');if(file.size>8*1024*1024)throw Error('Use a PNG smaller than 8 MB.');
+plusstatus('Checking transparency and applying the bug…');await setBug(await blobDataUrl(file));update();plusstatus('PNG applied. Starting the existing GitHub render flow…');$('plusflow').close();await renderOnActions();}
+$('nextshort').onclick=()=>prepareNextShort(true);
+$('closePlus').onclick=()=>$('plusflow').close();
+$('copyPlus').onclick=()=>copySubscriptionPrompt();
+$('openPlus').onclick=async()=>{await copySubscriptionPrompt();window.open('https://chatgpt.com/','_blank','noopener');};
+$('finishPlus').onclick=()=>{$('plusfile').value='';$('plusfile').click();};
+$('plusfile').onchange=e=>useSubscriptionPng(e.target.files[0]).catch(err=>plusstatus(err.message,true));
+for(const event of ['dragenter','dragover'])$('plusdrop').addEventListener(event,e=>{e.preventDefault();$('plusdrop').classList.add('drag');});
+for(const event of ['dragleave','drop'])$('plusdrop').addEventListener(event,e=>{e.preventDefault();$('plusdrop').classList.remove('drag');});
+$('plusdrop').addEventListener('drop',e=>useSubscriptionPng(e.dataTransfer.files[0]).catch(err=>plusstatus(err.message,true)));
+$('plusdrop').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('finishPlus').click();}});
 /* AI bug generation. The concept stays the established Bug Archive family; only one slight variation changes. */
 const MOTIFS={CS1002:'a semicolon marking',CS1003:'a missing-token marking',CS0103:'a question-mark marking',CS0246:'a not-found marking',CS1061:'an unknown-member marking',CS0029:'a type-mismatch marking',CS0161:'a missing-return marking',CS0165:'an unassigned-value marking',CS0019:'an operator-mismatch marking',CS1503:'an argument-mismatch marking',CS0201:'an unfinished-statement marking',CS0117:'a missing-name marking',CS1525:'an unexpected-token marking'};
 const VARIATIONS=[['auto','Auto (slight)'],['cheeks','Rounder cheeks'],['antennae','Shorter antennae'],['pose','Playful pose'],['accessory','Small accessory'],['none','No variation']];
