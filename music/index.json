@@ -1,8 +1,38 @@
 {
   "tracks": [
     {
+      "file": "01-LoFi-Desk-Video-Fit.mp3",
+      "path": "music/01-LoFi-Desk-Video-Fit.mp3",
+      "size": 385581
+    },
+    {
+      "file": "01-Neon-Original-BGM.mp3",
+      "path": "music/01-Neon-Original-BGM.mp3",
+      "size": 385581
+    },
+    {
+      "file": "02-Neon-Ripple-BGM.mp3",
+      "path": "music/02-Neon-Ripple-BGM.mp3",
+      "size": 385581
+    },
+    {
       "file": "02-Pocket-Funk-Video-Fit.mp3",
       "path": "music/02-Pocket-Funk-Video-Fit.mp3",
+      "size": 385581
+    },
+    {
+      "file": "03-Neon-Glass-BGM.mp3",
+      "path": "music/03-Neon-Glass-BGM.mp3",
+      "size": 385581
+    },
+    {
+      "file": "04-Dream-Float-Video-Fit.mp3",
+      "path": "music/04-Dream-Float-Video-Fit.mp3",
+      "size": 385581
+    },
+    {
+      "file": "05-Sunny-Bossa-Video-Fit.mp3",
+      "path": "music/05-Sunny-Bossa-Video-Fit.mp3",
       "size": 385581
     },
     {
