@@ -1903,8 +1903,8 @@
       "message": "Inconsistent accessibility: property type 'Item' is less accessible than property",
       "filename": "Access.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0053.png",
+      "bug": "assets/CS0053.png",
+      "missing": null,
       "order": 164,
       "tier": 4
     },
