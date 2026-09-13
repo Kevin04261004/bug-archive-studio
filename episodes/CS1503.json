@@ -2,8 +2,29 @@
   "error_code": "CS1503",
   "message": "Argument 1: cannot convert from 'string' to 'float'",
   "filename": "Timing.cs",
-  "before": ["class Timer", "{", "    public void Wait(float sec) { }", "}", "", "void Start()", "{", "    new Timer().Wait(\"3\");", "}"],
-  "after": ["class Timer", "{", "    public void Wait(float sec) { }", "}", "", "void Start()", "{", "    new Timer().Wait(3f);", "}"],
-  "bug": "../assets/CS1503.png",
-  "focus_line": 8
+  "before": [
+    "class Timer",
+    "{",
+    "    public void Wait(float sec) { }",
+    "}",
+    "",
+    "void Start()",
+    "{",
+    "    new Timer().Wait(\"3\");",
+    "}"
+  ],
+  "after": [
+    "class Timer",
+    "{",
+    "    public void Wait(float sec) { }",
+    "}",
+    "",
+    "void Start()",
+    "{",
+    "    new Timer().Wait(3f);",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS1503.png"
 }
