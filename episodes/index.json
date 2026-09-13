@@ -1879,8 +1879,8 @@
       "message": "Inconsistent accessibility: parameter type 'Item' is less accessible than method",
       "filename": "Access.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0051.png",
+      "bug": "assets/CS0051.png",
+      "missing": null,
       "order": 162,
       "tier": 4
     },
