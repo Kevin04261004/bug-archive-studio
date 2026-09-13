@@ -1207,8 +1207,8 @@
       "message": "Cannot convert null to 'int' because it is a non-nullable value type",
       "filename": "Nulls.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0037.png",
+      "bug": "assets/CS0037.png",
+      "missing": null,
       "order": 103,
       "tier": 3
     },
