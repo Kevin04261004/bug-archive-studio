@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1017",
+  "message": "Catch clauses cannot follow the general catch clause of a try statement",
+  "filename": "Exceptions.cs",
+  "before": ["void Start()", "{", "    try", "    {", "    }", "    catch", "    {", "    }", "    catch (IOException)", "    {", "    }", "}"],
+  "after": ["void Start()", "{", "    try", "    {", "    }", "    catch (ArgumentException)", "    {", "    }", "    catch (IOException)", "    {", "    }", "}"],
+  "bug": "../assets/CS1017.png",
+  "focus_line": 6
+}

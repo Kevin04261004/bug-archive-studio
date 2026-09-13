@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0157",
+  "message": "Control cannot leave the body of a finally clause",
+  "filename": "Exceptions.cs",
+  "before": ["void Start()", "{", "    try", "    {", "    }", "    finally", "    {", "        return;", "    }", "}"],
+  "after": ["void Start()", "{", "    try", "    {", "    }", "    finally", "    {", "        Debug.Log(1);", "    }", "}"],
+  "bug": "../assets/CS0157.png",
+  "focus_line": 8
+}

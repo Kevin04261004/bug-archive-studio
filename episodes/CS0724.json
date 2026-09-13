@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0724",
+  "message": "A throw statement with no arguments is not allowed in a nested finally clause",
+  "filename": "Exceptions.cs",
+  "before": ["void Start()", "{", "    try { }", "    catch", "    {", "        try { }", "        finally", "        {", "            throw;", "        }", "    }", "}"],
+  "after": ["void Start()", "{", "    try { }", "    catch", "    {", "        try { }", "        finally", "        {", "            throw new Exception();", "        }", "    }", "}"],
+  "bug": "../assets/CS0724.png",
+  "focus_line": 9
+}

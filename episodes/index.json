@@ -721,6 +721,16 @@
       "missing": "../assets/CS0156.png"
     },
     {
+      "file": "CS0157.json",
+      "path": "episodes/CS0157.json",
+      "error_code": "CS0157",
+      "message": "Control cannot leave the body of a finally clause",
+      "filename": "Exceptions.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0157.png"
+    },
+    {
       "file": "CS0158.json",
       "path": "episodes/CS0158.json",
       "error_code": "CS0158",
@@ -3131,6 +3141,16 @@
       "missing": "../assets/CS0723.png"
     },
     {
+      "file": "CS0724.json",
+      "path": "episodes/CS0724.json",
+      "error_code": "CS0724",
+      "message": "A throw statement with no arguments is not allowed in a nested finally clause",
+      "filename": "Exceptions.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS0724.png"
+    },
+    {
       "file": "CS0728.json",
       "path": "episodes/CS0728.json",
       "error_code": "CS0728",
@@ -3591,6 +3611,16 @@
       "missing": "../assets/CS1013.png"
     },
     {
+      "file": "CS1017.json",
+      "path": "episodes/CS1017.json",
+      "error_code": "CS1017",
+      "message": "Catch clauses cannot follow the general catch clause of a try statement",
+      "filename": "Exceptions.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS1017.png"
+    },
+    {
       "file": "CS1019.json",
       "path": "episodes/CS1019.json",
       "error_code": "CS1019",
@@ -3699,6 +3729,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS1029.png"
+    },
+    {
+      "file": "CS1030.json",
+      "path": "episodes/CS1030.json",
+      "error_code": "CS1030",
+      "message": "#warning: 'TODO: fix the spawn rate'",
+      "filename": "Preproc.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS1030.png"
     },
     {
       "file": "CS1035.json",
