@@ -2,8 +2,21 @@
   "error_code": "CS0111",
   "message": "Type 'Gun' already defines a member called 'Fire' with the same parameter types",
   "filename": "Weapons.cs",
-  "before": ["class Gun", "{", "    public void Fire(int p) { }", "    public void Fire(int p) { }", "}"],
-  "after": ["class Gun", "{", "    public void Fire(int p) { }", "    public void Fire(string p) { }", "}"],
-  "bug": "../assets/CS0111.png",
-  "focus_line": 4
+  "before": [
+    "class Gun",
+    "{",
+    "    public void Fire(int p) { }",
+    "    public void Fire(int p) { }",
+    "}"
+  ],
+  "after": [
+    "class Gun",
+    "{",
+    "    public void Fire(int p) { }",
+    "    public void Fire(string p) { }",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0111.png"
 }
