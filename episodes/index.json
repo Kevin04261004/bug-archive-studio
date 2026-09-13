@@ -271,8 +271,8 @@
       "message": "The namespace 'Game' already contains a definition for 'Enemy'",
       "filename": "Enemies.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0101.png",
+      "bug": "assets/CS0101.png",
+      "missing": null,
       "order": 23,
       "tier": 1
     },
