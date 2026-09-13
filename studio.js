@@ -129,8 +129,12 @@ let musicChoice='',tracks=[],bgm=null,bgmSrc='';
 const MUSIC_GAIN=.22;
 const mstatus=(s,error=false)=>{$('musicstatus').textContent=s;$('musicstatus').classList.toggle('error',error);};
 const trackByName=n=>tracks.find(t=>t.file===n)||null;
+function fnv1a(text){let h=0x811C9DC5;for(const b of new TextEncoder().encode(text)){h^=b;h=Math.imul(h,0x01000193)>>>0;}return h>>>0;}
+/* Every error code keeps its track for good: the score depends on the code and that one file name,
+   so adding or removing other tracks never moves an episode to a different song. render.py matches. */
 function pickRandom(){if(!tracks.length)return null;const code=($('errorcode').value.trim()||'CS1002').toUpperCase();
-return tracks[[...code].reduce((a,c)=>a+c.charCodeAt(0),0)%tracks.length];}
+return tracks.reduce((best,t)=>{const s=fnv1a(code+'|'+t.file);const b=fnv1a(code+'|'+best.file);
+return s>b||(s===b&&t.file>best.file)?t:best;});}
 function resolvedTrack(){if(musicChoice==='random')return pickRandom();return musicChoice?trackByName(musicChoice):null;}
 function musicLabel(){if(!musicChoice)return'None';const t=resolvedTrack();
 if(musicChoice==='random')return t?`Random · ${t.file}`:'Random · no tracks yet';

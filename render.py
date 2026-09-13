@@ -40,13 +40,21 @@ MUSIC_TYPES={'.mp3','.wav','.ogg','.m4a','.opus','.flac'}
 MUSIC_GAIN=.22
 def music_files():
     return sorted(p for p in MUSIC_DIR.glob('*') if p.suffix.lower() in MUSIC_TYPES)
+def fnv1a(text):
+    """32-bit FNV-1a. studio.js runs the same hash so the page and the renderer agree."""
+    h=0x811C9DC5
+    for byte in text.encode('utf-8'):h=((h^byte)*0x01000193)&0xFFFFFFFF
+    return h
+def track_for(code,names):
+    """Every error code keeps its track for good: the score depends on the code and that one file name,
+    so adding or removing other tracks never moves an episode to a different song."""
+    return max(names,key=lambda name:(fnv1a(code+'|'+name),name))
 def pick_music(choice,code):
-    """'random' keeps picking the same track for a given error code, so a re-render sounds the same."""
     choice=(choice or 'none').strip()
     if choice.lower()=='none':return None
     files=music_files()
     if not files:return None
-    if choice.lower()=='random':return files[sum(ord(c) for c in code)%len(files)]
+    if choice.lower()=='random':return MUSIC_DIR/track_for(code,[f.name for f in files])
     named=MUSIC_DIR/Path(choice).name
     return named if named.is_file() else None
 MUSIC=pick_music(args.music if args.music else cfg.get('music'),CODE)
