@@ -2,8 +2,29 @@
   "error_code": "CS7036",
   "message": "There is no argument given that corresponds to the required parameter 'damage'",
   "filename": "Combat.cs",
-  "before": ["class Enemy", "{", "    public void Hit(int damage) { }", "}", "", "void Start()", "{", "    new Enemy().Hit();", "}"],
-  "after": ["class Enemy", "{", "    public void Hit(int damage) { }", "}", "", "void Start()", "{", "    new Enemy().Hit(10);", "}"],
-  "bug": "../assets/CS7036.png",
-  "focus_line": 8
+  "before": [
+    "class Enemy",
+    "{",
+    "    public void Hit(int damage) { }",
+    "}",
+    "",
+    "void Start()",
+    "{",
+    "    new Enemy().Hit();",
+    "}"
+  ],
+  "after": [
+    "class Enemy",
+    "{",
+    "    public void Hit(int damage) { }",
+    "}",
+    "",
+    "void Start()",
+    "{",
+    "    new Enemy().Hit(10);",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS7036.png"
 }
