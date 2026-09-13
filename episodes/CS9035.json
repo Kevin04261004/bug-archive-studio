@@ -1,0 +1,9 @@
+{
+  "error_code": "CS9035",
+  "message": "Required member 'Player.name' must be set in the object initializer",
+  "filename": "Records.cs",
+  "before": ["class Player", "{", "    public required string name;", "}", "", "void Start()", "{", "    var p = new Player();", "}"],
+  "after": ["class Player", "{", "    public required string name;", "}", "", "void Start()", "{", "    var p = new Player { name = \"a\" };", "}"],
+  "bug": "../assets/CS9035.png",
+  "focus_line": 8
+}

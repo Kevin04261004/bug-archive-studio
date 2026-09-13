@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8619",
+  "message": "Nullability of 'List<string?>' does not match target type 'List<string>'",
+  "filename": "Nullable.cs",
+  "before": ["#nullable enable", "", "void Start()", "{", "    var a = new List<string?>();", "    List<string> b = a;", "}"],
+  "after": ["#nullable enable", "", "void Start()", "{", "    var a = new List<string?>();", "    List<string?> b = a;", "}"],
+  "bug": "../assets/CS8619.png",
+  "focus_line": 6
+}

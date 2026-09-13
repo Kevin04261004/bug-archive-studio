@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1627",
+  "message": "Expression expected after yield return",
+  "filename": "Iterator.cs",
+  "before": ["IEnumerable<int> Get()", "{", "    yield return;", "}"],
+  "after": ["IEnumerable<int> Get()", "{", "    yield return 1;", "}"],
+  "bug": "../assets/CS1627.png",
+  "focus_line": 3
+}

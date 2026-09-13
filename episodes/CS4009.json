@@ -1,0 +1,9 @@
+{
+  "error_code": "CS4009",
+  "message": "A void or int returning entry point cannot be async",
+  "filename": "AsyncLoad.cs",
+  "before": ["static async void Main()", "{", "    await Task.Delay(1);", "}"],
+  "after": ["static async Task Main()", "{", "    await Task.Delay(1);", "}"],
+  "bug": "../assets/CS4009.png",
+  "focus_line": 1
+}

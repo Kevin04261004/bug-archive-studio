@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8632",
+  "message": "The ? annotation should only be used in code within a #nullable context",
+  "filename": "Nullable.cs",
+  "before": ["", "class Player", "{", "    public string? name;", "}"],
+  "after": ["#nullable enable", "class Player", "{", "    public string? name;", "}"],
+  "bug": "../assets/CS8632.png",
+  "focus_line": 1
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1621",
+  "message": "The yield statement cannot be used inside a lambda expression",
+  "filename": "Iterator.cs",
+  "before": ["IEnumerable<int> Get()", "{", "    Action a = () => { yield return 1; };", "}"],
+  "after": ["IEnumerable<int> Get()", "{", "    yield return 1;", "}"],
+  "bug": "../assets/CS1621.png",
+  "focus_line": 3
+}

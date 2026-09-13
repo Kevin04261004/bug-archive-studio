@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8625",
+  "message": "Cannot convert null literal to non-nullable reference type",
+  "filename": "Nullable.cs",
+  "before": ["#nullable enable", "", "void Start()", "{", "    string s = null;", "}"],
+  "after": ["#nullable enable", "", "void Start()", "{", "    string s = \"\";", "}"],
+  "bug": "../assets/CS8625.png",
+  "focus_line": 5
+}

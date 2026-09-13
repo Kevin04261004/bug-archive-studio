@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8602",
+  "message": "Dereference of a possibly null reference",
+  "filename": "Nullable.cs",
+  "before": ["#nullable enable", "", "void Start()", "{", "    string? s = null;", "    Debug.Log(s.Length);", "}"],
+  "after": ["#nullable enable", "", "void Start()", "{", "    string? s = null;", "    Debug.Log(s?.Length);", "}"],
+  "bug": "../assets/CS8602.png",
+  "focus_line": 6
+}

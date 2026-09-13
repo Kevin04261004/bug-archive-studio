@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1674",
+  "message": "'Player': type used in a using statement must be convertible to IDisposable",
+  "filename": "Using.cs",
+  "before": ["class Player { }", "", "void Start()", "{", "    using (var p = new Player())", "    {", "    }", "}"],
+  "after": ["class Player : IDisposable { }", "", "void Start()", "{", "    using (var p = new Player())", "    {", "    }", "}"],
+  "bug": "../assets/CS1674.png",
+  "focus_line": 1
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8620",
+  "message": "Argument of type 'List<string?>' cannot be used for parameter 'List<string>'",
+  "filename": "Nullable.cs",
+  "before": ["#nullable enable", "", "void Show(List<string> xs) { }", "", "void Start()", "{", "    var a = new List<string?>();", "    Show(a);", "}"],
+  "after": ["#nullable enable", "", "void Show(List<string?> xs) { }", "", "void Start()", "{", "    var a = new List<string?>();", "    Show(a);", "}"],
+  "bug": "../assets/CS8620.png",
+  "focus_line": 3
+}

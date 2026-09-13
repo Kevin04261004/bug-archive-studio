@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0210",
+  "message": "You must provide an initializer in a fixed or using statement declaration",
+  "filename": "Using.cs",
+  "before": ["void Start()", "{", "    using (Stream s)", "    {", "    }", "}"],
+  "after": ["void Start()", "{", "    using (Stream s = File.OpenRead(\"a\"))", "    {", "    }", "}"],
+  "bug": "../assets/CS0210.png",
+  "focus_line": 3
+}

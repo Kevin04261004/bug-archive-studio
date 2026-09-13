@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1998",
+  "message": "This async method lacks await operators and will run synchronously",
+  "filename": "AsyncLoad.cs",
+  "before": ["async Task<int> Load()", "{", "", "    return 1;", "}"],
+  "after": ["async Task<int> Load()", "{", "    await Task.Delay(1);", "    return 1;", "}"],
+  "bug": "../assets/CS1998.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS4014",
+  "message": "Because this call is not awaited, execution continues before the call completes",
+  "filename": "AsyncLoad.cs",
+  "before": ["async Task Load()", "{", "    Task.Delay(1);", "}"],
+  "after": ["async Task Load()", "{", "    await Task.Delay(1);", "}"],
+  "bug": "../assets/CS4014.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8604",
+  "message": "Possible null reference argument for parameter 's'",
+  "filename": "Nullable.cs",
+  "before": ["#nullable enable", "", "void Show(string s) { }", "", "void Start()", "{", "    string? t = null;", "    Show(t);", "}"],
+  "after": ["#nullable enable", "", "void Show(string s) { }", "", "void Start()", "{", "    string? t = null;", "    Show(t ?? \"\");", "}"],
+  "bug": "../assets/CS8604.png",
+  "focus_line": 8
+}

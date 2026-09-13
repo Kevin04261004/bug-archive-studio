@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8866",
+  "message": "Record member 'Unit.hp' must be a readable instance property to match parameter 'hp'",
+  "filename": "Records.cs",
+  "before": ["record Unit(int hp)", "{", "    public int hp;", "}"],
+  "after": ["record Unit(int hp)", "{", "    public int hp { get; }", "}"],
+  "bug": "../assets/CS8866.png",
+  "focus_line": 3
+}

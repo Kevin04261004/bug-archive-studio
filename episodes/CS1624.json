@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1624",
+  "message": "The body of 'Get()' cannot be an iterator block because 'int' is not an iterator type",
+  "filename": "Iterator.cs",
+  "before": ["int Get()", "{", "    yield return 1;", "}"],
+  "after": ["IEnumerable<int> Get()", "{", "    yield return 1;", "}"],
+  "bug": "../assets/CS1624.png",
+  "focus_line": 1
+}

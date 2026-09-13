@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8865",
+  "message": "Only records may inherit from records",
+  "filename": "Records.cs",
+  "before": ["record Unit", "{", "}", "", "class Boss : Unit", "{", "}"],
+  "after": ["record Unit", "{", "}", "", "record Boss : Unit", "{", "}"],
+  "bug": "../assets/CS8865.png",
+  "focus_line": 5
+}

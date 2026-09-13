@@ -1,0 +1,9 @@
+{
+  "error_code": "CS4032",
+  "message": "The 'await' operator can only be used within an async method",
+  "filename": "AsyncLoad.cs",
+  "before": ["int Load()", "{", "    await Task.Delay(1);", "    return 1;", "}"],
+  "after": ["async Task<int> Load()", "{", "    await Task.Delay(1);", "    return 1;", "}"],
+  "bug": "../assets/CS4032.png",
+  "focus_line": 1
+}

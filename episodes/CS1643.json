@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1643",
+  "message": "Not all code paths return a value in lambda expression of type 'Func<int>'",
+  "filename": "Lambdas.cs",
+  "before": ["void Start()", "{", "    Func<int> f = () =>", "    {", "        int n = 1;", "", "    };", "}"],
+  "after": ["void Start()", "{", "    Func<int> f = () =>", "    {", "        int n = 1;", "        return n;", "    };", "}"],
+  "bug": "../assets/CS1643.png",
+  "focus_line": 6
+}

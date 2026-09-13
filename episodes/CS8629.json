@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8629",
+  "message": "Nullable value type may be null",
+  "filename": "Nullable.cs",
+  "before": ["#nullable enable", "", "void Start()", "{", "    int? a = null;", "    int b = (int)a;", "}"],
+  "after": ["#nullable enable", "", "void Start()", "{", "    int? a = null;", "    int b = a ?? 0;", "}"],
+  "bug": "../assets/CS8629.png",
+  "focus_line": 6
+}

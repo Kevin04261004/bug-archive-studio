@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0464",
+  "message": "Comparing with null of type 'int?' always produces false",
+  "filename": "Compare.cs",
+  "before": ["void Start()", "{", "    int? a = null;", "    if (a > null) { }", "}"],
+  "after": ["void Start()", "{", "    int? a = null;", "    if (a > 0) { }", "}"],
+  "bug": "../assets/CS0464.png",
+  "focus_line": 4
+}

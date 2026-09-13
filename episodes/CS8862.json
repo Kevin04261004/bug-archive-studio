@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8862",
+  "message": "A constructor in a type with a parameter list must have a this constructor initializer",
+  "filename": "Modern.cs",
+  "before": ["class Player(int hp)", "{", "    public Player() { }", "}"],
+  "after": ["class Player(int hp)", "{", "    public Player() : this(0) { }", "}"],
+  "bug": "../assets/CS8862.png",
+  "focus_line": 3
+}

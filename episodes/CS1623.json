@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1623",
+  "message": "Iterators cannot have ref, in or out parameters",
+  "filename": "Iterator.cs",
+  "before": ["IEnumerable<int> Get(ref int n)", "{", "    yield return n;", "}"],
+  "after": ["IEnumerable<int> Get(int n)", "{", "    yield return n;", "}"],
+  "bug": "../assets/CS1623.png",
+  "focus_line": 1
+}

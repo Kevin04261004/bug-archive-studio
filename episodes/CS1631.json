@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1631",
+  "message": "Cannot yield a value in the body of a catch clause",
+  "filename": "Iterator.cs",
+  "before": ["IEnumerable<int> Get()", "{", "    yield return 1;", "", "    try", "    {", "    }", "    catch", "    {", "        yield return 2;", "    }", "}"],
+  "after": ["IEnumerable<int> Get()", "{", "    yield return 1;", "", "    try", "    {", "    }", "    catch", "    {", "", "    }", "}"],
+  "bug": "../assets/CS1631.png",
+  "focus_line": 10
+}

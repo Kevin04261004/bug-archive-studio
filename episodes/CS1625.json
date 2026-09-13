@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1625",
+  "message": "Cannot yield in the body of a finally clause",
+  "filename": "Iterator.cs",
+  "before": ["IEnumerable<int> Get()", "{", "    yield return 1;", "", "    try", "    {", "    }", "    finally", "    {", "        yield return 2;", "    }", "}"],
+  "after": ["IEnumerable<int> Get()", "{", "    yield return 1;", "", "    try", "    {", "    }", "    finally", "    {", "", "    }", "}"],
+  "bug": "../assets/CS1625.png",
+  "focus_line": 10
+}

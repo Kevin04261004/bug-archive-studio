@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8524",
+  "message": "The switch expression does not handle some values of its input type 'Team'",
+  "filename": "Switch.cs",
+  "before": ["enum Team { Red, Blue }", "", "int Rank(Team t) => t switch", "{", "    Team.Red => 1,", "    Team.Blue => 2,", "", "};"],
+  "after": ["enum Team { Red, Blue }", "", "int Rank(Team t) => t switch", "{", "    Team.Red => 1,", "    Team.Blue => 2,", "    _ => 0,", "};"],
+  "bug": "../assets/CS8524.png",
+  "focus_line": 7
+}

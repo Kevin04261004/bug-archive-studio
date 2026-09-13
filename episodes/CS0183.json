@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0183",
+  "message": "The given expression is always of the provided type 'object'",
+  "filename": "Compare.cs",
+  "before": ["void Start()", "{", "    string s = \"a\";", "    if (s is object) { }", "}"],
+  "after": ["void Start()", "{", "    string s = \"a\";", "    if (s != null) { }", "}"],
+  "bug": "../assets/CS0183.png",
+  "focus_line": 4
+}

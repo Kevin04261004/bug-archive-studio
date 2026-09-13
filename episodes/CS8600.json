@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8600",
+  "message": "Converting null literal or possible null value to non-nullable type",
+  "filename": "Nullable.cs",
+  "before": ["#nullable enable", "", "void Start()", "{", "    string? a = null;", "    string b = a;", "}"],
+  "after": ["#nullable enable", "", "void Start()", "{", "    string? a = null;", "    string? b = a;", "}"],
+  "bug": "../assets/CS8600.png",
+  "focus_line": 6
+}

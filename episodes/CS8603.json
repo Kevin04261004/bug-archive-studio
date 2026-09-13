@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8603",
+  "message": "Possible null reference return",
+  "filename": "Nullable.cs",
+  "before": ["#nullable enable", "", "string Get()", "{", "    return null;", "}"],
+  "after": ["#nullable enable", "", "string? Get()", "{", "    return null;", "}"],
+  "bug": "../assets/CS8603.png",
+  "focus_line": 3
+}

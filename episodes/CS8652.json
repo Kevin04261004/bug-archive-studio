@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8652",
+  "message": "The feature 'collection expressions' is currently in Preview and unsupported",
+  "filename": "Modern.cs",
+  "before": ["void Start()", "{", "    int[] xs = [1, 2, 3];", "}"],
+  "after": ["void Start()", "{", "    int[] xs = { 1, 2, 3 };", "}"],
+  "bug": "../assets/CS8652.png",
+  "focus_line": 3
+}

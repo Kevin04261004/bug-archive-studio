@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1636",
+  "message": "__arglist is not allowed in the parameter list of iterators",
+  "filename": "Iterator.cs",
+  "before": ["IEnumerable<int> Get(__arglist)", "{", "    yield return 1;", "}"],
+  "after": ["IEnumerable<int> Get()", "{", "    yield return 1;", "}"],
+  "bug": "../assets/CS1636.png",
+  "focus_line": 1
+}

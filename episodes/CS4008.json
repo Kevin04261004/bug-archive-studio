@@ -1,0 +1,9 @@
+{
+  "error_code": "CS4008",
+  "message": "Cannot await 'void'",
+  "filename": "AsyncLoad.cs",
+  "before": ["void Ping() { }", "", "async Task Load()", "{", "    await Ping();", "}"],
+  "after": ["void Ping() { }", "", "async Task Load()", "{", "    Ping();", "}"],
+  "bug": "../assets/CS4008.png",
+  "focus_line": 5
+}

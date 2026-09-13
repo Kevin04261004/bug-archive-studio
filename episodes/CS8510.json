@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8510",
+  "message": "The pattern is unreachable; it has already been handled by a previous arm",
+  "filename": "Switch.cs",
+  "before": ["int Rank(int n) => n switch", "{", "    1 => 10,", "    1 => 20,", "    _ => 0,", "};"],
+  "after": ["int Rank(int n) => n switch", "{", "    1 => 10,", "    2 => 20,", "    _ => 0,", "};"],
+  "bug": "../assets/CS8510.png",
+  "focus_line": 4
+}

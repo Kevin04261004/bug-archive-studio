@@ -1,0 +1,9 @@
+{
+  "error_code": "CS8641",
+  "message": "'else' cannot start a statement",
+  "filename": "Modern.cs",
+  "before": ["void Start()", "{", "    else", "        Debug.Log(1);", "}"],
+  "after": ["void Start()", "{", "    if (true)", "        Debug.Log(1);", "}"],
+  "bug": "../assets/CS8641.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1637",
+  "message": "Iterators cannot have unsafe parameters or yield types",
+  "filename": "Iterator.cs",
+  "before": ["IEnumerable<int> Get(int* p)", "{", "    yield return 1;", "}"],
+  "after": ["IEnumerable<int> Get(IntPtr p)", "{", "    yield return 1;", "}"],
+  "bug": "../assets/CS1637.png",
+  "focus_line": 1
+}
