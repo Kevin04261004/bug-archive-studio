@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0233",
+  "message": "'Point' does not have a predefined size, so sizeof needs an unsafe context",
+  "filename": "Unsafe.cs",
+  "before": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    Debug.Log(sizeof(Point));", "}"],
+  "after": ["struct Point", "{", "    public int x;", "}", "", "unsafe void Start()", "{", "    Debug.Log(sizeof(Point));", "}"],
+  "bug": "../assets/CS0233.png",
+  "focus_line": 6
+}

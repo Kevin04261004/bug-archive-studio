@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0244",
+  "message": "Neither 'is' nor 'as' is valid on pointer types",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start(int* p)", "{", "    if (p is object) { }", "}"],
+  "after": ["unsafe void Start(int* p)", "{", "    if (p != null) { }", "}"],
+  "bug": "../assets/CS0244.png",
+  "focus_line": 3
+}

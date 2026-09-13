@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1665",
+  "message": "Fixed size buffers must have a length greater than zero",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe struct Buf", "{", "    public fixed int data[0];", "}"],
+  "after": ["unsafe struct Buf", "{", "    public fixed int data[4];", "}"],
+  "bug": "../assets/CS1665.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1575",
+  "message": "A stackalloc expression requires [] after type",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    int* p = stackalloc int;", "}"],
+  "after": ["unsafe void Start()", "{", "    int* p = stackalloc int[4];", "}"],
+  "bug": "../assets/CS1575.png",
+  "focus_line": 3
+}

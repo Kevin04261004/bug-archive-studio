@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0432",
+  "message": "Alias 'Lib' not found",
+  "filename": "Alias.cs",
+  "before": ["using System;", "", "void Start()", "{", "    Lib::Debug.Log(1);", "}"],
+  "after": ["using System;", "", "void Start()", "{", "    Debug.Log(1);", "}"],
+  "bug": "../assets/CS0432.png",
+  "focus_line": 5
+}

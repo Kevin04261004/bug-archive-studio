@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0212",
+  "message": "You can only take the address of an unfixed expression inside a fixed statement",
+  "filename": "Unsafe.cs",
+  "before": ["class Player", "{", "    public int hp;", "}", "", "unsafe void Start()", "{", "    Player p = new Player();", "    int* q = &p.hp;", "}"],
+  "after": ["class Player", "{", "    public int hp;", "}", "", "unsafe void Start()", "{", "    Player p = new Player();", "    fixed (int* q = &p.hp) { }", "}"],
+  "bug": "../assets/CS0212.png",
+  "focus_line": 9
+}

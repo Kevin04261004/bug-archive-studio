@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0248",
+  "message": "Cannot create an array with a negative size",
+  "filename": "Arrays.cs",
+  "before": ["void Start()", "{", "    int[] xs = new int[-1];", "}"],
+  "after": ["void Start()", "{", "    int[] xs = new int[4];", "}"],
+  "bug": "../assets/CS0248.png",
+  "focus_line": 3
+}

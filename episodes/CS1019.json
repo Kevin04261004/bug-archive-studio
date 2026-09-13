@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1019",
+  "message": "Overloadable unary operator expected",
+  "filename": "Operators.cs",
+  "before": ["struct F", "{", "    public static F operator /(F a)", "        => default;", "}"],
+  "after": ["struct F", "{", "    public static F operator -(F a)", "        => default;", "}"],
+  "bug": "../assets/CS1019.png",
+  "focus_line": 3
+}

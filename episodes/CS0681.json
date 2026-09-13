@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0681",
+  "message": "The modifier 'abstract' is not valid on fields; try using a property instead",
+  "filename": "FieldTypes.cs",
+  "before": ["abstract class Player", "{", "    public abstract int hp;", "}"],
+  "after": ["abstract class Player", "{", "    public abstract int hp { get; }", "}"],
+  "bug": "../assets/CS0681.png",
+  "focus_line": 3
+}

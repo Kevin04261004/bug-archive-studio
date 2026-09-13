@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0227",
+  "message": "Unsafe code may only appear if compiling with the unsafe option",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    int n = 1;", "}"],
+  "after": ["void Start()", "{", "    int n = 1;", "}"],
+  "bug": "../assets/CS0227.png",
+  "focus_line": 1
+}

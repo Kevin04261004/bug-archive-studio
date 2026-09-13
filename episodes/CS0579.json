@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0579",
+  "message": "Duplicate 'MyAttr' attribute",
+  "filename": "Attributes.cs",
+  "before": ["class MyAttr : Attribute { }", "", "[MyAttr]", "[MyAttr]", "class Player { }"],
+  "after": ["class MyAttr : Attribute { }", "", "[MyAttr]", "", "class Player { }"],
+  "bug": "../assets/CS0579.png",
+  "focus_line": 4
+}

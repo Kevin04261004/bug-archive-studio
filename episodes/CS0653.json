@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0653",
+  "message": "Cannot apply attribute class 'MyAttr' because it is abstract",
+  "filename": "Attributes.cs",
+  "before": ["abstract class MyAttr : Attribute { }", "", "[MyAttr]", "class Player { }"],
+  "after": ["class MyAttr : Attribute { }", "", "[MyAttr]", "class Player { }"],
+  "bug": "../assets/CS0653.png",
+  "focus_line": 1
+}

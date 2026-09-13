@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0556",
+  "message": "User-defined conversion must convert to or from the enclosing type",
+  "filename": "Conversions.cs",
+  "before": ["struct F", "{", "    public static implicit operator", "        int(string s) => 0;", "}"],
+  "after": ["struct F", "{", "    public static implicit operator", "        int(F f) => 0;", "}"],
+  "bug": "../assets/CS0556.png",
+  "focus_line": 4
+}

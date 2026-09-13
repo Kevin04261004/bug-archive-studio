@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0216",
+  "message": "The operator 'F.operator ==(F, F)' requires a matching operator '!=' to be defined",
+  "filename": "Operators.cs",
+  "before": ["struct F", "{", "    public static bool operator ==(F a, F b)", "        => true;", "", "    public static bool operator <(F a, F b)", "        => false;", "}"],
+  "after": ["struct F", "{", "    public static bool operator ==(F a, F b)", "        => true;", "", "    public static bool operator !=(F a, F b)", "        => false;", "}"],
+  "bug": "../assets/CS0216.png",
+  "focus_line": 6
+}

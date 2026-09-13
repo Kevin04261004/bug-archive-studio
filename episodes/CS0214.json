@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0214",
+  "message": "Pointers and fixed size buffers may only be used in an unsafe context",
+  "filename": "Unsafe.cs",
+  "before": ["void Start()", "{", "    int n = 1;", "    int* p = &n;", "}"],
+  "after": ["unsafe void Start()", "{", "    int n = 1;", "    int* p = &n;", "}"],
+  "bug": "../assets/CS0214.png",
+  "focus_line": 1
+}

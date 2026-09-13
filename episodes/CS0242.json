@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0242",
+  "message": "The operation in question is undefined on void pointers",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start(void* p)", "{", "    p = p + 1;", "}"],
+  "after": ["unsafe void Start(int* p)", "{", "    p = p + 1;", "}"],
+  "bug": "../assets/CS0242.png",
+  "focus_line": 1
+}

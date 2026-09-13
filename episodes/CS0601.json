@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0601",
+  "message": "The DllImport attribute must be specified on a method marked static and extern",
+  "filename": "Attributes.cs",
+  "before": ["class Native", "{", "    [DllImport(\"user32.dll\")]", "    public void Beep() { }", "}"],
+  "after": ["class Native", "{", "    [DllImport(\"user32.dll\")]", "    public static extern void Beep();", "}"],
+  "bug": "../assets/CS0601.png",
+  "focus_line": 4
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0430",
+  "message": "The extern alias 'Lib' was not specified in a reference option",
+  "filename": "Alias.cs",
+  "before": ["extern alias Lib;", "", "void Start()", "{", "    Debug.Log(1);", "}"],
+  "after": ["", "", "void Start()", "{", "    Debug.Log(1);", "}"],
+  "bug": "../assets/CS0430.png",
+  "focus_line": 1
+}

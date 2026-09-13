@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0673",
+  "message": "System.Void cannot be used from C#; use typeof(void) instead",
+  "filename": "FieldTypes.cs",
+  "before": ["class Player", "{", "    public System.Void v;", "}"],
+  "after": ["class Player", "{", "    public object v;", "}"],
+  "bug": "../assets/CS0673.png",
+  "focus_line": 3
+}

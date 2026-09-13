@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0558",
+  "message": "User-defined operator 'F.operator +(F, F)' must be declared static and public",
+  "filename": "Operators.cs",
+  "before": ["struct F", "{", "    static F operator +(F a, F b)", "        => default;", "}"],
+  "after": ["struct F", "{", "    public static F operator +(F a, F b)", "        => default;", "}"],
+  "bug": "../assets/CS0558.png",
+  "focus_line": 3
+}

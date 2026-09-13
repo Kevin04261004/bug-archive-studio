@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0670",
+  "message": "Field cannot have void type",
+  "filename": "FieldTypes.cs",
+  "before": ["class Player", "{", "    public void hp;", "}"],
+  "after": ["class Player", "{", "    public int hp;", "}"],
+  "bug": "../assets/CS0670.png",
+  "focus_line": 3
+}

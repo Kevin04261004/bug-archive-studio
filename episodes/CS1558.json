@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1558",
+  "message": "'Program' does not have a suitable static Main method",
+  "filename": "EntryPoint.cs",
+  "before": ["class Program", "{", "    void Main() { }", "}"],
+  "after": ["class Program", "{", "    static void Main() { }", "}"],
+  "bug": "../assets/CS1558.png",
+  "focus_line": 3
+}

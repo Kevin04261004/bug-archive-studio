@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0557",
+  "message": "Duplicate user-defined conversion in type 'F'",
+  "filename": "Conversions.cs",
+  "before": ["struct F", "{", "    public static implicit operator", "        int(F f) => 0;", "", "    public static explicit operator", "        int(F f) => 1;", "}"],
+  "after": ["struct F", "{", "    public static implicit operator", "        int(F f) => 0;", "", "    public static explicit operator", "        long(F f) => 1;", "}"],
+  "bug": "../assets/CS0557.png",
+  "focus_line": 7
+}

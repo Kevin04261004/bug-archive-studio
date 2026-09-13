@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0562",
+  "message": "The parameter of a unary operator must be the containing type",
+  "filename": "Operators.cs",
+  "before": ["struct F", "{", "    public static F operator -(int n)", "        => default;", "}"],
+  "after": ["struct F", "{", "    public static F operator -(F f)", "        => default;", "}"],
+  "bug": "../assets/CS0562.png",
+  "focus_line": 3
+}

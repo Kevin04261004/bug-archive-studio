@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1641",
+  "message": "A fixed size buffer field must have the array size specifier after the field name",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe struct Buf", "{", "    public fixed int data;", "}"],
+  "after": ["unsafe struct Buf", "{", "    public fixed int data[4];", "}"],
+  "bug": "../assets/CS1641.png",
+  "focus_line": 3
+}

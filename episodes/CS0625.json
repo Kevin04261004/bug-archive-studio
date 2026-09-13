@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0625",
+  "message": "Instance field 'Data.a' must have a FieldOffset attribute",
+  "filename": "Attributes.cs",
+  "before": ["[StructLayout(LayoutKind.Explicit)]", "struct Data", "{", "", "    public int a;", "}"],
+  "after": ["[StructLayout(LayoutKind.Explicit)]", "struct Data", "{", "    [FieldOffset(0)]", "    public int a;", "}"],
+  "bug": "../assets/CS0625.png",
+  "focus_line": 4
+}

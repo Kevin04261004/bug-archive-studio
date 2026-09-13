@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0576",
+  "message": "Namespace contains a definition conflicting with alias 'Player'",
+  "filename": "Alias.cs",
+  "before": ["using Player = System.String;", "", "class Player { }"],
+  "after": ["using Text = System.String;", "", "class Player { }"],
+  "bug": "../assets/CS0576.png",
+  "focus_line": 1
+}

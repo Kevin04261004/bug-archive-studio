@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0255",
+  "message": "stackalloc may not be used in a catch or finally block",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    try", "    {", "    }", "    finally", "    {", "        int* p = stackalloc int[4];", "    }", "}"],
+  "after": ["unsafe void Start()", "{", "    try", "    {", "    }", "    finally", "    {", "", "    }", "}"],
+  "bug": "../assets/CS0255.png",
+  "focus_line": 8
+}

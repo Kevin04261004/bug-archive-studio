@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0193",
+  "message": "The * or -> operator must be applied to a pointer",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    int n = 1;", "    Debug.Log(*n);", "}"],
+  "after": ["unsafe void Start()", "{", "    int n = 1;", "    Debug.Log(n);", "}"],
+  "bug": "../assets/CS0193.png",
+  "focus_line": 4
+}

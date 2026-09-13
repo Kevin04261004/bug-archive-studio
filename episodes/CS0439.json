@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0439",
+  "message": "An extern alias declaration must precede all other elements",
+  "filename": "Alias.cs",
+  "before": ["extern alias Lib;", "using System;", "extern alias Other;", "", "void Start() { }"],
+  "after": ["extern alias Lib;", "using System;", "", "", "void Start() { }"],
+  "bug": "../assets/CS0439.png",
+  "focus_line": 3
+}

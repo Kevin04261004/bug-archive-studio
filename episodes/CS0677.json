@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0677",
+  "message": "'Player.hp': a volatile field cannot be of the type 'long'",
+  "filename": "FieldTypes.cs",
+  "before": ["class Player", "{", "    public volatile long hp;", "}"],
+  "after": ["class Player", "{", "    public volatile int hp;", "}"],
+  "bug": "../assets/CS0677.png",
+  "focus_line": 3
+}

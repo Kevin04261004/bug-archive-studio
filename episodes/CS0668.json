@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0668",
+  "message": "Two indexers have different names; IndexerName must match within a type",
+  "filename": "Indexers.cs",
+  "before": ["class Bag", "{", "    [IndexerName(\"A\")]", "    public int this[int i] => 0;", "", "    [IndexerName(\"B\")]", "    public int this[string s] => 0;", "}"],
+  "after": ["class Bag", "{", "    [IndexerName(\"A\")]", "    public int this[int i] => 0;", "", "    [IndexerName(\"A\")]", "    public int this[string s] => 0;", "}"],
+  "bug": "../assets/CS0668.png",
+  "focus_line": 6
+}

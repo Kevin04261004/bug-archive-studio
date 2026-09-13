@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0247",
+  "message": "Cannot use a negative size with stackalloc",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    int* p = stackalloc int[-1];", "}"],
+  "after": ["unsafe void Start()", "{", "    int* p = stackalloc int[4];", "}"],
+  "bug": "../assets/CS0247.png",
+  "focus_line": 3
+}

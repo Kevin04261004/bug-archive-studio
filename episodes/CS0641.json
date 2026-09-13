@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0641",
+  "message": "Attribute 'AttributeUsage' is only valid on classes derived from System.Attribute",
+  "filename": "Attributes.cs",
+  "before": ["[AttributeUsage(AttributeTargets.Class)]", "class MyAttr { }", "", "[MyAttr]", "class Player { }"],
+  "after": ["[AttributeUsage(AttributeTargets.Class)]", "class MyAttr : Attribute { }", "", "[MyAttr]", "class Player { }"],
+  "bug": "../assets/CS0641.png",
+  "focus_line": 2
+}

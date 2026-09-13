@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0559",
+  "message": "The parameter type for the ++ or -- operator must be the containing type",
+  "filename": "Operators.cs",
+  "before": ["struct F", "{", "    public static F operator ++(int n)", "        => default;", "}"],
+  "after": ["struct F", "{", "    public static F operator ++(F f)", "        => default;", "}"],
+  "bug": "../assets/CS0559.png",
+  "focus_line": 3
+}

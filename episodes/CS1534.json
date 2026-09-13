@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1534",
+  "message": "Overloaded binary operator '+' takes two parameters",
+  "filename": "Operators.cs",
+  "before": ["struct F", "{", "    public static F operator +(F a)", "        => default;", "}"],
+  "after": ["struct F", "{", "    public static F operator +(F a, F b)", "        => default;", "}"],
+  "bug": "../assets/CS1534.png",
+  "focus_line": 3
+}

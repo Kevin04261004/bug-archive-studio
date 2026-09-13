@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0196",
+  "message": "A pointer must be indexed by only one value",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start(int* p)", "{", "    Debug.Log(p[0, 1]);", "}"],
+  "after": ["unsafe void Start(int* p)", "{", "    Debug.Log(p[0]);", "}"],
+  "bug": "../assets/CS0196.png",
+  "focus_line": 3
+}

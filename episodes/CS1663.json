@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1663",
+  "message": "Fixed size buffer type must be a primitive type such as int, char or float",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe struct Buf", "{", "    public fixed string data[4];", "}"],
+  "after": ["unsafe struct Buf", "{", "    public fixed char data[4];", "}"],
+  "bug": "../assets/CS1663.png",
+  "focus_line": 3
+}

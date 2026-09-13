@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0616",
+  "message": "'Player' is not an attribute class",
+  "filename": "Attributes.cs",
+  "before": ["class Player { }", "", "[Player]", "class Boss { }"],
+  "after": ["class Player : Attribute { }", "", "[Player]", "class Boss { }"],
+  "bug": "../assets/CS0616.png",
+  "focus_line": 1
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0213",
+  "message": "You cannot use the fixed statement to take the address of an already fixed expression",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    int n = 1;", "    fixed (int* p = &n) { }", "}"],
+  "after": ["unsafe void Start()", "{", "    int n = 1;", "    int* p = &n;", "}"],
+  "bug": "../assets/CS0213.png",
+  "focus_line": 4
+}

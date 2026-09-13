@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0577",
+  "message": "The Conditional attribute is not valid on a constructor",
+  "filename": "Attributes.cs",
+  "before": ["class Player", "{", "    [Conditional(\"DEBUG\")]", "    public Player() { }", "}"],
+  "after": ["class Player", "{", "    [Conditional(\"DEBUG\")]", "    public void Log() { }", "}"],
+  "bug": "../assets/CS0577.png",
+  "focus_line": 4
+}

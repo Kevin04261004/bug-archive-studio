@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0448",
+  "message": "The return type for the ++ or -- operator must match the parameter type",
+  "filename": "Operators.cs",
+  "before": ["struct F", "{", "    public static int operator ++(F f)", "        => default;", "}"],
+  "after": ["struct F", "{", "    public static F operator ++(F f)", "        => default;", "}"],
+  "bug": "../assets/CS0448.png",
+  "focus_line": 3
+}

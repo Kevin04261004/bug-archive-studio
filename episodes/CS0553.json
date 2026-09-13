@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0553",
+  "message": "User-defined conversion from a base class is not allowed",
+  "filename": "Conversions.cs",
+  "before": ["class Base { }", "", "class Child : Base", "{", "    public static implicit operator", "        Child(Base b) => null;", "}"],
+  "after": ["class Base { }", "", "class Child : Base", "{", "    public static implicit operator", "        Child(int n) => null;", "}"],
+  "bug": "../assets/CS0553.png",
+  "focus_line": 6
+}

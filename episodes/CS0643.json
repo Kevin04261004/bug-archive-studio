@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0643",
+  "message": "'n' duplicate named attribute argument",
+  "filename": "Attributes.cs",
+  "before": ["class MyAttr : Attribute", "{", "    public int n;", "    public int m;", "}", "", "[MyAttr(n = 1, n = 2)]", "class Player { }"],
+  "after": ["class MyAttr : Attribute", "{", "    public int n;", "    public int m;", "}", "", "[MyAttr(n = 1, m = 2)]", "class Player { }"],
+  "bug": "../assets/CS0643.png",
+  "focus_line": 7
+}

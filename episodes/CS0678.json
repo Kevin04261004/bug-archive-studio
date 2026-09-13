@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0678",
+  "message": "'Player.hp': a field cannot be both volatile and readonly",
+  "filename": "FieldTypes.cs",
+  "before": ["class Player", "{", "    public volatile readonly int hp;", "}"],
+  "after": ["class Player", "{", "    public volatile int hp;", "}"],
+  "bug": "../assets/CS0678.png",
+  "focus_line": 3
+}

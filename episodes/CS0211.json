@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0211",
+  "message": "Cannot take the address of the given expression",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    int n = 1;", "    int* p = &(n + 1);", "}"],
+  "after": ["unsafe void Start()", "{", "    int n = 1;", "    int* p = &n;", "}"],
+  "bug": "../assets/CS0211.png",
+  "focus_line": 4
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0215",
+  "message": "The return type of operator true or operator false must be bool",
+  "filename": "Operators.cs",
+  "before": ["struct F", "{", "    public static int operator true(F f)", "        => 1;", "", "    public static bool operator false(F f)", "        => false;", "}"],
+  "after": ["struct F", "{", "    public static bool operator true(F f)", "        => 1;", "", "    public static bool operator false(F f)", "        => false;", "}"],
+  "bug": "../assets/CS0215.png",
+  "focus_line": 3
+}

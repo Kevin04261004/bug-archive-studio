@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0182",
+  "message": "An attribute argument must be a constant expression, typeof or array creation",
+  "filename": "Attributes.cs",
+  "before": ["class MyAttr : Attribute", "{", "    public MyAttr(int v) { }", "}", "", "[MyAttr(DateTime.Now.Year)]", "class Player { }"],
+  "after": ["class MyAttr : Attribute", "{", "    public MyAttr(int v) { }", "}", "", "[MyAttr(2024)]", "class Player { }"],
+  "bug": "../assets/CS0182.png",
+  "focus_line": 6
+}

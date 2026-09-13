@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1537",
+  "message": "The using alias 'A' appeared previously in this namespace",
+  "filename": "Alias.cs",
+  "before": ["using A = System.Text;", "using A = System.IO;", "", "void Start() { }"],
+  "after": ["using A = System.Text;", "using B = System.IO;", "", "void Start() { }"],
+  "bug": "../assets/CS1537.png",
+  "focus_line": 2
+}

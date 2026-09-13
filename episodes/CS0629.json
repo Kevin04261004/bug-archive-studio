@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0629",
+  "message": "Conditional member 'Boss.Hit()' cannot implement interface member 'IHit.Hit()'",
+  "filename": "Attributes.cs",
+  "before": ["interface IHit", "{", "    void Hit();", "}", "", "class Boss : IHit", "{", "    [Conditional(\"DEBUG\")]", "    public void Hit() { }", "}"],
+  "after": ["interface IHit", "{", "    void Hit();", "}", "", "class Boss : IHit", "{", "", "    public void Hit() { }", "}"],
+  "bug": "../assets/CS0629.png",
+  "focus_line": 8
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0028",
+  "message": "'Program.Main(string)' has the wrong signature to be an entry point",
+  "filename": "EntryPoint.cs",
+  "before": ["class Program", "{", "    static int Main(string s) => 0;", "}"],
+  "after": ["class Program", "{", "    static int Main(string[] s) => 0;", "}"],
+  "bug": "../assets/CS0028.png",
+  "focus_line": 3
+}

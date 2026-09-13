@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1642",
+  "message": "Fixed size buffer fields may only be members of structs",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe class Buf", "{", "    public fixed int data[4];", "}"],
+  "after": ["unsafe struct Buf", "{", "    public fixed int data[4];", "}"],
+  "bug": "../assets/CS1642.png",
+  "focus_line": 1
+}

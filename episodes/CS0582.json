@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0582",
+  "message": "The Conditional attribute is not valid on interface members",
+  "filename": "Attributes.cs",
+  "before": ["interface IHit", "{", "    [Conditional(\"DEBUG\")]", "    void Hit();", "}"],
+  "after": ["interface IHit", "{", "", "    void Hit();", "}"],
+  "bug": "../assets/CS0582.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0554",
+  "message": "User-defined conversion from a derived class is not allowed",
+  "filename": "Conversions.cs",
+  "before": ["class Base", "{", "    public static implicit operator", "        Base(Child c) => null;", "}", "", "class Child : Base { }"],
+  "after": ["class Base", "{", "    public static implicit operator", "        Base(int n) => null;", "}", "", "class Child : Base { }"],
+  "bug": "../assets/CS0554.png",
+  "focus_line": 4
+}

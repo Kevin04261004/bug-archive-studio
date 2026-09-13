@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0636",
+  "message": "The FieldOffset attribute is only valid on types marked StructLayout(Explicit)",
+  "filename": "Attributes.cs",
+  "before": ["", "struct Data", "{", "    [FieldOffset(0)]", "    public int a;", "}"],
+  "after": ["[StructLayout(LayoutKind.Explicit)]", "struct Data", "{", "    [FieldOffset(0)]", "    public int a;", "}"],
+  "bug": "../assets/CS0636.png",
+  "focus_line": 1
+}

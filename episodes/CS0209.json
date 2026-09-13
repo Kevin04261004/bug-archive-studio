@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0209",
+  "message": "The type of a local declared in a fixed statement must be a pointer type",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    int[] xs = new int[3];", "    fixed (int p = xs) { }", "}"],
+  "after": ["unsafe void Start()", "{", "    int[] xs = new int[3];", "    fixed (int* p = xs) { }", "}"],
+  "bug": "../assets/CS0209.png",
+  "focus_line": 4
+}

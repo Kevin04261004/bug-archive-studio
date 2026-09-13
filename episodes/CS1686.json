@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1686",
+  "message": "Local 'n' cannot have its address taken and be used inside a lambda expression",
+  "filename": "Unsafe.cs",
+  "before": ["unsafe void Start()", "{", "    int n = 1;", "    int* p = &n;", "    Action a = () => Debug.Log(n);", "}"],
+  "after": ["unsafe void Start()", "{", "    int n = 1;", "", "    Action a = () => Debug.Log(n);", "}"],
+  "bug": "../assets/CS1686.png",
+  "focus_line": 4
+}

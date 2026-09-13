@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0181",
+  "message": "Attribute constructor parameter 'v' has type 'decimal', which is not valid",
+  "filename": "Attributes.cs",
+  "before": ["class MyAttr : Attribute", "{", "    public MyAttr(decimal v) { }", "}"],
+  "after": ["class MyAttr : Attribute", "{", "    public MyAttr(int v) { }", "}"],
+  "bug": "../assets/CS0181.png",
+  "focus_line": 3
+}

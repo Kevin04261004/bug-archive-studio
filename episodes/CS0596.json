@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0596",
+  "message": "The ComImport attribute must be specified on the interface that has a Guid",
+  "filename": "Attributes.cs",
+  "before": ["", "[Guid(", "    \"00000000-0000-0000-0000-000000000000\")]", "interface IThing { }"],
+  "after": ["[ComImport]", "[Guid(", "    \"00000000-0000-0000-0000-000000000000\")]", "interface IThing { }"],
+  "bug": "../assets/CS0596.png",
+  "focus_line": 1
+}
