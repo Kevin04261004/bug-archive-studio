@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0030",
+  "message": "Cannot convert type 'string' to 'int'",
+  "filename": "Convert.cs",
+  "before": ["void Start()", "{", "    string text = \"10\";", "    int n = (int)text;", "}"],
+  "after": ["void Start()", "{", "    string text = \"10\";", "    int n = int.Parse(text);", "}"],
+  "bug": "../assets/CS0030.png",
+  "focus_line": 4
+}

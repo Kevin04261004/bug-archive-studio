@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0110",
+  "message": "The evaluation of the constant value for 'A' involves a circular definition",
+  "filename": "Consts.cs",
+  "before": ["class Limits", "{", "    const int A = B;", "    const int B = A;", "}"],
+  "after": ["class Limits", "{", "    const int A = 10;", "    const int B = A;", "}"],
+  "bug": "../assets/CS0110.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0445",
+  "message": "Cannot modify the result of an unboxing conversion",
+  "filename": "Boxes.cs",
+  "before": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    object box = new Point();", "    ((Point)box).x = 1;", "}"],
+  "after": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    object box = new Point();", "    Point p = (Point)box;", "}"],
+  "bug": "../assets/CS0445.png",
+  "focus_line": 9
+}

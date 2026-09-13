@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0191",
+  "message": "A readonly field cannot be assigned to outside a constructor",
+  "filename": "Readonly.cs",
+  "before": ["class Player", "{", "    readonly int max = 100;", "    void Reset() { max = 50; }", "}"],
+  "after": ["class Player", "{", "    int max = 100;", "    void Reset() { max = 50; }", "}"],
+  "bug": "../assets/CS0191.png",
+  "focus_line": 3
+}

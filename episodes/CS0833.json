@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0833",
+  "message": "An anonymous type cannot have multiple properties with the same name",
+  "filename": "Anon.cs",
+  "before": ["void Start()", "{", "    var item = new { id = 1, id = 2 };", "}"],
+  "after": ["void Start()", "{", "    var item = new { id = 1, hp = 2 };", "}"],
+  "bug": "../assets/CS0833.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1615",
+  "message": "Argument 1 may not be passed with the 'ref' keyword",
+  "filename": "Refs.cs",
+  "before": ["class Tools", "{", "    public void Bump(int n) { }", "}", "", "void Start()", "{", "    int hp = 1;", "    new Tools().Bump(ref hp);", "}"],
+  "after": ["class Tools", "{", "    public void Bump(int n) { }", "}", "", "void Start()", "{", "    int hp = 1;", "    new Tools().Bump(hp);", "}"],
+  "bug": "../assets/CS1615.png",
+  "focus_line": 9
+}

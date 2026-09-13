@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1648",
+  "message": "Members of readonly field 'Bag.spot' cannot be modified",
+  "filename": "Readonly.cs",
+  "before": ["struct Point", "{", "    public int x;", "}", "", "class Bag", "{", "    readonly Point spot;", "    void Move() { spot.x = 1; }", "}"],
+  "after": ["struct Point", "{", "    public int x;", "}", "", "class Bag", "{", "    Point spot;", "    void Move() { spot.x = 1; }", "}"],
+  "bug": "../assets/CS1648.png",
+  "focus_line": 8
+}

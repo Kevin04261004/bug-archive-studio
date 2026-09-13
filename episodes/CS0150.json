@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0150",
+  "message": "A constant value is expected",
+  "filename": "Switches.cs",
+  "before": ["void Check(int n)", "{", "    int limit = 3;", "    switch (n)", "    {", "        case limit:", "            break;", "    }", "}"],
+  "after": ["void Check(int n)", "{", "    int limit = 3;", "    switch (n)", "    {", "        case 3:", "            break;", "    }", "}"],
+  "bug": "../assets/CS0150.png",
+  "focus_line": 6
+}

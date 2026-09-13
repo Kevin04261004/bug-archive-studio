@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0172",
+  "message": "Type of conditional expression cannot be determined",
+  "filename": "Choice.cs",
+  "before": ["void Start()", "{", "    int a = 1;", "    uint b = 2;", "    var x = true ? a : b;", "}"],
+  "after": ["void Start()", "{", "    int a = 1;", "    uint b = 2;", "    var x = true ? a : (int)b;", "}"],
+  "bug": "../assets/CS0172.png",
+  "focus_line": 5
+}

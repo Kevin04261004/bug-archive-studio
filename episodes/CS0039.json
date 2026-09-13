@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0039",
+  "message": "Cannot convert type 'Dog' to 'Cat' via a reference conversion",
+  "filename": "Casts.cs",
+  "before": ["class Dog { }", "class Cat { }", "", "void Start()", "{", "    Dog d = new Dog();", "    Cat c = d as Cat;", "}"],
+  "after": ["class Dog { }", "class Cat { }", "", "void Start()", "{", "    Dog d = new Dog();", "    Cat c = new Cat();", "}"],
+  "bug": "../assets/CS0039.png",
+  "focus_line": 7
+}

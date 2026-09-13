@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0145",
+  "message": "A const field requires a value to be provided",
+  "filename": "Consts.cs",
+  "before": ["class Player", "{", "    const int max;", "}"],
+  "after": ["class Player", "{", "    const int max = 100;", "}"],
+  "bug": "../assets/CS0145.png",
+  "focus_line": 3
+}

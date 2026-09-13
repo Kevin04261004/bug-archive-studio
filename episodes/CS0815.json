@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0815",
+  "message": "Cannot assign void to an implicitly-typed variable",
+  "filename": "Vars.cs",
+  "before": ["void Start()", "{", "    var result = Reset();", "    Debug.Log(result);", "}", "", "void Reset() { }"],
+  "after": ["void Start()", "{", "    var result = 0;", "    Debug.Log(result);", "}", "", "void Reset() { }"],
+  "bug": "../assets/CS0815.png",
+  "focus_line": 3
+}

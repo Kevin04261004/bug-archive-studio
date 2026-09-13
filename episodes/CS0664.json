@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0664",
+  "message": "Literal of type double cannot be implicitly converted to 'float'; use an F suffix",
+  "filename": "Speed.cs",
+  "before": ["void Start()", "{", "    float speed = 7.5;", "}"],
+  "after": ["void Start()", "{", "    float speed = 7.5f;", "}"],
+  "bug": "../assets/CS0664.png",
+  "focus_line": 3
+}

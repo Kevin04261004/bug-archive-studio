@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0206",
+  "message": "A property or indexer may not be passed as an out or ref parameter",
+  "filename": "Refs.cs",
+  "before": ["class Tools", "{", "    public void Bump(ref int n) { }", "}", "", "class Player", "{", "    public int Hp { get; set; }", "    void Start()", "    {", "        new Tools().Bump(ref Hp);", "    }", "}"],
+  "after": ["class Tools", "{", "    public void Bump(ref int n) { }", "}", "", "class Player", "{", "    public int Hp { get; set; }", "    void Start()", "    {", "        int hp = Hp;", "    }", "}"],
+  "bug": "../assets/CS0206.png",
+  "focus_line": 11
+}

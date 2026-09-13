@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0173",
+  "message": "Type of conditional expression cannot be determined between 'int' and 'string'",
+  "filename": "Choice.cs",
+  "before": ["void Start()", "{", "    var x = true ? 1 : \"two\";", "}"],
+  "after": ["void Start()", "{", "    var x = true ? \"1\" : \"two\";", "}"],
+  "bug": "../assets/CS0173.png",
+  "focus_line": 3
+}

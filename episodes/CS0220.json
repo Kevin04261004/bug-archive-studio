@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0220",
+  "message": "The operation overflows at compile time in checked mode",
+  "filename": "Overflow.cs",
+  "before": ["void Start()", "{", "    int big = 2147483647 + 1;", "}"],
+  "after": ["void Start()", "{", "    long big = 2147483647L + 1;", "}"],
+  "bug": "../assets/CS0220.png",
+  "focus_line": 3
+}

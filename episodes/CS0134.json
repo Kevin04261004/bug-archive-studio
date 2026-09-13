@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0134",
+  "message": "A const field of a reference type can only be initialized with null",
+  "filename": "Consts.cs",
+  "before": ["class Player", "{", "    const int[] hits = { 1 };", "}"],
+  "after": ["class Player", "{", "    static int[] hits = { 1 };", "}"],
+  "bug": "../assets/CS0134.png",
+  "focus_line": 3
+}

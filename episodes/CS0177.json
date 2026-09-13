@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0177",
+  "message": "The out parameter 'n' must be assigned before control leaves the method",
+  "filename": "Outs.cs",
+  "before": ["void Take(out int n)", "{", "", "}"],
+  "after": ["void Take(out int n)", "{", "    n = 1;", "}"],
+  "bug": "../assets/CS0177.png",
+  "focus_line": 3
+}

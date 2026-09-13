@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0077",
+  "message": "The as operator must be used with a reference type or nullable type",
+  "filename": "Casts.cs",
+  "before": ["void Start()", "{", "    object box = 1;", "    int n = box as int;", "}"],
+  "after": ["void Start()", "{", "    object box = 1;", "    int n = (int)box;", "}"],
+  "bug": "../assets/CS0077.png",
+  "focus_line": 4
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0170",
+  "message": "Use of possibly unassigned field 'x'",
+  "filename": "Structs.cs",
+  "before": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    Point p;", "    Debug.Log(p.x);", "}"],
+  "after": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    Point p = new Point();", "    Debug.Log(p.x);", "}"],
+  "bug": "../assets/CS0170.png",
+  "focus_line": 8
+}

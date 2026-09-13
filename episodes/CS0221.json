@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0221",
+  "message": "Constant value '-1' cannot be converted to a 'uint'",
+  "filename": "Unsigned.cs",
+  "before": ["void Start()", "{", "    uint count = -1;", "}"],
+  "after": ["void Start()", "{", "    uint count = 1;", "}"],
+  "bug": "../assets/CS0221.png",
+  "focus_line": 3
+}

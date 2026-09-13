@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0037",
+  "message": "Cannot convert null to 'int' because it is a non-nullable value type",
+  "filename": "Nulls.cs",
+  "before": ["void Start()", "{", "    int hp = null;", "}"],
+  "after": ["void Start()", "{", "    int? hp = null;", "}"],
+  "bug": "../assets/CS0037.png",
+  "focus_line": 3
+}

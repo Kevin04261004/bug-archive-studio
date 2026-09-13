@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0820",
+  "message": "Cannot initialize an implicitly-typed variable with an array initializer",
+  "filename": "Vars.cs",
+  "before": ["void Start()", "{", "    var hits = { 1, 2 };", "}"],
+  "after": ["void Start()", "{", "    int[] hits = { 1, 2 };", "}"],
+  "bug": "../assets/CS0820.png",
+  "focus_line": 3
+}

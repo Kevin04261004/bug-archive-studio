@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0594",
+  "message": "Floating-point constant is outside the range of type 'float'",
+  "filename": "Ranges.cs",
+  "before": ["void Start()", "{", "    float far = 3.5e40f;", "}"],
+  "after": ["void Start()", "{", "    double far = 3.5e40;", "}"],
+  "bug": "../assets/CS0594.png",
+  "focus_line": 3
+}

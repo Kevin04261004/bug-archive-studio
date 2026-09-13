@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0200",
+  "message": "Property 'Player.Hp' cannot be assigned to; it is read only",
+  "filename": "Props.cs",
+  "before": ["class Player", "{", "    public int Hp { get; }", "}", "", "void Start()", "{", "    new Player().Hp = 50;", "}"],
+  "after": ["class Player", "{", "    public int Hp { get; set; }", "}", "", "void Start()", "{", "    new Player().Hp = 50;", "}"],
+  "bug": "../assets/CS0200.png",
+  "focus_line": 3
+}

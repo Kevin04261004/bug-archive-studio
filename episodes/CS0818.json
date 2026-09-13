@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0818",
+  "message": "Implicitly-typed variables must be initialized",
+  "filename": "Vars.cs",
+  "before": ["void Start()", "{", "    var hp;", "}"],
+  "after": ["void Start()", "{", "    var hp = 100;", "}"],
+  "bug": "../assets/CS0818.png",
+  "focus_line": 3
+}

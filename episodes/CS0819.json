@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0819",
+  "message": "Implicitly-typed variables cannot have multiple declarators",
+  "filename": "Vars.cs",
+  "before": ["void Start()", "{", "    var a = 1, b = 2;", "}"],
+  "after": ["void Start()", "{", "    int a = 1, b = 2;", "}"],
+  "bug": "../assets/CS0819.png",
+  "focus_line": 3
+}

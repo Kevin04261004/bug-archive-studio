@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1737",
+  "message": "Optional parameters must appear after all required parameters",
+  "filename": "Defaults.cs",
+  "before": ["class Gun", "{", "    void Fire(int p = 1, int n) { }", "}"],
+  "after": ["class Gun", "{", "    void Fire(int n, int p = 1) { }", "}"],
+  "bug": "../assets/CS1737.png",
+  "focus_line": 3
+}

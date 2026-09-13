@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1738",
+  "message": "Named argument specifications must appear after all fixed arguments",
+  "filename": "Calls.cs",
+  "before": ["class Gun", "{", "    public void Fire(int p, int n) { }", "}", "", "void Start()", "{", "    new Gun().Fire(p: 1, 2);", "}"],
+  "after": ["class Gun", "{", "    public void Fire(int p, int n) { }", "}", "", "void Start()", "{", "    new Gun().Fire(1, n: 2);", "}"],
+  "bug": "../assets/CS1738.png",
+  "focus_line": 8
+}

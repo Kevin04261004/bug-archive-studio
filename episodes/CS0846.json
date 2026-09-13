@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0846",
+  "message": "A nested array initializer is expected",
+  "filename": "Grids.cs",
+  "before": ["void Start()", "{", "    int[,] grid = { 1, 2 };", "}"],
+  "after": ["void Start()", "{", "    int[,] grid = { { 1, 2 } };", "}"],
+  "bug": "../assets/CS0846.png",
+  "focus_line": 3
+}

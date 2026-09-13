@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0269",
+  "message": "Use of unassigned out parameter 'n'",
+  "filename": "Outs.cs",
+  "before": ["void Take(out int n)", "{", "    Debug.Log(n);", "    n = 1;", "}"],
+  "after": ["void Take(out int n)", "{", "    n = 1;", "    Debug.Log(n);", "}"],
+  "bug": "../assets/CS0269.png",
+  "focus_line": 3
+}

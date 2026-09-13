@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0847",
+  "message": "An array initializer of length 3 is expected",
+  "filename": "Grids.cs",
+  "before": ["void Start()", "{", "    int[] hits = new int[3] { 1, 2 };", "}"],
+  "after": ["void Start()", "{", "    int[] hits = new int[3] { 1, 2, 3 };", "}"],
+  "bug": "../assets/CS0847.png",
+  "focus_line": 3
+}

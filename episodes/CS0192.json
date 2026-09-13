@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0192",
+  "message": "A readonly field cannot be passed as a ref or out argument",
+  "filename": "Readonly.cs",
+  "before": ["class Player", "{", "    readonly int max = 100;", "    void Reset() { Bump(ref max); }", "    void Bump(ref int n) { }", "}"],
+  "after": ["class Player", "{", "    int max = 100;", "    void Reset() { Bump(ref max); }", "    void Bump(ref int n) { }", "}"],
+  "bug": "../assets/CS0192.png",
+  "focus_line": 3
+}

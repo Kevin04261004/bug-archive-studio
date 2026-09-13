@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0595",
+  "message": "Invalid real literal",
+  "filename": "Ranges.cs",
+  "before": ["void Start()", "{", "    float rate = 1.0e;", "}"],
+  "after": ["void Start()", "{", "    float rate = 1.0e5f;", "}"],
+  "bug": "../assets/CS0595.png",
+  "focus_line": 3
+}

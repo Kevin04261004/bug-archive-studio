@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0283",
+  "message": "The type 'Vector3' cannot be declared const",
+  "filename": "Consts.cs",
+  "before": ["class Player", "{", "    const Vector3 spot = default;", "}"],
+  "after": ["class Player", "{", "    static Vector3 spot = default;", "}"],
+  "bug": "../assets/CS0283.png",
+  "focus_line": 3
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0843",
+  "message": "An auto-implemented property must be fully assigned before control is returned",
+  "filename": "Props.cs",
+  "before": ["struct Item", "{", "    public int Id { get; }", "    public Item(int id) { }", "}"],
+  "after": ["struct Item", "{", "    public int Id { get; }", "    public Item(int id) { Id = id; }", "}"],
+  "bug": "../assets/CS0843.png",
+  "focus_line": 4
+}

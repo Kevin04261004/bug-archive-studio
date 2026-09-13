@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0841",
+  "message": "Cannot use local variable 'hp' before it is declared",
+  "filename": "Order.cs",
+  "before": ["void Start()", "{", "    Debug.Log(hp);", "    int hp = 100;", "}"],
+  "after": ["void Start()", "{", "    int hp = 100;", "    Debug.Log(hp);", "}"],
+  "bug": "../assets/CS0841.png",
+  "focus_line": 3
+}

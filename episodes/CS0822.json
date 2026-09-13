@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0822",
+  "message": "Implicitly-typed variables cannot be constant",
+  "filename": "Vars.cs",
+  "before": ["void Start()", "{", "    const var max = 100;", "}"],
+  "after": ["void Start()", "{", "    const int max = 100;", "}"],
+  "bug": "../assets/CS0822.png",
+  "focus_line": 3
+}

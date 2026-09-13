@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0031",
+  "message": "Constant value '300' cannot be converted to a 'byte'",
+  "filename": "Bytes.cs",
+  "before": ["void Start()", "{", "    byte level = 300;", "}"],
+  "after": ["void Start()", "{", "    byte level = 255;", "}"],
+  "bug": "../assets/CS0031.png",
+  "focus_line": 3
+}

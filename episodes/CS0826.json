@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0826",
+  "message": "No best type found for implicitly-typed array",
+  "filename": "Vars.cs",
+  "before": ["void Start()", "{", "    var mixed = new[] { 1, \"two\" };", "}"],
+  "after": ["void Start()", "{", "    var mixed = new[] { 1, 2 };", "}"],
+  "bug": "../assets/CS0826.png",
+  "focus_line": 3
+}

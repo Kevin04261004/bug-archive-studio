@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1750",
+  "message": "A value of type 'int[]' cannot be used as a default parameter",
+  "filename": "Defaults.cs",
+  "before": ["class Gun", "{", "    void Fire(int[] a = new int[1]) { }", "}"],
+  "after": ["class Gun", "{", "    void Fire(int[] a = default) { }", "}"],
+  "bug": "../assets/CS1750.png",
+  "focus_line": 3
+}

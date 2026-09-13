@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0075",
+  "message": "To cast a negative value, you must enclose the value in parentheses",
+  "filename": "Casts.cs",
+  "before": ["struct Meters", "{", "    public int v;", "}", "", "void Start()", "{", "    var m = (Meters)-1;", "}"],
+  "after": ["struct Meters", "{", "    public int v;", "}", "", "void Start()", "{", "    var m = (Meters)(-1);", "}"],
+  "bug": "../assets/CS0075.png",
+  "focus_line": 8
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0133",
+  "message": "The expression being assigned to 'max' must be constant",
+  "filename": "Consts.cs",
+  "before": ["void Start()", "{", "    int level = 2;", "    const int max = level * 10;", "}"],
+  "after": ["void Start()", "{", "    int level = 2;", "    const int max = 2 * 10;", "}"],
+  "bug": "../assets/CS0133.png",
+  "focus_line": 4
+}

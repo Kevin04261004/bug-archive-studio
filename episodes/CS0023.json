@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0023",
+  "message": "Operator '!' cannot be applied to operand of type 'int'",
+  "filename": "Logic.cs",
+  "before": ["void Start()", "{", "    int hp = 100;", "    bool dead = !hp;", "}"],
+  "after": ["void Start()", "{", "    int hp = 100;", "    bool dead = hp == 0;", "}"],
+  "bug": "../assets/CS0023.png",
+  "focus_line": 4
+}

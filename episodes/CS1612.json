@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1612",
+  "message": "Cannot modify the return value because it is not a variable",
+  "filename": "Structs.cs",
+  "before": ["struct Point", "{", "    public int x;", "}", "", "class Bag", "{", "    Point Spot() => default;", "    void Move() { Spot().x = 1; }", "}"],
+  "after": ["struct Point", "{", "    public int x;", "}", "", "class Bag", "{", "    Point Spot() => default;", "    void Move() { var p = Spot(); }", "}"],
+  "bug": "../assets/CS1612.png",
+  "focus_line": 9
+}

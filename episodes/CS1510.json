@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1510",
+  "message": "A ref or out value must be an assignable variable",
+  "filename": "Refs.cs",
+  "before": ["class Tools", "{", "    public void Bump(ref int n) { }", "}", "", "void Start()", "{", "    int hp = 1;", "    new Tools().Bump(ref 1);", "}"],
+  "after": ["class Tools", "{", "    public void Bump(ref int n) { }", "}", "", "void Start()", "{", "    int hp = 1;", "    new Tools().Bump(ref hp);", "}"],
+  "bug": "../assets/CS1510.png",
+  "focus_line": 9
+}

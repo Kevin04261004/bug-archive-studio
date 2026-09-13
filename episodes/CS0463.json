@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0463",
+  "message": "Evaluation of the decimal constant expression failed",
+  "filename": "Decimals.cs",
+  "before": ["class Limits", "{", "    const decimal big = 1e30m * 1e30m;", "}"],
+  "after": ["class Limits", "{", "    const decimal big = 1e10m;", "}"],
+  "bug": "../assets/CS0463.png",
+  "focus_line": 3
+}
