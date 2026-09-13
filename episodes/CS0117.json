@@ -2,8 +2,29 @@
   "error_code": "CS0117",
   "message": "'Score' does not contain a definition for 'Max'",
   "filename": "GameScore.cs",
-  "before": ["class Score", "{", "    public static int Best = 10;", "}", "", "void Start()", "{", "    Debug.Log(Score.Max);", "}"],
-  "after": ["class Score", "{", "    public static int Best = 10;", "}", "", "void Start()", "{", "    Debug.Log(Score.Best);", "}"],
-  "bug": "../assets/CS0117.png",
-  "focus_line": 8
+  "before": [
+    "class Score",
+    "{",
+    "    public static int Best = 10;",
+    "}",
+    "",
+    "void Start()",
+    "{",
+    "    Debug.Log(Score.Max);",
+    "}"
+  ],
+  "after": [
+    "class Score",
+    "{",
+    "    public static int Best = 10;",
+    "}",
+    "",
+    "void Start()",
+    "{",
+    "    Debug.Log(Score.Best);",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0117.png"
 }
