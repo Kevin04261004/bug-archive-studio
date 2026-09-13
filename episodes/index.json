@@ -51,6 +51,26 @@
       "missing": "../assets/CS0023.png"
     },
     {
+      "file": "CS0026.json",
+      "path": "episodes/CS0026.json",
+      "error_code": "CS0026",
+      "message": "Keyword 'this' is not valid in a static property, static method, or static field",
+      "filename": "ThisRef.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0026.png"
+    },
+    {
+      "file": "CS0027.json",
+      "path": "episodes/CS0027.json",
+      "error_code": "CS0027",
+      "message": "Keyword 'this' is not available in the current context",
+      "filename": "ThisRef.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0027.png"
+    },
+    {
       "file": "CS0029.json",
       "path": "episodes/CS0029.json",
       "error_code": "CS0029",
@@ -101,6 +121,106 @@
       "missing": "../assets/CS0039.png"
     },
     {
+      "file": "CS0050.json",
+      "path": "episodes/CS0050.json",
+      "error_code": "CS0050",
+      "message": "Inconsistent accessibility: return type 'Item' is less accessible than method 'Bag.Get()'",
+      "filename": "Access.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0050.png"
+    },
+    {
+      "file": "CS0051.json",
+      "path": "episodes/CS0051.json",
+      "error_code": "CS0051",
+      "message": "Inconsistent accessibility: parameter type 'Item' is less accessible than method",
+      "filename": "Access.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0051.png"
+    },
+    {
+      "file": "CS0052.json",
+      "path": "episodes/CS0052.json",
+      "error_code": "CS0052",
+      "message": "Inconsistent accessibility: field type 'Item' is less accessible than field 'Bag.slot'",
+      "filename": "Access.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0052.png"
+    },
+    {
+      "file": "CS0053.json",
+      "path": "episodes/CS0053.json",
+      "error_code": "CS0053",
+      "message": "Inconsistent accessibility: property type 'Item' is less accessible than property",
+      "filename": "Access.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0053.png"
+    },
+    {
+      "file": "CS0060.json",
+      "path": "episodes/CS0060.json",
+      "error_code": "CS0060",
+      "message": "Inconsistent accessibility: base class 'Base' is less accessible than class 'Child'",
+      "filename": "Access.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0060.png"
+    },
+    {
+      "file": "CS0061.json",
+      "path": "episodes/CS0061.json",
+      "error_code": "CS0061",
+      "message": "Inconsistent accessibility: base interface 'IRun' is less accessible than interface",
+      "filename": "Access.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0061.png"
+    },
+    {
+      "file": "CS0065.json",
+      "path": "episodes/CS0065.json",
+      "error_code": "CS0065",
+      "message": "'Unit.Died': event property must have both add and remove accessors",
+      "filename": "Events.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0065.png"
+    },
+    {
+      "file": "CS0066.json",
+      "path": "episodes/CS0066.json",
+      "error_code": "CS0066",
+      "message": "'Unit.Died': event must be of a delegate type",
+      "filename": "Events.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0066.png"
+    },
+    {
+      "file": "CS0070.json",
+      "path": "episodes/CS0070.json",
+      "error_code": "CS0070",
+      "message": "The event 'Unit.Died' can only appear on the left hand side of += or -=",
+      "filename": "Events.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS0070.png"
+    },
+    {
+      "file": "CS0073.json",
+      "path": "episodes/CS0073.json",
+      "error_code": "CS0073",
+      "message": "An add or remove accessor must have a body",
+      "filename": "Events.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0073.png"
+    },
+    {
       "file": "CS0075.json",
       "path": "episodes/CS0075.json",
       "error_code": "CS0075",
@@ -119,6 +239,16 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS0077.png"
+    },
+    {
+      "file": "CS0079.json",
+      "path": "episodes/CS0079.json",
+      "error_code": "CS0079",
+      "message": "The event 'Unit.Died' can only appear on the left hand side of += or -=",
+      "filename": "Events.cs",
+      "lines": 14,
+      "bug": null,
+      "missing": "../assets/CS0079.png"
     },
     {
       "file": "CS0101.json",
@@ -151,6 +281,16 @@
       "missing": null
     },
     {
+      "file": "CS0104.json",
+      "path": "episodes/CS0104.json",
+      "error_code": "CS0104",
+      "message": "'Random' is an ambiguous reference between 'System.Random' and 'UnityEngine.Random'",
+      "filename": "Ambiguous.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0104.png"
+    },
+    {
       "file": "CS0106.json",
       "path": "episodes/CS0106.json",
       "error_code": "CS0106",
@@ -181,6 +321,36 @@
       "missing": "../assets/CS0111.png"
     },
     {
+      "file": "CS0112.json",
+      "path": "episodes/CS0112.json",
+      "error_code": "CS0112",
+      "message": "A static member cannot be marked as override, virtual or abstract",
+      "filename": "Override.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0112.png"
+    },
+    {
+      "file": "CS0113.json",
+      "path": "episodes/CS0113.json",
+      "error_code": "CS0113",
+      "message": "A member marked as override cannot be marked as new or virtual",
+      "filename": "Override.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0113.png"
+    },
+    {
+      "file": "CS0115.json",
+      "path": "episodes/CS0115.json",
+      "error_code": "CS0115",
+      "message": "'Boss.Heal()' no suitable method found to override",
+      "filename": "Override.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0115.png"
+    },
+    {
       "file": "CS0116.json",
       "path": "episodes/CS0116.json",
       "error_code": "CS0116",
@@ -201,6 +371,26 @@
       "missing": null
     },
     {
+      "file": "CS0118.json",
+      "path": "episodes/CS0118.json",
+      "error_code": "CS0118",
+      "message": "'Player' is a type but is used like a variable",
+      "filename": "Ambiguous.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0118.png"
+    },
+    {
+      "file": "CS0119.json",
+      "path": "episodes/CS0119.json",
+      "error_code": "CS0119",
+      "message": "'Player' is a type, which is not valid in the given context",
+      "filename": "Ambiguous.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0119.png"
+    },
+    {
       "file": "CS0120.json",
       "path": "episodes/CS0120.json",
       "error_code": "CS0120",
@@ -211,6 +401,16 @@
       "missing": null
     },
     {
+      "file": "CS0121.json",
+      "path": "episodes/CS0121.json",
+      "error_code": "CS0121",
+      "message": "The call is ambiguous between 'Hit(int, float)' and 'Hit(float, int)'",
+      "filename": "Ambiguous.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0121.png"
+    },
+    {
       "file": "CS0122.json",
       "path": "episodes/CS0122.json",
       "error_code": "CS0122",
@@ -219,6 +419,16 @@
       "lines": 9,
       "bug": null,
       "missing": "../assets/CS0122.png"
+    },
+    {
+      "file": "CS0123.json",
+      "path": "episodes/CS0123.json",
+      "error_code": "CS0123",
+      "message": "No overload for 'Show' matches delegate 'Action'",
+      "filename": "Delegates.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0123.png"
     },
     {
       "file": "CS0126.json",
@@ -259,6 +469,16 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS0131.png"
+    },
+    {
+      "file": "CS0132.json",
+      "path": "episodes/CS0132.json",
+      "error_code": "CS0132",
+      "message": "'Player.Player(int)': a static constructor must be parameterless",
+      "filename": "Ctors.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0132.png"
     },
     {
       "file": "CS0133.json",
@@ -311,6 +531,26 @@
       "missing": "../assets/CS0140.png"
     },
     {
+      "file": "CS0143.json",
+      "path": "episodes/CS0143.json",
+      "error_code": "CS0143",
+      "message": "The type 'void' has no constructors defined",
+      "filename": "Types.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0143.png"
+    },
+    {
+      "file": "CS0144.json",
+      "path": "episodes/CS0144.json",
+      "error_code": "CS0144",
+      "message": "Cannot create an instance of the abstract type or interface 'Enemy'",
+      "filename": "Abstract.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0144.png"
+    },
+    {
       "file": "CS0145.json",
       "path": "episodes/CS0145.json",
       "error_code": "CS0145",
@@ -319,6 +559,26 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0145.png"
+    },
+    {
+      "file": "CS0146.json",
+      "path": "episodes/CS0146.json",
+      "error_code": "CS0146",
+      "message": "Circular base type dependency involving 'Boss' and 'Hero'",
+      "filename": "Inherit.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0146.png"
+    },
+    {
+      "file": "CS0149.json",
+      "path": "episodes/CS0149.json",
+      "error_code": "CS0149",
+      "message": "Method name expected",
+      "filename": "Delegates.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0149.png"
     },
     {
       "file": "CS0150.json",
@@ -359,6 +619,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0153.png"
+    },
+    {
+      "file": "CS0154.json",
+      "path": "episodes/CS0154.json",
+      "error_code": "CS0154",
+      "message": "The property 'Player.Hp' cannot be used in this context; it lacks the get accessor",
+      "filename": "Props.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0154.png"
     },
     {
       "file": "CS0155.json",
@@ -451,6 +721,16 @@
       "missing": "../assets/CS0170.png"
     },
     {
+      "file": "CS0171.json",
+      "path": "episodes/CS0171.json",
+      "error_code": "CS0171",
+      "message": "Field 'Point.y' must be fully assigned before control is returned to the caller",
+      "filename": "Structs.cs",
+      "lines": 11,
+      "bug": null,
+      "missing": "../assets/CS0171.png"
+    },
+    {
       "file": "CS0172.json",
       "path": "episodes/CS0172.json",
       "error_code": "CS0172",
@@ -469,6 +749,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0173.png"
+    },
+    {
+      "file": "CS0175.json",
+      "path": "episodes/CS0175.json",
+      "error_code": "CS0175",
+      "message": "Use of keyword 'base' is not valid in this context",
+      "filename": "BaseRef.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS0175.png"
     },
     {
       "file": "CS0176.json",
@@ -509,6 +799,16 @@
       "lines": 7,
       "bug": null,
       "missing": "../assets/CS0186.png"
+    },
+    {
+      "file": "CS0188.json",
+      "path": "episodes/CS0188.json",
+      "error_code": "CS0188",
+      "message": "The 'this' object cannot be used before all of its fields are assigned",
+      "filename": "Structs.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS0188.png"
     },
     {
       "file": "CS0191.json",
@@ -571,6 +871,16 @@
       "missing": "../assets/CS0202.png"
     },
     {
+      "file": "CS0205.json",
+      "path": "episodes/CS0205.json",
+      "error_code": "CS0205",
+      "message": "Cannot call an abstract base member: 'Enemy.Hit()'",
+      "filename": "BaseRef.cs",
+      "lines": 14,
+      "bug": null,
+      "missing": "../assets/CS0205.png"
+    },
+    {
       "file": "CS0206.json",
       "path": "episodes/CS0206.json",
       "error_code": "CS0206",
@@ -601,6 +911,16 @@
       "missing": "../assets/CS0221.png"
     },
     {
+      "file": "CS0229.json",
+      "path": "episodes/CS0229.json",
+      "error_code": "CS0229",
+      "message": "Ambiguity between 'IA.n' and 'IB.n'",
+      "filename": "Ambiguous.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0229.png"
+    },
+    {
       "file": "CS0230.json",
       "path": "episodes/CS0230.json",
       "error_code": "CS0230",
@@ -621,6 +941,46 @@
       "missing": "../assets/CS0234.png"
     },
     {
+      "file": "CS0236.json",
+      "path": "episodes/CS0236.json",
+      "error_code": "CS0236",
+      "message": "A field initializer cannot reference the non-static field 'hp'",
+      "filename": "ThisRef.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0236.png"
+    },
+    {
+      "file": "CS0238.json",
+      "path": "episodes/CS0238.json",
+      "error_code": "CS0238",
+      "message": "'Enemy.Hit()' cannot be sealed because it is not an override",
+      "filename": "Sealed.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0238.png"
+    },
+    {
+      "file": "CS0239.json",
+      "path": "episodes/CS0239.json",
+      "error_code": "CS0239",
+      "message": "'Boss.Hit()' cannot override inherited member because it is sealed",
+      "filename": "Sealed.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0239.png"
+    },
+    {
+      "file": "CS0245.json",
+      "path": "episodes/CS0245.json",
+      "error_code": "CS0245",
+      "message": "Destructors and object.Finalize cannot be called directly",
+      "filename": "Finalizers.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0245.png"
+    },
+    {
       "file": "CS0246.json",
       "path": "episodes/CS0246.json",
       "error_code": "CS0246",
@@ -631,6 +991,66 @@
       "missing": null
     },
     {
+      "file": "CS0249.json",
+      "path": "episodes/CS0249.json",
+      "error_code": "CS0249",
+      "message": "Do not override object.Finalize; provide a destructor instead",
+      "filename": "Finalizers.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0249.png"
+    },
+    {
+      "file": "CS0260.json",
+      "path": "episodes/CS0260.json",
+      "error_code": "CS0260",
+      "message": "Missing partial modifier on declaration of type 'Player'",
+      "filename": "Partial.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0260.png"
+    },
+    {
+      "file": "CS0261.json",
+      "path": "episodes/CS0261.json",
+      "error_code": "CS0261",
+      "message": "Partial declarations of 'Player' must be all classes or all structs",
+      "filename": "Partial.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0261.png"
+    },
+    {
+      "file": "CS0262.json",
+      "path": "episodes/CS0262.json",
+      "error_code": "CS0262",
+      "message": "Partial declarations of 'Player' have conflicting accessibility modifiers",
+      "filename": "Partial.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0262.png"
+    },
+    {
+      "file": "CS0263.json",
+      "path": "episodes/CS0263.json",
+      "error_code": "CS0263",
+      "message": "Partial declarations of 'Boss' must not specify different base classes",
+      "filename": "Partial.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0263.png"
+    },
+    {
+      "file": "CS0264.json",
+      "path": "episodes/CS0264.json",
+      "error_code": "CS0264",
+      "message": "Partial declarations of 'Box<T>' must have the same type parameter names",
+      "filename": "Partial.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0264.png"
+    },
+    {
       "file": "CS0266.json",
       "path": "episodes/CS0266.json",
       "error_code": "CS0266",
@@ -639,6 +1059,16 @@
       "lines": 6,
       "bug": "assets/CS0266.png",
       "missing": null
+    },
+    {
+      "file": "CS0267.json",
+      "path": "episodes/CS0267.json",
+      "error_code": "CS0267",
+      "message": "The partial modifier can only appear immediately before class, struct or interface",
+      "filename": "Partial.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0267.png"
     },
     {
       "file": "CS0269.json",
@@ -661,6 +1091,66 @@
       "missing": "../assets/CS0270.png"
     },
     {
+      "file": "CS0271.json",
+      "path": "episodes/CS0271.json",
+      "error_code": "CS0271",
+      "message": "The property 'Player.Hp' cannot be used here; the get accessor is inaccessible",
+      "filename": "Props.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0271.png"
+    },
+    {
+      "file": "CS0272.json",
+      "path": "episodes/CS0272.json",
+      "error_code": "CS0272",
+      "message": "The property 'Player.Hp' cannot be used here; the set accessor is inaccessible",
+      "filename": "Props.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0272.png"
+    },
+    {
+      "file": "CS0273.json",
+      "path": "episodes/CS0273.json",
+      "error_code": "CS0273",
+      "message": "The accessibility modifier of 'Player.Hp.set' must be more restrictive than 'Player.Hp'",
+      "filename": "Props.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0273.png"
+    },
+    {
+      "file": "CS0274.json",
+      "path": "episodes/CS0274.json",
+      "error_code": "CS0274",
+      "message": "Cannot specify accessibility modifiers for both accessors of 'Player.Hp'",
+      "filename": "Props.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0274.png"
+    },
+    {
+      "file": "CS0276.json",
+      "path": "episodes/CS0276.json",
+      "error_code": "CS0276",
+      "message": "'Player.Hp': accessibility modifiers may only be used if it has both get and set",
+      "filename": "Props.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0276.png"
+    },
+    {
+      "file": "CS0277.json",
+      "path": "episodes/CS0277.json",
+      "error_code": "CS0277",
+      "message": "'Boss' does not implement interface member 'IHit.Hit()'; it is not public",
+      "filename": "Interfaces.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0277.png"
+    },
+    {
       "file": "CS0283.json",
       "path": "episodes/CS0283.json",
       "error_code": "CS0283",
@@ -671,6 +1161,16 @@
       "missing": "../assets/CS0283.png"
     },
     {
+      "file": "CS0407.json",
+      "path": "episodes/CS0407.json",
+      "error_code": "CS0407",
+      "message": "'int Get()' has the wrong return type for delegate 'Action'",
+      "filename": "Delegates.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0407.png"
+    },
+    {
       "file": "CS0428.json",
       "path": "episodes/CS0428.json",
       "error_code": "CS0428",
@@ -679,6 +1179,26 @@
       "lines": 9,
       "bug": null,
       "missing": "../assets/CS0428.png"
+    },
+    {
+      "file": "CS0441.json",
+      "path": "episodes/CS0441.json",
+      "error_code": "CS0441",
+      "message": "'Tools': a class cannot be both static and sealed",
+      "filename": "StaticClass.cs",
+      "lines": 3,
+      "bug": null,
+      "missing": "../assets/CS0441.png"
+    },
+    {
+      "file": "CS0442.json",
+      "path": "episodes/CS0442.json",
+      "error_code": "CS0442",
+      "message": "'Player.Hp': abstract properties cannot have private accessors",
+      "filename": "Props.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0442.png"
     },
     {
       "file": "CS0443.json",
@@ -711,6 +1231,16 @@
       "missing": "../assets/CS0446.png"
     },
     {
+      "file": "CS0462.json",
+      "path": "episodes/CS0462.json",
+      "error_code": "CS0462",
+      "message": "The inherited members 'Base<int>.Hit(int)' and 'Base<int>.Hit(T)' have the same signature",
+      "filename": "Ambiguous.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0462.png"
+    },
+    {
       "file": "CS0463.json",
       "path": "episodes/CS0463.json",
       "error_code": "CS0463",
@@ -719,6 +1249,346 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0463.png"
+    },
+    {
+      "file": "CS0500.json",
+      "path": "episodes/CS0500.json",
+      "error_code": "CS0500",
+      "message": "'Enemy.Hit()' cannot declare a body because it is marked abstract",
+      "filename": "Abstract.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0500.png"
+    },
+    {
+      "file": "CS0501.json",
+      "path": "episodes/CS0501.json",
+      "error_code": "CS0501",
+      "message": "'Enemy.Hit()' must declare a body because it is not marked abstract or extern",
+      "filename": "Abstract.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0501.png"
+    },
+    {
+      "file": "CS0502.json",
+      "path": "episodes/CS0502.json",
+      "error_code": "CS0502",
+      "message": "'Enemy.Hit()' cannot be both abstract and sealed",
+      "filename": "Abstract.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0502.png"
+    },
+    {
+      "file": "CS0503.json",
+      "path": "episodes/CS0503.json",
+      "error_code": "CS0503",
+      "message": "'Enemy.Hit()' cannot be both abstract and virtual",
+      "filename": "Abstract.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0503.png"
+    },
+    {
+      "file": "CS0506.json",
+      "path": "episodes/CS0506.json",
+      "error_code": "CS0506",
+      "message": "'Boss.Hit()' cannot override inherited member 'Enemy.Hit()'; it is not virtual",
+      "filename": "Override.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0506.png"
+    },
+    {
+      "file": "CS0507.json",
+      "path": "episodes/CS0507.json",
+      "error_code": "CS0507",
+      "message": "'Boss.Hit()' cannot change access modifiers when overriding inherited member",
+      "filename": "Override.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0507.png"
+    },
+    {
+      "file": "CS0508.json",
+      "path": "episodes/CS0508.json",
+      "error_code": "CS0508",
+      "message": "'Boss.Hit()' return type must be 'bool' to match overridden member 'Enemy.Hit()'",
+      "filename": "Override.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0508.png"
+    },
+    {
+      "file": "CS0509.json",
+      "path": "episodes/CS0509.json",
+      "error_code": "CS0509",
+      "message": "'Boss' cannot derive from sealed type 'Enemy'",
+      "filename": "Sealed.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0509.png"
+    },
+    {
+      "file": "CS0513.json",
+      "path": "episodes/CS0513.json",
+      "error_code": "CS0513",
+      "message": "'Enemy.Hit()' is abstract but it is contained in non-abstract type 'Enemy'",
+      "filename": "Abstract.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0513.png"
+    },
+    {
+      "file": "CS0514.json",
+      "path": "episodes/CS0514.json",
+      "error_code": "CS0514",
+      "message": "Static constructor 'Player' cannot have an explicit this or base constructor call",
+      "filename": "Ctors.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0514.png"
+    },
+    {
+      "file": "CS0515.json",
+      "path": "episodes/CS0515.json",
+      "error_code": "CS0515",
+      "message": "'Player.Player()': access modifiers are not allowed on static constructors",
+      "filename": "Ctors.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0515.png"
+    },
+    {
+      "file": "CS0516.json",
+      "path": "episodes/CS0516.json",
+      "error_code": "CS0516",
+      "message": "Constructor 'Player.Player()' cannot call itself",
+      "filename": "Ctors.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0516.png"
+    },
+    {
+      "file": "CS0522.json",
+      "path": "episodes/CS0522.json",
+      "error_code": "CS0522",
+      "message": "'Point.Point(int)': structs cannot call base class constructors",
+      "filename": "Ctors.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0522.png"
+    },
+    {
+      "file": "CS0523.json",
+      "path": "episodes/CS0523.json",
+      "error_code": "CS0523",
+      "message": "Struct member 'Node.next' of type 'Node' causes a cycle in the struct layout",
+      "filename": "Structs.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0523.png"
+    },
+    {
+      "file": "CS0525.json",
+      "path": "episodes/CS0525.json",
+      "error_code": "CS0525",
+      "message": "Interfaces cannot contain instance fields",
+      "filename": "Interfaces.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0525.png"
+    },
+    {
+      "file": "CS0526.json",
+      "path": "episodes/CS0526.json",
+      "error_code": "CS0526",
+      "message": "Interfaces cannot contain instance constructors",
+      "filename": "Interfaces.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0526.png"
+    },
+    {
+      "file": "CS0527.json",
+      "path": "episodes/CS0527.json",
+      "error_code": "CS0527",
+      "message": "Type 'Clock' in interface list is not an interface",
+      "filename": "Interfaces.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0527.png"
+    },
+    {
+      "file": "CS0528.json",
+      "path": "episodes/CS0528.json",
+      "error_code": "CS0528",
+      "message": "'IRun' is already listed in the interface list",
+      "filename": "Interfaces.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0528.png"
+    },
+    {
+      "file": "CS0529.json",
+      "path": "episodes/CS0529.json",
+      "error_code": "CS0529",
+      "message": "Inherited interface 'IB' causes a cycle in the interface hierarchy of 'IA'",
+      "filename": "Interfaces.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0529.png"
+    },
+    {
+      "file": "CS0533.json",
+      "path": "episodes/CS0533.json",
+      "error_code": "CS0533",
+      "message": "'Boss.Hit()' hides inherited abstract member 'Enemy.Hit()'",
+      "filename": "Abstract.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0533.png"
+    },
+    {
+      "file": "CS0534.json",
+      "path": "episodes/CS0534.json",
+      "error_code": "CS0534",
+      "message": "'Boss' does not implement inherited abstract member 'Enemy.Hit()'",
+      "filename": "Abstract.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0534.png"
+    },
+    {
+      "file": "CS0535.json",
+      "path": "episodes/CS0535.json",
+      "error_code": "CS0535",
+      "message": "'Boss' does not implement interface member 'IHit.Hit()'",
+      "filename": "Interfaces.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0535.png"
+    },
+    {
+      "file": "CS0538.json",
+      "path": "episodes/CS0538.json",
+      "error_code": "CS0538",
+      "message": "'Enemy' in explicit interface declaration is not an interface",
+      "filename": "Interfaces.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0538.png"
+    },
+    {
+      "file": "CS0539.json",
+      "path": "episodes/CS0539.json",
+      "error_code": "CS0539",
+      "message": "'Boss.Jump()' in explicit interface declaration is not a member of interface",
+      "filename": "Interfaces.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0539.png"
+    },
+    {
+      "file": "CS0540.json",
+      "path": "episodes/CS0540.json",
+      "error_code": "CS0540",
+      "message": "'Boss.IHit.Hit()': containing type does not implement interface 'IHit'",
+      "filename": "Interfaces.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0540.png"
+    },
+    {
+      "file": "CS0541.json",
+      "path": "episodes/CS0541.json",
+      "error_code": "CS0541",
+      "message": "'Boss.IHit.Hit()': explicit interface declaration can only be declared in a class",
+      "filename": "Interfaces.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0541.png"
+    },
+    {
+      "file": "CS0542.json",
+      "path": "episodes/CS0542.json",
+      "error_code": "CS0542",
+      "message": "'Player': member names cannot be the same as their enclosing type",
+      "filename": "Members.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0542.png"
+    },
+    {
+      "file": "CS0547.json",
+      "path": "episodes/CS0547.json",
+      "error_code": "CS0547",
+      "message": "'Player.Hp': property or indexer cannot have void type",
+      "filename": "Props.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0547.png"
+    },
+    {
+      "file": "CS0548.json",
+      "path": "episodes/CS0548.json",
+      "error_code": "CS0548",
+      "message": "'Player.Hp': property or indexer must have at least one accessor",
+      "filename": "Props.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0548.png"
+    },
+    {
+      "file": "CS0550.json",
+      "path": "episodes/CS0550.json",
+      "error_code": "CS0550",
+      "message": "'Boss.IHp.Hp.set' adds an accessor not found in interface member 'IHp.Hp'",
+      "filename": "Props.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0550.png"
+    },
+    {
+      "file": "CS0551.json",
+      "path": "episodes/CS0551.json",
+      "error_code": "CS0551",
+      "message": "Explicit interface implementation 'Boss.IHp.Hp' is missing accessor 'IHp.Hp.set'",
+      "filename": "Props.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0551.png"
+    },
+    {
+      "file": "CS0572.json",
+      "path": "episodes/CS0572.json",
+      "error_code": "CS0572",
+      "message": "'Inner': cannot reference a type through an expression",
+      "filename": "Ambiguous.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0572.png"
+    },
+    {
+      "file": "CS0574.json",
+      "path": "episodes/CS0574.json",
+      "error_code": "CS0574",
+      "message": "Name of destructor must match name of class",
+      "filename": "Finalizers.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0574.png"
+    },
+    {
+      "file": "CS0575.json",
+      "path": "episodes/CS0575.json",
+      "error_code": "CS0575",
+      "message": "Only class types can contain destructors",
+      "filename": "Finalizers.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0575.png"
     },
     {
       "file": "CS0594.json",
@@ -741,6 +1611,26 @@
       "missing": "../assets/CS0595.png"
     },
     {
+      "file": "CS0620.json",
+      "path": "episodes/CS0620.json",
+      "error_code": "CS0620",
+      "message": "Indexers cannot have void type",
+      "filename": "Indexers.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0620.png"
+    },
+    {
+      "file": "CS0621.json",
+      "path": "episodes/CS0621.json",
+      "error_code": "CS0621",
+      "message": "'Player.Hit()': virtual or abstract members cannot be private",
+      "filename": "Members.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0621.png"
+    },
+    {
       "file": "CS0650.json",
       "path": "episodes/CS0650.json",
       "error_code": "CS0650",
@@ -751,6 +1641,16 @@
       "missing": "../assets/CS0650.png"
     },
     {
+      "file": "CS0663.json",
+      "path": "episodes/CS0663.json",
+      "error_code": "CS0663",
+      "message": "'Player' cannot define an overload that differs only on ref, out and in",
+      "filename": "Ambiguous.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0663.png"
+    },
+    {
       "file": "CS0664.json",
       "path": "episodes/CS0664.json",
       "error_code": "CS0664",
@@ -759,6 +1659,166 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0664.png"
+    },
+    {
+      "file": "CS0666.json",
+      "path": "episodes/CS0666.json",
+      "error_code": "CS0666",
+      "message": "'Point.hp': new protected member declared in struct",
+      "filename": "Structs.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0666.png"
+    },
+    {
+      "file": "CS0708.json",
+      "path": "episodes/CS0708.json",
+      "error_code": "CS0708",
+      "message": "'Tools.hp': cannot declare instance members in a static class",
+      "filename": "StaticClass.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0708.png"
+    },
+    {
+      "file": "CS0709.json",
+      "path": "episodes/CS0709.json",
+      "error_code": "CS0709",
+      "message": "'Boss': cannot derive from static class 'Tools'",
+      "filename": "StaticClass.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0709.png"
+    },
+    {
+      "file": "CS0710.json",
+      "path": "episodes/CS0710.json",
+      "error_code": "CS0710",
+      "message": "Static classes cannot have instance constructors",
+      "filename": "StaticClass.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0710.png"
+    },
+    {
+      "file": "CS0712.json",
+      "path": "episodes/CS0712.json",
+      "error_code": "CS0712",
+      "message": "Cannot create an instance of the static class 'Tools'",
+      "filename": "StaticClass.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0712.png"
+    },
+    {
+      "file": "CS0713.json",
+      "path": "episodes/CS0713.json",
+      "error_code": "CS0713",
+      "message": "Static class 'Tools' cannot derive from type 'Base'; it must derive from object",
+      "filename": "StaticClass.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0713.png"
+    },
+    {
+      "file": "CS0714.json",
+      "path": "episodes/CS0714.json",
+      "error_code": "CS0714",
+      "message": "'Tools': static classes cannot implement interfaces",
+      "filename": "StaticClass.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0714.png"
+    },
+    {
+      "file": "CS0718.json",
+      "path": "episodes/CS0718.json",
+      "error_code": "CS0718",
+      "message": "'Tools': static types cannot be used as type arguments",
+      "filename": "StaticClass.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0718.png"
+    },
+    {
+      "file": "CS0721.json",
+      "path": "episodes/CS0721.json",
+      "error_code": "CS0721",
+      "message": "'Tools': static types cannot be used as parameters",
+      "filename": "StaticClass.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0721.png"
+    },
+    {
+      "file": "CS0722.json",
+      "path": "episodes/CS0722.json",
+      "error_code": "CS0722",
+      "message": "'Tools': static types cannot be used as return types",
+      "filename": "StaticClass.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0722.png"
+    },
+    {
+      "file": "CS0723.json",
+      "path": "episodes/CS0723.json",
+      "error_code": "CS0723",
+      "message": "Cannot declare a variable of static type 'Tools'",
+      "filename": "StaticClass.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0723.png"
+    },
+    {
+      "file": "CS0751.json",
+      "path": "episodes/CS0751.json",
+      "error_code": "CS0751",
+      "message": "A partial method must be declared within a partial class or partial struct",
+      "filename": "Partial.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0751.png"
+    },
+    {
+      "file": "CS0756.json",
+      "path": "episodes/CS0756.json",
+      "error_code": "CS0756",
+      "message": "A partial method may not have multiple defining declarations",
+      "filename": "Partial.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0756.png"
+    },
+    {
+      "file": "CS0757.json",
+      "path": "episodes/CS0757.json",
+      "error_code": "CS0757",
+      "message": "A partial method may not have multiple implementing declarations",
+      "filename": "Partial.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0757.png"
+    },
+    {
+      "file": "CS0759.json",
+      "path": "episodes/CS0759.json",
+      "error_code": "CS0759",
+      "message": "No defining declaration found for implementing declaration of 'Player.OnHit()'",
+      "filename": "Partial.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0759.png"
+    },
+    {
+      "file": "CS0768.json",
+      "path": "episodes/CS0768.json",
+      "error_code": "CS0768",
+      "message": "Constructor 'Player.Player(int)' cannot call itself through another constructor",
+      "filename": "Ctors.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0768.png"
     },
     {
       "file": "CS0815.json",
@@ -1181,6 +2241,16 @@
       "missing": "../assets/CS1056.png"
     },
     {
+      "file": "CS1057.json",
+      "path": "episodes/CS1057.json",
+      "error_code": "CS1057",
+      "message": "'Tools.hp': static classes cannot contain protected members",
+      "filename": "StaticClass.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1057.png"
+    },
+    {
       "file": "CS1059.json",
       "path": "episodes/CS1059.json",
       "error_code": "CS1059",
@@ -1239,6 +2309,26 @@
       "lines": 10,
       "bug": null,
       "missing": "../assets/CS1510.png"
+    },
+    {
+      "file": "CS1511.json",
+      "path": "episodes/CS1511.json",
+      "error_code": "CS1511",
+      "message": "Keyword 'base' is not available in a static method",
+      "filename": "BaseRef.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS1511.png"
+    },
+    {
+      "file": "CS1512.json",
+      "path": "episodes/CS1512.json",
+      "error_code": "CS1512",
+      "message": "Keyword 'base' is not available in the current context",
+      "filename": "BaseRef.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1512.png"
     },
     {
       "file": "CS1513.json",
@@ -1351,6 +2441,26 @@
       "missing": "../assets/CS1529.png"
     },
     {
+      "file": "CS1540.json",
+      "path": "episodes/CS1540.json",
+      "error_code": "CS1540",
+      "message": "Cannot access protected member 'Enemy.hp' through a qualifier of type 'Enemy'",
+      "filename": "Ambiguous.cs",
+      "lines": 12,
+      "bug": null,
+      "missing": "../assets/CS1540.png"
+    },
+    {
+      "file": "CS1551.json",
+      "path": "episodes/CS1551.json",
+      "error_code": "CS1551",
+      "message": "An indexer must have at least one parameter",
+      "filename": "Indexers.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1551.png"
+    },
+    {
       "file": "CS1579.json",
       "path": "episodes/CS1579.json",
       "error_code": "CS1579",
@@ -1379,6 +2489,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS1586.png"
+    },
+    {
+      "file": "CS1593.json",
+      "path": "episodes/CS1593.json",
+      "error_code": "CS1593",
+      "message": "Delegate 'Action' does not take 1 arguments",
+      "filename": "Delegates.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1593.png"
     },
     {
       "file": "CS1597.json",
@@ -1499,6 +2619,16 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS1750.png"
+    },
+    {
+      "file": "CS1955.json",
+      "path": "episodes/CS1955.json",
+      "error_code": "CS1955",
+      "message": "Non-invocable member 'Player.hp' cannot be used like a method",
+      "filename": "Ambiguous.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1955.png"
     },
     {
       "file": "CS7036.json",
