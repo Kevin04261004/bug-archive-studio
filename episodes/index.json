@@ -235,8 +235,8 @@
       "message": "There is no argument given that corresponds to the required parameter 'damage'",
       "filename": "Combat.cs",
       "lines": 9,
-      "bug": null,
-      "missing": "../assets/CS7036.png",
+      "bug": "assets/CS7036.png",
+      "missing": null,
       "order": 20,
       "tier": 1
     },
