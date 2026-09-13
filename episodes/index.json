@@ -1,6 +1,16 @@
 {
   "episodes": [
     {
+      "file": "CS0017.json",
+      "path": "episodes/CS0017.json",
+      "error_code": "CS0017",
+      "message": "Program has more than one entry point defined",
+      "filename": "Program.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0017.png"
+    },
+    {
       "file": "CS0019.json",
       "path": "episodes/CS0019.json",
       "error_code": "CS0019",
@@ -21,6 +31,26 @@
       "missing": null
     },
     {
+      "file": "CS0101.json",
+      "path": "episodes/CS0101.json",
+      "error_code": "CS0101",
+      "message": "The namespace 'Game' already contains a definition for 'Enemy'",
+      "filename": "Enemies.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0101.png"
+    },
+    {
+      "file": "CS0102.json",
+      "path": "episodes/CS0102.json",
+      "error_code": "CS0102",
+      "message": "The type 'Player' already contains a definition for 'hp'",
+      "filename": "PlayerData.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0102.png"
+    },
+    {
       "file": "CS0103.json",
       "path": "episodes/CS0103.json",
       "error_code": "CS0103",
@@ -29,6 +59,36 @@
       "lines": 5,
       "bug": "assets/CS0103.png",
       "missing": null
+    },
+    {
+      "file": "CS0106.json",
+      "path": "episodes/CS0106.json",
+      "error_code": "CS0106",
+      "message": "The modifier 'public' is not valid for this item",
+      "filename": "Helpers.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0106.png"
+    },
+    {
+      "file": "CS0111.json",
+      "path": "episodes/CS0111.json",
+      "error_code": "CS0111",
+      "message": "Type 'Gun' already defines a member called 'Fire' with the same parameter types",
+      "filename": "Weapons.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0111.png"
+    },
+    {
+      "file": "CS0116.json",
+      "path": "episodes/CS0116.json",
+      "error_code": "CS0116",
+      "message": "A namespace cannot directly contain members such as fields or methods",
+      "filename": "Game.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0116.png"
     },
     {
       "file": "CS0117.json",
@@ -51,6 +111,36 @@
       "missing": null
     },
     {
+      "file": "CS0122.json",
+      "path": "episodes/CS0122.json",
+      "error_code": "CS0122",
+      "message": "'Enemy.hp' is inaccessible due to its protection level",
+      "filename": "Health.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0122.png"
+    },
+    {
+      "file": "CS0128.json",
+      "path": "episodes/CS0128.json",
+      "error_code": "CS0128",
+      "message": "A local variable named 'hp' is already defined in this scope",
+      "filename": "Stats.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0128.png"
+    },
+    {
+      "file": "CS0136.json",
+      "path": "episodes/CS0136.json",
+      "error_code": "CS0136",
+      "message": "A local named 'i' cannot be declared in this scope",
+      "filename": "LoopScope.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0136.png"
+    },
+    {
       "file": "CS0161.json",
       "path": "episodes/CS0161.json",
       "error_code": "CS0161",
@@ -61,6 +151,16 @@
       "missing": null
     },
     {
+      "file": "CS0165.json",
+      "path": "episodes/CS0165.json",
+      "error_code": "CS0165",
+      "message": "Use of unassigned local variable 'score'",
+      "filename": "ScoreInit.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0165.png"
+    },
+    {
       "file": "CS0176.json",
       "path": "episodes/CS0176.json",
       "error_code": "CS0176",
@@ -69,6 +169,26 @@
       "lines": 10,
       "bug": "assets/CS0176.png",
       "missing": null
+    },
+    {
+      "file": "CS0201.json",
+      "path": "episodes/CS0201.json",
+      "error_code": "CS0201",
+      "message": "Only assignment, call, increment or new object expressions can be a statement",
+      "filename": "Damage.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0201.png"
+    },
+    {
+      "file": "CS0234.json",
+      "path": "episodes/CS0234.json",
+      "error_code": "CS0234",
+      "message": "The type or namespace name 'Collection' does not exist in the namespace 'System'",
+      "filename": "Bag.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0234.png"
     },
     {
       "file": "CS0246.json",
@@ -111,6 +231,16 @@
       "missing": null
     },
     {
+      "file": "CS1022.json",
+      "path": "episodes/CS1022.json",
+      "error_code": "CS1022",
+      "message": "Type or namespace definition, or end-of-file expected",
+      "filename": "PlayerLoop.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1022.png"
+    },
+    {
       "file": "CS1026.json",
       "path": "episodes/CS1026.json",
       "error_code": "CS1026",
@@ -131,6 +261,26 @@
       "missing": null
     },
     {
+      "file": "CS1501.json",
+      "path": "episodes/CS1501.json",
+      "error_code": "CS1501",
+      "message": "No overload for method 'Fire' takes 0 arguments",
+      "filename": "Weapon.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1501.png"
+    },
+    {
+      "file": "CS1503.json",
+      "path": "episodes/CS1503.json",
+      "error_code": "CS1503",
+      "message": "Argument 1: cannot convert from 'string' to 'float'",
+      "filename": "Timing.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1503.png"
+    },
+    {
       "file": "CS1513.json",
       "path": "episodes/CS1513.json",
       "error_code": "CS1513",
@@ -149,6 +299,46 @@
       "lines": 4,
       "bug": "assets/CS1514.png",
       "missing": null
+    },
+    {
+      "file": "CS1519.json",
+      "path": "episodes/CS1519.json",
+      "error_code": "CS1519",
+      "message": "Invalid token '==' in class, record, struct, or interface member declaration",
+      "filename": "Fields.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1519.png"
+    },
+    {
+      "file": "CS1525.json",
+      "path": "episodes/CS1525.json",
+      "error_code": "CS1525",
+      "message": "Invalid expression term ';'",
+      "filename": "Setup.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1525.png"
+    },
+    {
+      "file": "CS1729.json",
+      "path": "episodes/CS1729.json",
+      "error_code": "CS1729",
+      "message": "'Enemy' does not contain a constructor that takes 0 arguments",
+      "filename": "Spawn.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1729.png"
+    },
+    {
+      "file": "CS7036.json",
+      "path": "episodes/CS7036.json",
+      "error_code": "CS7036",
+      "message": "There is no argument given that corresponds to the required parameter 'damage'",
+      "filename": "Combat.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS7036.png"
     }
   ]
 }
