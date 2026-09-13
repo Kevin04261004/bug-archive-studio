@@ -67,8 +67,8 @@
       "message": "Member 'Enemy.Spawn()' cannot be accessed with an instance reference",
       "filename": "Battle.cs",
       "lines": 10,
-      "bug": null,
-      "missing": "../assets/CS0176.png"
+      "bug": "assets/CS0176.png",
+      "missing": null
     },
     {
       "file": "CS0246.json",
