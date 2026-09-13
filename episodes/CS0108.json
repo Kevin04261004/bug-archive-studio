@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0108",
+  "message": "'Boss.hp' hides inherited member 'Enemy.hp'; use the new keyword if intended",
+  "filename": "Hiding.cs",
+  "before": ["class Enemy", "{", "    public int hp;", "}", "", "class Boss : Enemy", "{", "    public int hp;", "}"],
+  "after": ["class Enemy", "{", "    public int hp;", "}", "", "class Boss : Enemy", "{", "    public new int hp;", "}"],
+  "bug": "../assets/CS0108.png",
+  "focus_line": 8
+}

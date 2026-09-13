@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0219",
+  "message": "The variable 'n' is assigned but its value is never used",
+  "filename": "Unused.cs",
+  "before": ["void Start()", "{", "    int n = 1;", "    Debug.Log(2);", "}"],
+  "after": ["void Start()", "{", "    int n = 1;", "    Debug.Log(n);", "}"],
+  "bug": "../assets/CS0219.png",
+  "focus_line": 4
+}

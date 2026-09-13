@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1066",
+  "message": "The default value for 'n' will have no effect in an interface implementation",
+  "filename": "Interfaces.cs",
+  "before": ["interface IHit", "{", "    void Hit(int n);", "}", "", "class Boss : IHit", "{", "    public void Hit(int n = 1) { }", "}"],
+  "after": ["interface IHit", "{", "    void Hit(int n);", "}", "", "class Boss : IHit", "{", "    public void Hit(int n) { }", "}"],
+  "bug": "../assets/CS1066.png",
+  "focus_line": 8
+}

@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1064",
+  "message": "The best Add method 'Bag.Add(int)' for the collection initializer is obsolete",
+  "filename": "Initializers.cs",
+  "before": ["class Bag : IEnumerable", "{", "    [Obsolete]", "    public void Add(int n) { }", "", "    public void Add(string s) { }", "}", "", "void Start()", "{", "    var b = new Bag { 1 };", "}"],
+  "after": ["class Bag : IEnumerable", "{", "    [Obsolete]", "    public void Add(int n) { }", "", "    public void Add(string s) { }", "}", "", "void Start()", "{", "    var b = new Bag { \"a\" };", "}"],
+  "bug": "../assets/CS1064.png",
+  "focus_line": 11
+}

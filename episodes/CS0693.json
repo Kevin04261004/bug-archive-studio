@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0693",
+  "message": "Type parameter 'T' has the same name as the type parameter from outer type 'Box<T>'",
+  "filename": "Generics.cs",
+  "before": ["class Box<T>", "{", "    class Inner<T> { }", "}"],
+  "after": ["class Box<T>", "{", "    class Inner<U> { }", "}"],
+  "bug": "../assets/CS0693.png",
+  "focus_line": 3
+}

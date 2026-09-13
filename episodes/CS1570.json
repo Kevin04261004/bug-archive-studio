@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1570",
+  "message": "XML comment has badly formed XML",
+  "filename": "XmlDoc.cs",
+  "before": ["/// <summary>A player.</summary", "public class Player", "{", "}"],
+  "after": ["/// <summary>A player.</summary>", "public class Player", "{", "}"],
+  "bug": "../assets/CS1570.png",
+  "focus_line": 1
+}

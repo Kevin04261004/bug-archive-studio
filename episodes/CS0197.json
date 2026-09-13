@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0197",
+  "message": "Passing 'Player.hp' as ref or out may cause a runtime exception",
+  "filename": "Threading.cs",
+  "before": ["class Player : MarshalByRefObject", "{", "    public int hp;", "", "    void Go()", "    {", "        Set(ref hp);", "    }", "", "    void Set(ref int n) { }", "}"],
+  "after": ["class Player", "{", "    public int hp;", "", "    void Go()", "    {", "        Set(ref hp);", "    }", "", "    void Set(ref int n) { }", "}"],
+  "bug": "../assets/CS0197.png",
+  "focus_line": 1
+}

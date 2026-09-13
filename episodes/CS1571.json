@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1571",
+  "message": "XML comment has a duplicate param tag for 'n'",
+  "filename": "XmlDoc.cs",
+  "before": ["/// <param name=\"n\">Hp.</param>", "/// <param name=\"n\">Mp.</param>", "void Set(int n, int m) { }"],
+  "after": ["/// <param name=\"n\">Hp.</param>", "/// <param name=\"m\">Mp.</param>", "void Set(int n, int m) { }"],
+  "bug": "../assets/CS1571.png",
+  "focus_line": 2
+}

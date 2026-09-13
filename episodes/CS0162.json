@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0162",
+  "message": "Unreachable code detected",
+  "filename": "Flow.cs",
+  "before": ["void Start()", "{", "    return;", "    Debug.Log(1);", "}"],
+  "after": ["void Start()", "{", "", "    Debug.Log(1);", "}"],
+  "bug": "../assets/CS0162.png",
+  "focus_line": 3
+}

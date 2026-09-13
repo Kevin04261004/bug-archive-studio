@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0661",
+  "message": "'P' defines operator == or != but does not override Object.GetHashCode()",
+  "filename": "Operators.cs",
+  "before": ["struct P", "{", "    public static bool operator ==(P a, P b)", "        => true;", "", "    public static bool operator !=(P a, P b)", "        => false;", "", "}"],
+  "after": ["struct P", "{", "    public static bool operator ==(P a, P b)", "        => true;", "", "    public static bool operator !=(P a, P b)", "        => false;", "    public override int GetHashCode() => 0;", "}"],
+  "bug": "../assets/CS0661.png",
+  "focus_line": 8
+}

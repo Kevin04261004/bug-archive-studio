@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0420",
+  "message": "'Player.hp': a reference to a volatile field will not be treated as volatile",
+  "filename": "Threading.cs",
+  "before": ["class Player", "{", "    volatile int hp;", "", "    void Go()", "    {", "        Interlocked.Increment(ref hp);", "    }", "}"],
+  "after": ["class Player", "{", "    int hp;", "", "    void Go()", "    {", "        Interlocked.Increment(ref hp);", "    }", "}"],
+  "bug": "../assets/CS0420.png",
+  "focus_line": 3
+}

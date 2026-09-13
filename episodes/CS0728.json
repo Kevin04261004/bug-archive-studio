@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0728",
+  "message": "Possibly incorrect assignment to local 'p' which is the argument to a using",
+  "filename": "Using.cs",
+  "before": ["void Start()", "{", "    var p = File.OpenRead(\"a\");", "    using (p)", "    {", "        p = null;", "    }", "}"],
+  "after": ["void Start()", "{", "    var p = File.OpenRead(\"a\");", "    using (p)", "    {", "        Debug.Log(p);", "    }", "}"],
+  "bug": "../assets/CS0728.png",
+  "focus_line": 6
+}

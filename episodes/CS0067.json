@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0067",
+  "message": "The event 'Unit.Died' is never used",
+  "filename": "Unused.cs",
+  "before": ["class Unit", "{", "    private event Action Died;", "}"],
+  "after": ["class Unit", "{", "", "}"],
+  "bug": "../assets/CS0067.png",
+  "focus_line": 3
+}

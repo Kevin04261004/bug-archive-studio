@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0414",
+  "message": "The field 'Player.hp' is assigned but its value is never used",
+  "filename": "Unused.cs",
+  "before": ["class Player", "{", "    private int hp = 1;", "", "    public int Get() => 2;", "}"],
+  "after": ["class Player", "{", "    private int hp = 1;", "", "    public int Get() => hp;", "}"],
+  "bug": "../assets/CS0414.png",
+  "focus_line": 5
+}

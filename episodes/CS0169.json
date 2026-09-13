@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0169",
+  "message": "The field 'Player.hp' is never used",
+  "filename": "Unused.cs",
+  "before": ["class Player", "{", "    private int hp;", "}"],
+  "after": ["class Player", "{", "", "}"],
+  "bug": "../assets/CS0169.png",
+  "focus_line": 3
+}

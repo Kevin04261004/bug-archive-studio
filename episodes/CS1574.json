@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1574",
+  "message": "XML comment has cref attribute 'Heal' that could not be resolved",
+  "filename": "XmlDoc.cs",
+  "before": ["/// <summary>Hits once.</summary>", "/// <see cref=\"Heal\"/>", "void Attack() { }"],
+  "after": ["/// <summary>Hits once.</summary>", "/// <see cref=\"Attack\"/>", "void Attack() { }"],
+  "bug": "../assets/CS1574.png",
+  "focus_line": 2
+}

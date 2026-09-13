@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1591",
+  "message": "Missing XML comment for publicly visible type or member 'Player'",
+  "filename": "XmlDoc.cs",
+  "before": ["", "public class Player", "{", "}"],
+  "after": ["/// <summary>A player.</summary>", "public class Player", "{", "}"],
+  "bug": "../assets/CS1591.png",
+  "focus_line": 1
+}

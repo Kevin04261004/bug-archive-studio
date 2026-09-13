@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0282",
+  "message": "There is no defined ordering between fields in multiple declarations of 'Point'",
+  "filename": "Partial.cs",
+  "before": ["partial struct Point", "{", "    public int x;", "}", "", "partial struct Point", "{", "    public int y;", "}"],
+  "after": ["partial struct Point", "{", "    public int x;", "}", "", "partial struct Point", "{", "", "}"],
+  "bug": "../assets/CS0282.png",
+  "focus_line": 8
+}

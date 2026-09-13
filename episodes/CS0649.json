@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0649",
+  "message": "Field 'Player.hp' is never assigned to, and will always have its default value",
+  "filename": "Unused.cs",
+  "before": ["class Player", "{", "    private int hp;", "", "    public int Get() => hp;", "}"],
+  "after": ["class Player", "{", "    private int hp = 1;", "", "    public int Get() => hp;", "}"],
+  "bug": "../assets/CS0649.png",
+  "focus_line": 3
+}

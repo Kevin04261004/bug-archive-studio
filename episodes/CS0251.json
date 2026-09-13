@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0251",
+  "message": "Indexing an array with a negative index",
+  "filename": "Arrays.cs",
+  "before": ["void Start()", "{", "    int[] xs = new int[3];", "    Debug.Log(xs[-1]);", "}"],
+  "after": ["void Start()", "{", "    int[] xs = new int[3];", "    Debug.Log(xs[0]);", "}"],
+  "bug": "../assets/CS0251.png",
+  "focus_line": 4
+}

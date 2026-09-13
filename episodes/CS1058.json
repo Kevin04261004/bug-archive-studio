@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1058",
+  "message": "A previous catch clause already catches all exceptions",
+  "filename": "Exceptions.cs",
+  "before": ["void Start()", "{", "    try", "    {", "    }", "    catch (Exception)", "    {", "    }", "    catch (IOException)", "    {", "    }", "}"],
+  "after": ["void Start()", "{", "    try", "    {", "    }", "    catch (ArgumentException)", "    {", "    }", "    catch (IOException)", "    {", "    }", "}"],
+  "bug": "../assets/CS1058.png",
+  "focus_line": 6
+}

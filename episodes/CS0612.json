@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0612",
+  "message": "'Player.Old()' is obsolete",
+  "filename": "Obsolete.cs",
+  "before": ["class Player", "{", "    [Obsolete]", "    public void Old() { }", "", "    public void New() { }", "}", "", "void Start()", "{", "    Player p = new Player();", "    p.Old();", "}"],
+  "after": ["class Player", "{", "    [Obsolete]", "    public void Old() { }", "", "    public void New() { }", "}", "", "void Start()", "{", "    Player p = new Player();", "    p.New();", "}"],
+  "bug": "../assets/CS0612.png",
+  "focus_line": 12
+}

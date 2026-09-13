@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1717",
+  "message": "Assignment made to same variable; did you mean to assign something else?",
+  "filename": "Compare.cs",
+  "before": ["void Start()", "{", "    int n = 1;", "    n = n;", "}"],
+  "after": ["void Start()", "{", "    int n = 1;", "    n = 2;", "}"],
+  "bug": "../assets/CS1717.png",
+  "focus_line": 4
+}

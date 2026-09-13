@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0675",
+  "message": "Bitwise-or operator used on a sign-extended operand",
+  "filename": "Literals.cs",
+  "before": ["void Start()", "{", "    int a = -1;", "    long b = a | 0x10000L;", "}"],
+  "after": ["void Start()", "{", "    int a = -1;", "    long b = (uint)a | 0x10000L;", "}"],
+  "bug": "../assets/CS0675.png",
+  "focus_line": 4
+}

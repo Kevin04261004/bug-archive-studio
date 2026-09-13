@@ -1,0 +1,9 @@
+{
+  "error_code": "CS0809",
+  "message": "Obsolete member 'Boss.Hit()' overrides non-obsolete member 'Enemy.Hit()'",
+  "filename": "Obsolete.cs",
+  "before": ["class Enemy", "{", "", "    public virtual void Hit() { }", "}", "", "class Boss : Enemy", "{", "    [Obsolete]", "    public override void Hit() { }", "}"],
+  "after": ["class Enemy", "{", "    [Obsolete]", "    public virtual void Hit() { }", "}", "", "class Boss : Enemy", "{", "    [Obsolete]", "    public override void Hit() { }", "}"],
+  "bug": "../assets/CS0809.png",
+  "focus_line": 3
+}

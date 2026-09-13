@@ -1,0 +1,9 @@
+{
+  "error_code": "CS1981",
+  "message": "Using 'is' to test compatibility with 'dynamic' is identical to testing 'object'",
+  "filename": "Compare.cs",
+  "before": ["void Start()", "{", "    object o = 1;", "    if (o is dynamic) { }", "}"],
+  "after": ["void Start()", "{", "    object o = 1;", "    if (o is object) { }", "}"],
+  "bug": "../assets/CS1981.png",
+  "focus_line": 4
+}
