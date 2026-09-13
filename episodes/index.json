@@ -2479,8 +2479,8 @@
       "message": "Keyword 'this' is not available in the current context",
       "filename": "ThisRef.cs",
       "lines": 10,
-      "bug": null,
-      "missing": "../assets/CS0027.png",
+      "bug": "assets/CS0027.png",
+      "missing": null,
       "order": 214,
       "tier": 4
     },
