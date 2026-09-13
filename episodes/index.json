@@ -41,6 +41,16 @@
       "missing": "../assets/CS0022.png"
     },
     {
+      "file": "CS0023.json",
+      "path": "episodes/CS0023.json",
+      "error_code": "CS0023",
+      "message": "Operator '!' cannot be applied to operand of type 'int'",
+      "filename": "Logic.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0023.png"
+    },
+    {
       "file": "CS0029.json",
       "path": "episodes/CS0029.json",
       "error_code": "CS0029",
@@ -49,6 +59,66 @@
       "lines": 6,
       "bug": "assets/CS0029.png",
       "missing": null
+    },
+    {
+      "file": "CS0030.json",
+      "path": "episodes/CS0030.json",
+      "error_code": "CS0030",
+      "message": "Cannot convert type 'string' to 'int'",
+      "filename": "Convert.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0030.png"
+    },
+    {
+      "file": "CS0031.json",
+      "path": "episodes/CS0031.json",
+      "error_code": "CS0031",
+      "message": "Constant value '300' cannot be converted to a 'byte'",
+      "filename": "Bytes.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0031.png"
+    },
+    {
+      "file": "CS0037.json",
+      "path": "episodes/CS0037.json",
+      "error_code": "CS0037",
+      "message": "Cannot convert null to 'int' because it is a non-nullable value type",
+      "filename": "Nulls.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0037.png"
+    },
+    {
+      "file": "CS0039.json",
+      "path": "episodes/CS0039.json",
+      "error_code": "CS0039",
+      "message": "Cannot convert type 'Dog' to 'Cat' via a reference conversion",
+      "filename": "Casts.cs",
+      "lines": 8,
+      "bug": null,
+      "missing": "../assets/CS0039.png"
+    },
+    {
+      "file": "CS0075.json",
+      "path": "episodes/CS0075.json",
+      "error_code": "CS0075",
+      "message": "To cast a negative value, you must enclose the value in parentheses",
+      "filename": "Casts.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0075.png"
+    },
+    {
+      "file": "CS0077.json",
+      "path": "episodes/CS0077.json",
+      "error_code": "CS0077",
+      "message": "The as operator must be used with a reference type or nullable type",
+      "filename": "Casts.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0077.png"
     },
     {
       "file": "CS0101.json",
@@ -89,6 +159,16 @@
       "lines": 5,
       "bug": null,
       "missing": "../assets/CS0106.png"
+    },
+    {
+      "file": "CS0110.json",
+      "path": "episodes/CS0110.json",
+      "error_code": "CS0110",
+      "message": "The evaluation of the constant value for 'A' involves a circular definition",
+      "filename": "Consts.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0110.png"
     },
     {
       "file": "CS0111.json",
@@ -181,6 +261,26 @@
       "missing": "../assets/CS0131.png"
     },
     {
+      "file": "CS0133.json",
+      "path": "episodes/CS0133.json",
+      "error_code": "CS0133",
+      "message": "The expression being assigned to 'max' must be constant",
+      "filename": "Consts.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0133.png"
+    },
+    {
+      "file": "CS0134.json",
+      "path": "episodes/CS0134.json",
+      "error_code": "CS0134",
+      "message": "A const field of a reference type can only be initialized with null",
+      "filename": "Consts.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0134.png"
+    },
+    {
       "file": "CS0136.json",
       "path": "episodes/CS0136.json",
       "error_code": "CS0136",
@@ -209,6 +309,26 @@
       "lines": 7,
       "bug": null,
       "missing": "../assets/CS0140.png"
+    },
+    {
+      "file": "CS0145.json",
+      "path": "episodes/CS0145.json",
+      "error_code": "CS0145",
+      "message": "A const field requires a value to be provided",
+      "filename": "Consts.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0145.png"
+    },
+    {
+      "file": "CS0150.json",
+      "path": "episodes/CS0150.json",
+      "error_code": "CS0150",
+      "message": "A constant value is expected",
+      "filename": "Switches.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0150.png"
     },
     {
       "file": "CS0151.json",
@@ -321,6 +441,36 @@
       "missing": "../assets/CS0165.png"
     },
     {
+      "file": "CS0170.json",
+      "path": "episodes/CS0170.json",
+      "error_code": "CS0170",
+      "message": "Use of possibly unassigned field 'x'",
+      "filename": "Structs.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0170.png"
+    },
+    {
+      "file": "CS0172.json",
+      "path": "episodes/CS0172.json",
+      "error_code": "CS0172",
+      "message": "Type of conditional expression cannot be determined",
+      "filename": "Choice.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0172.png"
+    },
+    {
+      "file": "CS0173.json",
+      "path": "episodes/CS0173.json",
+      "error_code": "CS0173",
+      "message": "Type of conditional expression cannot be determined between 'int' and 'string'",
+      "filename": "Choice.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0173.png"
+    },
+    {
       "file": "CS0176.json",
       "path": "episodes/CS0176.json",
       "error_code": "CS0176",
@@ -329,6 +479,16 @@
       "lines": 10,
       "bug": "assets/CS0176.png",
       "missing": null
+    },
+    {
+      "file": "CS0177.json",
+      "path": "episodes/CS0177.json",
+      "error_code": "CS0177",
+      "message": "The out parameter 'n' must be assigned before control leaves the method",
+      "filename": "Outs.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0177.png"
     },
     {
       "file": "CS0178.json",
@@ -351,6 +511,46 @@
       "missing": "../assets/CS0186.png"
     },
     {
+      "file": "CS0191.json",
+      "path": "episodes/CS0191.json",
+      "error_code": "CS0191",
+      "message": "A readonly field cannot be assigned to outside a constructor",
+      "filename": "Readonly.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0191.png"
+    },
+    {
+      "file": "CS0192.json",
+      "path": "episodes/CS0192.json",
+      "error_code": "CS0192",
+      "message": "A readonly field cannot be passed as a ref or out argument",
+      "filename": "Readonly.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0192.png"
+    },
+    {
+      "file": "CS0198.json",
+      "path": "episodes/CS0198.json",
+      "error_code": "CS0198",
+      "message": "A static readonly field cannot be assigned to outside a static constructor",
+      "filename": "Readonly.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0198.png"
+    },
+    {
+      "file": "CS0200.json",
+      "path": "episodes/CS0200.json",
+      "error_code": "CS0200",
+      "message": "Property 'Player.Hp' cannot be assigned to; it is read only",
+      "filename": "Props.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0200.png"
+    },
+    {
       "file": "CS0201.json",
       "path": "episodes/CS0201.json",
       "error_code": "CS0201",
@@ -369,6 +569,36 @@
       "lines": 7,
       "bug": null,
       "missing": "../assets/CS0202.png"
+    },
+    {
+      "file": "CS0206.json",
+      "path": "episodes/CS0206.json",
+      "error_code": "CS0206",
+      "message": "A property or indexer may not be passed as an out or ref parameter",
+      "filename": "Refs.cs",
+      "lines": 13,
+      "bug": null,
+      "missing": "../assets/CS0206.png"
+    },
+    {
+      "file": "CS0220.json",
+      "path": "episodes/CS0220.json",
+      "error_code": "CS0220",
+      "message": "The operation overflows at compile time in checked mode",
+      "filename": "Overflow.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0220.png"
+    },
+    {
+      "file": "CS0221.json",
+      "path": "episodes/CS0221.json",
+      "error_code": "CS0221",
+      "message": "Constant value '-1' cannot be converted to a 'uint'",
+      "filename": "Unsigned.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0221.png"
     },
     {
       "file": "CS0230.json",
@@ -411,6 +641,16 @@
       "missing": null
     },
     {
+      "file": "CS0269.json",
+      "path": "episodes/CS0269.json",
+      "error_code": "CS0269",
+      "message": "Use of unassigned out parameter 'n'",
+      "filename": "Outs.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0269.png"
+    },
+    {
       "file": "CS0270.json",
       "path": "episodes/CS0270.json",
       "error_code": "CS0270",
@@ -419,6 +659,26 @@
       "lines": 4,
       "bug": null,
       "missing": "../assets/CS0270.png"
+    },
+    {
+      "file": "CS0283.json",
+      "path": "episodes/CS0283.json",
+      "error_code": "CS0283",
+      "message": "The type 'Vector3' cannot be declared const",
+      "filename": "Consts.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0283.png"
+    },
+    {
+      "file": "CS0428.json",
+      "path": "episodes/CS0428.json",
+      "error_code": "CS0428",
+      "message": "Cannot convert method group 'Hit' to non-delegate type 'int'",
+      "filename": "Groups.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS0428.png"
     },
     {
       "file": "CS0443.json",
@@ -431,6 +691,16 @@
       "missing": "../assets/CS0443.png"
     },
     {
+      "file": "CS0445.json",
+      "path": "episodes/CS0445.json",
+      "error_code": "CS0445",
+      "message": "Cannot modify the result of an unboxing conversion",
+      "filename": "Boxes.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS0445.png"
+    },
+    {
       "file": "CS0446.json",
       "path": "episodes/CS0446.json",
       "error_code": "CS0446",
@@ -439,6 +709,36 @@
       "lines": 7,
       "bug": null,
       "missing": "../assets/CS0446.png"
+    },
+    {
+      "file": "CS0463.json",
+      "path": "episodes/CS0463.json",
+      "error_code": "CS0463",
+      "message": "Evaluation of the decimal constant expression failed",
+      "filename": "Decimals.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0463.png"
+    },
+    {
+      "file": "CS0594.json",
+      "path": "episodes/CS0594.json",
+      "error_code": "CS0594",
+      "message": "Floating-point constant is outside the range of type 'float'",
+      "filename": "Ranges.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0594.png"
+    },
+    {
+      "file": "CS0595.json",
+      "path": "episodes/CS0595.json",
+      "error_code": "CS0595",
+      "message": "Invalid real literal",
+      "filename": "Ranges.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0595.png"
     },
     {
       "file": "CS0650.json",
@@ -451,6 +751,126 @@
       "missing": "../assets/CS0650.png"
     },
     {
+      "file": "CS0664.json",
+      "path": "episodes/CS0664.json",
+      "error_code": "CS0664",
+      "message": "Literal of type double cannot be implicitly converted to 'float'; use an F suffix",
+      "filename": "Speed.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0664.png"
+    },
+    {
+      "file": "CS0815.json",
+      "path": "episodes/CS0815.json",
+      "error_code": "CS0815",
+      "message": "Cannot assign void to an implicitly-typed variable",
+      "filename": "Vars.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0815.png"
+    },
+    {
+      "file": "CS0818.json",
+      "path": "episodes/CS0818.json",
+      "error_code": "CS0818",
+      "message": "Implicitly-typed variables must be initialized",
+      "filename": "Vars.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0818.png"
+    },
+    {
+      "file": "CS0819.json",
+      "path": "episodes/CS0819.json",
+      "error_code": "CS0819",
+      "message": "Implicitly-typed variables cannot have multiple declarators",
+      "filename": "Vars.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0819.png"
+    },
+    {
+      "file": "CS0820.json",
+      "path": "episodes/CS0820.json",
+      "error_code": "CS0820",
+      "message": "Cannot initialize an implicitly-typed variable with an array initializer",
+      "filename": "Vars.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0820.png"
+    },
+    {
+      "file": "CS0821.json",
+      "path": "episodes/CS0821.json",
+      "error_code": "CS0821",
+      "message": "A fixed statement cannot use an implicitly-typed local variable",
+      "filename": "Vars.cs",
+      "lines": 7,
+      "bug": null,
+      "missing": "../assets/CS0821.png"
+    },
+    {
+      "file": "CS0822.json",
+      "path": "episodes/CS0822.json",
+      "error_code": "CS0822",
+      "message": "Implicitly-typed variables cannot be constant",
+      "filename": "Vars.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0822.png"
+    },
+    {
+      "file": "CS0825.json",
+      "path": "episodes/CS0825.json",
+      "error_code": "CS0825",
+      "message": "The contextual keyword var may only appear within a local variable declaration",
+      "filename": "Vars.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0825.png"
+    },
+    {
+      "file": "CS0826.json",
+      "path": "episodes/CS0826.json",
+      "error_code": "CS0826",
+      "message": "No best type found for implicitly-typed array",
+      "filename": "Vars.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0826.png"
+    },
+    {
+      "file": "CS0828.json",
+      "path": "episodes/CS0828.json",
+      "error_code": "CS0828",
+      "message": "Cannot assign 'void' to anonymous type property",
+      "filename": "Anon.cs",
+      "lines": 6,
+      "bug": null,
+      "missing": "../assets/CS0828.png"
+    },
+    {
+      "file": "CS0833.json",
+      "path": "episodes/CS0833.json",
+      "error_code": "CS0833",
+      "message": "An anonymous type cannot have multiple properties with the same name",
+      "filename": "Anon.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0833.png"
+    },
+    {
+      "file": "CS0836.json",
+      "path": "episodes/CS0836.json",
+      "error_code": "CS0836",
+      "message": "Cannot use anonymous type in a constant expression",
+      "filename": "Anon.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0836.png"
+    },
+    {
       "file": "CS0839.json",
       "path": "episodes/CS0839.json",
       "error_code": "CS0839",
@@ -459,6 +879,46 @@
       "lines": 9,
       "bug": null,
       "missing": "../assets/CS0839.png"
+    },
+    {
+      "file": "CS0841.json",
+      "path": "episodes/CS0841.json",
+      "error_code": "CS0841",
+      "message": "Cannot use local variable 'hp' before it is declared",
+      "filename": "Order.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0841.png"
+    },
+    {
+      "file": "CS0843.json",
+      "path": "episodes/CS0843.json",
+      "error_code": "CS0843",
+      "message": "An auto-implemented property must be fully assigned before control is returned",
+      "filename": "Props.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS0843.png"
+    },
+    {
+      "file": "CS0846.json",
+      "path": "episodes/CS0846.json",
+      "error_code": "CS0846",
+      "message": "A nested array initializer is expected",
+      "filename": "Grids.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0846.png"
+    },
+    {
+      "file": "CS0847.json",
+      "path": "episodes/CS0847.json",
+      "error_code": "CS0847",
+      "message": "An array initializer of length 3 is expected",
+      "filename": "Grids.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS0847.png"
     },
     {
       "file": "CS1001.json",
@@ -771,6 +1231,16 @@
       "missing": "../assets/CS1503.png"
     },
     {
+      "file": "CS1510.json",
+      "path": "episodes/CS1510.json",
+      "error_code": "CS1510",
+      "message": "A ref or out value must be an assignable variable",
+      "filename": "Refs.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1510.png"
+    },
+    {
       "file": "CS1513.json",
       "path": "episodes/CS1513.json",
       "error_code": "CS1513",
@@ -921,6 +1391,56 @@
       "missing": "../assets/CS1597.png"
     },
     {
+      "file": "CS1604.json",
+      "path": "episodes/CS1604.json",
+      "error_code": "CS1604",
+      "message": "Cannot assign to 'n' because it is read-only",
+      "filename": "Loops.cs",
+      "lines": 5,
+      "bug": null,
+      "missing": "../assets/CS1604.png"
+    },
+    {
+      "file": "CS1612.json",
+      "path": "episodes/CS1612.json",
+      "error_code": "CS1612",
+      "message": "Cannot modify the return value because it is not a variable",
+      "filename": "Structs.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1612.png"
+    },
+    {
+      "file": "CS1615.json",
+      "path": "episodes/CS1615.json",
+      "error_code": "CS1615",
+      "message": "Argument 1 may not be passed with the 'ref' keyword",
+      "filename": "Refs.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1615.png"
+    },
+    {
+      "file": "CS1620.json",
+      "path": "episodes/CS1620.json",
+      "error_code": "CS1620",
+      "message": "Argument 1 must be passed with the 'ref' keyword",
+      "filename": "Refs.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1620.png"
+    },
+    {
+      "file": "CS1648.json",
+      "path": "episodes/CS1648.json",
+      "error_code": "CS1648",
+      "message": "Members of readonly field 'Bag.spot' cannot be modified",
+      "filename": "Readonly.cs",
+      "lines": 10,
+      "bug": null,
+      "missing": "../assets/CS1648.png"
+    },
+    {
       "file": "CS1729.json",
       "path": "episodes/CS1729.json",
       "error_code": "CS1729",
@@ -929,6 +1449,56 @@
       "lines": 9,
       "bug": null,
       "missing": "../assets/CS1729.png"
+    },
+    {
+      "file": "CS1737.json",
+      "path": "episodes/CS1737.json",
+      "error_code": "CS1737",
+      "message": "Optional parameters must appear after all required parameters",
+      "filename": "Defaults.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1737.png"
+    },
+    {
+      "file": "CS1738.json",
+      "path": "episodes/CS1738.json",
+      "error_code": "CS1738",
+      "message": "Named argument specifications must appear after all fixed arguments",
+      "filename": "Calls.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1738.png"
+    },
+    {
+      "file": "CS1739.json",
+      "path": "episodes/CS1739.json",
+      "error_code": "CS1739",
+      "message": "The best overload for 'Fire' does not have a parameter named 'ammo'",
+      "filename": "Calls.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1739.png"
+    },
+    {
+      "file": "CS1740.json",
+      "path": "episodes/CS1740.json",
+      "error_code": "CS1740",
+      "message": "Named argument 'power' cannot be specified multiple times",
+      "filename": "Calls.cs",
+      "lines": 9,
+      "bug": null,
+      "missing": "../assets/CS1740.png"
+    },
+    {
+      "file": "CS1750.json",
+      "path": "episodes/CS1750.json",
+      "error_code": "CS1750",
+      "message": "A value of type 'int[]' cannot be used as a default parameter",
+      "filename": "Defaults.cs",
+      "lines": 4,
+      "bug": null,
+      "missing": "../assets/CS1750.png"
     },
     {
       "file": "CS7036.json",
