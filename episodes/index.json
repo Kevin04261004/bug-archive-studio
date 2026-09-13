@@ -1927,8 +1927,8 @@
       "message": "Inconsistent accessibility: base interface 'IRun' is less accessible than interface",
       "filename": "Access.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0061.png",
+      "bug": "assets/CS0061.png",
+      "missing": null,
       "order": 166,
       "tier": 4
     },
