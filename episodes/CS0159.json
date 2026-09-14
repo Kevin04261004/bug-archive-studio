@@ -2,8 +2,21 @@
   "error_code": "CS0159",
   "message": "No such label \"done\" within the scope of the goto statement",
   "filename": "Jumps.cs",
-  "before": ["void Start()", "{", "    goto done;", "    Debug.Log(1);", "}"],
-  "after": ["void Start()", "{", "    return;", "    Debug.Log(1);", "}"],
-  "bug": "../assets/CS0159.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    goto done;",
+    "    Debug.Log(1);",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    return;",
+    "    Debug.Log(1);",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0159.png"
 }
