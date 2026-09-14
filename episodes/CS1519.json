@@ -2,8 +2,25 @@
   "error_code": "CS1519",
   "message": "Invalid token '=' in class, record, struct, or interface member declaration",
   "filename": "Fields.cs",
-  "before": ["class Player", "{", "    public int hp = 100;", "    public float speed = 5f;", "    public name = \"hero\";", "    public bool alive = true;", "}"],
-  "after": ["class Player", "{", "    public int hp = 100;", "    public float speed = 5f;", "    public string name = \"hero\";", "    public bool alive = true;", "}"],
-  "bug": "../assets/CS1519.png",
-  "focus_line": 5
+  "before": [
+    "class Player",
+    "{",
+    "    public int hp = 100;",
+    "    public float speed = 5f;",
+    "    public name = \"hero\";",
+    "    public bool alive = true;",
+    "}"
+  ],
+  "after": [
+    "class Player",
+    "{",
+    "    public int hp = 100;",
+    "    public float speed = 5f;",
+    "    public string name = \"hero\";",
+    "    public bool alive = true;",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1519.png"
 }
