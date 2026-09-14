@@ -2,8 +2,21 @@
   "error_code": "CS0201",
   "message": "Only assignment, call, increment or new object expressions can be a statement",
   "filename": "Damage.cs",
-  "before": ["void Start()", "{", "    int hp = 100;", "    hp + 1;", "}"],
-  "after": ["void Start()", "{", "    int hp = 100;", "    hp += 1;", "}"],
-  "bug": "../assets/CS0201.png",
-  "focus_line": 4
+  "before": [
+    "void Start()",
+    "{",
+    "    int hp = 100;",
+    "    hp + 1;",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int hp = 100;",
+    "    hp += 1;",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0201.png"
 }
