@@ -107,7 +107,10 @@ const run=(z.workflow_runs||[]).find(match);if(run)return run;}
 return null;}
 async function watchRun(run,code,since){for(let i=0;i<150;i++){const z=await api('/actions/runs/'+run.id);
 if(z.status==='completed'){if(z.conclusion!=='success')throw Error(`The action finished as ${z.conclusion}. Open the run to see why.`);return z;}
-step(`Rendering ${code} on GitHub… ${Math.round((Date.now()-since)/1000)}s`);await sleep(4000);}
+const secs=Math.round((Date.now()-since)/1000);
+/* Queued and running look the same from a counter alone, and the wait is the confusing one. */
+step(z.status==='queued'?`Waiting for a runner to pick ${code} up… ${secs}s`:`Rendering ${code} on GitHub… ${secs}s`);
+await sleep(4000);}
 throw Error('The action is taking too long. Check the run on GitHub.');}
 async function runAction(code,since,sha){
 /* The commit above already started the workflow. Watch that run. Only a commit that changed

@@ -16,8 +16,11 @@ on:
 permissions:
   contents: write
 
+# One group per commit, not one for the whole repository. A single-episode render from the page
+# used to queue behind a batch of thirty-six and wait eight minutes before it even started.
+# Runs can now overlap; the index refresh below rebases and retries, so concurrent pushes are fine.
 concurrency:
-  group: render-episodes
+  group: render-${{ github.sha }}
 
 jobs:
   render:
