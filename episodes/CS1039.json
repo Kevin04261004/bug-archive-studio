@@ -2,8 +2,19 @@
   "error_code": "CS1039",
   "message": "Unterminated string literal",
   "filename": "Strings.cs",
-  "before": ["void Start()", "{", "    string name = \"Bugcall;", "}"],
-  "after": ["void Start()", "{", "    string name = \"Bugcall\";", "}"],
-  "bug": "../assets/CS1039.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    string name = \"Bugcall;",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    string name = \"Bugcall\";",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1039.png"
 }
