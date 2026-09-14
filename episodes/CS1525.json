@@ -1,9 +1,9 @@
 {
   "error_code": "CS1525",
-  "message": "Invalid expression term ';'",
-  "filename": "Setup.cs",
-  "before": ["void Start()", "{", "    int hp = ;", "}"],
-  "after": ["void Start()", "{", "    int hp = 100;", "}"],
+  "message": "Invalid expression term ')'",
+  "filename": "Axes.cs",
+  "before": ["void Start()", "{", "    var a = new Vector3(1, 0, 0);", "    var b = new Vector3(0, 1, 0);", "    var c = new Vector3(0, 0, );", "    Debug.Log(a + b + c);", "}"],
+  "after": ["void Start()", "{", "    var a = new Vector3(1, 0, 0);", "    var b = new Vector3(0, 1, 0);", "    var c = new Vector3(0, 0, 1);", "    Debug.Log(a + b + c);", "}"],
   "bug": "../assets/CS1525.png",
-  "focus_line": 3
+  "focus_line": 5
 }

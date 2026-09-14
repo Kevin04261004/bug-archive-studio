@@ -1,9 +1,9 @@
 {
   "error_code": "CS8641",
   "message": "'else' cannot start a statement",
-  "filename": "Modern.cs",
-  "before": ["void Start()", "{", "    else", "        Debug.Log(1);", "}"],
-  "after": ["void Start()", "{", "    if (true)", "        Debug.Log(1);", "}"],
+  "filename": "Flow.cs",
+  "before": ["void Start()", "{", "    int hp = 100;", "", "    if (hp > 50)", "        Debug.Log(\"ok\");", "    Debug.Log(\"mid\");", "    else", "        Debug.Log(\"low\");", "}"],
+  "after": ["void Start()", "{", "    int hp = 100;", "", "    if (hp > 50)", "        Debug.Log(\"ok\");", "", "    else", "        Debug.Log(\"low\");", "}"],
   "bug": "../assets/CS8641.png",
-  "focus_line": 3
+  "focus_line": 7
 }

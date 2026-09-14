@@ -1,9 +1,9 @@
 {
   "error_code": "CS1024",
   "message": "Preprocessor directive expected",
-  "filename": "Flags.cs",
-  "before": ["void Start()", "{", "#", "    Debug.Log(1);", "}"],
-  "after": ["void Start()", "{", "#pragma warning disable", "    Debug.Log(1);", "}"],
+  "filename": "Build.cs",
+  "before": ["void Start()", "{", "#ifdef UNITY_EDITOR", "    Debug.Log(\"editor\");", "#endif", "}"],
+  "after": ["void Start()", "{", "#if UNITY_EDITOR", "    Debug.Log(\"editor\");", "#endif", "}"],
   "bug": "../assets/CS1024.png",
   "focus_line": 3
 }
