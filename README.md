@@ -143,7 +143,7 @@ API 호출은 브라우저에서 직접 일어납니다. `file:///`에서 차단
 1. 에피소드 JSON과 버그 PNG를 커밋 하나로 저장소에 올립니다. JSON의 `bug`는 `../assets/<오류번호>.png`입니다.
 2. `Render episodes` 워크플로를 그 오류번호로 실행합니다.
 3. 액션이 `episode-<오류번호>` 릴리스에 MP4와 LOCKED 썸네일을 올립니다.
-4. 페이지가 완성된 MP4를 내려받습니다.
+4. 페이지가 완성된 MP4를 `[ERROR] <오류번호>.mp4` 이름으로 내려받습니다.
 
 손으로 할 때도 같습니다. Save project로 받은 JSON을 `episodes/`에, PNG를 `assets/`에 넣고 커밋하면 액션이 돕니다.
 

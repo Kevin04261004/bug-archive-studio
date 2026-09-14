@@ -52,6 +52,13 @@ function repoSlug(){const m=/^([\w-]+)\.github\.io$/i.exec(location.hostname);if
 const first=location.pathname.split('/').filter(Boolean)[0];return {owner:m[1],repo:first||`${m[1]}.github.io`};}
 function releaseLine(box,text,...nodes){box.replaceChildren(document.createTextNode(text),...nodes);}
 function link(text,href){const a=document.createElement('a');a.textContent=text;a.href=href;a.target='_blank';a.rel='noopener';return a;}
+/* What the finished Short is called on disk. */
+const videoName=code=>`[ERROR] ${code}.mp4`;
+/* A cross-origin <a download> keeps the server's own filename, so fetch the bytes and name the
+   blob here instead. The plain link stays as the fallback when that fetch is blocked. */
+async function saveAsset(url,name){const r=await fetch(url);if(!r.ok)throw Error('no cors');download(await r.blob(),name);}
+function assetLink(text,url,name){const a=link(text,url);a.download=name;
+a.onclick=e=>{e.preventDefault();saveAsset(url,name).catch(()=>{a.onclick=null;a.click();});};return a;}
 async function showRelease(){const box=$('releasebox'),code=($('errorcode').value.trim()||'CS1002').toUpperCase(),slug=repoSlug();
 box.classList.remove('error');
 if(!slug)return releaseLine(box,'Open this editor from its GitHub Pages address to see the rendered files here.');
@@ -149,12 +156,13 @@ await runAction(code,since,sha);
 step('Render finished. Fetching the MP4…');
 release=await fetchRelease(code);}
 const video=release.assets.find(a=>a.name.endsWith('.mp4'));
-try{const r=await fetch(video.browser_download_url);if(!r.ok)throw Error('no cors');download(await r.blob(),video.name);}
+try{await saveAsset(video.browser_download_url,videoName(code));}
 catch{link('',video.browser_download_url).click();}
-$('downloads').replaceChildren(...release.assets.map(a=>{const l=link(a.name.endsWith('.mp4')?'Download MP4 again':'Download thumbnail',a.browser_download_url);l.download='';return l;}));
+const again=a=>a.name.endsWith('.mp4')?assetLink('Download MP4 again',a.browser_download_url,videoName(code)):Object.assign(link('Download thumbnail',a.browser_download_url),{download:''});
+$('downloads').replaceChildren(...release.assets.map(again));
 const done=`${code} rendered by render.py and downloaded.${sha?' The episode and its bug PNG are committed too.':''} `;
 $('releasebox').classList.remove('error');
-releaseLine($('releasebox'),done,...release.assets.map(a=>link(a.name.endsWith('.mp4')?'Download MP4 again':'Download thumbnail',a.browser_download_url)));
+releaseLine($('releasebox'),done,...release.assets.map(again));
 status(done);}
 catch(e){step(e.message,true);}
 finally{activeJob=false;$('startrender').disabled=false;markBugState();}}
@@ -284,7 +292,7 @@ c.strokeStyle='#55616c';c.lineWidth=3;c.beginPath();c.moveTo(480,1546);c.lineTo(
 return T;}
 $('thumbnail').onclick=()=>{try{model=build();thumbnailCanvas().toBlob(b=>download(b,`${model.error_code}-locked.png`),'image/png');status('LOCKED thumbnail saved.');}catch(e){status(e.message,true);}};
 $('longexample').onclick=()=>setConfig(longExample()).catch(e=>status(e.message,true));function longExample(){const a=['using UnityEngine;','','public class Counter : MonoBehaviour','{','    private int score = 0;','    private int bonus = 5;','','    void Start()','    {','        score = 10;','        score += bonus;','        PrintScore();','    }','','    void PrintScore()','    {','        Debug.Log("Score")','        Debug.Log(score);','    }','','    void ResetScore()','    { score = 0; }','','}'];const b=[...a];b[16]+=';';return {...defaults,before:a,after:b,bug_data_url:bugData};}
-$('render').onclick=async()=>{if(activeJob)return;if(!localStudio)return renderOnActions().catch(e=>{activeJob=false;$('startrender').disabled=false;markBugState();step(e.message,true);});try{model=build();activeJob=true;$('render').disabled=true;status('Rendering MP4…');const r=await fetch('api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg())});const result=await r.json();if(!r.ok)throw Error(result.error||'Render failed.');const poll=async()=>{try{const q=await fetch('api/job/'+result.job),z=await q.json();if(z.status==='done'){status(z.archive?`MP4 ready. The episode was archived as ${z.archive} with ${z.bug}.`:'MP4 and thumbnail are ready.');$('downloads').replaceChildren();for(const [name,url]of[['Download MP4',z.video],['Download thumbnail',z.thumbnail]]){const a=document.createElement('a');a.textContent=name;a.href=url;a.download='';$('downloads').append(a);}activeJob=false;$('render').disabled=false;}else if(z.status==='failed')throw Error(z.error||'Render failed.');else{status(z.progress||'Rendering MP4…');setTimeout(poll,1000);}}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};poll();}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};
+$('render').onclick=async()=>{if(activeJob)return;if(!localStudio)return renderOnActions().catch(e=>{activeJob=false;$('startrender').disabled=false;markBugState();step(e.message,true);});try{model=build();activeJob=true;$('render').disabled=true;status('Rendering MP4…');const r=await fetch('api/render',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg())});const result=await r.json();if(!r.ok)throw Error(result.error||'Render failed.');const poll=async()=>{try{const q=await fetch('api/job/'+result.job),z=await q.json();if(z.status==='done'){status(z.archive?`MP4 ready. The episode was archived as ${z.archive} with ${z.bug}.`:'MP4 and thumbnail are ready.');$('downloads').replaceChildren();for(const [name,url,file]of[['Download MP4',z.video,videoName(model.error_code)],['Download thumbnail',z.thumbnail,'']]){const a=document.createElement('a');a.textContent=name;a.href=url;a.download=file;$('downloads').append(a);}activeJob=false;$('render').disabled=false;}else if(z.status==='failed')throw Error(z.error||'Render failed.');else{status(z.progress||'Rendering MP4…');setTimeout(poll,1000);}}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};poll();}catch(e){activeJob=false;$('render').disabled=false;status(e.message,true);}};
 /* Episode browser for the episodes folder of the running studio. */
 const epstatus=(s,error=false)=>{$('episodestatus').textContent=s;$('episodestatus').classList.toggle('error',error);};
 function blobDataUrl(blob){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=()=>reject(Error('Could not read the bug PNG.'));fr.readAsDataURL(blob);});}
