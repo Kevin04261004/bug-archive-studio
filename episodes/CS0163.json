@@ -2,8 +2,31 @@
   "error_code": "CS0163",
   "message": "Control cannot fall through from one case label to another",
   "filename": "Switches.cs",
-  "before": ["void Check(int n)", "{", "    switch (n)", "    {", "        case 1:", "            Debug.Log(1);", "        case 2:", "            break;", "    }", "}"],
-  "after": ["void Check(int n)", "{", "    switch (n)", "    {", "        case 1:", "            return;", "        case 2:", "            break;", "    }", "}"],
-  "bug": "../assets/CS0163.png",
-  "focus_line": 6
+  "before": [
+    "void Check(int n)",
+    "{",
+    "    switch (n)",
+    "    {",
+    "        case 1:",
+    "            Debug.Log(1);",
+    "        case 2:",
+    "            break;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "void Check(int n)",
+    "{",
+    "    switch (n)",
+    "    {",
+    "        case 1:",
+    "            return;",
+    "        case 2:",
+    "            break;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0163.png"
 }
