@@ -2,8 +2,23 @@
   "error_code": "CS1027",
   "message": "#endif directive expected",
   "filename": "Flags.cs",
-  "before": ["void Start()", "{", "#if UNITY_EDITOR", "    Debug.Log(\"editor\");", "", "}"],
-  "after": ["void Start()", "{", "#if UNITY_EDITOR", "    Debug.Log(\"editor\");", "#endif", "}"],
-  "bug": "../assets/CS1027.png",
-  "focus_line": 5
+  "before": [
+    "void Start()",
+    "{",
+    "#if UNITY_EDITOR",
+    "    Debug.Log(\"editor\");",
+    "",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "#if UNITY_EDITOR",
+    "    Debug.Log(\"editor\");",
+    "#endif",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1027.png"
 }
