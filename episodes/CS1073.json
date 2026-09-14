@@ -2,8 +2,27 @@
   "error_code": "CS1073",
   "message": "Unexpected token 'int'",
   "filename": "Health.cs",
-  "before": ["void Start()", "{", "    int hp = 100;", "    int mp = 50;", "", "    hp = int 80;", "    mp = 20;", "}"],
-  "after": ["void Start()", "{", "    int hp = 100;", "    int mp = 50;", "", "    hp = 80;", "    mp = 20;", "}"],
-  "bug": "../assets/CS1073.png",
-  "focus_line": 6
+  "before": [
+    "void Start()",
+    "{",
+    "    int hp = 100;",
+    "    int mp = 50;",
+    "",
+    "    hp = int 80;",
+    "    mp = 20;",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int hp = 100;",
+    "    int mp = 50;",
+    "",
+    "    hp = 80;",
+    "    mp = 20;",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS1073.png"
 }
