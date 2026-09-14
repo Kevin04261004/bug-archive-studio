@@ -2,8 +2,23 @@
   "error_code": "CS1043",
   "message": "{ or ; expected",
   "filename": "Props.cs",
-  "before": ["class Player", "{", "    public int Hp => 100;", "    public int Mp => 50;", "    public int Atk =>", "}"],
-  "after": ["class Player", "{", "    public int Hp => 100;", "    public int Mp => 50;", "    public int Atk => 20;", "}"],
-  "bug": "../assets/CS1043.png",
-  "focus_line": 5
+  "before": [
+    "class Player",
+    "{",
+    "    public int Hp => 100;",
+    "    public int Mp => 50;",
+    "    public int Atk =>",
+    "}"
+  ],
+  "after": [
+    "class Player",
+    "{",
+    "    public int Hp => 100;",
+    "    public int Mp => 50;",
+    "    public int Atk => 20;",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1043.png"
 }
