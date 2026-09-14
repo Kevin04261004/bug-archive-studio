@@ -2,8 +2,19 @@
   "error_code": "CS1021",
   "message": "Integral constant is too large",
   "filename": "Numbers.cs",
-  "before": ["void Start()", "{", "    int big = 9999999999;", "}"],
-  "after": ["void Start()", "{", "    long big = 9999999999;", "}"],
-  "bug": "../assets/CS1021.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    int big = 9999999999;",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    long big = 9999999999;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1021.png"
 }
