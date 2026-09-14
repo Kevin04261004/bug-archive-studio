@@ -2,8 +2,19 @@
   "error_code": "CS0155",
   "message": "The type caught or thrown must be derived from System.Exception",
   "filename": "Guard.cs",
-  "before": ["void Start()", "{", "    throw new string(\"bad\");", "}"],
-  "after": ["void Start()", "{", "    throw new Exception(\"bad\");", "}"],
-  "bug": "../assets/CS0155.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    throw new string(\"bad\");",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    throw new Exception(\"bad\");",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0155.png"
 }
