@@ -2,8 +2,23 @@
   "error_code": "CS1028",
   "message": "Unexpected preprocessor directive",
   "filename": "Flags.cs",
-  "before": ["void Start()", "{", "#if UNITY_EDITOR", "#endregion", "#endif", "}"],
-  "after": ["void Start()", "{", "#if UNITY_EDITOR", "    Debug.Log(\"editor\");", "#endif", "}"],
-  "bug": "../assets/CS1028.png",
-  "focus_line": 4
+  "before": [
+    "void Start()",
+    "{",
+    "#if UNITY_EDITOR",
+    "#endregion",
+    "#endif",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "#if UNITY_EDITOR",
+    "    Debug.Log(\"editor\");",
+    "#endif",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS1028.png"
 }
