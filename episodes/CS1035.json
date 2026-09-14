@@ -2,8 +2,27 @@
   "error_code": "CS1035",
   "message": "End-of-file found, \"*/\" expected",
   "filename": "Notes.cs",
-  "before": ["void Start()", "{", "    /* warm up */", "    int hp = 100;", "", "    /* main loop", "    Debug.Log(hp);", "}"],
-  "after": ["void Start()", "{", "    /* warm up */", "    int hp = 100;", "", "    /* main loop */", "    Debug.Log(hp);", "}"],
-  "bug": "../assets/CS1035.png",
-  "focus_line": 6
+  "before": [
+    "void Start()",
+    "{",
+    "    /* warm up */",
+    "    int hp = 100;",
+    "",
+    "    /* main loop",
+    "    Debug.Log(hp);",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    /* warm up */",
+    "    int hp = 100;",
+    "",
+    "    /* main loop */",
+    "    Debug.Log(hp);",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS1035.png"
 }
