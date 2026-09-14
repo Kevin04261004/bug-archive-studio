@@ -2,8 +2,19 @@
   "error_code": "CS1012",
   "message": "Too many characters in character literal",
   "filename": "Keys.cs",
-  "before": ["void Start()", "{", "    char key = 'AB';", "}"],
-  "after": ["void Start()", "{", "    string key = \"AB\";", "}"],
-  "bug": "../assets/CS1012.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    char key = 'AB';",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    string key = \"AB\";",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1012.png"
 }
