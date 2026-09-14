@@ -1075,8 +1075,8 @@
       "message": "Wrong number of indices inside [], expected 1",
       "filename": "Arrays.cs",
       "lines": 5,
-      "bug": "assets/CS0022.png",
-      "missing": null,
+      "bug": null,
+      "missing": "../assets/CS0022.png",
       "order": 92,
       "tier": 2
     },
@@ -1087,8 +1087,8 @@
       "message": "Cannot apply indexing with [] to an expression of type 'int'",
       "filename": "Arrays.cs",
       "lines": 5,
-      "bug": "assets/CS0021.png",
-      "missing": null,
+      "bug": null,
+      "missing": "../assets/CS0021.png",
       "order": 93,
       "tier": 2
     },
@@ -2875,8 +2875,8 @@
       "message": "An add or remove accessor must have a body",
       "filename": "Events.cs",
       "lines": 8,
-      "bug": "assets/CS0073.png",
-      "missing": null,
+      "bug": null,
+      "missing": "../assets/CS0073.png",
       "order": 247,
       "tier": 4
     },
