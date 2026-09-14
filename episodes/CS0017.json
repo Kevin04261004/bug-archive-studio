@@ -2,8 +2,29 @@
   "error_code": "CS0017",
   "message": "Program has more than one entry point defined",
   "filename": "Program.cs",
-  "before": ["class A", "{", "    static void Main() { }", "}", "", "class B", "{", "    static void Main() { }", "}"],
-  "after": ["class A", "{", "    static void Main() { }", "}", "", "class B", "{", "    static void Setup() { }", "}"],
-  "bug": "../assets/CS0017.png",
-  "focus_line": 8
+  "before": [
+    "class A",
+    "{",
+    "    static void Main() { }",
+    "}",
+    "",
+    "class B",
+    "{",
+    "    static void Main() { }",
+    "}"
+  ],
+  "after": [
+    "class A",
+    "{",
+    "    static void Main() { }",
+    "}",
+    "",
+    "class B",
+    "{",
+    "    static void Setup() { }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0017.png"
 }
