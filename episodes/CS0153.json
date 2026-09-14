@@ -2,8 +2,19 @@
   "error_code": "CS0153",
   "message": "A goto case is only valid inside a switch statement",
   "filename": "Switches.cs",
-  "before": ["void Start()", "{", "    goto case 1;", "}"],
-  "after": ["void Start()", "{", "    return;", "}"],
-  "bug": "../assets/CS0153.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    goto case 1;",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    return;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0153.png"
 }
