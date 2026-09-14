@@ -2,8 +2,19 @@
   "error_code": "CS0116",
   "message": "A namespace cannot directly contain members such as fields or methods",
   "filename": "Game.cs",
-  "before": ["namespace Game", "{", "    void Start() { }", "}"],
-  "after": ["class Game", "{", "    void Start() { }", "}"],
-  "bug": "../assets/CS0116.png",
-  "focus_line": 1
+  "before": [
+    "namespace Game",
+    "{",
+    "    void Start() { }",
+    "}"
+  ],
+  "after": [
+    "class Game",
+    "{",
+    "    void Start() { }",
+    "}"
+  ],
+  "focus_line": 1,
+  "music": "random",
+  "bug": "../assets/CS0116.png"
 }
