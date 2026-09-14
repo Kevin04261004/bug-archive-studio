@@ -2,8 +2,23 @@
   "error_code": "CS1044",
   "message": "Cannot use more than one type in a for, using, fixed statement",
   "filename": "Loops.cs",
-  "before": ["void Start()", "{", "    for (int i = 0, long j = 0; i < 3; i++)", "    {", "    }", "}"],
-  "after": ["void Start()", "{", "    for (int i = 0, j = 0; i < 3; i++)", "    {", "    }", "}"],
-  "bug": "../assets/CS1044.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    for (int i = 0, long j = 0; i < 3; i++)",
+    "    {",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    for (int i = 0, j = 0; i < 3; i++)",
+    "    {",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1044.png"
 }
