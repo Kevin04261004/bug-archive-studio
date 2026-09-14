@@ -295,8 +295,8 @@
       "message": "The type 'Player' already contains a definition for 'hp'",
       "filename": "PlayerData.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0102.png",
+      "bug": "assets/CS0102.png",
+      "missing": null,
       "order": 25,
       "tier": 1
     },
