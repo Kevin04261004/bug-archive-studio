@@ -2,8 +2,25 @@
   "error_code": "CS1001",
   "message": "Identifier expected",
   "filename": "Fields.cs",
-  "before": ["class Player", "{", "    public int hp = 100;", "    public int mp = 50;", "    public int = 20;", "    public int def = 10;", "}"],
-  "after": ["class Player", "{", "    public int hp = 100;", "    public int mp = 50;", "    public int atk = 20;", "    public int def = 10;", "}"],
-  "bug": "../assets/CS1001.png",
-  "focus_line": 5
+  "before": [
+    "class Player",
+    "{",
+    "    public int hp = 100;",
+    "    public int mp = 50;",
+    "    public int = 20;",
+    "    public int def = 10;",
+    "}"
+  ],
+  "after": [
+    "class Player",
+    "{",
+    "    public int hp = 100;",
+    "    public int mp = 50;",
+    "    public int atk = 20;",
+    "    public int def = 10;",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1001.png"
 }
