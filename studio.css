@@ -35,7 +35,7 @@ textarea{resize:vertical;min-height:310px;line-height:1.65;white-space:pre;tab-s
 .controls input{max-width:86px!important;margin:0!important}
 .subtle{background:transparent;color:#aebbc5}
 .bugbox{display:flex;align-items:center;gap:18px;border:1px solid #35414b;border-radius:11px;background:#192229;padding:16px}
-.bugbox img{width:88px;height:88px;object-fit:contain;background:radial-gradient(#334229,transparent);border-radius:8px}
+.bugbox img{width:88px;height:88px;object-fit:contain;background:radial-gradient(#334229,transparent);border-radius:8px}.bugbox img.empty{background:#141b21;border:1px dashed #4a5a66}.bugmissing{color:#e0a45e!important;font-size:13px!important;margin:7px 0 12px!important}
 .bugbox p,.note{font-size:14px;line-height:1.6;color:#8fa1ad}
 .bugbox p{margin:7px 0 12px}
 .note{margin:17px 0}
