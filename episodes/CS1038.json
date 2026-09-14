@@ -2,8 +2,23 @@
   "error_code": "CS1038",
   "message": "#endregion directive expected",
   "filename": "Regions.cs",
-  "before": ["void Start()", "{", "    #region setup", "    int hp = 100;", "", "}"],
-  "after": ["void Start()", "{", "    #region setup", "    int hp = 100;", "    #endregion", "}"],
-  "bug": "../assets/CS1038.png",
-  "focus_line": 5
+  "before": [
+    "void Start()",
+    "{",
+    "    #region setup",
+    "    int hp = 100;",
+    "",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    #region setup",
+    "    int hp = 100;",
+    "    #endregion",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1038.png"
 }
