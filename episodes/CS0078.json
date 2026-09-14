@@ -2,8 +2,8 @@
   "error_code": "CS0078",
   "message": "The 'l' suffix is easily confused with the digit '1'; use 'L' instead",
   "filename": "Literals.cs",
-  "before": ["void Start()", "{", "    long n = 10l;", "}"],
-  "after": ["void Start()", "{", "    long n = 10L;", "}"],
+  "before": ["void Start()", "{", "    long a = 10L;", "    long b = 20L;", "    long c = 30l;", "    long d = 40L;", "}"],
+  "after": ["void Start()", "{", "    long a = 10L;", "    long b = 20L;", "    long c = 30L;", "    long d = 40L;", "}"],
   "bug": "../assets/CS0078.png",
-  "focus_line": 3
+  "focus_line": 5
 }

@@ -1,9 +1,9 @@
 {
   "error_code": "CS0699",
-  "message": "'Box<T>' does not define type parameter 'U'",
+  "message": "'Cache<K, V>' does not define type parameter 'X'",
   "filename": "Constraints.cs",
-  "before": ["class Box<T> where U : class", "{", "}"],
-  "after": ["class Box<T> where T : class", "{", "}"],
+  "before": ["class Cache<K, V>", "    where K : class", "    where X : new()", "{", "}"],
+  "after": ["class Cache<K, V>", "    where K : class", "    where V : new()", "{", "}"],
   "bug": "../assets/CS0699.png",
-  "focus_line": 1
+  "focus_line": 3
 }

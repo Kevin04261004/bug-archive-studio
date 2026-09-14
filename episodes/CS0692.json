@@ -1,9 +1,9 @@
 {
   "error_code": "CS0692",
-  "message": "Duplicate type parameter 'T'",
+  "message": "Duplicate type parameter 'A'",
   "filename": "Generics.cs",
-  "before": ["class Box<T, T>", "{", "}"],
-  "after": ["class Box<T, U>", "{", "}"],
+  "before": ["class Pair<A, B, A>", "{", "    public A first;", "    public B second;", "}"],
+  "after": ["class Pair<A, B, C>", "{", "    public A first;", "    public B second;", "}"],
   "bug": "../assets/CS0692.png",
   "focus_line": 1
 }

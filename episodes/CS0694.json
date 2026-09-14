@@ -1,9 +1,9 @@
 {
   "error_code": "CS0694",
-  "message": "Type parameter 'Box' has the same name as the containing type",
+  "message": "Type parameter 'Pair' has the same name as the containing type",
   "filename": "Generics.cs",
-  "before": ["class Box<Box>", "{", "}"],
-  "after": ["class Box<T>", "{", "}"],
+  "before": ["class Pair<A, Pair>", "{", "    public A first;", "}"],
+  "after": ["class Pair<A, B>", "{", "    public A first;", "}"],
   "bug": "../assets/CS0694.png",
   "focus_line": 1
 }

@@ -1,19 +1,9 @@
 {
   "error_code": "CS1003",
   "message": "Syntax error, ',' expected",
-  "filename": "PlayerMove.cs",
-  "before": [
-    "void Start()",
-    "{",
-    "    Vector3 spot = new Vector3(0 1, 0);",
-    "}"
-  ],
-  "after": [
-    "void Start()",
-    "{",
-    "    Vector3 spot = new Vector3(0, 1, 0);",
-    "}"
-  ],
-  "focus_line": 3,
-  "bug": "../assets/CS1003.png"
+  "filename": "Waves.cs",
+  "before": ["void Start()", "{", "    int[] wave =", "    {", "        10,", "        20", "        30,", "    };", "}"],
+  "after": ["void Start()", "{", "    int[] wave =", "    {", "        10,", "        20,", "        30,", "    };", "}"],
+  "bug": "../assets/CS1003.png",
+  "focus_line": 6
 }
