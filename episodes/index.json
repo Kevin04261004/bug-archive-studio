@@ -415,8 +415,8 @@
       "message": "Identifier expected",
       "filename": "Fields.cs",
       "lines": 7,
-      "bug": null,
-      "missing": "../assets/CS1001.png",
+      "bug": "assets/CS1001.png",
+      "missing": null,
       "order": 37,
       "tier": 2
     },
