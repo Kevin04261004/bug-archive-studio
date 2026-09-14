@@ -6,7 +6,7 @@ button{cursor:pointer;border:1px solid #384550;background:#222d35;color:#e7edf2;
 button:hover{background:#32424c}
 button:disabled{opacity:.55;cursor:wait}
 button.primary{background:#c3ff55;color:#15210c;border-color:#c3ff55;font-weight:700}
-button.magic{border-color:#8aad4e;background:#29351f;color:#d9ff91;font-weight:700;box-shadow:0 0 22px #b7ff5515}
+
 header{height:88px;padding:18px 32px;border-bottom:1px solid #2d373f;display:flex;justify-content:space-between;align-items:center;background:#151c22}
 .brand{display:flex;align-items:center;gap:13px}
 .mark{font:42px monospace;color:#c3ff55;width:43px;height:49px;text-align:center;border:1px solid #55653c;border-radius:10px}
@@ -72,20 +72,20 @@ select{display:block;width:100%;margin-top:8px;background:#12191f;border:1px sol
 #aithumb{width:70px;height:70px;object-fit:contain;background:radial-gradient(#334229,transparent);border-radius:8px;flex:none}
 #aistatus{font-size:14px;line-height:1.6;color:#c3ff55}
 #aistatus.error{color:#ff959c}
-#plusflow{max-width:650px;width:calc(100% - 40px)}
-.flowtag{font:11px monospace;letter-spacing:.16em;color:#c3ff55;margin-bottom:9px}
-.flowsteps{display:grid;grid-template-columns:1fr 1fr;gap:10px;list-style:none;padding:0;margin:18px 0}
-.flowsteps li{border:1px solid #3b4b55;background:#141d23;border-radius:9px;padding:13px}
-.flowsteps b,.flowsteps span{display:block}
-.flowsteps b{color:#e7edf2;margin-bottom:6px}
-.flowsteps span{font-size:12px;line-height:1.5;color:#91a3ae}
+
+
+
+
+
+
+
 #plusprompt{min-height:150px;font:12px/1.5 monospace;white-space:pre-wrap}
 #plusstatus{min-height:24px;color:#c3ff55;font-size:13px;line-height:1.5;margin-bottom:8px}
 #plusstatus.error{color:#ff959c}
-.dropzone{border:1px dashed #657947;border-radius:10px;background:#172018;padding:18px;text-align:center;margin:10px 0 18px;color:#d8e8c0}
-.dropzone.drag{outline:2px solid #c3ff55;background:#22301b}
-.dropzone b,.dropzone span{display:block}
-.dropzone span{font-size:12px;color:#8fa1ad;margin-top:5px}
+
+
+
+
 #episodes{max-width:560px;width:calc(100% - 40px)}
 #episodelist{max-height:320px;overflow:auto;margin:4px 0 12px}
 .episoderow{display:block;width:100%;text-align:left;margin-bottom:8px;padding:12px 14px;line-height:1.5}
@@ -97,7 +97,7 @@ select{display:block;width:100%;margin-top:8px;background:#12191f;border:1px sol
 .episoderow span{float:right;font:12px monospace;color:#8b9ba6}
 .episoderow em{display:block;font-style:normal;font-size:13px;color:#a9b7c1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .episoderow.nobug b::after{content:" · no bug PNG";font-size:12px;color:#e0a45e;letter-spacing:0}
-#episodestatus{font-size:14px;line-height:1.6;color:#c3ff55;min-height:22px}
+#episodepos{align-self:center;font:12px monospace;color:#8b9ba6;min-width:62px;text-align:center;letter-spacing:.04em}#episodestatus{font-size:14px;line-height:1.6;color:#c3ff55;min-height:22px}
 #episodestatus.error{color:#ff959c}
 .musicrow{margin:16px 0 4px;font-size:14px;color:#a4b3bd}
 .musicrow b{color:#c3ff55;font:13px monospace}
@@ -132,7 +132,7 @@ main{padding:20px}
 textarea{min-height:230px}
 }
 @media(max-width:450px){.aigrid{grid-template-columns:1fr}
-.flowsteps{grid-template-columns:1fr}
+
 .aigrid .check{margin-top:0}
 nav{width:100%;justify-content:space-between}
 nav button{padding:9px 11px}

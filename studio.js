@@ -292,7 +292,7 @@ const code=document.createElement('b');code.textContent=row.error_code||row.file
 if(row.order){const n=document.createElement('i');n.className='epnum';n.textContent=row.order;b.append(n);}
 const meta=document.createElement('span');meta.textContent=`${row.filename} · ${row.lines} lines`;
 const msg=document.createElement('em');msg.textContent=row.message;
-b.append(code,meta,msg);b.onclick=()=>loadEpisode(row).catch(e=>epstatus(e.message,true));return b;}
+b.append(code,meta,msg);b.onclick=()=>loadEpisode(row).then(syncPosition).catch(e=>epstatus(e.message,true));return b;}
 function episodeNodes(rows){/* Rows arrive in checklist order; break them into the same tiers the checklist uses. */
 const out=[];let tier=null;
 for(const row of rows){const t=row.tier||0;
@@ -300,37 +300,34 @@ if(t!==tier){tier=t;const h=document.createElement('p');h.className='tierhead';h
 out.push(episodeRow(row));}
 return out;}
 $('loadepisode').onclick=async()=>{$('episodelist').replaceChildren();epstatus('Reading the episodes folder…');$('episodes').showModal();
-try{const rows=await listEpisodes();$('episodelist').replaceChildren(...episodeNodes(rows));epstatus(rows.length?`${rows.length} episodes, in checklist order. Pick one to load it into the editor.`:'The episodes folder has no JSON yet.');}
+try{const rows=episodeCache=await listEpisodes();$('episodelist').replaceChildren(...episodeNodes(rows));epstatus(rows.length?`${rows.length} episodes, in checklist order. Pick one to load it into the editor.`:'The episodes folder has no JSON yet.');}
 catch(e){epstatus(e.message,true);}};
 $('closeEpisodes').onclick=()=>$('episodes').close();
 $('episodeopen').onclick=()=>{$('episodes').close();$('projectfile').click();};
-/* ChatGPT subscriptions cannot be called as a browser API. This two-step bridge loads the next
-   ready-made episode, sends its image prompt to ChatGPT, then accepts the downloaded PNG and
-   hands the complete episode to the existing GitHub Actions renderer. */
-const plusstatus=(s,error=false)=>{$('plusstatus').textContent=s;$('plusstatus').classList.toggle('error',error);};
-function subscriptionPrompt(){return `${bugPrompt()}\n\nGenerate the image now. Return exactly one downloadable PNG with a genuinely transparent background. Do not explain the error and do not add any caption, letters, numbers, border, card, scenery, floor, or cast shadow.`;}
-async function copySubscriptionPrompt(){const prompt=subscriptionPrompt();$('plusprompt').value=prompt;
-try{await navigator.clipboard.writeText(prompt);plusstatus('Prompt copied. Paste it into ChatGPT if it is not already filled in.');return true;}
-catch{$('plusprompt').focus();$('plusprompt').select();plusstatus('Automatic copy was blocked. The prompt is selected; copy it once.',true);return false;}}
-async function prepareNextShort(openChat=true){const chat=openChat?window.open('https://chatgpt.com/','_blank'):null;if(chat)chat.opener=null;
-$('plusflow').showModal();$('flowtitle').textContent='Preparing the next Short…';$('flowcopy').textContent='Finding the first episode without a bug PNG.';plusstatus('Reading 506 episode records…');
-try{const rows=await listEpisodes(),row=rows.find(x=>!x.bug);if(!row)throw Error('Every episode already has a bug PNG. There is nothing left in the queue.');
-await loadEpisode(row);refreshPrompt();$('plusprompt').value=subscriptionPrompt();$('flowtitle').textContent=`${row.error_code} is ready`;
-$('flowcopy').textContent=`#${row.order||'?'} · ${row.message} · before/after loaded automatically`;
-await copySubscriptionPrompt();if(openChat&&!chat)plusstatus('Your browser blocked the ChatGPT tab. Press “1 · Open ChatGPT” once.',true);}
-catch(e){if(chat)chat.close();plusstatus(e.message,true);$('flowtitle').textContent='Could not prepare the next Short';}}
-async function useSubscriptionPng(file){if(!file)return;if(file.type!=='image/png'&&!/\.png$/i.test(file.name))throw Error('Choose the PNG downloaded from ChatGPT.');if(file.size>8*1024*1024)throw Error('Use a PNG smaller than 8 MB.');
-plusstatus('Checking transparency and applying the bug…');await setBug(await blobDataUrl(file));update();plusstatus('PNG applied. Starting the existing GitHub render flow…');$('plusflow').close();await renderOnActions();}
-$('nextshort').onclick=()=>prepareNextShort(true);
-$('closePlus').onclick=()=>$('plusflow').close();
-$('copyPlus').onclick=()=>copySubscriptionPrompt();
-$('openPlus').onclick=async()=>{await copySubscriptionPrompt();window.open('https://chatgpt.com/','_blank','noopener');};
-$('finishPlus').onclick=()=>{$('plusfile').value='';$('plusfile').click();};
-$('plusfile').onchange=e=>useSubscriptionPng(e.target.files[0]).catch(err=>plusstatus(err.message,true));
-for(const event of ['dragenter','dragover'])$('plusdrop').addEventListener(event,e=>{e.preventDefault();$('plusdrop').classList.add('drag');});
-for(const event of ['dragleave','drop'])$('plusdrop').addEventListener(event,e=>{e.preventDefault();$('plusdrop').classList.remove('drag');});
-$('plusdrop').addEventListener('drop',e=>useSubscriptionPng(e.dataTransfer.files[0]).catch(err=>plusstatus(err.message,true)));
-$('plusdrop').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('finishPlus').click();}});
+/* Prev / Next walk the episode list in checklist order, so building a series in order does not
+   mean reopening the picker for every single one. The list is fetched once and reused. */
+let episodeCache=null;
+async function orderedEpisodes(){if(!episodeCache)episodeCache=await listEpisodes();return episodeCache;}
+function syncPosition(){if(!episodeCache)return;
+const code=($('errorcode').value||'').trim().toUpperCase();
+showPosition(episodeCache,episodeCache.findIndex(r=>(r.error_code||'').toUpperCase()===code));}
+function showPosition(rows,index){const box=$('episodepos');
+if(!rows||index<0){box.textContent='';box.title='';return;}
+const row=rows[index];box.textContent=`${index+1} / ${rows.length}`;
+box.title=`${row.error_code}${row.order?` · checklist #${row.order}`:''}`;}
+async function stepEpisode(delta){const code=($('errorcode').value||'').trim().toUpperCase();
+const rows=await orderedEpisodes();
+if(!rows.length)throw Error('The episodes folder has no JSON yet.');
+const at=rows.findIndex(r=>(r.error_code||'').toUpperCase()===code);
+/* Unknown code in the editor: Next starts at the top, Prev at the end. */
+const next=at<0?(delta>0?0:rows.length-1):at+delta;
+if(next<0)throw Error(`${code} is the first episode on the checklist.`);
+if(next>=rows.length)throw Error(`${code} is the last episode on the checklist.`);
+await loadEpisode(rows[next]);showPosition(rows,next);}
+const stepper=delta=>()=>{const b=[$('prevepisode'),$('nextepisode')];b.forEach(x=>x.disabled=true);
+stepEpisode(delta).catch(e=>status(e.message,true)).finally(()=>b.forEach(x=>x.disabled=false));};
+$('prevepisode').onclick=stepper(-1);
+$('nextepisode').onclick=stepper(1);
 /* AI bug generation. The concept stays the established Bug Archive family; only one slight variation changes. */
 const MOTIFS={CS1002:'one tiny black semicolon-shaped mouth, exactly like the reference',CS1003:'holding one lime puzzle piece with an obviously missing matching slot',CS0103:'searching through one tiny magnifying glass',CS0246:'holding an empty name-tag frame with a small question symbol shape (no readable text)',CS1061:'trying one rounded key that visibly does not fit a tiny socket',CS0029:'holding two visibly mismatched rounded connector pieces',CS0161:'tossing one curved return-arrow boomerang',CS0165:'holding one empty translucent value capsule',CS0019:'holding two rounded puzzle pieces whose operator-shaped edges cannot meet',CS1503:'trying to place one round plug into a square socket',CS0201:'holding one unfinished dotted path that stops abruptly',CS0111:'holding two identical tiny toy blasters, one in each hand, clearly showing an accidental duplicate',CS0117:'checking one small empty name plate',CS0120:'reaching from a tiny pedestal toward an instance object below',CS1525:'surprised by one wrong puzzle token floating beside it',CS1729:'holding a constructor-shaped box with the wrong number of round slots',CS7036:'holding an empty required-argument socket with one missing plug'};
 const VARIATIONS=[['auto','Auto (slight)'],['cheeks','Rounder cheeks'],['antennae','Shorter antennae'],['pose','Playful pose'],['accessory','Small accessory'],['none','No variation']];
