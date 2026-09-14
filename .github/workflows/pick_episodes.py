@@ -28,13 +28,25 @@ def changed(before, after):
 
 
 def has_bug(code):
-    """An episode waiting for its bug PNG is skipped, not failed: the PNG lands in a later commit."""
+    """An episode waiting for its bug PNG is skipped, not failed: the PNG lands in a later commit.
+
+    A truncated or otherwise unreadable PNG counts as missing too. Rendering it would fail the
+    whole run, which costs Actions minutes and blocks the episode list refresh for everyone else."""
     try:
         cfg = json.loads((EPISODES / f'{code}.json').read_text(encoding='utf-8-sig'))
     except Exception:
         return False
     bug = cfg.get('bug') if isinstance(cfg.get('bug'), str) else f'../assets/{code}.png'
-    return (EPISODES / bug).resolve().is_file()
+    path = (EPISODES / bug).resolve()
+    if not path.is_file():
+        return False
+    try:
+        from PIL import Image
+        Image.open(path).convert('RGBA').load()
+    except Exception as e:
+        print(f'{code}: {path.name} cannot be read ({e}). Regenerate it.', file=sys.stderr)
+        return False
+    return True
 
 
 if os.environ.get('EVENT') == 'workflow_dispatch':

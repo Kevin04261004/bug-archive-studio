@@ -63,14 +63,6 @@ jobs:
             gh release upload "$tag" "output/$code-bug-archive.mp4" "output/$code-bug-archive-locked.png" --clobber
           done
 
-      - uses: actions/upload-artifact@v4
-        if: steps.pick.outputs.codes != ''
-        with:
-          name: episodes
-          path: |
-            output/*.mp4
-            output/*-locked.png
-
       - name: Refresh the episode and music lists for GitHub Pages
         run: |
           python server.py --index
