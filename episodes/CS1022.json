@@ -2,8 +2,20 @@
   "error_code": "CS1022",
   "message": "Type or namespace definition, or end-of-file expected",
   "filename": "PlayerLoop.cs",
-  "before": ["class Player", "{", "    int hp = 100;", "}", "}"],
-  "after": ["class Player", "{", "    int hp = 100;", "}"],
-  "bug": "../assets/CS1022.png",
-  "focus_line": 5
+  "before": [
+    "class Player",
+    "{",
+    "    int hp = 100;",
+    "}",
+    "}"
+  ],
+  "after": [
+    "class Player",
+    "{",
+    "    int hp = 100;",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1022.png"
 }
