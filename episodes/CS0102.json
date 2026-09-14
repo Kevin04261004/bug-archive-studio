@@ -2,8 +2,21 @@
   "error_code": "CS0102",
   "message": "The type 'Player' already contains a definition for 'hp'",
   "filename": "PlayerData.cs",
-  "before": ["class Player", "{", "    int hp = 100;", "    float hp = 1.5f;", "}"],
-  "after": ["class Player", "{", "    int hp = 100;", "    float shield = 1.5f;", "}"],
-  "bug": "../assets/CS0102.png",
-  "focus_line": 4
+  "before": [
+    "class Player",
+    "{",
+    "    int hp = 100;",
+    "    float hp = 1.5f;",
+    "}"
+  ],
+  "after": [
+    "class Player",
+    "{",
+    "    int hp = 100;",
+    "    float shield = 1.5f;",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0102.png"
 }
