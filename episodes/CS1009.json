@@ -2,8 +2,19 @@
   "error_code": "CS1009",
   "message": "Unrecognized escape sequence",
   "filename": "Paths.cs",
-  "before": ["void Start()", "{", "    string path = \"C:\\dev\";", "}"],
-  "after": ["void Start()", "{", "    string path = @\"C:\\dev\";", "}"],
-  "bug": "../assets/CS1009.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    string path = \"C:\\dev\";",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    string path = @\"C:\\dev\";",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1009.png"
 }
