@@ -2,8 +2,23 @@
   "error_code": "CS1025",
   "message": "Single-line comment or end-of-line expected",
   "filename": "Build.cs",
-  "before": ["void Start()", "{", "#if UNITY_EDITOR /* editor only */", "    Debug.Log(\"editor\");", "#endif", "}"],
-  "after": ["void Start()", "{", "#if UNITY_EDITOR // editor only", "    Debug.Log(\"editor\");", "#endif", "}"],
-  "bug": "../assets/CS1025.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "#if UNITY_EDITOR /* editor only */",
+    "    Debug.Log(\"editor\");",
+    "#endif",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "#if UNITY_EDITOR // editor only",
+    "    Debug.Log(\"editor\");",
+    "#endif",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1025.png"
 }
