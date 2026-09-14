@@ -2,8 +2,19 @@
   "error_code": "CS1029",
   "message": "#error: build stopped here",
   "filename": "Flags.cs",
-  "before": ["void Start()", "{", "#error build stopped here", "}"],
-  "after": ["void Start()", "{", "#warning build stopped here", "}"],
-  "bug": "../assets/CS1029.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "#error build stopped here",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "#warning build stopped here",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1029.png"
 }
