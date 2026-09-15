@@ -2,7 +2,7 @@
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-import json,re,subprocess,sys,uuid,threading,webbrowser,argparse,base64
+import json,re,subprocess,sys,uuid,threading,webbrowser,argparse,base64,csv,zipfile,io
 ROOT=Path(__file__).resolve().parent
 ap=argparse.ArgumentParser();ap.add_argument('--port',type=int,default=8765);ap.add_argument('--no-browser',action='store_true');ap.add_argument('--index',action='store_true',help='Only refresh episodes/index.json and exit');args=ap.parse_args()
 jobs={};pool=ThreadPoolExecutor(max_workers=1);lock=threading.Lock()
@@ -47,7 +47,30 @@ def render_batch(job,codes):
                          'thumbnail':'/'+output.with_name(output.stem+'-locked.png').relative_to(ROOT).as_posix()})
         except Exception as e:
             failed.append({'code':code,'error':str(e)})
-    with lock:jobs[job]={'status':'done','batch':True,'done':done,'failed':failed}
+    archive=pack_batch(folder,done) if len(done)>1 else None
+    with lock:jobs[job]={'status':'done','batch':True,'done':done,'failed':failed,
+                         'zip':'/'+archive.relative_to(ROOT).as_posix() if archive else None}
+def pack_batch(folder,done):
+    """One archive for the whole batch, laid out for a single YouTube Studio upload.
+
+    Videos at the top so selecting everything in the unpacked folder is exactly the files
+    the upload dialog wants; thumbnails one level down; a title sheet to paste from in the
+    bulk editor. The GitHub Action builds the same layout, so both paths unpack the same."""
+    archive=folder/'bug-archive-batch.zip'
+    with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
+        rows=[['file','title','error','source','compiler message']]
+        for item in done:
+            code,title=item['code'],episode_title(item['code'])
+            z.write(folder/f'{title}.mp4',f'{title}.mp4')
+            shot=folder/f'{title}-locked.png'
+            if shot.is_file():z.write(shot,f'thumbnails/{title}.png')
+            try:cfg=json.loads((ROOT/'episodes'/f'{code}.json').read_text(encoding='utf-8-sig'))
+            except Exception:cfg={}
+            rows.append([f'{title}.mp4',title,code,cfg.get('filename','Player.cs'),cfg.get('message','')])
+        sheet=io.StringIO()
+        csv.writer(sheet,delimiter='\t',lineterminator='\n').writerows(rows)
+        z.writestr('titles.tsv',sheet.getvalue())
+    return archive
 INDEX=ROOT/'episodes'/'index.json'
 MUSIC_DIR=ROOT/'music'
 MUSIC_INDEX=MUSIC_DIR/'index.json'

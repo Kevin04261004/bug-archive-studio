@@ -90,6 +90,41 @@ jobs:
             gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[].name' | sed "s/^/  $code asset: /"
           done
 
+      # A batch exists to be uploaded in one go. YouTube Studio takes many files at once and
+      # fills each title from its file name, so the names have to survive the trip. GitHub
+      # rewrites characters it does not allow in release asset names, but it does not touch
+      # names inside a zip, so the batch travels as one archive. It also spares the browser
+      # thirty separate cross-origin downloads.
+      - name: Pack the batch for one upload
+        if: steps.pick.outputs.codes != ''
+        id: pack
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count=$(wc -l < output/rendered.txt)
+          if [ "$count" -lt 2 ]; then echo 'One episode: no archive needed.'; exit 0; fi
+          # Videos at the top, thumbnails one level down. Selecting everything in the folder
+          # then has to be the videos, which is what the upload dialog wants.
+          mkdir -p pack/thumbnails
+          for code in $(cat output/rendered.txt); do
+            title="C# QUIZ - ERROR $code"
+            cp "output/$title.mp4" "pack/$title.mp4"
+            cp "output/$title-locked.png" "pack/thumbnails/$title.png"
+          done
+          python .github/workflows/batch_titles.py output/rendered.txt pack/titles.tsv
+          (cd pack && zip -qr ../output/bug-archive-batch.zip .)
+          ls -la output/bug-archive-batch.zip
+          tag="batch-${{ github.run_id }}"
+          gh release create "$tag" --title "$count episodes" \
+            --notes "Rendered by render.py. Unzip and drag the MP4s into YouTube Studio together; each title comes from its file name."
+          gh release upload "$tag" output/bug-archive-batch.zip
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          # Keep the recent archives and drop the rest. They are rebuilt by re-running a batch,
+          # and without this the releases page fills up with them.
+          gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
+            --jq '.[] | select(.tag_name | startswith("batch-")) | .tag_name' | tail -n +6 |
+            while read -r old; do gh release delete "$old" -y --cleanup-tag || true; done
+
       - name: Report the episodes that failed
         if: steps.render.outputs.failed != ''
         run: |

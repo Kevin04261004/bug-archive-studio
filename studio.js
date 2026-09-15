@@ -424,9 +424,17 @@ d.append(b,s,...nodes);$('batchresults').append(d);return d;}
 /* Browsers drop downloads fired in a tight loop, so they go out one at a time with a gap. */
 async function downloadAll(rows){for(const row of rows){row.link.click();await sleep(700);}}
 function downloadAllButton(rows){const b=document.createElement('button');
-b.className='subtle';b.textContent=`Download all ${rows.length} MP4s`;
+b.className='subtle';b.textContent=`Download the ${rows.length} MP4s one by one`;
 b.onclick=()=>{b.disabled=true;downloadAll(rows).finally(()=>{b.disabled=false;});};
 return b;}
+/* The archive is the way to take a batch: file names survive it, so YouTube Studio fills
+   every title correctly, and it is one download instead of thirty. */
+function archiveBox(href,count,name){const box=document.createElement('div');box.className='batchzip';
+const a=document.createElement('a');a.href=href;a.textContent=`Download all ${count} as one ZIP`;
+if(name)a.download=name;
+const note=document.createElement('p');
+note.textContent='Unpack it, then drag every MP4 into YouTube Studio at once. Each title is filled from its file name, and titles.tsv has the rest for the bulk editor.';
+box.append(a,note);return box;}
 async function batchOnActions(codes){const slug=repoSlug();
 if(!slug)throw Error('This editor is not on its GitHub Pages address, so it cannot reach the repository. Render on your own PC with START_STUDIO.bat.');
 const token=($('ghtoken').value||'').trim();
@@ -459,6 +467,11 @@ if(asset){const a=link('Download',asset.browser_download_url);
 batchLine(code,asset.name,a);ready.push({code,link:a});}
 else batchLine(code,'no MP4 on its release. Open the run on GitHub to see why.');}
 if(ready.length)$('batchresults').prepend(downloadAllButton(ready));
+/* The run packs everything it rendered into one release of its own. Prefer it. */
+if(ready.length>1)try{const z=await api('/releases/tags/batch-'+run.id);
+const zip=(z.assets||[]).find(a=>a.name.endsWith('.zip'));
+if(zip){$('batchresults').prepend(archiveBox(zip.browser_download_url,ready.length));
+link('',zip.browser_download_url).click();}}catch{}
 const lost=codes.length-ready.length;
 if(finished.conclusion!=='success'&&!ready.length)throw Error(`The action finished as ${finished.conclusion} and rendered nothing. Open the run on GitHub.`);
 bstatus(lost?`${ready.length} of ${codes.length} rendered. ${lost} did not; their rows say so.`:`All ${ready.length} episodes rendered.`,!!lost);}
@@ -477,6 +490,7 @@ a.textContent='Download';a.href=item.video;a.download=videoName(item.code);
 batchLine(item.code,videoName(item.code),a);ready.push({code:item.code,link:a});}
 for(const item of z.failed||[])batchLine(item.code,item.error);
 if(ready.length)$('batchresults').prepend(downloadAllButton(ready));
+if(z.zip)$('batchresults').prepend(archiveBox(z.zip,ready.length,'bug-archive-batch.zip'));
 const lost=(z.failed||[]).length;
 return bstatus(lost?`${ready.length} rendered, ${lost} failed.`:`All ${ready.length} episodes rendered into the output folder.`,!!lost);}}
 async function startBatch(){const codes=[...picked].sort();

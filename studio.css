@@ -179,3 +179,8 @@ padding:0 2px 6px;cursor:pointer}
 #batchlist .tierpick.full{color:#c3ff55;border-bottom-color:#4d6b25}
 #batchlist .tierpick.full .tiercount{color:#c3ff55}
 #batchlist .tierpick:disabled{opacity:.4;cursor:default}
+
+/* The archive is the headline result of a batch, so it reads as a panel, not another row. */
+.batchzip{border:1px solid #4d6b25;border-radius:9px;background:#18210f;padding:12px 14px;margin-bottom:10px}
+.batchzip a{color:#c3ff55;font-weight:700;font-size:14px}
+.batchzip p{margin:6px 0 0;font-size:12px;line-height:1.6;color:#9aa8b2}
