@@ -1027,8 +1027,8 @@
       "message": "Array size cannot be specified in a variable declaration",
       "filename": "Arrays.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0270.png",
+      "bug": "assets/CS0270.png",
+      "missing": null,
       "order": 88,
       "tier": 2
     },
