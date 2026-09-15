@@ -859,8 +859,8 @@
       "message": "A previous catch clause already catches all exceptions of this type",
       "filename": "Guard.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0160.png",
+      "bug": "assets/CS0160.png",
+      "missing": null,
       "order": 74,
       "tier": 2
     },
