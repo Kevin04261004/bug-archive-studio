@@ -1,9 +1,34 @@
 {
   "error_code": "CS0306",
   "message": "The type 'int*' may not be used as a type argument",
-  "filename": "Generics.cs",
-  "before": ["void Start()", "{", "    var list = new List<int*>();", "}"],
-  "after": ["void Start()", "{", "    var list = new List<IntPtr>();", "}"],
-  "bug": "../assets/CS0306.png",
-  "focus_line": 3
+  "filename": "Pixels.cs",
+  "before": [
+    "using System.Collections.Generic;",
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    unsafe void Scan()",
+    "    {",
+    "        var list = new List<int*>();",
+    "        Debug.Log(list.Count);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System.Collections.Generic;",
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    unsafe void Scan()",
+    "    {",
+    "        var list = new List<int>();",
+    "        Debug.Log(list.Count);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0306.png"
 }

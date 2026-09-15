@@ -1,9 +1,40 @@
 {
   "error_code": "CS0450",
   "message": "'Unit': cannot specify both a constraint class and the class or struct constraint",
-  "filename": "Constraints.cs",
-  "before": ["class Unit { }", "", "class Box<T> where T : class, Unit", "{", "}"],
-  "after": ["class Unit { }", "", "class Box<T> where T : Unit", "{", "}"],
-  "bug": "../assets/CS0450.png",
-  "focus_line": 3
+  "filename": "Pool.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Unit { }",
+    "",
+    "public class Pool<T>",
+    "    where T : class, Unit",
+    "{",
+    "    public T item;",
+    "}",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    Pool<Unit> pool = new();",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Unit { }",
+    "",
+    "public class Pool<T>",
+    "    where T : Unit",
+    "{",
+    "    public T item;",
+    "}",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    Pool<Unit> pool = new();",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0450.png"
 }
