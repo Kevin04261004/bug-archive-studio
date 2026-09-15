@@ -2,8 +2,21 @@
   "error_code": "CS0131",
   "message": "The left-hand side of an assignment must be a variable, property or indexer",
   "filename": "Assign.cs",
-  "before": ["void Start()", "{", "    int hp = 100;", "    100 = hp;", "}"],
-  "after": ["void Start()", "{", "    int hp = 100;", "    hp = 100;", "}"],
-  "bug": "../assets/CS0131.png",
-  "focus_line": 4
+  "before": [
+    "void Start()",
+    "{",
+    "    int hp = 100;",
+    "    100 = hp;",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int hp = 100;",
+    "    hp = 100;",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0131.png"
 }
