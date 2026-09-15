@@ -1063,8 +1063,8 @@
       "message": "Bad array declarator: put the rank specifier after the variable name",
       "filename": "Arrays.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0650.png",
+      "bug": "assets/CS0650.png",
+      "missing": null,
       "order": 91,
       "tier": 2
     },
