@@ -2,8 +2,21 @@
   "error_code": "CS0127",
   "message": "Since this method returns void, return must not be followed by a value",
   "filename": "Returns.cs",
-  "before": ["void Show()", "{", "    int hp = 100;", "    return hp;", "}"],
-  "after": ["void Show()", "{", "    int hp = 100;", "    return;", "}"],
-  "bug": "../assets/CS0127.png",
-  "focus_line": 4
+  "before": [
+    "void Show()",
+    "{",
+    "    int hp = 100;",
+    "    return hp;",
+    "}"
+  ],
+  "after": [
+    "void Show()",
+    "{",
+    "    int hp = 100;",
+    "    return;",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0127.png"
 }
