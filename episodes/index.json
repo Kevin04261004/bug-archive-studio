@@ -931,8 +931,8 @@
       "message": "The operand of an increment or decrement operator must be a variable",
       "filename": "Assign.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS1059.png",
+      "bug": "assets/CS1059.png",
+      "missing": null,
       "order": 80,
       "tier": 2
     },
