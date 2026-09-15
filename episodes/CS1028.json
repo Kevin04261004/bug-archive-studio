@@ -1,24 +1,38 @@
 {
   "error_code": "CS1028",
   "message": "Unexpected preprocessor directive",
-  "filename": "Flags.cs",
+  "filename": "BuildFlags.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
+    "    void Start()",
+    "    {",
     "#if UNITY_EDITOR",
+    "        Debug.Log(\"Editor only\");",
     "#endregion",
     "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
+    "    void Start()",
+    "    {",
     "#if UNITY_EDITOR",
-    "    Debug.Log(\"editor\");",
+    "        Debug.Log(\"Editor only\");",
+    "",
     "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
-  "focus_line": 4,
+  "focus_line": 9,
   "music": "random",
   "bug": "../assets/CS1028.png"
 }

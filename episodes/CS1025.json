@@ -1,24 +1,36 @@
 {
   "error_code": "CS1025",
   "message": "Single-line comment or end-of-line expected",
-  "filename": "Build.cs",
+  "filename": "BuildFlags.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
+    "    void Start()",
+    "    {",
     "#if UNITY_EDITOR /* editor only */",
-    "    Debug.Log(\"editor\");",
+    "        Debug.Log(\"Editor tools on\");",
     "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
+    "    void Start()",
+    "    {",
     "#if UNITY_EDITOR // editor only",
-    "    Debug.Log(\"editor\");",
+    "        Debug.Log(\"Editor tools on\");",
     "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 7,
   "music": "random",
   "bug": "../assets/CS1025.png"
 }

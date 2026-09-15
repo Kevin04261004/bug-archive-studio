@@ -1,24 +1,36 @@
 {
   "error_code": "CS1044",
-  "message": "Cannot use more than one type in a for, using, fixed statement",
-  "filename": "Loops.cs",
+  "message": "Cannot use more than one type in a for, using, fixed, or declaration statement",
+  "filename": "Waves.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Waves : MonoBehaviour",
     "{",
-    "    for (int i = 0, long j = 0; i < 3; i++)",
+    "    void Start()",
     "    {",
+    "        for (int i = 0, long n; i < 3;)",
+    "        {",
+    "            Debug.Log(\"Wave \" + i++);",
+    "        }",
     "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Waves : MonoBehaviour",
     "{",
-    "    for (int i = 0, j = 0; i < 3; i++)",
+    "    void Start()",
     "    {",
+    "        for (int i = 0, n = 0; i < 3;)",
+    "        {",
+    "            Debug.Log(\"Wave \" + i++);",
+    "        }",
     "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 7,
   "music": "random",
   "bug": "../assets/CS1044.png"
 }

@@ -1,18 +1,9 @@
 # -*- coding: utf-8 -*-
 """1티어 리라이트. 실제로 일어나는 상황으로 다시 쓴 에피소드."""
-import json, sys
-from pathlib import Path
+from _common import make, write
 
 E = {}
-
-def lines(block):
-    # 앞의 빈 줄만 걷어내고, 끝은 마지막 개행 하나만 지운다: 의도한 빈 줄이 살아남는다
-    return block.lstrip('\n').rstrip('\n').split('\n') if not block.endswith('\n\n') \
-        else block.lstrip('\n')[:-1].rstrip('\n').split('\n') + ['']
-
-def ep(code, filename, message, before, after, focus):
-    E[code] = dict(filename=filename, message=message, focus_line=focus,
-                   before=lines(before), after=lines(after))
+ep = make(E)
 
 # 1 CS0103 — 오타. 자동완성 없이 손으로 친 필드 이름이 한 글자 어긋난다.
 ep('CS0103', 'ScoreUI.cs',
@@ -1359,7 +1350,6 @@ class TestRunner
 }
 """, 13)
 
+
 if __name__ == '__main__':
-    out = Path(sys.argv[1] if len(sys.argv) > 1 else 'tools/batches/tier1.json')
-    out.write_text(json.dumps(E, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-    print(f'{len(E)}편 -> {out}')
+    write(E, 'tools/batches/tier1.json')
