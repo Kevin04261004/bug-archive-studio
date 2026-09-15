@@ -1123,8 +1123,8 @@
       "message": "Semicolon after method or accessor block is not valid",
       "filename": "Methods.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS1597.png",
+      "bug": "assets/CS1597.png",
+      "missing": null,
       "order": 96,
       "tier": 2
     },
@@ -1135,8 +1135,8 @@
       "message": "Elements defined in a namespace cannot be explicitly declared as private",
       "filename": "Types.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS1527.png",
+      "bug": "assets/CS1527.png",
+      "missing": null,
       "order": 97,
       "tier": 2
     },
@@ -1147,8 +1147,8 @@
       "message": "A using clause must precede all other elements defined in the namespace",
       "filename": "Usings.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS1529.png",
+      "bug": "assets/CS1529.png",
+      "missing": null,
       "order": 98,
       "tier": 2
     },
