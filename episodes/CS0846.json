@@ -1,9 +1,34 @@
 {
   "error_code": "CS0846",
   "message": "A nested array initializer is expected",
-  "filename": "Grids.cs",
-  "before": ["void Start()", "{", "    int[,] grid = { 1, 2 };", "}"],
-  "after": ["void Start()", "{", "    int[,] grid = { { 1, 2 } };", "}"],
-  "bug": "../assets/CS0846.png",
-  "focus_line": 3
+  "filename": "Board.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Board : MonoBehaviour",
+    "{",
+    "    int[,] grid = { 1, 2 };",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(grid[0, 0]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Board : MonoBehaviour",
+    "{",
+    "    int[,] grid = { { 1, 2 } };",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(grid[0, 0]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0846.png"
 }

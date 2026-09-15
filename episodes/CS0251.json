@@ -1,9 +1,34 @@
 {
   "error_code": "CS0251",
   "message": "Indexing an array with a negative index",
-  "filename": "Arrays.cs",
-  "before": ["void Start()", "{", "    int[] xs = new int[3];", "    Debug.Log(xs[-1]);", "}"],
-  "after": ["void Start()", "{", "    int[] xs = new int[3];", "    Debug.Log(xs[0]);", "}"],
-  "bug": "../assets/CS0251.png",
-  "focus_line": 4
+  "filename": "Scores.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    int[] best = new int[3];",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(best[-1]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    int[] best = new int[3];",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(best[0]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0251.png"
 }

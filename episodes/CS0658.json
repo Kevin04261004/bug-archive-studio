@@ -1,9 +1,34 @@
 {
   "error_code": "CS0658",
   "message": "'x' is not a recognized attribute location; use 'method' or 'return'",
-  "filename": "Attributes.cs",
-  "before": ["class Player", "{", "    [x: Obsolete]", "    public void Hit() { }", "}"],
-  "after": ["class Player", "{", "    [method: Obsolete]", "    public void Hit() { }", "}"],
-  "bug": "../assets/CS0658.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    [x: Obsolete]",
+    "    public void Hit()",
+    "    {",
+    "        Debug.Log(\"hit\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    [Obsolete]",
+    "    public void Hit()",
+    "    {",
+    "        Debug.Log(\"hit\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0658.png"
 }

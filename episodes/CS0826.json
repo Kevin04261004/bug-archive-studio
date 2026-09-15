@@ -1,9 +1,32 @@
 {
   "error_code": "CS0826",
   "message": "No best type found for implicitly-typed array",
-  "filename": "Vars.cs",
-  "before": ["void Start()", "{", "    var mixed = new[] { 1, \"two\" };", "}"],
-  "after": ["void Start()", "{", "    var mixed = new[] { 1, 2 };", "}"],
-  "bug": "../assets/CS0826.png",
-  "focus_line": 3
+  "filename": "Loot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Loot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var drops = new[] { 1, \"gem\" };",
+    "        Debug.Log(drops[0]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Loot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        object[] drops = { 1, \"gem\" };",
+    "        Debug.Log(drops[0]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0826.png"
 }

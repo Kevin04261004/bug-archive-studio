@@ -1,9 +1,36 @@
 {
   "error_code": "CS0308",
-  "message": "The non-generic method 'Show()' cannot be used with type arguments",
-  "filename": "Generics.cs",
-  "before": ["void Show() { }", "", "void Start()", "{", "    Show<int>();", "}"],
-  "after": ["void Show<T>() { }", "", "void Start()", "{", "    Show<int>();", "}"],
-  "bug": "../assets/CS0308.png",
-  "focus_line": 1
+  "message": "The non-generic method 'Spawner.Show()' cannot be used with type arguments",
+  "filename": "Spawner.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    void Show() { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Show<int>();",
+    "        Debug.Log(\"shown\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    void Show() { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Show();",
+    "        Debug.Log(\"shown\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0308.png"
 }

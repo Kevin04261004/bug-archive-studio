@@ -1,9 +1,38 @@
 {
   "error_code": "CS0154",
   "message": "The property 'Player.Hp' cannot be used in this context; it lacks the get accessor",
-  "filename": "Props.cs",
-  "before": ["class Player", "{", "    public int Hp { set { } }", "}", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p.Hp);", "}"],
-  "after": ["class Player", "{", "    public int Hp { get; set; }", "}", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p.Hp);", "}"],
-  "bug": "../assets/CS0154.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "",
+    "    public int Hp { set { hp = value; } }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(Hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "",
+    "    public int Hp { get { return hp; } }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(Hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0154.png"
 }

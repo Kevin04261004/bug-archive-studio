@@ -1,9 +1,38 @@
 {
   "error_code": "CS1628",
-  "message": "Cannot use ref or out parameter 'n' inside a lambda expression",
-  "filename": "Lambdas.cs",
-  "before": ["void Add(ref int n)", "{", "    Action a = () => Debug.Log(n);", "}"],
-  "after": ["void Add(int n)", "{", "    Action a = () => Debug.Log(n);", "}"],
-  "bug": "../assets/CS1628.png",
-  "focus_line": 1
+  "message": "Cannot use ref or out parameter 'hp' inside a lambda expression",
+  "filename": "Health.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    void Bump(ref int hp)",
+    "    {",
+    "        int copy = hp;",
+    "        Action log = () =>",
+    "            Debug.Log(hp);",
+    "        log();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    void Bump(ref int hp)",
+    "    {",
+    "        int copy = hp;",
+    "        Action log = () =>",
+    "            Debug.Log(copy);",
+    "        log();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS1628.png"
 }

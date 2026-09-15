@@ -1,9 +1,36 @@
 {
   "error_code": "CS8632",
   "message": "The ? annotation should only be used in code within a #nullable context",
-  "filename": "Nullable.cs",
-  "before": ["", "class Player", "{", "    public string? name;", "}"],
-  "after": ["#nullable enable", "class Player", "{", "    public string? name;", "}"],
-  "bug": "../assets/CS8632.png",
-  "focus_line": 1
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public string? playerName;",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public string playerName;",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS8632.png"
 }

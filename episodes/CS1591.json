@@ -1,9 +1,40 @@
 {
   "error_code": "CS1591",
-  "message": "Missing XML comment for publicly visible type or member 'Player'",
-  "filename": "XmlDoc.cs",
-  "before": ["", "public class Player", "{", "}"],
-  "after": ["/// <summary>A player.</summary>", "public class Player", "{", "}"],
-  "bug": "../assets/CS1591.png",
-  "focus_line": 1
+  "message": "Missing XML comment for publicly visible type or member 'Score.value'",
+  "filename": "Score.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "/// <summary>Holds the score.</summary>",
+    "public class Score : MonoBehaviour",
+    "{",
+    "",
+    "    public int value;",
+    "",
+    "    /// <summary>Resets it.</summary>",
+    "    public void ResetScore()",
+    "    {",
+    "        value = 0;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "/// <summary>Holds the score.</summary>",
+    "public class Score : MonoBehaviour",
+    "{",
+    "    /// <summary>The score.</summary>",
+    "    public int value;",
+    "",
+    "    /// <summary>Resets it.</summary>",
+    "    public void ResetScore()",
+    "    {",
+    "        value = 0;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS1591.png"
 }

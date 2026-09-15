@@ -1,9 +1,36 @@
 {
   "error_code": "CS1994",
   "message": "The async modifier can only be used in methods that have a body",
-  "filename": "AsyncLoad.cs",
-  "before": ["abstract class Loader", "{", "    public abstract async Task Go();", "}"],
-  "after": ["abstract class Loader", "{", "    public abstract Task Go();", "}"],
-  "bug": "../assets/CS1994.png",
-  "focus_line": 3
+  "filename": "Loader.cs",
+  "before": [
+    "using System.Threading.Tasks;",
+    "using UnityEngine;",
+    "",
+    "public abstract class Loader",
+    "{",
+    "    public abstract async Task Go();",
+    "",
+    "    public void Ready()",
+    "    {",
+    "        Debug.Log(\"ready\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System.Threading.Tasks;",
+    "using UnityEngine;",
+    "",
+    "public abstract class Loader",
+    "{",
+    "    public abstract Task Go();",
+    "",
+    "    public void Ready()",
+    "    {",
+    "        Debug.Log(\"ready\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS1994.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS1511",
   "message": "Keyword 'base' is not available in a static method",
-  "filename": "BaseRef.cs",
-  "before": ["class Enemy", "{", "    public void Reset() { }", "}", "", "class Boss : Enemy", "{", "    static void Show()", "    {", "        base.Reset();", "    }", "}"],
-  "after": ["class Enemy", "{", "    public void Reset() { }", "}", "", "class Boss : Enemy", "{", "    void Show()", "    {", "        base.Reset();", "    }", "}"],
-  "bug": "../assets/CS1511.png",
-  "focus_line": 8
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public void ResetHp() { }",
+    "}",
+    "",
+    "public class Boss : Enemy",
+    "{",
+    "    static void ResetAll()",
+    "    {",
+    "        base.ResetHp();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public void ResetHp() { }",
+    "}",
+    "",
+    "public class Boss : Enemy",
+    "{",
+    "    void ResetAll()",
+    "    {",
+    "        base.ResetHp();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS1511.png"
 }

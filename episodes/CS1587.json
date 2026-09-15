@@ -1,9 +1,34 @@
 {
   "error_code": "CS1587",
   "message": "XML comment is not placed on a valid language element",
-  "filename": "XmlDoc.cs",
-  "before": ["void Start()", "{", "    /// <summary>Note.</summary>", "    int n = 1;", "}"],
-  "after": ["void Start()", "{", "    // Note.", "    int n = 1;", "}"],
-  "bug": "../assets/CS1587.png",
-  "focus_line": 3
+  "filename": "Combat.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    public void Attack()",
+    "    {",
+    "        /// <summary>Damage.</summary>",
+    "        int damage = 10;",
+    "        Debug.Log(damage);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    public void Attack()",
+    "    {",
+    "        // Base damage.",
+    "        int damage = 10;",
+    "        Debug.Log(damage);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS1587.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0168",
-  "message": "The variable 'n' is declared but never used",
-  "filename": "Unused.cs",
-  "before": ["void Start()", "{", "    int n;", "    Debug.Log(1);", "}"],
-  "after": ["void Start()", "{", "", "    Debug.Log(1);", "}"],
-  "bug": "../assets/CS0168.png",
-  "focus_line": 3
+  "message": "The variable 'damage' is declared but never used",
+  "filename": "Combat.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    public int power = 10;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int damage;",
+    "        Debug.Log(power);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    public int power = 10;",
+    "",
+    "    void Start()",
+    "    {",
+    "",
+    "        Debug.Log(power);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0168.png"
 }

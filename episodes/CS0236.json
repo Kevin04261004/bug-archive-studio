@@ -1,9 +1,36 @@
 {
   "error_code": "CS0236",
   "message": "A field initializer cannot reference the non-static field 'hp'",
-  "filename": "ThisRef.cs",
-  "before": ["class Player", "{", "    public int hp = 10;", "    public int copy = hp;", "}"],
-  "after": ["class Player", "{", "    public int hp = 10;", "    public int copy = 10;", "}"],
-  "bug": "../assets/CS0236.png",
-  "focus_line": 4
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "    public int shield = hp / 2;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(shield);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "    public int shield = 50;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(shield);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0236.png"
 }

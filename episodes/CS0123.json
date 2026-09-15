@@ -1,9 +1,38 @@
 {
   "error_code": "CS0123",
   "message": "No overload for 'Show' matches delegate 'Action'",
-  "filename": "Delegates.cs",
-  "before": ["void Show(int n) { }", "", "void Start()", "{", "    Action a = Show;", "}"],
-  "after": ["void Show(int n) { }", "", "void Start()", "{", "    Action<int> a = Show;", "}"],
-  "bug": "../assets/CS0123.png",
-  "focus_line": 5
+  "filename": "Watcher.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    void Show(int amount) { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Action onHit = Show;",
+    "        onHit();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    void Show() { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Action onHit = Show;",
+    "        onHit();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0123.png"
 }

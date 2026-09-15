@@ -1,9 +1,38 @@
 {
   "error_code": "CS0464",
   "message": "Comparing with null of type 'int?' always produces false",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    int? a = null;", "    if (a > null) { }", "}"],
-  "after": ["void Start()", "{", "    int? a = null;", "    if (a > 0) { }", "}"],
-  "bug": "../assets/CS0464.png",
-  "focus_line": 4
+  "filename": "SaveSlot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        int? saved = null;",
+    "        if (saved > null)",
+    "        {",
+    "            Debug.Log(saved);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        int? saved = null;",
+    "        if (saved > 0)",
+    "        {",
+    "            Debug.Log(saved);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0464.png"
 }

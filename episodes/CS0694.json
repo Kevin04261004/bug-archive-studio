@@ -1,9 +1,34 @@
 {
   "error_code": "CS0694",
   "message": "Type parameter 'Pair' has the same name as the containing type",
-  "filename": "Generics.cs",
-  "before": ["class Pair<A, Pair>", "{", "    public A first;", "}"],
-  "after": ["class Pair<A, B>", "{", "    public A first;", "}"],
-  "bug": "../assets/CS0694.png",
-  "focus_line": 1
+  "filename": "Pair.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pair<A, Pair>",
+    "{",
+    "    public A first;",
+    "}",
+    "",
+    "public class Store : MonoBehaviour",
+    "{",
+    "    Pair<int, string> pair;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pair<A, B>",
+    "{",
+    "    public A first;",
+    "}",
+    "",
+    "public class Store : MonoBehaviour",
+    "{",
+    "    Pair<int, string> pair;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0694.png"
 }

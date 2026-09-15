@@ -1,9 +1,34 @@
 {
   "error_code": "CS1572",
-  "message": "XML comment has a param tag for 'x', but there is no parameter by that name",
-  "filename": "XmlDoc.cs",
-  "before": ["/// <summary>Sets hp.</summary>", "/// <param name=\"x\">Hp.</param>", "void Set(int n) { }"],
-  "after": ["/// <summary>Sets hp.</summary>", "/// <param name=\"n\">Hp.</param>", "void Set(int n) { }"],
-  "bug": "../assets/CS1572.png",
-  "focus_line": 2
+  "message": "XML comment has a param tag for 'mana', but there is no parameter by that name",
+  "filename": "Stats.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Stats : MonoBehaviour",
+    "{",
+    "    /// <summary>Sets health.</summary>",
+    "    /// <param name=\"mana\">Mana.</param>",
+    "    public void SetHp(int hp)",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Stats : MonoBehaviour",
+    "{",
+    "    /// <summary>Sets health.</summary>",
+    "    /// <param name=\"hp\">Health.</param>",
+    "    public void SetHp(int hp)",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS1572.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS0839",
   "message": "Argument missing",
-  "filename": "Calls.cs",
-  "before": ["class Gun", "{", "    public void Fire(int a, int b) { }", "}", "", "void Start()", "{", "    new Gun().Fire(1, );", "}"],
-  "after": ["class Gun", "{", "    public void Fire(int a, int b) { }", "}", "", "void Start()", "{", "    new Gun().Fire(1, 2);", "}"],
-  "bug": "../assets/CS0839.png",
-  "focus_line": 8
+  "filename": "Weapon.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int shots, int power)",
+    "    {",
+    "        Debug.Log(shots * power);",
+    "    }",
+    "",
+    "    void Update()",
+    "    {",
+    "        Fire(1, );",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int shots, int power)",
+    "    {",
+    "        Debug.Log(shots * power);",
+    "    }",
+    "",
+    "    void Update()",
+    "    {",
+    "        Fire(1, 10);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS0839.png"
 }

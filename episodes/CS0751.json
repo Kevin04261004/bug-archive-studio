@@ -1,9 +1,38 @@
 {
   "error_code": "CS0751",
   "message": "A partial method must be declared within a partial class or partial struct",
-  "filename": "Partial.cs",
-  "before": ["class Player", "{", "    partial void OnHit();", "}"],
-  "after": ["partial class Player", "{", "    partial void OnHit();", "}"],
-  "bug": "../assets/CS0751.png",
-  "focus_line": 1
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    partial void OnHit();",
+    "",
+    "    void Show()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public partial class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    partial void OnHit();",
+    "",
+    "    void Show()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0751.png"
 }

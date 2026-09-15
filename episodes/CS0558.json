@@ -1,9 +1,40 @@
 {
   "error_code": "CS0558",
-  "message": "User-defined operator 'F.operator +(F, F)' must be declared static and public",
-  "filename": "Operators.cs",
-  "before": ["struct F", "{", "    static F operator +(F a, F b)", "        => default;", "}"],
-  "after": ["struct F", "{", "    public static F operator +(F a, F b)", "        => default;", "}"],
-  "bug": "../assets/CS0558.png",
-  "focus_line": 3
+  "message": "User-defined operator 'Gold.operator +(Gold, Gold)' must be static and public",
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    static Gold operator +(",
+    "        Gold left, Gold right) => left;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static Gold operator +(",
+    "        Gold left, Gold right) => left;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0558.png"
 }

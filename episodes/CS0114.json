@@ -1,9 +1,34 @@
 {
   "error_code": "CS0114",
   "message": "'Boss.Hit()' hides inherited member 'Enemy.Hit()'; add the override keyword",
-  "filename": "Hiding.cs",
-  "before": ["class Enemy", "{", "    public virtual void Hit() { }", "}", "", "class Boss : Enemy", "{", "    public void Hit() { }", "}"],
-  "after": ["class Enemy", "{", "    public virtual void Hit() { }", "}", "", "class Boss : Enemy", "{", "    public override void Hit() { }", "}"],
-  "bug": "../assets/CS0114.png",
-  "focus_line": 8
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public virtual void Hit() { }",
+    "}",
+    "",
+    "public class Boss : Enemy",
+    "{",
+    "    public void Hit() { }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public virtual void Hit() { }",
+    "}",
+    "",
+    "public class Boss : Enemy",
+    "{",
+    "    public override void Hit() { }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0114.png"
 }

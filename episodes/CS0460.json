@@ -1,9 +1,38 @@
 {
   "error_code": "CS0460",
   "message": "Constraints for an override method are inherited from the base method",
-  "filename": "Constraints.cs",
-  "before": ["class Enemy", "{", "    public virtual void Hit<T>() { }", "}", "", "class Boss : Enemy", "{", "    public override void Hit<T>()", "        where T : class", "    { }", "}"],
-  "after": ["class Enemy", "{", "    public virtual void Hit<T>() { }", "}", "", "class Boss : Enemy", "{", "    public override void Hit<T>()", "", "    { }", "}"],
-  "bug": "../assets/CS0460.png",
-  "focus_line": 9
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy",
+    "{",
+    "    public virtual void Hit<T>() { }",
+    "}",
+    "",
+    "public class Boss : Enemy",
+    "{",
+    "    public override void Hit<T>()",
+    "        where T : class",
+    "    { }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy",
+    "{",
+    "    public virtual void Hit<T>() { }",
+    "}",
+    "",
+    "public class Boss : Enemy",
+    "{",
+    "    public override void Hit<T>()",
+    "",
+    "    { }",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0460.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0825",
   "message": "The contextual keyword var may only appear within a local variable declaration",
-  "filename": "Vars.cs",
-  "before": ["class Player", "{", "    var hp = 100;", "}"],
-  "after": ["class Player", "{", "    int hp = 100;", "}"],
-  "bug": "../assets/CS0825.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    var hp = 100;",
+    "    public int mana = 50;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "    public int mana = 50;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0825.png"
 }

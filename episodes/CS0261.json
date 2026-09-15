@@ -1,9 +1,34 @@
 {
   "error_code": "CS0261",
   "message": "Partial declarations of 'Player' must be all classes or all structs",
-  "filename": "Partial.cs",
-  "before": ["partial class Player", "{", "}", "", "partial struct Player", "{", "}"],
-  "after": ["partial class Player", "{", "}", "", "partial class Player", "{", "}"],
-  "bug": "../assets/CS0261.png",
-  "focus_line": 5
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public partial class Player",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public partial struct Player",
+    "{",
+    "    public int mana;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public partial class Player",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public partial class Player",
+    "{",
+    "    public int mana;",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0261.png"
 }

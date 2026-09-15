@@ -1,21 +1,38 @@
 {
   "error_code": "CS1022",
   "message": "Type or namespace definition, or end-of-file expected",
-  "filename": "PlayerLoop.cs",
+  "filename": "Player.cs",
   "before": [
-    "class Player",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
     "{",
-    "    int hp = 100;",
+    "    public int hp = 100;",
+    "",
+    "    public void Heal(int amount)",
+    "    {",
+    "        hp += amount;",
+    "        Debug.Log(\"HP: \" + hp);",
+    "    }",
     "}",
     "}"
   ],
   "after": [
-    "class Player",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
     "{",
-    "    int hp = 100;",
-    "}"
+    "    public int hp = 100;",
+    "",
+    "    public void Heal(int amount)",
+    "    {",
+    "        hp += amount;",
+    "        Debug.Log(\"HP: \" + hp);",
+    "    }",
+    "}",
+    ""
   ],
-  "focus_line": 5,
+  "focus_line": 13,
   "music": "random",
   "bug": "../assets/CS1022.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS0564",
   "message": "The first operand of an overloaded shift operator must be the containing type",
-  "filename": "Operators.cs",
-  "before": ["struct F", "{", "    public static F operator <<(", "        int a, int b) => default;", "}"],
-  "after": ["struct F", "{", "    public static F operator <<(", "        F a, int b) => default;", "}"],
-  "bug": "../assets/CS0564.png",
-  "focus_line": 4
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static Gold operator <<(",
+    "        int shift, int by) => default;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static Gold operator <<(",
+    "        Gold coin, int by) => default;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0564.png"
 }

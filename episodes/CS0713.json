@@ -1,9 +1,40 @@
 {
   "error_code": "CS0713",
-  "message": "Static class 'Tools' cannot derive from type 'Base'; it must derive from object",
-  "filename": "StaticClass.cs",
-  "before": ["class Base { }", "", "static class Tools : Base", "{", "}"],
-  "after": ["class Base { }", "", "static class Tools", "{", "}"],
-  "bug": "../assets/CS0713.png",
-  "focus_line": 3
+  "message": "Static class 'SaveTools' cannot derive from type 'Storage'",
+  "filename": "SaveTools.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Storage",
+    "{",
+    "    public string path = \"save\";",
+    "}",
+    "",
+    "public static class SaveTools : Storage",
+    "{",
+    "    public static void Save()",
+    "    {",
+    "        Debug.Log(\"saved\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Storage",
+    "{",
+    "    public string path = \"save\";",
+    "}",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static void Save()",
+    "    {",
+    "        Debug.Log(\"saved\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0713.png"
 }

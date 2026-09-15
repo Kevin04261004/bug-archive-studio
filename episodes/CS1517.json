@@ -1,22 +1,36 @@
 {
   "error_code": "CS1517",
   "message": "Invalid preprocessor expression",
-  "filename": "Flags.cs",
+  "filename": "BuildFlags.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
-    "#if &&",
+    "    void Start()",
+    "    {",
+    "#if && UNITY_EDITOR",
+    "        Debug.Log(\"Editor only\");",
     "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
-    "#if UNITY_EDITOR",
+    "    void Start()",
+    "    {",
+    "#if UNITY_EDITOR && DEBUG",
+    "        Debug.Log(\"Editor only\");",
     "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 7,
   "music": "random",
   "bug": "../assets/CS1517.png"
 }

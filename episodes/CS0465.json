@@ -1,9 +1,34 @@
 {
   "error_code": "CS0465",
   "message": "Introducing a Finalize method can interfere with destructor invocation",
-  "filename": "Finalizers.cs",
-  "before": ["class Player", "{", "    protected virtual void Finalize() { }", "}"],
-  "after": ["class Player", "{", "    ~Player() { }", "}"],
-  "bug": "../assets/CS0465.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    protected virtual void Finalize()",
+    "    {",
+    "        Debug.Log(\"gone\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    ~Player()",
+    "    {",
+    "        Debug.Log(\"gone\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0465.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0617",
-  "message": "'n' is not a valid named attribute argument; it must not be readonly or static",
-  "filename": "Attributes.cs",
-  "before": ["class MyAttr : Attribute", "{", "    public readonly int n;", "}", "", "[MyAttr(n = 1)]", "class Player { }"],
-  "after": ["class MyAttr : Attribute", "{", "    public int n;", "}", "", "[MyAttr(n = 1)]", "class Player { }"],
-  "bug": "../assets/CS0617.png",
-  "focus_line": 3
+  "message": "'weight' is not a valid named attribute argument; it must not be readonly",
+  "filename": "Hint.cs",
+  "before": [
+    "using System;",
+    "",
+    "public class Hint : Attribute",
+    "{",
+    "    public readonly int weight;",
+    "}",
+    "",
+    "[Hint(weight = 1)]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "",
+    "public class Hint : Attribute",
+    "{",
+    "    public int weight;",
+    "}",
+    "",
+    "[Hint(weight = 1)]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0617.png"
 }

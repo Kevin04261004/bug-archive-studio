@@ -1,9 +1,36 @@
 {
   "error_code": "CS1612",
-  "message": "Cannot modify the return value because it is not a variable",
-  "filename": "Structs.cs",
-  "before": ["struct Point", "{", "    public int x;", "}", "", "class Bag", "{", "    Point Spot() => default;", "    void Move() { Spot().x = 1; }", "}"],
-  "after": ["struct Point", "{", "    public int x;", "}", "", "class Bag", "{", "    Point Spot() => default;", "    void Move() { var p = Spot(); }", "}"],
-  "bug": "../assets/CS1612.png",
-  "focus_line": 9
+  "message": "Cannot modify the return value of 'Transform.position'",
+  "filename": "Turret.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Turret : MonoBehaviour",
+    "{",
+    "    public float range = 5f;",
+    "",
+    "    void Aim()",
+    "    {",
+    "        transform.position.x = 5f;",
+    "        Debug.Log(transform.position);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Turret : MonoBehaviour",
+    "{",
+    "    public float range = 5f;",
+    "",
+    "    void Aim()",
+    "    {",
+    "        transform.Translate(5f, 0, 0);",
+    "        Debug.Log(transform.position);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS1612.png"
 }

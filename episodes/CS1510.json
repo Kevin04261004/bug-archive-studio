@@ -1,9 +1,42 @@
 {
   "error_code": "CS1510",
   "message": "A ref or out value must be an assignable variable",
-  "filename": "Refs.cs",
-  "before": ["class Tools", "{", "    public void Bump(ref int n) { }", "}", "", "void Start()", "{", "    int hp = 1;", "    new Tools().Bump(ref 1);", "}"],
-  "after": ["class Tools", "{", "    public void Bump(ref int n) { }", "}", "", "void Start()", "{", "    int hp = 1;", "    new Tools().Bump(ref hp);", "}"],
-  "bug": "../assets/CS1510.png",
-  "focus_line": 9
+  "filename": "Health.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    void Bump(ref int value)",
+    "    {",
+    "        value++;",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        int hp = 1;",
+    "        Bump(ref 1);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    void Bump(ref int value)",
+    "    {",
+    "        value++;",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        int hp = 1;",
+    "        Bump(ref hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 13,
+  "music": "random",
+  "bug": "../assets/CS1510.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS0078",
   "message": "The 'l' suffix is easily confused with the digit '1'; use 'L' instead",
-  "filename": "Literals.cs",
-  "before": ["void Start()", "{", "    long a = 10L;", "    long b = 20L;", "    long c = 30l;", "    long d = 40L;", "}"],
-  "after": ["void Start()", "{", "    long a = 10L;", "    long b = 20L;", "    long c = 30L;", "    long d = 40L;", "}"],
-  "bug": "../assets/CS0078.png",
-  "focus_line": 5
+  "filename": "Wallet.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    long gold = 10L;",
+    "    long gems = 20L;",
+    "    long dust = 30l;",
+    "    long ore = 40L;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(gold);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    long gold = 10L;",
+    "    long gems = 20L;",
+    "    long dust = 30L;",
+    "    long ore = 40L;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(gold);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0078.png"
 }

@@ -1,9 +1,38 @@
 {
   "error_code": "CS0503",
   "message": "'Enemy.Hit()' cannot be both abstract and virtual",
-  "filename": "Abstract.cs",
-  "before": ["abstract class Enemy", "{", "    public abstract virtual void Hit();", "}"],
-  "after": ["abstract class Enemy", "{", "    public abstract void Hit();", "}"],
-  "bug": "../assets/CS0503.png",
-  "focus_line": 3
+  "filename": "Enemy.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public abstract class Enemy",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    public abstract virtual void Hit();",
+    "",
+    "    public void Log()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public abstract class Enemy",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    public abstract void Hit();",
+    "",
+    "    public void Log()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0503.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS0183",
   "message": "The given expression is always of the provided type 'object'",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    string s = \"a\";", "    if (s is object) { }", "}"],
-  "after": ["void Start()", "{", "    string s = \"a\";", "    if (s != null) { }", "}"],
-  "bug": "../assets/CS0183.png",
-  "focus_line": 4
+  "filename": "SaveSlot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    public string saved = \"1200\";",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (saved is object)",
+    "        {",
+    "            Debug.Log(saved);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    public string saved = \"1200\";",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (saved != null)",
+    "        {",
+    "            Debug.Log(saved);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0183.png"
 }

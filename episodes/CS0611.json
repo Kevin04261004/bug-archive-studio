@@ -1,9 +1,34 @@
 {
   "error_code": "CS0611",
   "message": "Array elements cannot be of type 'System.TypedReference'",
-  "filename": "FieldTypes.cs",
-  "before": ["void Start()", "{", "    var xs = new TypedReference[2];", "}"],
-  "after": ["void Start()", "{", "    var xs = new object[2];", "}"],
-  "bug": "../assets/CS0611.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var raw = new TypedReference[2];",
+    "        Debug.Log(raw.Length);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var raw = new object[2];",
+    "        Debug.Log(raw.Length);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0611.png"
 }

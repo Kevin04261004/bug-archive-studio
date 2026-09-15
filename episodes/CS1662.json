@@ -1,9 +1,34 @@
 {
   "error_code": "CS1662",
   "message": "Cannot convert lambda expression; the return type is not implicitly convertible",
-  "filename": "Lambdas.cs",
-  "before": ["void Start()", "{", "    Func<int> f = () => \"x\";", "}"],
-  "after": ["void Start()", "{", "    Func<int> f = () => 1;", "}"],
-  "bug": "../assets/CS1662.png",
-  "focus_line": 3
+  "filename": "Score.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Score : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Func<int> best = () => \"1200\";",
+    "        Debug.Log(best());",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Score : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Func<int> best = () => 1200;",
+    "        Debug.Log(best());",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS1662.png"
 }

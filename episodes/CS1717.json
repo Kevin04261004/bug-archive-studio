@@ -1,9 +1,36 @@
 {
   "error_code": "CS1717",
   "message": "Assignment made to same variable; did you mean to assign something else?",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    int n = 1;", "    n = n;", "}"],
-  "after": ["void Start()", "{", "    int n = 1;", "    n = 2;", "}"],
-  "bug": "../assets/CS1717.png",
-  "focus_line": 4
+  "filename": "Health.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Reset(int hp)",
+    "    {",
+    "        hp = hp;",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Reset(int hp)",
+    "    {",
+    "        this.hp = hp;",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS1717.png"
 }

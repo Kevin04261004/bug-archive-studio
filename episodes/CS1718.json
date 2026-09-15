@@ -1,9 +1,42 @@
 {
   "error_code": "CS1718",
   "message": "Comparison made to same variable; did you mean to compare something else?",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    int n = 1;", "    if (n == n) { }", "}"],
-  "after": ["void Start()", "{", "    int n = 1;", "    if (n == 1) { }", "}"],
-  "bug": "../assets/CS1718.png",
-  "focus_line": 4
+  "filename": "Health.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "    public int max = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (hp == hp)",
+    "        {",
+    "            Debug.Log(\"full\");",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "    public int max = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (hp == max)",
+    "        {",
+    "            Debug.Log(\"full\");",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS1718.png"
 }

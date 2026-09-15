@@ -1,9 +1,42 @@
 {
   "error_code": "CS8641",
   "message": "'else' cannot start a statement",
-  "filename": "Flow.cs",
-  "before": ["void Start()", "{", "    int hp = 100;", "", "    if (hp > 50)", "        Debug.Log(\"ok\");", "    Debug.Log(\"mid\");", "    else", "        Debug.Log(\"low\");", "}"],
-  "after": ["void Start()", "{", "    int hp = 100;", "", "    if (hp > 50)", "        Debug.Log(\"ok\");", "", "    else", "        Debug.Log(\"low\");", "}"],
-  "bug": "../assets/CS8641.png",
-  "focus_line": 7
+  "filename": "Health.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (hp > 50)",
+    "            Debug.Log(\"ok\");",
+    "        Debug.Log(\"checked\");",
+    "        else",
+    "            Debug.Log(\"low\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (hp > 50)",
+    "            Debug.Log(\"ok\");",
+    "",
+    "        else",
+    "            Debug.Log(\"low\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS8641.png"
 }

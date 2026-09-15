@@ -1,9 +1,40 @@
 {
   "error_code": "CS1020",
   "message": "Overloadable binary operator expected",
-  "filename": "Operators.cs",
-  "before": ["struct F", "{", "    public static F operator !(F a, F b)", "        => default;", "}"],
-  "after": ["struct F", "{", "    public static F operator +(F a, F b)", "        => default;", "}"],
-  "bug": "../assets/CS1020.png",
-  "focus_line": 3
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static Gold operator +=(",
+    "        Gold left, Gold right) => left;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static Gold operator +(",
+    "        Gold left, Gold right) => left;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS1020.png"
 }

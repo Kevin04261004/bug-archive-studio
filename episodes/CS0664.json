@@ -1,9 +1,36 @@
 {
   "error_code": "CS0664",
   "message": "Literal of type double cannot be implicitly converted to 'float'; use an F suffix",
-  "filename": "Speed.cs",
-  "before": ["void Start()", "{", "    float speed = 7.5;", "}"],
-  "after": ["void Start()", "{", "    float speed = 7.5f;", "}"],
-  "bug": "../assets/CS0664.png",
-  "focus_line": 3
+  "filename": "Movement.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Movement : MonoBehaviour",
+    "{",
+    "    public float speed = 7.5;",
+    "    public float jump = 4f;",
+    "",
+    "    void Update()",
+    "    {",
+    "        Debug.Log(speed);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Movement : MonoBehaviour",
+    "{",
+    "    public float speed = 7.5f;",
+    "    public float jump = 4f;",
+    "",
+    "    void Update()",
+    "    {",
+    "        Debug.Log(speed);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0664.png"
 }

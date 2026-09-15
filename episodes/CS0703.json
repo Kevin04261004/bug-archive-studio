@@ -1,9 +1,34 @@
 {
   "error_code": "CS0703",
-  "message": "Inconsistent accessibility: constraint type 'Unit' is less accessible than 'Box<T>'",
-  "filename": "Constraints.cs",
-  "before": ["class Unit { }", "", "public class Box<T> where T : Unit", "{", "}"],
-  "after": ["public class Unit { }", "", "public class Box<T> where T : Unit", "{", "}"],
-  "bug": "../assets/CS0703.png",
-  "focus_line": 1
+  "message": "Inconsistent accessibility: constraint type 'Unit' is less accessible",
+  "filename": "Pool.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "class Unit",
+    "{",
+    "    public int hp;",
+    "}",
+    "",
+    "public class Pool<T> where T : Unit",
+    "{",
+    "    public T item;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Unit",
+    "{",
+    "    public int hp;",
+    "}",
+    "",
+    "public class Pool<T> where T : Unit",
+    "{",
+    "    public T item;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0703.png"
 }

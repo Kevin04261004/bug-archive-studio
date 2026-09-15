@@ -1,20 +1,36 @@
 {
   "error_code": "CS1041",
   "message": "Identifier expected; 'class' is a keyword",
-  "filename": "Names.cs",
+  "filename": "Enemy.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
     "{",
-    "    int class = 100;",
+    "    public int tier = 1;",
+    "",
+    "    void Spawn()",
+    "    {",
+    "        string class = \"elite\" + tier;",
+    "        Debug.Log(\"Tier \" + tier);",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
     "{",
-    "    int level = 100;",
+    "    public int tier = 1;",
+    "",
+    "    void Spawn()",
+    "    {",
+    "        string rank = \"elite\" + tier;",
+    "        Debug.Log(\"Tier \" + tier);",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 9,
   "music": "random",
   "bug": "../assets/CS1041.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0191",
   "message": "A readonly field cannot be assigned to outside a constructor",
-  "filename": "Readonly.cs",
-  "before": ["class Player", "{", "    readonly int max = 100;", "    void Reset() { max = 50; }", "}"],
-  "after": ["class Player", "{", "    int max = 100;", "    void Reset() { max = 50; }", "}"],
-  "bug": "../assets/CS0191.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    readonly int maxHp = 100;",
+    "",
+    "    public void Rebalance()",
+    "    {",
+    "        maxHp = 50;",
+    "        Debug.Log(maxHp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int maxHp = 100;",
+    "",
+    "    public void Rebalance()",
+    "    {",
+    "        maxHp = 50;",
+    "        Debug.Log(maxHp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0191.png"
 }

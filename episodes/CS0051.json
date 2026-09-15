@@ -1,9 +1,40 @@
 {
   "error_code": "CS0051",
   "message": "Inconsistent accessibility: parameter type 'Item' is less accessible than method",
-  "filename": "Access.cs",
-  "before": ["class Item { }", "", "public class Bag", "{", "    public void Put(Item i) { }", "}"],
-  "after": ["public class Item { }", "", "public class Bag", "{", "    public void Put(Item i) { }", "}"],
-  "bug": "../assets/CS0051.png",
-  "focus_line": 1
+  "filename": "Bag.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "class Item",
+    "{",
+    "    public int id;",
+    "}",
+    "",
+    "public class Bag : MonoBehaviour",
+    "{",
+    "    public void Put(Item item)",
+    "    {",
+    "        Debug.Log(item.id);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Item",
+    "{",
+    "    public int id;",
+    "}",
+    "",
+    "public class Bag : MonoBehaviour",
+    "{",
+    "    public void Put(Item item)",
+    "    {",
+    "        Debug.Log(item.id);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0051.png"
 }

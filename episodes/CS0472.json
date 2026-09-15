@@ -1,9 +1,40 @@
 {
   "error_code": "CS0472",
   "message": "The result is always true since a value of type 'int' is never equal to null",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    int n = 1;", "    if (n != null) { }", "}"],
-  "after": ["void Start()", "{", "    int n = 1;", "    if (n != 0) { }", "}"],
-  "bug": "../assets/CS0472.png",
-  "focus_line": 4
+  "filename": "Health.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (hp != null)",
+    "        {",
+    "            Debug.Log(\"alive\");",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (hp > 0)",
+    "        {",
+    "            Debug.Log(\"alive\");",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0472.png"
 }

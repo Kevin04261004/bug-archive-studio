@@ -1,9 +1,40 @@
 {
   "error_code": "CS0832",
   "message": "An expression tree may not contain an assignment operator",
-  "filename": "ExprTree.cs",
-  "before": ["void Start()", "{", "    int n = 0;", "    Expression<Func<int>> e =", "        () => n = 1;", "}"],
-  "after": ["void Start()", "{", "    int n = 0;", "    Expression<Func<int>> e =", "        () => n + 1;", "}"],
-  "bug": "../assets/CS0832.png",
-  "focus_line": 5
+  "filename": "Query.cs",
+  "before": [
+    "using System;",
+    "using System.Linq.Expressions;",
+    "using UnityEngine;",
+    "",
+    "public class Query : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        int score = 0;",
+    "        Expression<Func<int>> best =",
+    "            () => score = 1200;",
+    "        Debug.Log(best);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using System.Linq.Expressions;",
+    "using UnityEngine;",
+    "",
+    "public class Query : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        int score = 0;",
+    "        Expression<Func<int>> best =",
+    "            () => score + 1200;",
+    "        Debug.Log(best);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0832.png"
 }

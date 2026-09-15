@@ -1,9 +1,34 @@
 {
   "error_code": "CS0112",
   "message": "A static member cannot be marked as override, virtual or abstract",
-  "filename": "Override.cs",
-  "before": ["class Enemy", "{", "    public static virtual void Hit() { }", "}"],
-  "after": ["class Enemy", "{", "    public static void Hit() { }", "}"],
-  "bug": "../assets/CS0112.png",
-  "focus_line": 3
+  "filename": "Enemy.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    public static virtual void Reset()",
+    "    {",
+    "        Debug.Log(\"reset\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    public static void Reset()",
+    "    {",
+    "        Debug.Log(\"reset\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0112.png"
 }

@@ -1,20 +1,36 @@
 {
   "error_code": "CS1029",
   "message": "#error: build stopped here",
-  "filename": "Flags.cs",
+  "filename": "BuildGate.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildGate : MonoBehaviour",
     "{",
+    "    void Start()",
+    "    {",
+    "#if !UNITY_EDITOR",
     "#error build stopped here",
+    "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildGate : MonoBehaviour",
     "{",
-    "#warning build stopped here",
+    "    void Start()",
+    "    {",
+    "#if !UNITY_EDITOR",
+    "",
+    "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 8,
   "music": "random",
   "bug": "../assets/CS1029.png"
 }

@@ -1,9 +1,42 @@
 {
   "error_code": "CS0578",
   "message": "The Conditional attribute is not valid because the return type is not void",
-  "filename": "Attributes.cs",
-  "before": ["class Player", "{", "    [Conditional(\"DEBUG\")]", "    public int Get() => 1;", "}"],
-  "after": ["class Player", "{", "    [Conditional(\"DEBUG\")]", "    public void Get() { }", "}"],
-  "bug": "../assets/CS0578.png",
-  "focus_line": 4
+  "filename": "Player.cs",
+  "before": [
+    "using System.Diagnostics;",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    [Conditional(\"DEBUG\")]",
+    "    public int LogHp() => hp;",
+    "",
+    "    void Start()",
+    "    {",
+    "        LogHp();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System.Diagnostics;",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    [Conditional(\"DEBUG\")]",
+    "    public void LogHp() => Debug.Log(hp);",
+    "",
+    "    void Start()",
+    "    {",
+    "        LogHp();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0578.png"
 }

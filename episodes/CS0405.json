@@ -1,9 +1,40 @@
 {
   "error_code": "CS0405",
   "message": "Duplicate constraint 'class' for type parameter 'T'",
-  "filename": "Constraints.cs",
-  "before": ["class Box<T> where T : class, class", "{", "}"],
-  "after": ["class Box<T> where T : class, new()", "{", "}"],
-  "bug": "../assets/CS0405.png",
-  "focus_line": 1
+  "filename": "Pool.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pool<T>",
+    "    where T : class, class",
+    "{",
+    "    public T item;",
+    "}",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    Pool<Bullet> pool = new();",
+    "}",
+    "",
+    "public class Bullet { }"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pool<T>",
+    "    where T : class, new()",
+    "{",
+    "    public T item;",
+    "}",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    Pool<Bullet> pool = new();",
+    "}",
+    "",
+    "public class Bullet { }"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0405.png"
 }

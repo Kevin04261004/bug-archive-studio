@@ -1,9 +1,40 @@
 {
   "error_code": "CS0616",
-  "message": "'Player' is not an attribute class",
-  "filename": "Attributes.cs",
-  "before": ["class Player { }", "", "[Player]", "class Boss { }"],
-  "after": ["class Player : Attribute { }", "", "[Player]", "class Boss { }"],
-  "bug": "../assets/CS0616.png",
-  "focus_line": 1
+  "message": "'Hint' is not an attribute class",
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Hint { }",
+    "",
+    "[Hint]",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Hint : System.Attribute { }",
+    "",
+    "[Hint]",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0616.png"
 }

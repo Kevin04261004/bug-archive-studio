@@ -1,9 +1,40 @@
 {
   "error_code": "CS0590",
   "message": "User-defined operators cannot return void",
-  "filename": "Operators.cs",
-  "before": ["struct F", "{", "    public static void operator +(", "        F a, F b) => throw new Exception();", "}"],
-  "after": ["struct F", "{", "    public static F operator +(", "        F a, F b) => throw new Exception();", "}"],
-  "bug": "../assets/CS0590.png",
-  "focus_line": 3
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static void operator +(",
+    "        Gold left, Gold right) => left;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static Gold operator +(",
+    "        Gold left, Gold right) => left;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0590.png"
 }

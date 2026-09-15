@@ -1,9 +1,40 @@
 {
   "error_code": "CS0821",
   "message": "A fixed statement cannot use an implicitly-typed local variable",
-  "filename": "Vars.cs",
-  "before": ["unsafe void Start()", "{", "    int[] hits = { 1, 2 };", "    fixed (var p = hits)", "    {", "    }", "}"],
-  "after": ["unsafe void Start()", "{", "    int[] hits = { 1, 2 };", "    fixed (int* p = hits)", "    {", "    }", "}"],
-  "bug": "../assets/CS0821.png",
-  "focus_line": 4
+  "filename": "Pixels.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    int[] data = { 1, 2, 3 };",
+    "",
+    "    unsafe void Scan()",
+    "    {",
+    "        fixed (var head = data)",
+    "        {",
+    "            Debug.Log(head[0]);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    int[] data = { 1, 2, 3 };",
+    "",
+    "    unsafe void Scan()",
+    "    {",
+    "        fixed (int* head = data)",
+    "        {",
+    "            Debug.Log(head[0]);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0821.png"
 }

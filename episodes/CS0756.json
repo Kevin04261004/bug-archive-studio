@@ -1,9 +1,40 @@
 {
   "error_code": "CS0756",
   "message": "A partial method may not have multiple defining declarations",
-  "filename": "Partial.cs",
-  "before": ["partial class Player", "{", "    partial void OnHit();", "    partial void OnHit();", "}"],
-  "after": ["partial class Player", "{", "    partial void OnHit();", "    partial void OnHit() { }", "}"],
-  "bug": "../assets/CS0756.png",
-  "focus_line": 4
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public partial class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    partial void OnHit();",
+    "    partial void OnHit();",
+    "",
+    "    void Show()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public partial class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    partial void OnHit();",
+    "    partial void OnDie();",
+    "",
+    "    void Show()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0756.png"
 }

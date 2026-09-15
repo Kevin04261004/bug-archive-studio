@@ -1,9 +1,34 @@
 {
   "error_code": "CS0621",
-  "message": "'Player.Hit()': virtual or abstract members cannot be private",
-  "filename": "Members.cs",
-  "before": ["class Player", "{", "    private virtual void Hit() { }", "}"],
-  "after": ["class Player", "{", "    internal virtual void Hit() { }", "}"],
-  "bug": "../assets/CS0621.png",
-  "focus_line": 3
+  "message": "'Enemy.Hit()': virtual or abstract members cannot be private",
+  "filename": "Enemy.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    private virtual void Hit()",
+    "    {",
+    "        hp -= 10;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    protected virtual void Hit()",
+    "    {",
+    "        hp -= 10;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0621.png"
 }

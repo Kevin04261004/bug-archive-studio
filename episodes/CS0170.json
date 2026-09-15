@@ -1,9 +1,42 @@
 {
   "error_code": "CS0170",
-  "message": "Use of possibly unassigned field 'x'",
-  "filename": "Structs.cs",
-  "before": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    Point p;", "    Debug.Log(p.x);", "}"],
-  "after": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    Point p = new Point();", "    Debug.Log(p.x);", "}"],
-  "bug": "../assets/CS0170.png",
-  "focus_line": 8
+  "message": "Use of possibly unassigned field 'id'",
+  "filename": "Bag.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Slot",
+    "{",
+    "    public int id;",
+    "}",
+    "",
+    "public class Bag : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Slot first;",
+    "        Debug.Log(first.id);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Slot",
+    "{",
+    "    public int id;",
+    "}",
+    "",
+    "public class Bag : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Slot first = default;",
+    "        Debug.Log(first.id);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS0170.png"
 }

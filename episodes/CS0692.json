@@ -1,9 +1,36 @@
 {
   "error_code": "CS0692",
   "message": "Duplicate type parameter 'A'",
-  "filename": "Generics.cs",
-  "before": ["class Pair<A, B, A>", "{", "    public A first;", "    public B second;", "}"],
-  "after": ["class Pair<A, B, C>", "{", "    public A first;", "    public B second;", "}"],
-  "bug": "../assets/CS0692.png",
-  "focus_line": 1
+  "filename": "Pair.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pair<A, B, A>",
+    "{",
+    "    public A first;",
+    "    public B second;",
+    "}",
+    "",
+    "public class Store : MonoBehaviour",
+    "{",
+    "    Pair<int, string, bool> pair;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pair<A, B, C>",
+    "{",
+    "    public A first;",
+    "    public B second;",
+    "}",
+    "",
+    "public class Store : MonoBehaviour",
+    "{",
+    "    Pair<int, string, bool> pair;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0692.png"
 }

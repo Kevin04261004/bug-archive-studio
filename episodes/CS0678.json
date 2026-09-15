@@ -1,9 +1,36 @@
 {
   "error_code": "CS0678",
-  "message": "'Player.hp': a field cannot be both volatile and readonly",
-  "filename": "FieldTypes.cs",
-  "before": ["class Player", "{", "    public volatile readonly int hp;", "}"],
-  "after": ["class Player", "{", "    public volatile int hp;", "}"],
-  "bug": "../assets/CS0678.png",
-  "focus_line": 3
+  "message": "'Counter.hits': a field cannot be both volatile and readonly",
+  "filename": "Counter.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Counter : MonoBehaviour",
+    "{",
+    "    public volatile readonly int hits;",
+    "    public int level = 1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(level);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Counter : MonoBehaviour",
+    "{",
+    "    public volatile int hits;",
+    "    public int level = 1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(level);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0678.png"
 }

@@ -1,9 +1,38 @@
 {
   "error_code": "CS0276",
   "message": "'Player.Hp': accessibility modifiers may only be used if it has both get and set",
-  "filename": "Props.cs",
-  "before": ["class Player", "{", "    public int Hp { private get; }", "}"],
-  "after": ["class Player", "{", "    public int Hp { get; }", "}"],
-  "bug": "../assets/CS0276.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "",
+    "    public int Hp { private get; }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "",
+    "    public int Hp { get; }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0276.png"
 }

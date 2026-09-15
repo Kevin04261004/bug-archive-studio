@@ -1,9 +1,34 @@
 {
   "error_code": "CS4009",
   "message": "A void or int returning entry point cannot be async",
-  "filename": "AsyncLoad.cs",
-  "before": ["static async void Main()", "{", "    await Task.Delay(1);", "}"],
-  "after": ["static async Task Main()", "{", "    await Task.Delay(1);", "}"],
-  "bug": "../assets/CS4009.png",
-  "focus_line": 1
+  "filename": "Program.cs",
+  "before": [
+    "using System;",
+    "using System.Threading.Tasks;",
+    "",
+    "public class Program",
+    "{",
+    "    static async void Main()",
+    "    {",
+    "        await Task.Delay(1);",
+    "        Console.WriteLine(\"done\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using System.Threading.Tasks;",
+    "",
+    "public class Program",
+    "{",
+    "    static async Task Main()",
+    "    {",
+    "        await Task.Delay(1);",
+    "        Console.WriteLine(\"done\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS4009.png"
 }

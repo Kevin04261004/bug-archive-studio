@@ -1,9 +1,34 @@
 {
   "error_code": "CS8625",
   "message": "Cannot convert null literal to non-nullable reference type",
-  "filename": "Nullable.cs",
-  "before": ["#nullable enable", "", "void Start()", "{", "    string s = null;", "}"],
-  "after": ["#nullable enable", "", "void Start()", "{", "    string s = \"\";", "}"],
-  "bug": "../assets/CS8625.png",
-  "focus_line": 5
+  "filename": "SaveSlot.cs",
+  "before": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        string saved = null;",
+    "        Debug.Log(saved);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        string? saved = null;",
+    "        Debug.Log(saved);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS8625.png"
 }

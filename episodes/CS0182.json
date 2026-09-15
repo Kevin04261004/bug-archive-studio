@@ -1,9 +1,36 @@
 {
   "error_code": "CS0182",
   "message": "An attribute argument must be a constant expression, typeof or array creation",
-  "filename": "Attributes.cs",
-  "before": ["class MyAttr : Attribute", "{", "    public MyAttr(int v) { }", "}", "", "[MyAttr(DateTime.Now.Year)]", "class Player { }"],
-  "after": ["class MyAttr : Attribute", "{", "    public MyAttr(int v) { }", "}", "", "[MyAttr(2024)]", "class Player { }"],
-  "bug": "../assets/CS0182.png",
-  "focus_line": 6
+  "filename": "Hint.cs",
+  "before": [
+    "using System;",
+    "",
+    "public class Hint : Attribute",
+    "{",
+    "    public Hint(int weight) { }",
+    "}",
+    "",
+    "[Hint(DateTime.Now.Year)]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "",
+    "public class Hint : Attribute",
+    "{",
+    "    public Hint(int weight) { }",
+    "}",
+    "",
+    "[Hint(2026)]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0182.png"
 }

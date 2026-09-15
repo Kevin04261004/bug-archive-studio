@@ -1,9 +1,38 @@
 {
   "error_code": "CS0066",
   "message": "'Unit.Died': event must be of a delegate type",
-  "filename": "Events.cs",
-  "before": ["class Unit", "{", "    public event int Died;", "}"],
-  "after": ["class Unit", "{", "    public event Action Died;", "}"],
-  "bug": "../assets/CS0066.png",
-  "focus_line": 3
+  "filename": "Unit.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Unit : MonoBehaviour",
+    "{",
+    "    public event int Died;",
+    "    public int hp = 100;",
+    "",
+    "    void Die()",
+    "    {",
+    "        Died?.Invoke();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Unit : MonoBehaviour",
+    "{",
+    "    public event Action Died;",
+    "    public int hp = 100;",
+    "",
+    "    void Die()",
+    "    {",
+    "        Died?.Invoke();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0066.png"
 }

@@ -1,22 +1,36 @@
 {
   "error_code": "CS1040",
   "message": "Preprocessor directives must appear as the first non-whitespace character on a line",
-  "filename": "Flags.cs",
+  "filename": "BuildFlags.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
-    "    int hp = 100; #if UNITY_EDITOR",
+    "    void Start()",
+    "    {",
+    "#if UNITY_EDITOR",
+    "        int hp = 100; #if UNITY_EDITOR",
+    "        Debug.Log(hp);",
     "#endif",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
-    "    int hp = 100;",
+    "    void Start()",
+    "    {",
+    "#if UNITY_EDITOR",
+    "        int hp = 100;",
+    "        Debug.Log(hp);",
     "#endif",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 8,
   "music": "random",
   "bug": "../assets/CS1040.png"
 }

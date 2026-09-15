@@ -1,20 +1,36 @@
 {
   "error_code": "CS0270",
   "message": "Array size cannot be specified in a variable declaration",
-  "filename": "Arrays.cs",
+  "filename": "Inventory.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Inventory : MonoBehaviour",
     "{",
-    "    int[3] hits;",
+    "    int[3] slots;",
+    "",
+    "    void Start()",
+    "    {",
+    "        slots[0] = 1;",
+    "        Debug.Log(slots[0]);",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Inventory : MonoBehaviour",
     "{",
-    "    int[] hits = new int[3];",
+    "    int[] slots = new int[3];",
+    "",
+    "    void Start()",
+    "    {",
+    "        slots[0] = 1;",
+    "        Debug.Log(slots[0]);",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 5,
   "music": "random",
   "bug": "../assets/CS0270.png"
 }

@@ -1,9 +1,42 @@
 {
   "error_code": "CS0706",
   "message": "Invalid constraint type 'int'; use an interface, a class or a type parameter",
-  "filename": "Constraints.cs",
-  "before": ["class Repo<T, K>", "    where K : IComparable", "    where T : int", "{", "}"],
-  "after": ["class Repo<T, K>", "    where K : IComparable", "    where T : class", "{", "}"],
-  "bug": "../assets/CS0706.png",
-  "focus_line": 3
+  "filename": "Repo.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Repo<T, K>",
+    "    where K : IComparable",
+    "    where T : int",
+    "{",
+    "    public T item;",
+    "    public K key;",
+    "}",
+    "",
+    "public class Store : MonoBehaviour",
+    "{",
+    "    Repo<int, int> repo = new();",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Repo<T, K>",
+    "    where K : IComparable",
+    "    where T : IComparable",
+    "{",
+    "    public T item;",
+    "    public K key;",
+    "}",
+    "",
+    "public class Store : MonoBehaviour",
+    "{",
+    "    Repo<int, int> repo = new();",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0706.png"
 }

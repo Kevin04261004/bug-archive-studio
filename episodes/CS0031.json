@@ -1,9 +1,38 @@
 {
   "error_code": "CS0031",
   "message": "Constant value '300' cannot be converted to a 'byte'",
-  "filename": "Bytes.cs",
-  "before": ["void Start()", "{", "    byte level = 300;", "}"],
-  "after": ["void Start()", "{", "    byte level = 255;", "}"],
-  "bug": "../assets/CS0031.png",
-  "focus_line": 3
+  "filename": "Tint.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Tint : MonoBehaviour",
+    "{",
+    "    public byte red = 255;",
+    "    public byte green = 300;",
+    "    public byte blue = 0;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(green);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Tint : MonoBehaviour",
+    "{",
+    "    public byte red = 255;",
+    "    public byte green = 200;",
+    "    public byte blue = 0;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(green);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0031.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0307",
-  "message": "The variable 'n' cannot be used with type arguments",
-  "filename": "Generics.cs",
-  "before": ["void Start()", "{", "    int n = 1;", "    Debug.Log(n<int>);", "}"],
-  "after": ["void Start()", "{", "    int n = 1;", "    Debug.Log(n);", "}"],
-  "bug": "../assets/CS0307.png",
-  "focus_line": 4
+  "message": "The variable 'count' cannot be used with type arguments",
+  "filename": "Spawner.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    public int total = 5;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int count = total;",
+    "        Debug.Log(count<int>);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    public int total = 5;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int count = total;",
+    "        Debug.Log(count);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0307.png"
 }

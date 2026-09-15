@@ -1,9 +1,38 @@
 {
   "error_code": "CS0407",
-  "message": "'int Get()' has the wrong return type for delegate 'Action'",
-  "filename": "Delegates.cs",
-  "before": ["int Get() => 1;", "", "void Start()", "{", "    Action a = Get;", "}"],
-  "after": ["int Get() => 1;", "", "void Start()", "{", "    Func<int> a = Get;", "}"],
-  "bug": "../assets/CS0407.png",
-  "focus_line": 5
+  "message": "'int Watcher.GetScore()' has the wrong return type for delegate 'Action'",
+  "filename": "Watcher.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    int GetScore() => 1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Action show = GetScore;",
+    "        show();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    int GetScore() => 1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Func<int> show = GetScore;",
+    "        show();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0407.png"
 }

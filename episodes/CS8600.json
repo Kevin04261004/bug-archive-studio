@@ -1,9 +1,36 @@
 {
   "error_code": "CS8600",
   "message": "Converting null literal or possible null value to non-nullable type",
-  "filename": "Nullable.cs",
-  "before": ["#nullable enable", "", "void Start()", "{", "    string? a = null;", "    string b = a;", "}"],
-  "after": ["#nullable enable", "", "void Start()", "{", "    string? a = null;", "    string? b = a;", "}"],
-  "bug": "../assets/CS8600.png",
-  "focus_line": 6
+  "filename": "SaveSlot.cs",
+  "before": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        string? saved = null;",
+    "        string name = saved;",
+    "        Debug.Log(name);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        string? saved = null;",
+    "        string name = saved ?? \"\";",
+    "        Debug.Log(name);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS8600.png"
 }

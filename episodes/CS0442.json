@@ -1,9 +1,42 @@
 {
   "error_code": "CS0442",
-  "message": "'Player.Hp': abstract properties cannot have private accessors",
-  "filename": "Props.cs",
-  "before": ["abstract class Player", "{", "    public abstract int Hp", "    {", "        get;", "        private set;", "    }", "}"],
-  "after": ["abstract class Player", "{", "    public abstract int Hp", "    {", "        get;", "        set;", "    }", "}"],
-  "bug": "../assets/CS0442.png",
-  "focus_line": 6
+  "message": "'Unit.Hp': abstract properties cannot have private accessors",
+  "filename": "Unit.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public abstract class Unit",
+    "{",
+    "    public abstract int Hp",
+    "    {",
+    "        get;",
+    "        private set;",
+    "    }",
+    "}",
+    "",
+    "public class Enemy : Unit",
+    "{",
+    "    public override int Hp { get; set; }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public abstract class Unit",
+    "{",
+    "    public abstract int Hp",
+    "    {",
+    "        get;",
+    "        set;",
+    "    }",
+    "}",
+    "",
+    "public class Enemy : Unit",
+    "{",
+    "    public override int Hp { get; set; }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0442.png"
 }

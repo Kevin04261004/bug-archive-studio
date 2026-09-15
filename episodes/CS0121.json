@@ -1,9 +1,36 @@
 {
   "error_code": "CS0121",
   "message": "The call is ambiguous between 'Hit(int, float)' and 'Hit(float, int)'",
-  "filename": "Ambiguous.cs",
-  "before": ["void Hit(int a, float b) { }", "void Hit(float a, int b) { }", "", "void Start()", "{", "    Hit(1, 1);", "}"],
-  "after": ["void Hit(int a, float b) { }", "void Hit(float a, int b) { }", "", "void Start()", "{", "    Hit(1f, 1);", "}"],
-  "bug": "../assets/CS0121.png",
-  "focus_line": 6
+  "filename": "Combat.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    void Hit(int power, float delay) { }",
+    "    void Hit(float power, int delay) { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Hit(1, 1);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    void Hit(int power, float delay) { }",
+    "    void Hit(float power, int delay) { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Hit(1, 1f);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0121.png"
 }

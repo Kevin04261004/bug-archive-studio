@@ -1,9 +1,34 @@
 {
   "error_code": "CS0441",
-  "message": "'Tools': a class cannot be both static and sealed",
-  "filename": "StaticClass.cs",
-  "before": ["static sealed class Tools", "{", "}"],
-  "after": ["static class Tools", "{", "}"],
-  "bug": "../assets/CS0441.png",
-  "focus_line": 1
+  "message": "'SaveTools': a class cannot be both static and sealed",
+  "filename": "SaveTools.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public static sealed class SaveTools",
+    "{",
+    "    public static string path = \"save\";",
+    "",
+    "    public static void Save()",
+    "    {",
+    "        Debug.Log(path);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static string path = \"save\";",
+    "",
+    "    public static void Save()",
+    "    {",
+    "        Debug.Log(path);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0441.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0661",
-  "message": "'P' defines operator == or != but does not override Object.GetHashCode()",
-  "filename": "Operators.cs",
-  "before": ["struct P", "{", "    public static bool operator ==(P a, P b)", "        => true;", "", "    public static bool operator !=(P a, P b)", "        => false;", "", "}"],
-  "after": ["struct P", "{", "    public static bool operator ==(P a, P b)", "        => true;", "", "    public static bool operator !=(P a, P b)", "        => false;", "    public override int GetHashCode() => 0;", "}"],
-  "bug": "../assets/CS0661.png",
-  "focus_line": 8
+  "message": "'Tile' defines operator == or != but does not override Object.GetHashCode()",
+  "filename": "Tile.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Tile",
+    "{",
+    "    public static bool operator ==(",
+    "        Tile left, Tile right) => true;",
+    "",
+    "    public static bool operator !=(",
+    "        Tile left, Tile right) => false;",
+    "",
+    "",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Tile",
+    "{",
+    "    public static bool operator ==(",
+    "        Tile left, Tile right) => true;",
+    "",
+    "    public static bool operator !=(",
+    "        Tile left, Tile right) => false;",
+    "",
+    "    public override int GetHashCode() => 0;",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0661.png"
 }

@@ -1,9 +1,42 @@
 {
   "error_code": "CS0412",
   "message": "'T': a local variable cannot have the same name as a method type parameter",
-  "filename": "Generics.cs",
-  "before": ["void Show<T>()", "{", "    int T = 1;", "}"],
-  "after": ["void Show<T>()", "{", "    int n = 1;", "}"],
-  "bug": "../assets/CS0412.png",
-  "focus_line": 3
+  "filename": "Spawner.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    void Show<T>()",
+    "    {",
+    "        int T = 1;",
+    "        Debug.Log(\"shown\");",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Show<int>();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    void Show<T>()",
+    "    {",
+    "        int count = 1;",
+    "        Debug.Log(\"shown\");",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Show<int>();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0412.png"
 }

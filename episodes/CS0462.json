@@ -1,9 +1,36 @@
 {
   "error_code": "CS0462",
-  "message": "The inherited members 'Base<int>.Hit(int)' and 'Base<int>.Hit(T)' have the same signature",
-  "filename": "Ambiguous.cs",
-  "before": ["class Base<T>", "{", "    public virtual void Hit(T t) { }", "    public virtual void Hit(int n) { }", "}", "", "class Boss : Base<int>", "{", "}"],
-  "after": ["class Base<T>", "{", "    public virtual void Hit(T t) { }", "    public virtual void Hit(int n) { }", "}", "", "class Boss : Base<string>", "{", "}"],
-  "bug": "../assets/CS0462.png",
-  "focus_line": 7
+  "message": "The inherited members 'Unit<int>.Hit(int)' and 'Unit<int>.Hit(T)' have the same signature",
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Unit<T>",
+    "{",
+    "    public virtual void Hit(T item) { }",
+    "    public virtual void Hit(int id) { }",
+    "}",
+    "",
+    "public class Boss : Unit<int>",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Unit<T>",
+    "{",
+    "    public virtual void Hit(T item) { }",
+    "    public virtual void Die(int id) { }",
+    "}",
+    "",
+    "public class Boss : Unit<int>",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0462.png"
 }

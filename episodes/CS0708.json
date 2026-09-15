@@ -1,9 +1,36 @@
 {
   "error_code": "CS0708",
-  "message": "'Tools.hp': cannot declare instance members in a static class",
-  "filename": "StaticClass.cs",
-  "before": ["static class Tools", "{", "    public int hp;", "}"],
-  "after": ["static class Tools", "{", "    public static int hp;", "}"],
-  "bug": "../assets/CS0708.png",
-  "focus_line": 3
+  "message": "'SaveTools.slot': cannot declare instance members in a static class",
+  "filename": "SaveTools.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public int slot;",
+    "    public static string path = \"save\";",
+    "",
+    "    public static void Save()",
+    "    {",
+    "        Debug.Log(path);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static int slot;",
+    "    public static string path = \"save\";",
+    "",
+    "    public static void Save()",
+    "    {",
+    "        Debug.Log(path);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0708.png"
 }

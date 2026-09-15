@@ -1,20 +1,36 @@
 {
   "error_code": "CS1012",
   "message": "Too many characters in character literal",
-  "filename": "Keys.cs",
+  "filename": "PadKeys.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class PadKeys : MonoBehaviour",
     "{",
-    "    char key = 'AB';",
+    "    public char jumpKey = 'A';",
+    "    public char fireKey = 'LB';",
+    "",
+    "    void Update()",
+    "    {",
+    "        Debug.Log(fireKey);",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class PadKeys : MonoBehaviour",
     "{",
-    "    string key = \"AB\";",
+    "    public char jumpKey = 'A';",
+    "    public string fireKey = \"LB\";",
+    "",
+    "    void Update()",
+    "    {",
+    "        Debug.Log(fireKey);",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 6,
   "music": "random",
   "bug": "../assets/CS1012.png"
 }

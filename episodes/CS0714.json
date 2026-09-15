@@ -1,9 +1,40 @@
 {
   "error_code": "CS0714",
-  "message": "'Tools': static classes cannot implement interfaces",
-  "filename": "StaticClass.cs",
-  "before": ["interface IRun { }", "", "static class Tools : IRun", "{", "}"],
-  "after": ["interface IRun { }", "", "static class Tools", "{", "}"],
-  "bug": "../assets/CS0714.png",
-  "focus_line": 3
+  "message": "'SaveTools': static classes cannot implement interfaces",
+  "filename": "SaveTools.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public interface ISaveable",
+    "{",
+    "    void Save();",
+    "}",
+    "",
+    "public static class SaveTools : ISaveable",
+    "{",
+    "    public static void Save()",
+    "    {",
+    "        Debug.Log(\"saved\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public interface ISaveable",
+    "{",
+    "    void Save();",
+    "}",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static void Save()",
+    "    {",
+    "        Debug.Log(\"saved\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0714.png"
 }

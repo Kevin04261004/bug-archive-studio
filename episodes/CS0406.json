@@ -1,9 +1,40 @@
 {
   "error_code": "CS0406",
   "message": "The class type constraint 'Unit' must come before any other constraints",
-  "filename": "Constraints.cs",
-  "before": ["interface IRun { }", "class Unit { }", "", "class Box<T> where T : IRun, Unit", "{", "}"],
-  "after": ["interface IRun { }", "class Unit { }", "", "class Box<T> where T : Unit, IRun", "{", "}"],
-  "bug": "../assets/CS0406.png",
-  "focus_line": 4
+  "filename": "Pool.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public interface ITick",
+    "{",
+    "    void Tick();",
+    "}",
+    "",
+    "public class Unit { }",
+    "",
+    "public class Pool<T>",
+    "    where T : ITick, Unit",
+    "{",
+    "    public T item;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public interface ITick",
+    "{",
+    "    void Tick();",
+    "}",
+    "",
+    "public class Unit { }",
+    "",
+    "public class Pool<T>",
+    "    where T : Unit, ITick",
+    "{",
+    "    public T item;",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0406.png"
 }

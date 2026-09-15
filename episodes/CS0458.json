@@ -1,9 +1,34 @@
 {
   "error_code": "CS0458",
   "message": "The result of the expression is always null of type 'int?'",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    int? a = null;", "    int? b = a + null;", "}"],
-  "after": ["void Start()", "{", "    int? a = null;", "    int? b = a + 1;", "}"],
-  "bug": "../assets/CS0458.png",
-  "focus_line": 4
+  "filename": "SaveSlot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        int? saved = null;",
+    "        int? total = saved + null;",
+    "        Debug.Log(total);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        int? saved = null;",
+    "        int? total = saved + 1;",
+    "        Debug.Log(total);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0458.png"
 }

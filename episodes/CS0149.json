@@ -1,9 +1,38 @@
 {
   "error_code": "CS0149",
   "message": "Method name expected",
-  "filename": "Delegates.cs",
-  "before": ["void Show() { }", "", "void Start()", "{", "    Action a = new Action(1);", "}"],
-  "after": ["void Show() { }", "", "void Start()", "{", "    Action a = new Action(Show);", "}"],
-  "bug": "../assets/CS0149.png",
-  "focus_line": 5
+  "filename": "Watcher.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    void Show() { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Action onHit = new Action(1);",
+    "        onHit();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    void Show() { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Action onHit = new Action(Show);",
+    "        onHit();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0149.png"
 }

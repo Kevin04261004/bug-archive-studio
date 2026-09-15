@@ -1,9 +1,34 @@
 {
   "error_code": "CS0134",
   "message": "A const field of a reference type can only be initialized with null",
-  "filename": "Consts.cs",
-  "before": ["class Player", "{", "    const int[] hits = { 1 };", "}"],
-  "after": ["class Player", "{", "    static int[] hits = { 1 };", "}"],
-  "bug": "../assets/CS0134.png",
-  "focus_line": 3
+  "filename": "Limits.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Limits : MonoBehaviour",
+    "{",
+    "    const int[] tiers = { 1, 2, 3 };",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(tiers[0]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Limits : MonoBehaviour",
+    "{",
+    "    static int[] tiers = { 1, 2, 3 };",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(tiers[0]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0134.png"
 }

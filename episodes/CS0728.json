@@ -1,9 +1,40 @@
 {
   "error_code": "CS0728",
-  "message": "Possibly incorrect assignment to local 'p' which is the argument to a using",
-  "filename": "Using.cs",
-  "before": ["void Start()", "{", "    var p = File.OpenRead(\"a\");", "    using (p)", "    {", "        p = null;", "    }", "}"],
-  "after": ["void Start()", "{", "    var p = File.OpenRead(\"a\");", "    using (p)", "    {", "        Debug.Log(p);", "    }", "}"],
-  "bug": "../assets/CS0728.png",
-  "focus_line": 6
+  "message": "Possibly incorrect assignment to local 'data' which is the argument to a using",
+  "filename": "SaveFile.cs",
+  "before": [
+    "using System.IO;",
+    "using UnityEngine;",
+    "",
+    "public class SaveFile : MonoBehaviour",
+    "{",
+    "    void Load()",
+    "    {",
+    "        var data = File.OpenRead(\"save\");",
+    "        using (data)",
+    "        {",
+    "            data = null;",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System.IO;",
+    "using UnityEngine;",
+    "",
+    "public class SaveFile : MonoBehaviour",
+    "{",
+    "    void Load()",
+    "    {",
+    "        var data = File.OpenRead(\"save\");",
+    "        using (data)",
+    "        {",
+    "            Debug.Log(data);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0728.png"
 }

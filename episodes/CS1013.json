@@ -1,20 +1,36 @@
 {
   "error_code": "CS1013",
   "message": "Invalid number",
-  "filename": "Numbers.cs",
+  "filename": "Palette.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Palette : MonoBehaviour",
     "{",
-    "    int hp = 0x;",
+    "    public int enemyTint = 0x;",
+    "    public int allyTint = 0x33FF88;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(enemyTint);",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Palette : MonoBehaviour",
     "{",
-    "    int hp = 0x1F;",
+    "    public int enemyTint = 0xFF5544;",
+    "    public int allyTint = 0x33FF88;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(enemyTint);",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 5,
   "music": "random",
   "bug": "../assets/CS1013.png"
 }

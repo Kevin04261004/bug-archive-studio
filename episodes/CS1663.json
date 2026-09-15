@@ -1,9 +1,34 @@
 {
   "error_code": "CS1663",
   "message": "Fixed size buffer type must be a primitive type such as int, char or float",
-  "filename": "Unsafe.cs",
-  "before": ["unsafe struct Buf", "{", "    public fixed string data[4];", "}"],
-  "after": ["unsafe struct Buf", "{", "    public fixed char data[4];", "}"],
-  "bug": "../assets/CS1663.png",
-  "focus_line": 3
+  "filename": "Buffer.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public unsafe struct Buffer",
+    "{",
+    "    public fixed string data[4];",
+    "}",
+    "",
+    "public class Audio : MonoBehaviour",
+    "{",
+    "    public int rate = 44100;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public unsafe struct Buffer",
+    "{",
+    "    public fixed int data[4];",
+    "}",
+    "",
+    "public class Audio : MonoBehaviour",
+    "{",
+    "    public int rate = 44100;",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1663.png"
 }

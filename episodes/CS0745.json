@@ -1,9 +1,40 @@
 {
   "error_code": "CS0745",
   "message": "Expected contextual keyword 'by'",
-  "filename": "Linq.cs",
-  "before": ["void Start()", "{", "    var xs = new int[2];", "", "    var q = from n in xs", "            group n n;", "}"],
-  "after": ["void Start()", "{", "    var xs = new int[2];", "", "    var q = from n in xs", "            group n by n;", "}"],
-  "bug": "../assets/CS0745.png",
-  "focus_line": 6
+  "filename": "Shop.cs",
+  "before": [
+    "using System.Linq;",
+    "using UnityEngine;",
+    "",
+    "public class Shop : MonoBehaviour",
+    "{",
+    "    int[] ids = new int[4];",
+    "",
+    "    void Start()",
+    "    {",
+    "        var rows = from id in ids",
+    "                group id id;",
+    "        Debug.Log(rows);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System.Linq;",
+    "using UnityEngine;",
+    "",
+    "public class Shop : MonoBehaviour",
+    "{",
+    "    int[] ids = new int[4];",
+    "",
+    "    void Start()",
+    "    {",
+    "        var rows = from id in ids",
+    "                group id by id;",
+    "        Debug.Log(rows);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0745.png"
 }

@@ -1,20 +1,36 @@
 {
   "error_code": "CS1039",
   "message": "Unterminated string literal",
-  "filename": "Strings.cs",
+  "filename": "LevelPaths.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class LevelPaths : MonoBehaviour",
     "{",
-    "    string name = \"Bugcall;",
+    "    string root = @\"Assets/Levels;",
+    "    public int levelCount = 12;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(root);",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class LevelPaths : MonoBehaviour",
     "{",
-    "    string name = \"Bugcall\";",
+    "    string root = @\"Assets/Levels\";",
+    "    public int levelCount = 12;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(root);",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 5,
   "music": "random",
   "bug": "../assets/CS1039.png"
 }

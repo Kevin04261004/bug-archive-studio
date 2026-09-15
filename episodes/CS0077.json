@@ -1,9 +1,36 @@
 {
   "error_code": "CS0077",
   "message": "The as operator must be used with a reference type or nullable type",
-  "filename": "Casts.cs",
-  "before": ["void Start()", "{", "    object box = 1;", "    int n = box as int;", "}"],
-  "after": ["void Start()", "{", "    object box = 1;", "    int n = (int)box;", "}"],
-  "bug": "../assets/CS0077.png",
-  "focus_line": 4
+  "filename": "SaveSlot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    public object raw = 1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int score = raw as int;",
+    "        Debug.Log(score);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    public object raw = 1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int score = (int)raw;",
+    "        Debug.Log(score);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0077.png"
 }

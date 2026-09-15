@@ -1,9 +1,34 @@
 {
   "error_code": "CS1558",
   "message": "'Program' does not have a suitable static Main method",
-  "filename": "EntryPoint.cs",
-  "before": ["class Program", "{", "    void Main() { }", "}"],
-  "after": ["class Program", "{", "    static void Main() { }", "}"],
-  "bug": "../assets/CS1558.png",
-  "focus_line": 3
+  "filename": "Program.cs",
+  "before": [
+    "using System;",
+    "",
+    "class Program",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Main()",
+    "    {",
+    "        Console.WriteLine(\"start\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "",
+    "class Program",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    static void Main()",
+    "    {",
+    "        Console.WriteLine(\"start\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS1558.png"
 }

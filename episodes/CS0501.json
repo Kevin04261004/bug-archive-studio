@@ -1,9 +1,38 @@
 {
   "error_code": "CS0501",
   "message": "'Enemy.Hit()' must declare a body because it is not marked abstract or extern",
-  "filename": "Abstract.cs",
-  "before": ["class Enemy", "{", "    public void Hit();", "}"],
-  "after": ["class Enemy", "{", "    public void Hit() { }", "}"],
-  "bug": "../assets/CS0501.png",
-  "focus_line": 3
+  "filename": "Enemy.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    public void Hit();",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    public void Hit() { }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0501.png"
 }

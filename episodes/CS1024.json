@@ -1,24 +1,36 @@
 {
   "error_code": "CS1024",
   "message": "Preprocessor directive expected",
-  "filename": "Build.cs",
+  "filename": "BuildFlags.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
+    "    void Start()",
+    "    {",
     "#ifdef UNITY_EDITOR",
-    "    Debug.Log(\"editor\");",
+    "        Debug.Log(\"Editor build\");",
     "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class BuildFlags : MonoBehaviour",
     "{",
+    "    void Start()",
+    "    {",
     "#if UNITY_EDITOR",
-    "    Debug.Log(\"editor\");",
+    "        Debug.Log(\"Editor build\");",
     "#endif",
+    "        Debug.Log(\"Game start\");",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 7,
   "music": "random",
   "bug": "../assets/CS1024.png"
 }

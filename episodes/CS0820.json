@@ -1,9 +1,32 @@
 {
   "error_code": "CS0820",
   "message": "Cannot initialize an implicitly-typed variable with an array initializer",
-  "filename": "Vars.cs",
-  "before": ["void Start()", "{", "    var hits = { 1, 2 };", "}"],
-  "after": ["void Start()", "{", "    int[] hits = { 1, 2 };", "}"],
-  "bug": "../assets/CS0820.png",
-  "focus_line": 3
+  "filename": "Scores.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var hits = { 3, 7, 9 };",
+    "        Debug.Log(hits[0]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var hits = new[] { 3, 7, 9 };",
+    "        Debug.Log(hits[0]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0820.png"
 }

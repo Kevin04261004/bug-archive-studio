@@ -1,9 +1,36 @@
 {
   "error_code": "CS0021",
   "message": "Cannot apply indexing with [] to an expression of type 'int'",
-  "filename": "Arrays.cs",
-  "before": ["void Start()", "{", "    int hp = 100;", "    Debug.Log(hp[0]);", "}"],
-  "after": ["void Start()", "{", "    int[] hp = { 100 };", "    Debug.Log(hp[0]);", "}"],
-  "bug": "../assets/CS0021.png",
-  "focus_line": 3
+  "filename": "Scores.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    int[] scores = { 90, 80, 70 };",
+    "",
+    "    void Start()",
+    "    {",
+    "        int count = scores.Length;",
+    "        Debug.Log(count[0]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    int[] scores = { 90, 80, 70 };",
+    "",
+    "    void Start()",
+    "    {",
+    "        int count = scores.Length;",
+    "        Debug.Log(scores[0]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0021.png"
 }

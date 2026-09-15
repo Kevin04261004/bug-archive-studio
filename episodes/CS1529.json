@@ -2,8 +2,39 @@
   "error_code": "CS1529",
   "message": "A using clause must precede all other elements defined in the namespace",
   "filename": "Usings.cs",
-  "before": ["", "class Bag", "{", "}", "using System;"],
-  "after": ["using System;", "class Bag", "{", "}", ""],
-  "bug": "../assets/CS1529.png",
-  "focus_line": 1
+  "before": [
+    "namespace Game",
+    "{",
+    "    public class Bag",
+    "    {",
+    "        public int size = 10;",
+    "    }",
+    "",
+    "    using System;",
+    "",
+    "    public class Chest",
+    "    {",
+    "        public int size = 20;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "namespace Game",
+    "{",
+    "    public class Bag",
+    "    {",
+    "        public int size = 10;",
+    "    }",
+    "",
+    "",
+    "",
+    "    public class Chest",
+    "    {",
+    "        public int size = 20;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS1529.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS0252",
   "message": "Possible unintended reference comparison; cast the left side to type 'string'",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    object a = \"x\";", "    string b = \"x\";", "    if (a == b) { }", "}"],
-  "after": ["void Start()", "{", "    object a = \"x\";", "    string b = \"x\";", "    if ((string)a == b) { }", "}"],
-  "bug": "../assets/CS0252.png",
-  "focus_line": 5
+  "filename": "SaveSlot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        object raw = \"1200\";",
+    "        string saved = \"1200\";",
+    "        if (raw == saved)",
+    "        {",
+    "            Debug.Log(\"same\");",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        object raw = \"1200\";",
+    "        string saved = \"1200\";",
+    "        if ((string)raw == saved)",
+    "        {",
+    "            Debug.Log(\"same\");",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0252.png"
 }

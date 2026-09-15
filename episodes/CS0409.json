@@ -1,9 +1,40 @@
 {
   "error_code": "CS0409",
-  "message": "A constraint clause has already been specified for type parameter 'T'",
-  "filename": "Constraints.cs",
-  "before": ["class Box<T> where T : class where T : new()", "{", "}"],
-  "after": ["class Box<T> where T : class, new()", "{", "}"],
-  "bug": "../assets/CS0409.png",
-  "focus_line": 1
+  "message": "A constraint clause has already been specified for type parameter 'K'",
+  "filename": "Cache.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Cache<K, V>",
+    "    where K : class",
+    "    where K : new()",
+    "{",
+    "    public K key;",
+    "    public V value;",
+    "}",
+    "",
+    "public class Store : MonoBehaviour",
+    "{",
+    "    Cache<string, int> cache = new();",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Cache<K, V>",
+    "    where K : class",
+    "    where V : new()",
+    "{",
+    "    public K key;",
+    "    public V value;",
+    "}",
+    "",
+    "public class Store : MonoBehaviour",
+    "{",
+    "    Cache<string, int> cache = new();",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0409.png"
 }

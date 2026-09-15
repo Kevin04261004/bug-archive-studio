@@ -1,9 +1,42 @@
 {
   "error_code": "CS0274",
   "message": "Cannot specify accessibility modifiers for both accessors of 'Player.Hp'",
-  "filename": "Props.cs",
-  "before": ["class Player", "{", "    public int Hp", "    {", "        private get;", "        private set;", "    }", "}"],
-  "after": ["class Player", "{", "    public int Hp", "    {", "        private get;", "        set;", "    }", "}"],
-  "bug": "../assets/CS0274.png",
-  "focus_line": 6
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int Hp",
+    "    {",
+    "        private get;",
+    "        private set;",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Hp = 100;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int Hp",
+    "    {",
+    "        get;",
+    "        private set;",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Hp = 100;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0274.png"
 }

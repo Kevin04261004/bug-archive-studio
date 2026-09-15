@@ -1,9 +1,34 @@
 {
   "error_code": "CS8862",
   "message": "A constructor in a type with a parameter list must have a this constructor initializer",
-  "filename": "Modern.cs",
-  "before": ["class Player(int hp)", "{", "    public Player() { }", "}"],
-  "after": ["class Player(int hp)", "{", "    public Player() : this(0) { }", "}"],
-  "bug": "../assets/CS8862.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player(int hp)",
+    "{",
+    "    public int Hp = hp;",
+    "",
+    "    public Player()",
+    "    {",
+    "        Debug.Log(\"default\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player(int hp)",
+    "{",
+    "    public int Hp = hp;",
+    "",
+    "    public Player() : this(100)",
+    "    {",
+    "        Debug.Log(\"default\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS8862.png"
 }

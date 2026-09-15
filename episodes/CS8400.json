@@ -1,9 +1,36 @@
 {
   "error_code": "CS8400",
   "message": "Feature 'index operator' is not available in C# 7.3; use version 8.0 or greater",
-  "filename": "Modern.cs",
-  "before": ["void Start()", "{", "    string s = \"ab\";", "    char c = s[^1];", "}"],
-  "after": ["void Start()", "{", "    string s = \"ab\";", "    char c = s[s.Length - 1];", "}"],
-  "bug": "../assets/CS8400.png",
-  "focus_line": 4
+  "filename": "Names.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Names : MonoBehaviour",
+    "{",
+    "    public string playerName = \"Bug\";",
+    "",
+    "    void Start()",
+    "    {",
+    "        char last = playerName[^1];",
+    "        Debug.Log(last);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Names : MonoBehaviour",
+    "{",
+    "    public string playerName = \"Bug\";",
+    "",
+    "    void Start()",
+    "    {",
+    "        char last = playerName[2];",
+    "        Debug.Log(last);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS8400.png"
 }

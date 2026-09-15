@@ -1,9 +1,36 @@
 {
   "error_code": "CS1570",
   "message": "XML comment has badly formed XML",
-  "filename": "XmlDoc.cs",
-  "before": ["/// <summary>A player.</summary", "public class Player", "{", "}"],
-  "after": ["/// <summary>A player.</summary>", "public class Player", "{", "}"],
-  "bug": "../assets/CS1570.png",
-  "focus_line": 1
+  "filename": "Score.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "/// <summary>Holds the score.</summary",
+    "public class Score : MonoBehaviour",
+    "{",
+    "    public int value;",
+    "",
+    "    public void ResetScore()",
+    "    {",
+    "        value = 0;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "/// <summary>Holds the score.</summary>",
+    "public class Score : MonoBehaviour",
+    "{",
+    "    public int value;",
+    "",
+    "    public void ResetScore()",
+    "    {",
+    "        value = 0;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1570.png"
 }

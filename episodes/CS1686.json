@@ -1,9 +1,38 @@
 {
   "error_code": "CS1686",
-  "message": "Local 'n' cannot have its address taken and be used inside a lambda expression",
-  "filename": "Unsafe.cs",
-  "before": ["unsafe void Start()", "{", "    int n = 1;", "    int* p = &n;", "    Action a = () => Debug.Log(n);", "}"],
-  "after": ["unsafe void Start()", "{", "    int n = 1;", "", "    Action a = () => Debug.Log(n);", "}"],
-  "bug": "../assets/CS1686.png",
-  "focus_line": 4
+  "message": "Local 'count' cannot have its address taken and be used inside a lambda expression",
+  "filename": "Pixels.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    unsafe void Scan()",
+    "    {",
+    "        int count = 1;",
+    "        int* raw = &count;",
+    "        Action log = () =>",
+    "            Debug.Log(count);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    unsafe void Scan()",
+    "    {",
+    "        int count = 1;",
+    "        int* raw = &count;",
+    "        Action log = () =>",
+    "            Debug.Log(1);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS1686.png"
 }

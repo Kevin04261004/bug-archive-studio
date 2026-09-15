@@ -1,9 +1,38 @@
 {
   "error_code": "CS0582",
   "message": "The Conditional attribute is not valid on interface members",
-  "filename": "Attributes.cs",
-  "before": ["interface IHit", "{", "    [Conditional(\"DEBUG\")]", "    void Hit();", "}"],
-  "after": ["interface IHit", "{", "", "    void Hit();", "}"],
-  "bug": "../assets/CS0582.png",
-  "focus_line": 3
+  "filename": "Unit.cs",
+  "before": [
+    "using System.Diagnostics;",
+    "using UnityEngine;",
+    "",
+    "public interface IHit",
+    "{",
+    "    [Conditional(\"DEBUG\")]",
+    "    void Hit();",
+    "}",
+    "",
+    "public class Boss : IHit",
+    "{",
+    "    public void Hit() { }",
+    "}"
+  ],
+  "after": [
+    "using System.Diagnostics;",
+    "using UnityEngine;",
+    "",
+    "public interface IHit",
+    "{",
+    "",
+    "    void Hit();",
+    "}",
+    "",
+    "public class Boss : IHit",
+    "{",
+    "    public void Hit() { }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0582.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS0687",
   "message": "The namespace alias qualifier '::' always resolves to a type or namespace",
-  "filename": "Alias.cs",
-  "before": ["class Player", "{", "    public static int hp;", "}", "", "void Start()", "{", "    Debug.Log(Player::hp);", "}"],
-  "after": ["class Player", "{", "    public static int hp;", "}", "", "void Start()", "{", "    Debug.Log(Player.hp);", "}"],
-  "bug": "../assets/CS0687.png",
-  "focus_line": 8
+  "filename": "Game.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public static int hp = 100;",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(Player::hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public static int hp = 100;",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(Player.hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS0687.png"
 }

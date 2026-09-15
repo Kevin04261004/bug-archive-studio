@@ -1,20 +1,36 @@
 {
   "error_code": "CS1011",
   "message": "Empty character literal",
-  "filename": "Keys.cs",
+  "filename": "InputKeys.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class InputKeys : MonoBehaviour",
     "{",
-    "    char key = '';",
+    "    public char jumpKey = '';",
+    "    public char fireKey = 'F';",
+    "",
+    "    void Update()",
+    "    {",
+    "        Debug.Log(jumpKey);",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class InputKeys : MonoBehaviour",
     "{",
-    "    char key = 'A';",
+    "    public char jumpKey = ' ';",
+    "    public char fireKey = 'F';",
+    "",
+    "    void Update()",
+    "    {",
+    "        Debug.Log(jumpKey);",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 5,
   "music": "random",
   "bug": "../assets/CS1011.png"
 }

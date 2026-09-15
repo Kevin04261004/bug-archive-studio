@@ -1,9 +1,40 @@
 {
   "error_code": "CS1066",
-  "message": "The default value for 'n' will have no effect in an interface implementation",
-  "filename": "Interfaces.cs",
-  "before": ["interface IHit", "{", "    void Hit(int n);", "}", "", "class Boss : IHit", "{", "    public void Hit(int n = 1) { }", "}"],
-  "after": ["interface IHit", "{", "    void Hit(int n);", "}", "", "class Boss : IHit", "{", "    public void Hit(int n) { }", "}"],
-  "bug": "../assets/CS1066.png",
-  "focus_line": 8
+  "message": "The default value for 'amount' will have no effect in an interface implementation",
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public interface IHit",
+    "{",
+    "    void Hit(int amount);",
+    "}",
+    "",
+    "public class Boss : IHit",
+    "{",
+    "    public void Hit(int amount = 1)",
+    "    {",
+    "        Debug.Log(amount);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public interface IHit",
+    "{",
+    "    void Hit(int amount);",
+    "}",
+    "",
+    "public class Boss : IHit",
+    "{",
+    "    public void Hit(int amount)",
+    "    {",
+    "        Debug.Log(amount);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS1066.png"
 }
