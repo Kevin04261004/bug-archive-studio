@@ -1279,8 +1279,8 @@
       "message": "Invalid real literal",
       "filename": "Ranges.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0595.png",
+      "bug": "assets/CS0595.png",
+      "missing": null,
       "order": 109,
       "tier": 3
     },
@@ -1327,8 +1327,8 @@
       "message": "Type of conditional expression cannot be determined",
       "filename": "Choice.cs",
       "lines": 6,
-      "bug": null,
-      "missing": "../assets/CS0172.png",
+      "bug": "assets/CS0172.png",
+      "missing": null,
       "order": 115,
       "tier": 3
     },
@@ -1339,8 +1339,8 @@
       "message": "Type of conditional expression cannot be determined between 'int' and 'string'",
       "filename": "Choice.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0173.png",
+      "bug": "assets/CS0173.png",
+      "missing": null,
       "order": 116,
       "tier": 3
     },
