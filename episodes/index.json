@@ -895,8 +895,8 @@
       "message": "Since this method returns void, return must not be followed by a value",
       "filename": "Returns.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0127.png",
+      "bug": "assets/CS0127.png",
+      "missing": null,
       "order": 77,
       "tier": 2
     },
