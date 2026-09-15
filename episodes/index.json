@@ -1243,8 +1243,8 @@
       "message": "Constant value '-1' cannot be converted to a 'uint'",
       "filename": "Unsigned.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0221.png",
+      "bug": "assets/CS0221.png",
+      "missing": null,
       "order": 106,
       "tier": 3
     },
@@ -1255,8 +1255,8 @@
       "message": "The operation overflows at compile time in checked mode",
       "filename": "Overflow.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0220.png",
+      "bug": "assets/CS0220.png",
+      "missing": null,
       "order": 107,
       "tier": 3
     },
@@ -1267,8 +1267,8 @@
       "message": "Floating-point constant is outside the range of type 'float'",
       "filename": "Ranges.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0594.png",
+      "bug": "assets/CS0594.png",
+      "missing": null,
       "order": 108,
       "tier": 3
     },
