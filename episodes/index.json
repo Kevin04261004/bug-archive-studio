@@ -1099,8 +1099,8 @@
       "message": "Syntax error; value expected",
       "filename": "Hits.cs",
       "lines": 8,
-      "bug": null,
-      "missing": "../assets/CS0443.png",
+      "bug": "assets/CS0443.png",
+      "missing": null,
       "order": 94,
       "tier": 2
     },
@@ -1111,8 +1111,8 @@
       "message": "Argument missing",
       "filename": "Calls.cs",
       "lines": 9,
-      "bug": null,
-      "missing": "../assets/CS0839.png",
+      "bug": "assets/CS0839.png",
+      "missing": null,
       "order": 95,
       "tier": 2
     },
