@@ -1399,8 +1399,8 @@
       "message": "A fixed statement cannot use an implicitly-typed local variable",
       "filename": "Vars.cs",
       "lines": 7,
-      "bug": null,
-      "missing": "../assets/CS0821.png",
+      "bug": "assets/CS0821.png",
+      "missing": null,
       "order": 122,
       "tier": 3
     },
@@ -1411,8 +1411,8 @@
       "message": "Implicitly-typed variables cannot be constant",
       "filename": "Vars.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0822.png",
+      "bug": "assets/CS0822.png",
+      "missing": null,
       "order": 123,
       "tier": 3
     },
@@ -1423,8 +1423,8 @@
       "message": "The contextual keyword var may only appear within a local variable declaration",
       "filename": "Vars.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0825.png",
+      "bug": "assets/CS0825.png",
+      "missing": null,
       "order": 124,
       "tier": 3
     },
@@ -1435,8 +1435,8 @@
       "message": "No best type found for implicitly-typed array",
       "filename": "Vars.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0826.png",
+      "bug": "assets/CS0826.png",
+      "missing": null,
       "order": 125,
       "tier": 3
     },
