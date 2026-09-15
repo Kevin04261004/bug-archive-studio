@@ -1,9 +1,36 @@
 {
   "error_code": "CS0027",
   "message": "Keyword 'this' is not available in the current context",
-  "filename": "ThisRef.cs",
-  "before": ["class Player", "{", "    public int hp;", "}", "", "void Start()", "{", "    Player p = new Player();", "    this.hp = 1;", "}"],
-  "after": ["class Player", "{", "    public int hp;", "}", "", "void Start()", "{", "    Player p = new Player();", "    p.hp = 1;", "}"],
-  "bug": "../assets/CS0027.png",
-  "focus_line": 9
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "    public int copy = this.hp;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(copy);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "    public int copy = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(copy);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0027.png"
 }

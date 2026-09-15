@@ -1,9 +1,34 @@
 {
   "error_code": "CS0710",
   "message": "Static classes cannot have instance constructors",
-  "filename": "StaticClass.cs",
-  "before": ["static class Tools", "{", "    internal Tools() { }", "}"],
-  "after": ["static class Tools", "{", "    static Tools() { }", "}"],
-  "bug": "../assets/CS0710.png",
-  "focus_line": 3
+  "filename": "SaveTools.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static string path = \"save\";",
+    "",
+    "    internal SaveTools()",
+    "    {",
+    "        Debug.Log(\"created\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static string path = \"save\";",
+    "",
+    "    static SaveTools()",
+    "    {",
+    "        Debug.Log(\"created\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0710.png"
 }

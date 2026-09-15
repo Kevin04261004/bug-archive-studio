@@ -1,9 +1,38 @@
 {
   "error_code": "CS1551",
   "message": "An indexer must have at least one parameter",
-  "filename": "Indexers.cs",
-  "before": ["class Bag", "{", "    public int this[] => 0;", "}"],
-  "after": ["class Bag", "{", "    public int this[int i] => 0;", "}"],
-  "bug": "../assets/CS1551.png",
-  "focus_line": 3
+  "filename": "Inventory.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Inventory : MonoBehaviour",
+    "{",
+    "    int[] slots = new int[9];",
+    "",
+    "    public int this[] => slots[0];",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(slots[0]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Inventory : MonoBehaviour",
+    "{",
+    "    int[] slots = new int[9];",
+    "",
+    "    public int this[int i] => slots[i];",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(slots[0]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS1551.png"
 }

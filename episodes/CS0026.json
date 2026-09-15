@@ -1,9 +1,36 @@
 {
   "error_code": "CS0026",
   "message": "Keyword 'this' is not valid in a static property, static method, or static field",
-  "filename": "ThisRef.cs",
-  "before": ["class Player", "{", "    public int hp;", "", "    static void Reset()", "    {", "        this.hp = 0;", "    }", "}"],
-  "after": ["class Player", "{", "    public int hp;", "", "    void Reset()", "    {", "        this.hp = 0;", "    }", "}"],
-  "bug": "../assets/CS0026.png",
-  "focus_line": 5
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    static void ResetAll()",
+    "    {",
+    "        this.hp = 0;",
+    "        Debug.Log(\"reset\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void ResetAll()",
+    "    {",
+    "        this.hp = 0;",
+    "        Debug.Log(\"reset\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0026.png"
 }

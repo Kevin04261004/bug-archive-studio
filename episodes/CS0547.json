@@ -1,9 +1,36 @@
 {
   "error_code": "CS0547",
   "message": "'Player.Hp': property or indexer cannot have void type",
-  "filename": "Props.cs",
-  "before": ["class Player", "{", "    public void Hp { get; set; }", "}"],
-  "after": ["class Player", "{", "    public int Hp { get; set; }", "}"],
-  "bug": "../assets/CS0547.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public void Hp { get; set; }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Hp = 100;",
+    "        Debug.Log(Hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int Hp { get; set; }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Hp = 100;",
+    "        Debug.Log(Hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0547.png"
 }
