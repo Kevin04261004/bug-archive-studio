@@ -1,9 +1,42 @@
 {
   "error_code": "CS0723",
-  "message": "Cannot declare a variable of static type 'Tools'",
-  "filename": "StaticClass.cs",
-  "before": ["static class Tools { }", "", "void Start()", "{", "    Tools t = null;", "}"],
-  "after": ["static class Tools { }", "", "void Start()", "{", "    object t = null;", "}"],
-  "bug": "../assets/CS0723.png",
-  "focus_line": 5
+  "message": "Cannot declare a variable of static type 'SaveTools'",
+  "filename": "Game.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static void Save() { }",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        SaveTools tools = null;",
+    "        SaveTools.Save();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static void Save() { }",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(\"ready\");",
+    "        SaveTools.Save();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS0723.png"
 }

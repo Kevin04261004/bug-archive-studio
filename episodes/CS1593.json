@@ -1,9 +1,38 @@
 {
   "error_code": "CS1593",
   "message": "Delegate 'Action' does not take 1 arguments",
-  "filename": "Delegates.cs",
-  "before": ["void Start()", "{", "    Action a = (n) => { };", "}"],
-  "after": ["void Start()", "{", "    Action<int> a = (n) => { };", "}"],
-  "bug": "../assets/CS1593.png",
-  "focus_line": 3
+  "filename": "Watcher.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    Action onHit;",
+    "",
+    "    void Start()",
+    "    {",
+    "        onHit = amount => Debug.Log(1);",
+    "        onHit();",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    Action onHit;",
+    "",
+    "    void Start()",
+    "    {",
+    "        onHit = () => Debug.Log(1);",
+    "        onHit();",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS1593.png"
 }

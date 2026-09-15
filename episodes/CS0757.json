@@ -1,9 +1,42 @@
 {
   "error_code": "CS0757",
   "message": "A partial method may not have multiple implementing declarations",
-  "filename": "Partial.cs",
-  "before": ["partial class Player", "{", "    partial void OnHit() { }", "    partial void OnHit() { }", "}"],
-  "after": ["partial class Player", "{", "    partial void OnHit();", "    partial void OnHit() { }", "}"],
-  "bug": "../assets/CS0757.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public partial class Player",
+    "{",
+    "    partial void OnHit();",
+    "    partial void OnDie();",
+    "",
+    "    partial void OnHit() { }",
+    "    partial void OnHit() { }",
+    "",
+    "    void Show()",
+    "    {",
+    "        Debug.Log(1);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public partial class Player",
+    "{",
+    "    partial void OnHit();",
+    "    partial void OnDie();",
+    "",
+    "    partial void OnHit() { }",
+    "    partial void OnDie() { }",
+    "",
+    "    void Show()",
+    "    {",
+    "        Debug.Log(1);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0757.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS0721",
-  "message": "'Tools': static types cannot be used as parameters",
-  "filename": "StaticClass.cs",
-  "before": ["static class Tools { }", "", "void Use(Tools t)", "{", "}"],
-  "after": ["static class Tools { }", "", "void Use(int t)", "{", "}"],
-  "bug": "../assets/CS0721.png",
-  "focus_line": 3
+  "message": "'SaveTools': static types cannot be used as parameters",
+  "filename": "Game.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static string path = \"save\";",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Use(SaveTools tools)",
+    "    {",
+    "        Debug.Log(\"using\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public static class SaveTools",
+    "{",
+    "    public static string path = \"save\";",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Use(string tools)",
+    "    {",
+    "        Debug.Log(\"using\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0721.png"
 }

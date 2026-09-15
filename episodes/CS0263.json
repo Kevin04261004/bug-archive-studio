@@ -1,9 +1,40 @@
 {
   "error_code": "CS0263",
   "message": "Partial declarations of 'Boss' must not specify different base classes",
-  "filename": "Partial.cs",
-  "before": ["class Enemy { }", "class Unit { }", "", "partial class Boss : Enemy", "{", "}", "", "partial class Boss : Unit", "{", "}"],
-  "after": ["class Enemy { }", "class Unit { }", "", "partial class Boss : Enemy", "{", "}", "", "partial class Boss : Enemy", "{", "}"],
-  "bug": "../assets/CS0263.png",
-  "focus_line": 8
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy { }",
+    "public class Unit { }",
+    "",
+    "public partial class Boss : Enemy",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public partial class Boss : Unit",
+    "{",
+    "    public int shield = 50;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy { }",
+    "public class Unit { }",
+    "",
+    "public partial class Boss : Enemy",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public partial class Boss",
+    "{",
+    "    public int shield = 50;",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0263.png"
 }

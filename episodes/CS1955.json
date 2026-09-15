@@ -1,9 +1,42 @@
 {
   "error_code": "CS1955",
   "message": "Non-invocable member 'Player.hp' cannot be used like a method",
-  "filename": "Ambiguous.cs",
-  "before": ["class Player", "{", "    public int hp;", "}", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p.hp());", "}"],
-  "after": ["class Player", "{", "    public int hp;", "}", "", "void Start()", "{", "    Player p = new Player();", "    Debug.Log(p.hp);", "}"],
-  "bug": "../assets/CS1955.png",
-  "focus_line": 9
+  "filename": "Game.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Player hero = new Player();",
+    "        Debug.Log(hero.hp());",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Player hero = new Player();",
+    "        Debug.Log(hero.hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 13,
+  "music": "random",
+  "bug": "../assets/CS1955.png"
 }

@@ -1,9 +1,42 @@
 {
   "error_code": "CS0118",
   "message": "'Player' is a type but is used like a variable",
-  "filename": "Ambiguous.cs",
-  "before": ["class Player { }", "", "void Start()", "{", "    Player = new Player();", "}"],
-  "after": ["class Player { }", "", "void Start()", "{", "    Player p = new Player();", "}"],
-  "bug": "../assets/CS0118.png",
-  "focus_line": 5
+  "filename": "Game.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Player = new Player();",
+    "        Debug.Log(\"spawned\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var hero = new Player();",
+    "        Debug.Log(\"spawned\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS0118.png"
 }

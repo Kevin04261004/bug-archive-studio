@@ -1,9 +1,34 @@
 {
   "error_code": "CS0574",
   "message": "Name of destructor must match name of class",
-  "filename": "Finalizers.cs",
-  "before": ["class Player", "{", "    ~Enemy() { }", "}"],
-  "after": ["class Player", "{", "    ~Player() { }", "}"],
-  "bug": "../assets/CS0574.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    ~Enemy()",
+    "    {",
+    "        Debug.Log(\"gone\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    ~Player()",
+    "    {",
+    "        Debug.Log(\"gone\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0574.png"
 }

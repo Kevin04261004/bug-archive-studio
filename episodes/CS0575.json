@@ -1,9 +1,34 @@
 {
   "error_code": "CS0575",
   "message": "Only class types can contain destructors",
-  "filename": "Finalizers.cs",
-  "before": ["struct Point", "{", "    ~Point() { }", "}"],
-  "after": ["class Point", "{", "    ~Point() { }", "}"],
-  "bug": "../assets/CS0575.png",
-  "focus_line": 1
+  "filename": "Slot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Slot",
+    "{",
+    "    public int id;",
+    "",
+    "    ~Slot()",
+    "    {",
+    "        Debug.Log(\"gone\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Slot",
+    "{",
+    "    public int id;",
+    "",
+    "    ~Slot()",
+    "    {",
+    "        Debug.Log(\"gone\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0575.png"
 }
