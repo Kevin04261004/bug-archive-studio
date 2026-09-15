@@ -1,9 +1,38 @@
 {
   "error_code": "CS0443",
   "message": "Syntax error; value expected",
-  "filename": "Hits.cs",
-  "before": ["void Start()", "{", "    int[] hits = { 3, 7, 9 };", "", "    Debug.Log(hits[0]);", "    Debug.Log(hits[1]);", "    Debug.Log(hits[]);", "}"],
-  "after": ["void Start()", "{", "    int[] hits = { 3, 7, 9 };", "", "    Debug.Log(hits[0]);", "    Debug.Log(hits[1]);", "    Debug.Log(hits[2]);", "}"],
-  "bug": "../assets/CS0443.png",
-  "focus_line": 7
+  "filename": "Scores.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    int[] hits = { 3, 7, 9 };",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hits[0]);",
+    "        Debug.Log(hits[1]);",
+    "        Debug.Log(hits[]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    int[] hits = { 3, 7, 9 };",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hits[0]);",
+    "        Debug.Log(hits[1]);",
+    "        Debug.Log(hits[2]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0443.png"
 }

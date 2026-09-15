@@ -1,9 +1,36 @@
 {
   "error_code": "CS0220",
   "message": "The operation overflows at compile time in checked mode",
-  "filename": "Overflow.cs",
-  "before": ["void Start()", "{", "    int big = 2147483647 + 1;", "}"],
-  "after": ["void Start()", "{", "    long big = 2147483647L + 1;", "}"],
-  "bug": "../assets/CS0220.png",
-  "focus_line": 3
+  "filename": "Scores.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    public int maxScore = 2147483647;",
+    "    int guard = 2147483647 + 1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(maxScore);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    public int maxScore = 2147483647;",
+    "    long guard = 2147483647L + 1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(maxScore);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0220.png"
 }

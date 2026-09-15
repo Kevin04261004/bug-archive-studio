@@ -1,9 +1,36 @@
 {
   "error_code": "CS0221",
   "message": "Constant value '-1' cannot be converted to a 'uint'",
-  "filename": "Unsigned.cs",
-  "before": ["void Start()", "{", "    uint count = -1;", "}"],
-  "after": ["void Start()", "{", "    uint count = 1;", "}"],
-  "bug": "../assets/CS0221.png",
-  "focus_line": 3
+  "filename": "Counter.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Counter : MonoBehaviour",
+    "{",
+    "    public uint lives = 3;",
+    "    uint remaining = -1;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(remaining);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Counter : MonoBehaviour",
+    "{",
+    "    public uint lives = 3;",
+    "    uint remaining = 0;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(remaining);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0221.png"
 }

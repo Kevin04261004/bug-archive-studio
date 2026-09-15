@@ -1,20 +1,36 @@
 {
   "error_code": "CS0650",
   "message": "Bad array declarator: put the rank specifier after the variable name",
-  "filename": "Arrays.cs",
+  "filename": "Scores.cs",
   "before": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
     "{",
-    "    int hits[3];",
+    "    int best[5];",
+    "",
+    "    void Start()",
+    "    {",
+    "        best[0] = 100;",
+    "        Debug.Log(best[0]);",
+    "    }",
     "}"
   ],
   "after": [
-    "void Start()",
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
     "{",
-    "    int[] hits = new int[3];",
+    "    int[] best = new int[5];",
+    "",
+    "    void Start()",
+    "    {",
+    "        best[0] = 100;",
+    "        Debug.Log(best[0]);",
+    "    }",
     "}"
   ],
-  "focus_line": 3,
+  "focus_line": 5,
   "music": "random",
   "bug": "../assets/CS0650.png"
 }

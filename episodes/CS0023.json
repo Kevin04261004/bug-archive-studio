@@ -1,9 +1,42 @@
 {
   "error_code": "CS0023",
   "message": "Operator '!' cannot be applied to operand of type 'int'",
-  "filename": "Logic.cs",
-  "before": ["void Start()", "{", "    int hp = 100;", "    bool dead = !hp;", "}"],
-  "after": ["void Start()", "{", "    int hp = 100;", "    bool dead = hp == 0;", "}"],
-  "bug": "../assets/CS0023.png",
-  "focus_line": 4
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Update()",
+    "    {",
+    "        bool dead = !hp;",
+    "        if (dead)",
+    "        {",
+    "            Destroy(gameObject);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Update()",
+    "    {",
+    "        bool dead = hp <= 0;",
+    "        if (dead)",
+    "        {",
+    "            Destroy(gameObject);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0023.png"
 }

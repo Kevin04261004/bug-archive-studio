@@ -1,9 +1,36 @@
 {
   "error_code": "CS0595",
   "message": "Invalid real literal",
-  "filename": "Ranges.cs",
-  "before": ["void Start()", "{", "    float rate = 1.0e;", "}"],
-  "after": ["void Start()", "{", "    float rate = 1.0e5f;", "}"],
-  "bug": "../assets/CS0595.png",
-  "focus_line": 3
+  "filename": "Spawner.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    public float rate = 1.0e;",
+    "    public int total = 5;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(rate);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    public float rate = 1.0e3f;",
+    "    public int total = 5;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(rate);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0595.png"
 }

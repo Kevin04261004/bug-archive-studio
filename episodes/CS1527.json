@@ -2,8 +2,35 @@
   "error_code": "CS1527",
   "message": "Elements defined in a namespace cannot be explicitly declared as private",
   "filename": "Types.cs",
-  "before": ["namespace Game", "{", "    private class Enemy { }", "}"],
-  "after": ["namespace Game", "{", "    class Enemy { }", "}"],
-  "bug": "../assets/CS1527.png",
-  "focus_line": 3
+  "before": [
+    "namespace Game",
+    "{",
+    "    private class Enemy",
+    "    {",
+    "        public int hp = 100;",
+    "    }",
+    "",
+    "    public class Spawner",
+    "    {",
+    "        public int rate = 2;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "namespace Game",
+    "{",
+    "    class Enemy",
+    "    {",
+    "        public int hp = 100;",
+    "    }",
+    "",
+    "    public class Spawner",
+    "    {",
+    "        public int rate = 2;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1527.png"
 }

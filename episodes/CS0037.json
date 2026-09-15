@@ -1,9 +1,36 @@
 {
   "error_code": "CS0037",
   "message": "Cannot convert null to 'int' because it is a non-nullable value type",
-  "filename": "Nulls.cs",
-  "before": ["void Start()", "{", "    int hp = null;", "}"],
-  "after": ["void Start()", "{", "    int? hp = null;", "}"],
-  "bug": "../assets/CS0037.png",
-  "focus_line": 3
+  "filename": "SaveSlot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    public int lastScore = 0;",
+    "",
+    "    public void Clear()",
+    "    {",
+    "        int score = null;",
+    "        lastScore = score;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    public int lastScore = 0;",
+    "",
+    "    public void Clear()",
+    "    {",
+    "        int score = 0;",
+    "        lastScore = score;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0037.png"
 }

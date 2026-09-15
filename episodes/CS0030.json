@@ -1,9 +1,36 @@
 {
   "error_code": "CS0030",
   "message": "Cannot convert type 'string' to 'int'",
-  "filename": "Convert.cs",
-  "before": ["void Start()", "{", "    string text = \"10\";", "    int n = (int)text;", "}"],
-  "after": ["void Start()", "{", "    string text = \"10\";", "    int n = int.Parse(text);", "}"],
-  "bug": "../assets/CS0030.png",
-  "focus_line": 4
+  "filename": "ScoreLoad.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class ScoreLoad : MonoBehaviour",
+    "{",
+    "    public string saved = \"1200\";",
+    "",
+    "    void Start()",
+    "    {",
+    "        int best = (int)saved;",
+    "        Debug.Log(best);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class ScoreLoad : MonoBehaviour",
+    "{",
+    "    public string saved = \"1200\";",
+    "",
+    "    void Start()",
+    "    {",
+    "        int best = int.Parse(saved);",
+    "        Debug.Log(best);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0030.png"
 }
