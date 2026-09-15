@@ -1015,8 +1015,8 @@
       "message": "Method must have a return type",
       "filename": "Methods.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS1520.png",
+      "bug": "assets/CS1520.png",
+      "missing": null,
       "order": 87,
       "tier": 2
     },
