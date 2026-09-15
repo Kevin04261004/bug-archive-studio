@@ -2,8 +2,25 @@
   "error_code": "CS0186",
   "message": "Use of null is not valid in this context",
   "filename": "Nulls.cs",
-  "before": ["void Start()", "{", "    int[] hits = { 1, 2 };", "    foreach (int n in null)", "    {", "    }", "}"],
-  "after": ["void Start()", "{", "    int[] hits = { 1, 2 };", "    foreach (int n in hits)", "    {", "    }", "}"],
-  "bug": "../assets/CS0186.png",
-  "focus_line": 4
+  "before": [
+    "void Start()",
+    "{",
+    "    int[] hits = { 1, 2 };",
+    "    foreach (int n in null)",
+    "    {",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int[] hits = { 1, 2 };",
+    "    foreach (int n in hits)",
+    "    {",
+    "    }",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0186.png"
 }
