@@ -907,8 +907,8 @@
       "message": "An object of a type convertible to 'int' is required",
       "filename": "Returns.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0126.png",
+      "bug": "assets/CS0126.png",
+      "missing": null,
       "order": 78,
       "tier": 2
     },
