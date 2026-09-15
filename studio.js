@@ -53,7 +53,9 @@ const first=location.pathname.split('/').filter(Boolean)[0];return {owner:m[1],r
 function releaseLine(box,text,...nodes){box.replaceChildren(document.createTextNode(text),...nodes);}
 function link(text,href){const a=document.createElement('a');a.textContent=text;a.href=href;a.target='_blank';a.rel='noopener';return a;}
 /* What the finished Short is called on disk. */
-const videoName=code=>`[ERROR] ${code}.mp4`;
+/* Matches what the release carries, so the file is called the same thing whichever path
+   produced it. GitHub release assets cannot hold brackets or spaces. */
+const videoName=code=>`ERROR.${code}.mp4`;
 /* Release assets are cross-origin and send no CORS header, so the page can neither fetch the
    bytes nor override the filename with <a download>. The name has to come from the release
    itself: the workflow writes the MP4 as "[ERROR] <CODE>.mp4" before uploading it. */

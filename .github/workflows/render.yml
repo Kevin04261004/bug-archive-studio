@@ -52,8 +52,10 @@ jobs:
           for code in ${{ steps.pick.outputs.codes }}; do
             echo "::group::$code"
             # The page downloads the MP4 straight from the release, and a cross-origin download
-            # cannot be renamed by the browser. So the file carries its final name from here on.
-            python render.py "episodes/$code.json" --output "output/[ERROR] $code.mp4"
+            # cannot be renamed by the browser, so the file carries its final name from here on.
+            # GitHub strips brackets and turns spaces into dots in release asset names, so the
+            # name is written the way GitHub will store it rather than being silently rewritten.
+            python render.py "episodes/$code.json" --output "output/ERROR.$code.mp4"
             echo "::endgroup::"
           done
 
@@ -68,7 +70,7 @@ jobs:
             # Drop the old naming so a release never carries two MP4s; the page picks the first it finds.
             gh release delete-asset "$tag" "$code-bug-archive.mp4" -y 2>/dev/null || true
             gh release delete-asset "$tag" "$code-bug-archive-locked.png" -y 2>/dev/null || true
-            gh release upload "$tag" "output/[ERROR] $code.mp4" "output/[ERROR] $code-locked.png" --clobber
+            gh release upload "$tag" "output/ERROR.$code.mp4" "output/ERROR.$code-locked.png" --clobber
             gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[].name' | sed "s/^/  $code asset: /"
           done
 
