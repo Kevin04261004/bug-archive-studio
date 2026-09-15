@@ -979,8 +979,8 @@
       "message": "Foreach cannot operate on a method group; did you mean to call it?",
       "filename": "Each.cs",
       "lines": 14,
-      "bug": null,
-      "missing": "../assets/CS0446.png",
+      "bug": "assets/CS0446.png",
+      "missing": null,
       "order": 84,
       "tier": 2
     },
