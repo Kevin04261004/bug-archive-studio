@@ -955,8 +955,8 @@
       "message": "foreach cannot operate on 'int' because it has no GetEnumerator",
       "filename": "Each.cs",
       "lines": 8,
-      "bug": null,
-      "missing": "../assets/CS1579.png",
+      "bug": "assets/CS1579.png",
+      "missing": null,
       "order": 82,
       "tier": 2
     },
