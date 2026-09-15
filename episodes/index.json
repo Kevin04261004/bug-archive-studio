@@ -847,8 +847,8 @@
       "message": "Control cannot leave the body of a finally clause",
       "filename": "Exceptions.cs",
       "lines": 10,
-      "bug": null,
-      "missing": "../assets/CS0157.png",
+      "bug": "assets/CS0157.png",
+      "missing": null,
       "order": 73,
       "tier": 2
     },
