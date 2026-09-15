@@ -2,8 +2,23 @@
   "error_code": "CS0160",
   "message": "A previous catch clause already catches all exceptions of this type",
   "filename": "Guard.cs",
-  "before": ["void Start()", "{", "    try { Load(); }", "    catch (Exception e) { }", "    catch (FormatException e) { }", "}"],
-  "after": ["void Start()", "{", "    try { Load(); }", "    catch (NullReferenceException e) { }", "    catch (FormatException e) { }", "}"],
-  "bug": "../assets/CS0160.png",
-  "focus_line": 4
+  "before": [
+    "void Start()",
+    "{",
+    "    try { Load(); }",
+    "    catch (Exception e) { }",
+    "    catch (FormatException e) { }",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    try { Load(); }",
+    "    catch (NullReferenceException e) { }",
+    "    catch (FormatException e) { }",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0160.png"
 }
