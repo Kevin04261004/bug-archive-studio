@@ -1,8 +1,11 @@
 name: Rename release assets
 
-# Renames what is already rendered to the current download title, without re-rendering.
+# Renames what is already rendered to the current asset name, without re-rendering.
 # The page finds the MP4 by extension, so it keeps working whatever the assets are called;
-# this is only about the name the viewer ends up with in their downloads folder.
+# this is only about the name a single-episode download lands under. GitHub rewrites
+# characters it does not allow in asset names, so the name here is already in the form it
+# will store. The readable 'C# QUIZ - ERROR ...' title lives on disk and inside the batch
+# archive, where nothing rewrites it.
 on:
   workflow_dispatch:
 
@@ -28,8 +31,8 @@ jobs:
             gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[] | "\(.id)\t\(.name)"' |
             while IFS=$'\t' read -r id name; do
               case "$name" in
-                *.mp4) want="C# QUIZ - ERROR $code.mp4" ;;
-                *.png) want="C# QUIZ - ERROR $code-locked.png" ;;
+                *.mp4) want="C-QUIZ-ERROR-$code.mp4" ;;
+                *.png) want="C-QUIZ-ERROR-$code-locked.png" ;;
                 *) continue ;;
               esac
               if [ "$name" = "$want" ]; then kept=$((kept+1)); continue; fi
