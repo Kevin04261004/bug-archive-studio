@@ -2,8 +2,25 @@
   "error_code": "CS0230",
   "message": "Type and identifier are both required in a foreach statement",
   "filename": "Each.cs",
-  "before": ["void Start()", "{", "    int[] a = { 1, 2 };", "    foreach (n in a)", "    {", "    }", "}"],
-  "after": ["void Start()", "{", "    int[] a = { 1, 2 };", "    foreach (int n in a)", "    {", "    }", "}"],
-  "bug": "../assets/CS0230.png",
-  "focus_line": 4
+  "before": [
+    "void Start()",
+    "{",
+    "    int[] a = { 1, 2 };",
+    "    foreach (n in a)",
+    "    {",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int[] a = { 1, 2 };",
+    "    foreach (int n in a)",
+    "    {",
+    "    }",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0230.png"
 }
