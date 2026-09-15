@@ -2,8 +2,8 @@
   "error_code": "CS0446",
   "message": "Foreach cannot operate on a method group; did you mean to call it?",
   "filename": "Each.cs",
-  "before": ["void Start()", "{", "    Bag bag = new Bag();", "    foreach (int n in bag.Items)", "    {", "    }", "}"],
-  "after": ["void Start()", "{", "    Bag bag = new Bag();", "    foreach (int n in bag.Items())", "    {", "    }", "}"],
+  "before": ["class Bag", "{", "    int[] items = { 1, 2 };", "", "    public int[] Items() => items;", "}", "", "void Start()", "{", "    Bag bag = new Bag();", "    foreach (int n in bag.Items)", "    {", "    }", "}"],
+  "after": ["class Bag", "{", "    int[] items = { 1, 2 };", "", "    public int[] Items() => items;", "}", "", "void Start()", "{", "    Bag bag = new Bag();", "    foreach (int n in bag.Items())", "    {", "    }", "}"],
   "bug": "../assets/CS0446.png",
-  "focus_line": 4
+  "focus_line": 11
 }
