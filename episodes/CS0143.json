@@ -1,9 +1,38 @@
 {
   "error_code": "CS0143",
   "message": "The type 'void' has no constructors defined",
-  "filename": "Types.cs",
-  "before": ["void Start()", "{", "    var v = new System.Void();", "}"],
-  "after": ["void Start()", "{", "    var v = new object();", "}"],
-  "bug": "../assets/CS0143.png",
-  "focus_line": 3
+  "filename": "Probe.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Probe : MonoBehaviour",
+    "{",
+    "    public Type kind = typeof(void);",
+    "",
+    "    void Start()",
+    "    {",
+    "        var made = new System.Void();",
+    "        Debug.Log(made);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Probe : MonoBehaviour",
+    "{",
+    "    public Type kind = typeof(void);",
+    "",
+    "    void Start()",
+    "    {",
+    "        var made = new object();",
+    "        Debug.Log(made);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0143.png"
 }

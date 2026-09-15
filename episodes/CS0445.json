@@ -1,9 +1,36 @@
 {
   "error_code": "CS0445",
   "message": "Cannot modify the result of an unboxing conversion",
-  "filename": "Boxes.cs",
-  "before": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    object box = new Point();", "    ((Point)box).x = 1;", "}"],
-  "after": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    object box = new Point();", "    Point p = (Point)box;", "}"],
-  "bug": "../assets/CS0445.png",
-  "focus_line": 9
+  "filename": "SaveSlot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    object boxed = new Vector3();",
+    "",
+    "    void Start()",
+    "    {",
+    "        ((Vector3)boxed).x = 1f;",
+    "        Debug.Log(boxed);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    object boxed = new Vector3();",
+    "",
+    "    void Start()",
+    "    {",
+    "        boxed = new Vector3(1f, 0, 0);",
+    "        Debug.Log(boxed);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0445.png"
 }

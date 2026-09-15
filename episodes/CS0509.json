@@ -1,9 +1,34 @@
 {
   "error_code": "CS0509",
-  "message": "'Boss' cannot derive from sealed type 'Enemy'",
-  "filename": "Sealed.cs",
-  "before": ["sealed class Enemy { }", "", "class Boss : Enemy", "{", "}"],
-  "after": ["class Enemy { }", "", "class Boss : Enemy", "{", "}"],
-  "bug": "../assets/CS0509.png",
-  "focus_line": 1
+  "message": "'Boss' cannot derive from sealed type 'Foe'",
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public sealed class Foe : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public class Boss : Foe",
+    "{",
+    "    public int shield = 50;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Foe : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public class Boss : Foe",
+    "{",
+    "    public int shield = 50;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0509.png"
 }

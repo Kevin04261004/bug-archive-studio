@@ -1,9 +1,34 @@
 {
   "error_code": "CS0238",
   "message": "'Enemy.Hit()' cannot be sealed because it is not an override",
-  "filename": "Sealed.cs",
-  "before": ["class Enemy", "{", "    public sealed void Hit() { }", "}"],
-  "after": ["class Enemy", "{", "    public void Hit() { }", "}"],
-  "bug": "../assets/CS0238.png",
-  "focus_line": 3
+  "filename": "Enemy.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    public sealed void Hit()",
+    "    {",
+    "        hp -= 10;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    public void Hit()",
+    "    {",
+    "        hp -= 10;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0238.png"
 }

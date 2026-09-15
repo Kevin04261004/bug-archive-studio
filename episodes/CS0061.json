@@ -1,9 +1,34 @@
 {
   "error_code": "CS0061",
-  "message": "Inconsistent accessibility: base interface 'IRun' is less accessible than interface",
-  "filename": "Access.cs",
-  "before": ["interface IRun { }", "", "public interface IFast : IRun", "{", "}"],
-  "after": ["public interface IRun { }", "", "public interface IFast : IRun", "{", "}"],
-  "bug": "../assets/CS0061.png",
-  "focus_line": 1
+  "message": "Inconsistent accessibility: base interface 'IDamage' is less accessible than interface",
+  "filename": "Breakable.cs",
+  "before": [
+    "interface IDamage",
+    "{",
+    "    void TakeHit(int amount);",
+    "}",
+    "",
+    "public interface IBreak : IDamage",
+    "{",
+    "    void Shatter();",
+    "}",
+    "",
+    "public class Crate { }"
+  ],
+  "after": [
+    "public interface IDamage",
+    "{",
+    "    void TakeHit(int amount);",
+    "}",
+    "",
+    "public interface IBreak : IDamage",
+    "{",
+    "    void Shatter();",
+    "}",
+    "",
+    "public class Crate { }"
+  ],
+  "focus_line": 1,
+  "music": "random",
+  "bug": "../assets/CS0061.png"
 }

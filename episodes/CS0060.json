@@ -1,9 +1,34 @@
 {
   "error_code": "CS0060",
-  "message": "Inconsistent accessibility: base class 'Base' is less accessible than class 'Child'",
-  "filename": "Access.cs",
-  "before": ["class Base { }", "", "public class Child : Base", "{", "}"],
-  "after": ["public class Base { }", "", "public class Child : Base", "{", "}"],
-  "bug": "../assets/CS0060.png",
-  "focus_line": 1
+  "message": "Inconsistent accessibility: base class 'Enemy' is less accessible than class 'Boss'",
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public class Boss : Enemy",
+    "{",
+    "    public int shield = 50;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Enemy : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "public class Boss : Enemy",
+    "{",
+    "    public int shield = 50;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0060.png"
 }
