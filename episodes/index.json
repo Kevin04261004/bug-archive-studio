@@ -1039,8 +1039,8 @@
       "message": "Array creation must have array size or array initializer",
       "filename": "Arrays.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS1586.png",
+      "bug": "assets/CS1586.png",
+      "missing": null,
       "order": 89,
       "tier": 2
     },
