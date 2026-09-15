@@ -1,9 +1,40 @@
 {
   "error_code": "CS1737",
   "message": "Optional parameters must appear after all required parameters",
-  "filename": "Defaults.cs",
-  "before": ["class Gun", "{", "    void Fire(int p = 1, int n) { }", "}"],
-  "after": ["class Gun", "{", "    void Fire(int n, int p = 1) { }", "}"],
-  "bug": "../assets/CS1737.png",
-  "focus_line": 3
+  "filename": "Weapon.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int power = 1, int shots)",
+    "    {",
+    "        Debug.Log(power * shots);",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Fire(2, 3);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int power, int shots)",
+    "    {",
+    "        Debug.Log(power * shots);",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Fire(2, 3);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1737.png"
 }

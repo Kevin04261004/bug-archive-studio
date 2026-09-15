@@ -1,9 +1,40 @@
 {
   "error_code": "CS1738",
   "message": "Named argument specifications must appear after all fixed arguments",
-  "filename": "Calls.cs",
-  "before": ["class Gun", "{", "    public void Fire(int p, int n) { }", "}", "", "void Start()", "{", "    new Gun().Fire(p: 1, 2);", "}"],
-  "after": ["class Gun", "{", "    public void Fire(int p, int n) { }", "}", "", "void Start()", "{", "    new Gun().Fire(1, n: 2);", "}"],
-  "bug": "../assets/CS1738.png",
-  "focus_line": 8
+  "filename": "Weapon.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int power, int shots)",
+    "    {",
+    "        Debug.Log(power * shots);",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Fire(power: 1, 2);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int power, int shots)",
+    "    {",
+    "        Debug.Log(power * shots);",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Fire(1, shots: 2);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS1738.png"
 }

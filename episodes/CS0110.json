@@ -1,9 +1,36 @@
 {
   "error_code": "CS0110",
-  "message": "The evaluation of the constant value for 'A' involves a circular definition",
-  "filename": "Consts.cs",
-  "before": ["class Limits", "{", "    const int A = B;", "    const int B = A;", "}"],
-  "after": ["class Limits", "{", "    const int A = 10;", "    const int B = A;", "}"],
-  "bug": "../assets/CS0110.png",
-  "focus_line": 3
+  "message": "The evaluation of the constant value for 'MaxHp' involves a circular definition",
+  "filename": "Limits.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Limits : MonoBehaviour",
+    "{",
+    "    const int MaxHp = MaxMana;",
+    "    const int MaxMana = MaxHp;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(MaxHp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Limits : MonoBehaviour",
+    "{",
+    "    const int MaxHp = MaxMana;",
+    "    const int MaxMana = 50;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(MaxHp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0110.png"
 }

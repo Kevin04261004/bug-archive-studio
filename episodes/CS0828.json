@@ -1,9 +1,42 @@
 {
   "error_code": "CS0828",
   "message": "Cannot assign 'void' to anonymous type property",
-  "filename": "Anon.cs",
-  "before": ["void Start()", "{", "    var item = new { name = Reset() };", "}", "", "void Reset() { }"],
-  "after": ["void Start()", "{", "    var item = new { name = \"bug\" };", "}", "", "void Reset() { }"],
-  "bug": "../assets/CS0828.png",
-  "focus_line": 3
+  "filename": "Report.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Report : MonoBehaviour",
+    "{",
+    "    void Save()",
+    "    {",
+    "        Debug.Log(\"logged\");",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        var row = new { note = Save() };",
+    "        Debug.Log(row);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Report : MonoBehaviour",
+    "{",
+    "    void Save()",
+    "    {",
+    "        Debug.Log(\"logged\");",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        var row = new { note = \"ok\" };",
+    "        Debug.Log(row);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS0828.png"
 }

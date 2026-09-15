@@ -1,9 +1,32 @@
 {
   "error_code": "CS0836",
   "message": "Cannot use anonymous type in a constant expression",
-  "filename": "Anon.cs",
-  "before": ["void Start()", "{", "    const object item = new { id = 1 };", "}"],
-  "after": ["void Start()", "{", "    object item = new { id = 1 };", "}"],
-  "bug": "../assets/CS0836.png",
-  "focus_line": 3
+  "filename": "Report.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Report : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        const object tag = new { id = 1 };",
+    "        Debug.Log(tag);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Report : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var tag = new { id = 1 };",
+    "        Debug.Log(tag);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0836.png"
 }

@@ -1,9 +1,38 @@
 {
   "error_code": "CS0173",
   "message": "Type of conditional expression cannot be determined between 'int' and 'string'",
-  "filename": "Choice.cs",
-  "before": ["void Start()", "{", "    var x = true ? 1 : \"two\";", "}"],
-  "after": ["void Start()", "{", "    var x = true ? \"1\" : \"two\";", "}"],
-  "bug": "../assets/CS0173.png",
-  "focus_line": 3
+  "filename": "ScoreUI.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class ScoreUI : MonoBehaviour",
+    "{",
+    "    public bool ready = false;",
+    "    public int score = 120;",
+    "",
+    "    void Start()",
+    "    {",
+    "        var text = ready ? score : \"-\";",
+    "        Debug.Log(text);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class ScoreUI : MonoBehaviour",
+    "{",
+    "    public bool ready = false;",
+    "    public int score = 120;",
+    "",
+    "    void Start()",
+    "    {",
+    "        var text = ready ? score : 0;",
+    "        Debug.Log(text);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0173.png"
 }

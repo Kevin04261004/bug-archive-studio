@@ -1,9 +1,38 @@
 {
   "error_code": "CS0200",
   "message": "Property 'Player.Hp' cannot be assigned to; it is read only",
-  "filename": "Props.cs",
-  "before": ["class Player", "{", "    public int Hp { get; }", "}", "", "void Start()", "{", "    new Player().Hp = 50;", "}"],
-  "after": ["class Player", "{", "    public int Hp { get; set; }", "}", "", "void Start()", "{", "    new Player().Hp = 50;", "}"],
-  "bug": "../assets/CS0200.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int Hp { get; }",
+    "    public int Mana { get; set; }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Hp = 50;",
+    "        Debug.Log(Hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public int Hp { get; set; }",
+    "    public int Mana { get; set; }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Hp = 50;",
+    "        Debug.Log(Hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0200.png"
 }

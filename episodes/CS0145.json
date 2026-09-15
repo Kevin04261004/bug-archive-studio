@@ -1,9 +1,36 @@
 {
   "error_code": "CS0145",
   "message": "A const field requires a value to be provided",
-  "filename": "Consts.cs",
-  "before": ["class Player", "{", "    const int max;", "}"],
-  "after": ["class Player", "{", "    const int max = 100;", "}"],
-  "bug": "../assets/CS0145.png",
-  "focus_line": 3
+  "filename": "Limits.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Limits : MonoBehaviour",
+    "{",
+    "    const int maxHp;",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(maxHp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Limits : MonoBehaviour",
+    "{",
+    "    const int maxHp = 100;",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(maxHp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0145.png"
 }

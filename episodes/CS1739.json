@@ -1,9 +1,40 @@
 {
   "error_code": "CS1739",
   "message": "The best overload for 'Fire' does not have a parameter named 'ammo'",
-  "filename": "Calls.cs",
-  "before": ["class Gun", "{", "    public void Fire(int power) { }", "}", "", "void Start()", "{", "    new Gun().Fire(ammo: 1);", "}"],
-  "after": ["class Gun", "{", "    public void Fire(int power) { }", "}", "", "void Start()", "{", "    new Gun().Fire(power: 1);", "}"],
-  "bug": "../assets/CS1739.png",
-  "focus_line": 8
+  "filename": "Weapon.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int power)",
+    "    {",
+    "        Debug.Log(power);",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Fire(ammo: 1);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int power)",
+    "    {",
+    "        Debug.Log(power);",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Fire(power: 1);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS1739.png"
 }

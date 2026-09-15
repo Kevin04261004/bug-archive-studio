@@ -1,9 +1,42 @@
 {
   "error_code": "CS1620",
   "message": "Argument 1 must be passed with the 'ref' keyword",
-  "filename": "Refs.cs",
-  "before": ["class Tools", "{", "    public void Bump(ref int n) { }", "}", "", "void Start()", "{", "    int hp = 1;", "    new Tools().Bump(hp);", "}"],
-  "after": ["class Tools", "{", "    public void Bump(ref int n) { }", "}", "", "void Start()", "{", "    int hp = 1;", "    new Tools().Bump(ref hp);", "}"],
-  "bug": "../assets/CS1620.png",
-  "focus_line": 9
+  "filename": "Health.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    void Bump(ref int value)",
+    "    {",
+    "        value++;",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        int hp = 1;",
+    "        Bump(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    void Bump(ref int value)",
+    "    {",
+    "        value++;",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        int hp = 1;",
+    "        Bump(ref hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 13,
+  "music": "random",
+  "bug": "../assets/CS1620.png"
 }

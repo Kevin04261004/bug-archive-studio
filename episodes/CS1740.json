@@ -1,9 +1,40 @@
 {
   "error_code": "CS1740",
   "message": "Named argument 'power' cannot be specified multiple times",
-  "filename": "Calls.cs",
-  "before": ["class Gun", "{", "    public void Fire(int power, int n) { }", "}", "", "void Start()", "{", "    new Gun().Fire(power: 1, power: 2);", "}"],
-  "after": ["class Gun", "{", "    public void Fire(int power, int n) { }", "}", "", "void Start()", "{", "    new Gun().Fire(power: 1, n: 2);", "}"],
-  "bug": "../assets/CS1740.png",
-  "focus_line": 8
+  "filename": "Weapon.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int power, int shots)",
+    "    {",
+    "        Debug.Log(power * shots);",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Fire(power: 1, power: 2);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Weapon : MonoBehaviour",
+    "{",
+    "    void Fire(int power, int shots)",
+    "    {",
+    "        Debug.Log(power * shots);",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Fire(power: 1, shots: 2);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS1740.png"
 }
