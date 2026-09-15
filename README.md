@@ -114,10 +114,18 @@ MP4는 어느 경우에나 `render.py`가 만듭니다. 페이지에서는 **Ren
 
 처음 한 번만 깃허브 토큰을 붙여넣으면 됩니다. 이 저장소만 대상으로 하는 fine-grained 토큰에
 **Contents**와 **Actions**를 read and write로 주세요. 토큰은 이 탭에만 남고 api.github.com으로만 갑니다.
-토큰 없이 쓰려면 Save project로 JSON을 받아 직접 커밋해도 되고, 내 PC의 `START_STUDIO.bat`을 써도 됩니다.
+토큰 없이 쓰려면 **Render MP4** 대화창의 **Save project**로 JSON을 받아 직접 커밋해도 되고,
+내 PC의 `START_STUDIO.bat`을 써도 됩니다.
 
 에피소드 목록은 `episodes/index.json`을 읽습니다. 스튜디오를 켜거나 렌더할 때,
 그리고 액션이 돌 때 자동으로 갱신됩니다. 직접 만들려면 `python server.py --index`를 실행하세요.
+
+## 페이지 파일을 고칠 때
+
+`index.html`은 `studio.css?v=3.2`, `studio.js?v=3.2`처럼 버전을 붙여 읽습니다.
+**둘 중 하나라도 고치면 두 곳의 숫자를 함께 올리세요.** 올리지 않으면 브라우저와
+깃허브 페이지 CDN이 예전 파일을 계속 주고, 새 HTML의 버튼은 보이는데 눌러도
+아무 일이 일어나지 않습니다.
 
 ## 여러 편 한꺼번에 렌더
 
@@ -153,7 +161,8 @@ Render MP4와 썸네일 저장이 잠기고, 미리보기에도 캐릭터가 나
 **Generate bug with AI** 나 **Replace bug** 로 이미지를 넣으면 바로 다시 풀립니다.
 
 `START_STUDIO.bat`으로 열면 폴더를 직접 읽고, 깃허브 페이지에서는 `episodes/index.json`을 읽습니다.
-`file:///`로 연 경우에는 폴더를 읽을 수 없으므로 **Open project**로 저장한 JSON을 직접 여세요.
+`file:///`로 연 경우에는 폴더를 읽을 수 없으므로 **Load episode** 안의
+**Open a JSON file instead**로 저장해 둔 JSON을 직접 여세요.
 
 ## 에피소드 넘기기
 
@@ -199,7 +208,8 @@ API 호출은 브라우저에서 직접 일어납니다. `file:///`에서 차단
 페이지가 파일을 직접 받아 이름을 붙일 수 없기 때문입니다. 깃허브는 릴리스 자산 이름에서 대괄호를 없애고
 공백을 점으로 바꾸므로 `[ERROR] CS0000.mp4`는 만들 수 없고 `ERROR.CS0000.mp4`가 됩니다.
 
-손으로 할 때도 같습니다. Save project로 받은 JSON을 `episodes/`에, PNG를 `assets/`에 넣고 커밋하면 액션이 돕니다.
+손으로 할 때도 같습니다. 대화창의 Save project로 받은 JSON을 `episodes/`에, PNG를 `assets/`에
+넣고 커밋하면 액션이 돕니다.
 
 바뀐 JSON과 PNG에 해당하는 에피소드만 렌더합니다. `render.py`를 고치면 전부 다시 렌더합니다.
 Actions 탭에서 `Render episodes`를 수동 실행할 수도 있고, 오류번호를 적으면 그것만, `all`이면 전부 렌더합니다.
@@ -255,7 +265,7 @@ Actions 탭에서 `Render episodes`를 수동 실행할 수도 있고, 오류번
 - `assets/<오류번호>.png` — 지금 쓰고 있는 버그 이미지
 - `episodes/index.json` — 목록 갱신
 
-따로 Save project를 누르지 않아도 다음에 Load episode에서 바로 다시 불러올 수 있습니다.
+따로 저장하지 않아도 다음에 Load episode에서 바로 다시 불러올 수 있습니다.
 같은 오류번호로 다시 렌더하면 두 파일을 덮어씁니다. 기존 에피소드를 보존하려면 오류번호를 다르게 하세요.
 렌더 결과 MP4와 썸네일은 `output` 폴더에 남고, 이 폴더는 깃에 올라가지 않습니다.
 

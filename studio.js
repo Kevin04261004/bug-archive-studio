@@ -166,7 +166,7 @@ status(done);}
 catch(e){step(e.message,true);}
 finally{activeJob=false;$('startrender').disabled=false;markBugState();}}
 $('startrender').onclick=()=>renderOnActions().catch(e=>step(e.message,true));
-$('save').onclick=save;$('offlineSave').onclick=save;$('closeDialog').onclick=()=>$('offline').close();$('open').onclick=()=>$('projectfile').click();$('projectfile').onchange=async e=>{try{if(e.target.files[0])await setConfig(JSON.parse(await e.target.files[0].text()));}catch(e){status(e.message,true);}};
+$('offlineSave').onclick=save;$('closeDialog').onclick=()=>$('offline').close();$('projectfile').onchange=async e=>{try{if(e.target.files[0])await setConfig(JSON.parse(await e.target.files[0].text()));}catch(e){status(e.message,true);}};
 $('choosebug').onclick=()=>$('bugfile').click();$('bugfile').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>8*1024*1024)throw Error('Use a PNG smaller than 8 MB.');const reader=new FileReader();reader.onload=async()=>{try{await setBug(reader.result);update();}catch(e){status(e.message,true);}};reader.readAsDataURL(f);}catch(e){status(e.message,true);}};
 for(const id of ['before','after','errorcode','message','filename','focus'])$(id).oninput=update;
 $('time').oninput=()=>{playing=false;bgmStop();$('play').textContent='Play';time=Number($('time').value);$('clock').textContent=`${time.toFixed(2)} / 12s`;draw();};$('guides').onchange=()=>draw();document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>{$('time').value=b.dataset.time;$('time').oninput();});
