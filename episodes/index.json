@@ -967,8 +967,8 @@
       "message": "foreach requires that 'Bag.GetEnumerator()' return a type with MoveNext and Current",
       "filename": "Each.cs",
       "lines": 14,
-      "bug": null,
-      "missing": "../assets/CS0202.png",
+      "bug": "assets/CS0202.png",
+      "missing": null,
       "order": 83,
       "tier": 2
     },
