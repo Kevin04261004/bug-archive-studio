@@ -1,9 +1,34 @@
 {
   "error_code": "CS0196",
   "message": "A pointer must be indexed by only one value",
-  "filename": "Unsafe.cs",
-  "before": ["unsafe void Start(int* p)", "{", "    Debug.Log(p[0, 1]);", "}"],
-  "after": ["unsafe void Start(int* p)", "{", "    Debug.Log(p[0]);", "}"],
-  "bug": "../assets/CS0196.png",
-  "focus_line": 3
+  "filename": "Pixels.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    public int width = 4;",
+    "",
+    "    unsafe void Scan(int* data)",
+    "    {",
+    "        Debug.Log(data[0, 1]);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    public int width = 4;",
+    "",
+    "    unsafe void Scan(int* data)",
+    "    {",
+    "        Debug.Log(data[0]);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0196.png"
 }

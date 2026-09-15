@@ -1,9 +1,36 @@
 {
   "error_code": "CS0628",
   "message": "'Player.hp': new protected member declared in sealed type",
-  "filename": "Members.cs",
-  "before": ["sealed class Player", "{", "    protected int hp;", "}"],
-  "after": ["sealed class Player", "{", "    internal int hp;", "}"],
-  "bug": "../assets/CS0628.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public sealed class Player",
+    "{",
+    "    protected int hp = 100;",
+    "    public int mana = 50;",
+    "",
+    "    public void Log()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public sealed class Player",
+    "{",
+    "    int hp = 100;",
+    "    public int mana = 50;",
+    "",
+    "    public void Log()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0628.png"
 }

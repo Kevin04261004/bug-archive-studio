@@ -1,9 +1,34 @@
 {
   "error_code": "CS0214",
   "message": "Pointers and fixed size buffers may only be used in an unsafe context",
-  "filename": "Unsafe.cs",
-  "before": ["void Start()", "{", "    int n = 1;", "    int* p = &n;", "}"],
-  "after": ["unsafe void Start()", "{", "    int n = 1;", "    int* p = &n;", "}"],
-  "bug": "../assets/CS0214.png",
-  "focus_line": 1
+  "filename": "Pixels.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    void Scan()",
+    "    {",
+    "        int count = 1;",
+    "        int* raw = &count;",
+    "        Debug.Log(1);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    unsafe void Scan()",
+    "    {",
+    "        int count = 1;",
+    "        int* raw = &count;",
+    "        Debug.Log(1);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0214.png"
 }

@@ -1,9 +1,42 @@
 {
   "error_code": "CS0208",
   "message": "Cannot declare a pointer to the managed type 'Player'",
-  "filename": "Unsafe.cs",
-  "before": ["class Player { }", "", "unsafe void Start()", "{", "    Player* p = null;", "}"],
-  "after": ["struct Player { }", "", "unsafe void Start()", "{", "    Player* p = null;", "}"],
-  "bug": "../assets/CS0208.png",
-  "focus_line": 1
+  "filename": "Pixels.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp;",
+    "}",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    unsafe void Scan()",
+    "    {",
+    "        Player* raw = null;",
+    "        Debug.Log(1);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp;",
+    "}",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    unsafe void Scan()",
+    "    {",
+    "        int* raw = null;",
+    "        Debug.Log(1);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 12,
+  "music": "random",
+  "bug": "../assets/CS0208.png"
 }

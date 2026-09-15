@@ -1,9 +1,34 @@
 {
   "error_code": "CS1573",
-  "message": "Parameter 'm' has no matching param tag in the XML comment",
-  "filename": "XmlDoc.cs",
-  "before": ["/// <param name=\"n\">Hp.</param>", "", "void Set(int n, int m) { }"],
-  "after": ["/// <param name=\"n\">Hp.</param>", "/// <param name=\"m\">Mp.</param>", "void Set(int n, int m) { }"],
-  "bug": "../assets/CS1573.png",
-  "focus_line": 2
+  "message": "Parameter 'mana' has no matching param tag in the XML comment",
+  "filename": "Stats.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Stats : MonoBehaviour",
+    "{",
+    "    /// <param name=\"hp\">Health.</param>",
+    "",
+    "    public void Set(int hp, int mana)",
+    "    {",
+    "        Debug.Log(hp + mana);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Stats : MonoBehaviour",
+    "{",
+    "    /// <param name=\"hp\">Health.</param>",
+    "    /// <param name=\"mana\">Mana.</param>",
+    "    public void Set(int hp, int mana)",
+    "    {",
+    "        Debug.Log(hp + mana);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS1573.png"
 }

@@ -1,9 +1,38 @@
 {
   "error_code": "CS0067",
   "message": "The event 'Unit.Died' is never used",
-  "filename": "Unused.cs",
-  "before": ["class Unit", "{", "    private event Action Died;", "}"],
-  "after": ["class Unit", "{", "", "}"],
-  "bug": "../assets/CS0067.png",
-  "focus_line": 3
+  "filename": "Unit.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Unit : MonoBehaviour",
+    "{",
+    "    event Action Died;",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Unit : MonoBehaviour",
+    "{",
+    "",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0067.png"
 }

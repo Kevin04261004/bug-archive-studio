@@ -1,9 +1,32 @@
 {
   "error_code": "CS0227",
   "message": "Unsafe code may only appear if compiling with the unsafe option",
-  "filename": "Unsafe.cs",
-  "before": ["unsafe void Start()", "{", "    int n = 1;", "}"],
-  "after": ["void Start()", "{", "    int n = 1;", "}"],
-  "bug": "../assets/CS0227.png",
-  "focus_line": 1
+  "filename": "Pixels.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    unsafe void Scan()",
+    "    {",
+    "        int count = 1;",
+    "        Debug.Log(count);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    void Scan()",
+    "    {",
+    "        int count = 1;",
+    "        Debug.Log(count);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0227.png"
 }

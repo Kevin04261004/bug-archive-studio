@@ -1,9 +1,38 @@
 {
   "error_code": "CS0164",
   "message": "This label has not been referenced",
-  "filename": "Unused.cs",
-  "before": ["void Start()", "{", "top:", "    Debug.Log(1);", "}"],
-  "after": ["void Start()", "{", "", "    Debug.Log(1);", "}"],
-  "bug": "../assets/CS0164.png",
-  "focus_line": 3
+  "filename": "Loader.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Loader : MonoBehaviour",
+    "{",
+    "    public int tries = 0;",
+    "",
+    "    void Start()",
+    "    {",
+    "retry:",
+    "        tries++;",
+    "        Debug.Log(tries);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Loader : MonoBehaviour",
+    "{",
+    "    public int tries = 0;",
+    "",
+    "    void Start()",
+    "    {",
+    "",
+    "        tries++;",
+    "        Debug.Log(tries);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0164.png"
 }

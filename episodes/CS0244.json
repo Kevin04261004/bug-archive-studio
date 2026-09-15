@@ -1,9 +1,40 @@
 {
   "error_code": "CS0244",
   "message": "Neither 'is' nor 'as' is valid on pointer types",
-  "filename": "Unsafe.cs",
-  "before": ["unsafe void Start(int* p)", "{", "    if (p is object) { }", "}"],
-  "after": ["unsafe void Start(int* p)", "{", "    if (p != null) { }", "}"],
-  "bug": "../assets/CS0244.png",
-  "focus_line": 3
+  "filename": "Pixels.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    public int width = 4;",
+    "",
+    "    unsafe void Scan(int* data)",
+    "    {",
+    "        if (data is object)",
+    "        {",
+    "            Debug.Log(width);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    public int width = 4;",
+    "",
+    "    unsafe void Scan(int* data)",
+    "    {",
+    "        if (data != null)",
+    "        {",
+    "            Debug.Log(width);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0244.png"
 }

@@ -1,9 +1,34 @@
 {
   "error_code": "CS0693",
   "message": "Type parameter 'T' has the same name as the type parameter from outer type 'Box<T>'",
-  "filename": "Generics.cs",
-  "before": ["class Box<T>", "{", "    class Inner<T> { }", "}"],
-  "after": ["class Box<T>", "{", "    class Inner<U> { }", "}"],
-  "bug": "../assets/CS0693.png",
-  "focus_line": 3
+  "filename": "Box.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Box<T>",
+    "{",
+    "    public T item;",
+    "",
+    "    public class Inner<T>",
+    "    {",
+    "        public int value;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Box<T>",
+    "{",
+    "    public T item;",
+    "",
+    "    public class Inner<U>",
+    "    {",
+    "        public int value;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0693.png"
 }

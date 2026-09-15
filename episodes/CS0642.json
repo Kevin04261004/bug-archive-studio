@@ -1,9 +1,36 @@
 {
   "error_code": "CS0642",
   "message": "Possible mistaken empty statement",
-  "filename": "Flow.cs",
-  "before": ["void Start()", "{", "    if (true);", "        Debug.Log(1);", "}"],
-  "after": ["void Start()", "{", "    if (true)", "        Debug.Log(1);", "}"],
-  "bug": "../assets/CS0642.png",
-  "focus_line": 3
+  "filename": "Health.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (hp > 0);",
+    "            Debug.Log(\"alive\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (hp > 0)",
+    "            Debug.Log(\"alive\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0642.png"
 }

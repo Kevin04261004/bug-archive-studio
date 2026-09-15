@@ -1,9 +1,36 @@
 {
   "error_code": "CS0248",
   "message": "Cannot create an array with a negative size",
-  "filename": "Arrays.cs",
-  "before": ["void Start()", "{", "    int[] xs = new int[-1];", "}"],
-  "after": ["void Start()", "{", "    int[] xs = new int[4];", "}"],
-  "bug": "../assets/CS0248.png",
-  "focus_line": 3
+  "filename": "Scores.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    public int count = 3;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int[] best = new int[-1];",
+    "        Debug.Log(best.Length);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Scores : MonoBehaviour",
+    "{",
+    "    public int count = 3;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int[] best = new int[count];",
+    "        Debug.Log(best.Length);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0248.png"
 }

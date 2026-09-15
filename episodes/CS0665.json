@@ -1,9 +1,40 @@
 {
   "error_code": "CS0665",
   "message": "Assignment in conditional expression is always constant; did you mean == ?",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    bool b = false;", "    if (b = true) { }", "}"],
-  "after": ["void Start()", "{", "    bool b = false;", "    if (b == true) { }", "}"],
-  "bug": "../assets/CS0665.png",
-  "focus_line": 4
+  "filename": "Health.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public bool alive = false;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (alive = true)",
+    "        {",
+    "            Debug.Log(\"alive\");",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Health : MonoBehaviour",
+    "{",
+    "    public bool alive = false;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (alive == true)",
+    "        {",
+    "            Debug.Log(\"alive\");",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0665.png"
 }

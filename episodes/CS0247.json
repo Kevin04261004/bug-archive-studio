@@ -1,9 +1,36 @@
 {
   "error_code": "CS0247",
   "message": "Cannot use a negative size with stackalloc",
-  "filename": "Unsafe.cs",
-  "before": ["unsafe void Start()", "{", "    int* p = stackalloc int[-1];", "}"],
-  "after": ["unsafe void Start()", "{", "    int* p = stackalloc int[4];", "}"],
-  "bug": "../assets/CS0247.png",
-  "focus_line": 3
+  "filename": "Pixels.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    public int width = 4;",
+    "",
+    "    unsafe void Scan()",
+    "    {",
+    "        int* buffer = stackalloc int[-1];",
+    "        Debug.Log(width);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    public int width = 4;",
+    "",
+    "    unsafe void Scan()",
+    "    {",
+    "        int* buffer = stackalloc int[4];",
+    "        Debug.Log(width);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0247.png"
 }

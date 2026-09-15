@@ -1,9 +1,36 @@
 {
   "error_code": "CS0242",
   "message": "The operation in question is undefined on void pointers",
-  "filename": "Unsafe.cs",
-  "before": ["unsafe void Start(void* p)", "{", "    p = p + 1;", "}"],
-  "after": ["unsafe void Start(int* p)", "{", "    p = p + 1;", "}"],
-  "bug": "../assets/CS0242.png",
-  "focus_line": 1
+  "filename": "Pixels.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    public int width = 4;",
+    "",
+    "    unsafe void Scan(void* data)",
+    "    {",
+    "        data = data + 1;",
+    "        Debug.Log(width);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Pixels : MonoBehaviour",
+    "{",
+    "    public int width = 4;",
+    "",
+    "    unsafe void Scan(void* data)",
+    "    {",
+    "        data = (byte*)data + 1;",
+    "        Debug.Log(width);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0242.png"
 }
