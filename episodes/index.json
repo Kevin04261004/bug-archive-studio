@@ -1003,8 +1003,8 @@
       "message": "Use of null is not valid in this context",
       "filename": "Nulls.cs",
       "lines": 7,
-      "bug": null,
-      "missing": "../assets/CS0186.png",
+      "bug": "assets/CS0186.png",
+      "missing": null,
       "order": 86,
       "tier": 2
     },
