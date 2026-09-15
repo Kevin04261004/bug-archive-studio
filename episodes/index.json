@@ -1087,8 +1087,8 @@
       "message": "Cannot apply indexing with [] to an expression of type 'int'",
       "filename": "Arrays.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0021.png",
+      "bug": "assets/CS0021.png",
+      "missing": null,
       "order": 93,
       "tier": 2
     },
