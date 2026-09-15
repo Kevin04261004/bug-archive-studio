@@ -883,8 +883,8 @@
       "message": "A throw statement with no arguments is not allowed in a nested finally clause",
       "filename": "Exceptions.cs",
       "lines": 12,
-      "bug": null,
-      "missing": "../assets/CS0724.png",
+      "bug": "assets/CS0724.png",
+      "missing": null,
       "order": 76,
       "tier": 2
     },
