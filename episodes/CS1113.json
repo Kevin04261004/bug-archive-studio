@@ -5,7 +5,6 @@
   "before": [
     "using System;",
     "using UnityEngine;",
-    "",
     "public struct Tag",
     "{",
     "    public int id;",
@@ -28,7 +27,6 @@
   "after": [
     "using System;",
     "using UnityEngine;",
-    "",
     "public struct Tag",
     "{",
     "    public int id;",
@@ -48,7 +46,7 @@
     "    }",
     "}"
   ],
-  "focus_line": 19,
+  "focus_line": 18,
   "music": "random",
   "bug": "../assets/CS1113.png"
 }

@@ -168,7 +168,6 @@ ep('CS1113', 'Bag.cs',
    "Extension method 'TagTools.Log(Tag)' on value type 'Tag' cannot create delegates", """
 using System;
 using UnityEngine;
-
 public struct Tag
 {
     public int id;
@@ -190,7 +189,6 @@ public class Bag : MonoBehaviour
 """, """
 using System;
 using UnityEngine;
-
 public struct Tag
 {
     public int id;
@@ -209,7 +207,7 @@ public class Bag : MonoBehaviour
         Action show = () => tag.Log();
     }
 }
-""", 19)
+""", 18)
 
 # 324 CS1929 — 확장 메서드가 받는 타입과 다른 값에 불렀다.
 ep('CS1929', 'Game.cs',

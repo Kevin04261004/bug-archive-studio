@@ -172,11 +172,10 @@
   "CS1113": {
     "filename": "Bag.cs",
     "message": "Extension method 'TagTools.Log(Tag)' on value type 'Tag' cannot create delegates",
-    "focus_line": 19,
+    "focus_line": 18,
     "before": [
       "using System;",
       "using UnityEngine;",
-      "",
       "public struct Tag",
       "{",
       "    public int id;",
@@ -199,7 +198,6 @@
     "after": [
       "using System;",
       "using UnityEngine;",
-      "",
       "public struct Tag",
       "{",
       "    public int id;",
