@@ -1075,8 +1075,8 @@
       "message": "Wrong number of indices inside [], expected 1",
       "filename": "Arrays.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0022.png",
+      "bug": "assets/CS0022.png",
+      "missing": null,
       "order": 92,
       "tier": 2
     },
