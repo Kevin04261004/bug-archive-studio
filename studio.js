@@ -54,11 +54,9 @@ function releaseLine(box,text,...nodes){box.replaceChildren(document.createTextN
 function link(text,href){const a=document.createElement('a');a.textContent=text;a.href=href;a.target='_blank';a.rel='noopener';return a;}
 /* What the finished Short is called on disk. */
 const videoName=code=>`[ERROR] ${code}.mp4`;
-/* A cross-origin <a download> keeps the server's own filename, so fetch the bytes and name the
-   blob here instead. The plain link stays as the fallback when that fetch is blocked. */
-async function saveAsset(url,name){const r=await fetch(url);if(!r.ok)throw Error('no cors');download(await r.blob(),name);}
-function assetLink(text,url,name){const a=link(text,url);a.download=name;
-a.onclick=e=>{e.preventDefault();saveAsset(url,name).catch(()=>{a.onclick=null;a.click();});};return a;}
+/* Release assets are cross-origin and send no CORS header, so the page can neither fetch the
+   bytes nor override the filename with <a download>. The name has to come from the release
+   itself: the workflow writes the MP4 as "[ERROR] <CODE>.mp4" before uploading it. */
 async function showRelease(){const box=$('releasebox'),code=($('errorcode').value.trim()||'CS1002').toUpperCase(),slug=repoSlug();
 box.classList.remove('error');
 if(!slug)return releaseLine(box,'Open this editor from its GitHub Pages address to see the rendered files here.');
@@ -156,9 +154,8 @@ await runAction(code,since,sha);
 step('Render finished. Fetching the MP4…');
 release=await fetchRelease(code);}
 const video=release.assets.find(a=>a.name.endsWith('.mp4'));
-try{await saveAsset(video.browser_download_url,videoName(code));}
-catch{link('',video.browser_download_url).click();}
-const again=a=>a.name.endsWith('.mp4')?assetLink('Download MP4 again',a.browser_download_url,videoName(code)):Object.assign(link('Download thumbnail',a.browser_download_url),{download:''});
+link('',video.browser_download_url).click();
+const again=a=>link(a.name.endsWith('.mp4')?'Download MP4 again':'Download thumbnail',a.browser_download_url);
 $('downloads').replaceChildren(...release.assets.map(again));
 const done=`${code} rendered by render.py and downloaded.${sha?' The episode and its bug PNG are committed too.':''} `;
 $('releasebox').classList.remove('error');

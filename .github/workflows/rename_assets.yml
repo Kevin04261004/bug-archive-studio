@@ -1,0 +1,34 @@
+name: Rename release assets
+
+# One-off backfill. Episodes rendered before the naming change still carry
+# <CODE>-bug-archive.mp4; this renames them in place, without re-rendering.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rename every episode asset to its download name
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
+            --jq '.[] | select(.tag_name | startswith("episode-")) | .tag_name' > tags.txt
+          echo "releases: $(wc -l < tags.txt)"
+          while read -r tag; do
+            code="${tag#episode-}"
+            gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[] | "\(.id) \(.name)"' |
+            while read -r id name; do
+              case "$name" in
+                "$code-bug-archive.mp4")        want="[ERROR] $code.mp4" ;;
+                "$code-bug-archive-locked.png") want="[ERROR] $code-locked.png" ;;
+                *) continue ;;
+              esac
+              got=$(gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/assets/$id" -f name="$want" --jq '.name')
+              echo "$name -> $got"
+            done
+          done < tags.txt
