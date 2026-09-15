@@ -1,9 +1,36 @@
 {
   "error_code": "CS1661",
   "message": "Cannot convert lambda to 'Action<int>'; the parameter types do not match",
-  "filename": "Lambdas.cs",
-  "before": ["void Start()", "{", "    Action<int> a = (string s) => { };", "}"],
-  "after": ["void Start()", "{", "    Action<int> a = (int s) => { };", "}"],
-  "bug": "../assets/CS1661.png",
-  "focus_line": 3
+  "filename": "Watcher.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Action<int> onHit =",
+    "            (string name) => { };",
+    "        onHit(1);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Watcher : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Action<int> onHit =",
+    "            (int amount) => { };",
+    "        onHit(1);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS1661.png"
 }

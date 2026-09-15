@@ -1,9 +1,36 @@
 {
   "error_code": "CS0746",
   "message": "Invalid anonymous type member declarator; use a member assignment",
-  "filename": "Initializers.cs",
-  "before": ["void Start()", "{", "    var a = new { 1 };", "}"],
-  "after": ["void Start()", "{", "    var a = new { n = 1 };", "}"],
-  "bug": "../assets/CS0746.png",
-  "focus_line": 3
+  "filename": "Report.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Report : MonoBehaviour",
+    "{",
+    "    public int score = 120;",
+    "",
+    "    void Start()",
+    "    {",
+    "        var row = new { score, 1 };",
+    "        Debug.Log(row);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Report : MonoBehaviour",
+    "{",
+    "    public int score = 120;",
+    "",
+    "    void Start()",
+    "    {",
+    "        var row = new { score, id = 1 };",
+    "        Debug.Log(row);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0746.png"
 }

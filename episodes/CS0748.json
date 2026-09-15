@@ -1,9 +1,36 @@
 {
   "error_code": "CS0748",
   "message": "Inconsistent lambda parameter usage; parameter types must be all explicit",
-  "filename": "Lambdas.cs",
-  "before": ["void Start()", "{", "    Func<int, int, int> f = (int a, b) => a;", "}"],
-  "after": ["void Start()", "{", "    Func<int, int, int> f = (a, b) => a;", "}"],
-  "bug": "../assets/CS0748.png",
-  "focus_line": 3
+  "filename": "Combat.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Func<int, int, int> add =",
+    "            (int hp, up) => hp + up;",
+    "        Debug.Log(add(1, 2));",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Func<int, int, int> add =",
+    "            (hp, up) => hp + up;",
+    "        Debug.Log(add(1, 2));",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0748.png"
 }

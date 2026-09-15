@@ -1,9 +1,38 @@
 {
   "error_code": "CS0845",
   "message": "An expression tree lambda may not contain a coalescing operator with a null left side",
-  "filename": "ExprTree.cs",
-  "before": ["void Start()", "{", "    Expression<Func<int>> e =", "        () => null ?? 1;", "}"],
-  "after": ["void Start()", "{", "    Expression<Func<int>> e =", "        () => 1;", "}"],
-  "bug": "../assets/CS0845.png",
-  "focus_line": 4
+  "filename": "Query.cs",
+  "before": [
+    "using System;",
+    "using System.Linq.Expressions;",
+    "using UnityEngine;",
+    "",
+    "public class Query : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Expression<Func<int>> best =",
+    "            () => null ?? 1200;",
+    "        Debug.Log(best);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using System.Linq.Expressions;",
+    "using UnityEngine;",
+    "",
+    "public class Query : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Expression<Func<int>> best =",
+    "            () => 1200;",
+    "        Debug.Log(best);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0845.png"
 }

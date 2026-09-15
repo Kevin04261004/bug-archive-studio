@@ -1,9 +1,40 @@
 {
   "error_code": "CS1632",
   "message": "Control cannot leave the body of an anonymous method or lambda expression",
-  "filename": "Lambdas.cs",
-  "before": ["void Start()", "{", "    for (int i = 0; i < 3; i++)", "    {", "        Action a = () => { break; };", "    }", "}"],
-  "after": ["void Start()", "{", "    for (int i = 0; i < 3; i++)", "    {", "        Action a = () => { return; };", "    }", "}"],
-  "bug": "../assets/CS1632.png",
-  "focus_line": 5
+  "filename": "Spawner.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        for (int i = 0; i < 3; i++)",
+    "        {",
+    "            Action go = () => { break; };",
+    "            go();",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        for (int i = 0; i < 3; i++)",
+    "        {",
+    "            Action go = () => { return; };",
+    "            go();",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS1632.png"
 }

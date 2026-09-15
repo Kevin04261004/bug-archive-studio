@@ -1,9 +1,40 @@
 {
   "error_code": "CS1996",
   "message": "Cannot await in the body of a lock statement",
-  "filename": "AsyncLoad.cs",
-  "before": ["async Task Load()", "{", "    lock (this)", "    {", "        await Task.Delay(1);", "    }", "}"],
-  "after": ["async Task Load()", "{", "    lock (this)", "    {", "        Thread.Sleep(1);", "    }", "}"],
-  "bug": "../assets/CS1996.png",
-  "focus_line": 5
+  "filename": "Loader.cs",
+  "before": [
+    "using System.Threading.Tasks;",
+    "using UnityEngine;",
+    "",
+    "public class Loader : MonoBehaviour",
+    "{",
+    "    async Task Load()",
+    "    {",
+    "        lock (this)",
+    "        {",
+    "            await Task.Delay(1);",
+    "        }",
+    "        Debug.Log(\"done\");",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System.Threading.Tasks;",
+    "using UnityEngine;",
+    "",
+    "public class Loader : MonoBehaviour",
+    "{",
+    "    async Task Load()",
+    "    {",
+    "        lock (this)",
+    "        {",
+    "            Debug.Log(\"locked\");",
+    "        }",
+    "        Debug.Log(\"done\");",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS1996.png"
 }
