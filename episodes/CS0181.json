@@ -1,9 +1,36 @@
 {
   "error_code": "CS0181",
-  "message": "Attribute constructor parameter 'v' has type 'decimal', which is not valid",
-  "filename": "Attributes.cs",
-  "before": ["class MyAttr : Attribute", "{", "    public MyAttr(decimal v) { }", "}"],
-  "after": ["class MyAttr : Attribute", "{", "    public MyAttr(int v) { }", "}"],
-  "bug": "../assets/CS0181.png",
-  "focus_line": 3
+  "message": "Attribute constructor parameter 'weight' has type 'decimal', which is not valid",
+  "filename": "Hint.cs",
+  "before": [
+    "using System;",
+    "",
+    "public class Hint : Attribute",
+    "{",
+    "    public Hint(decimal weight) { }",
+    "}",
+    "",
+    "[Hint(1)]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "",
+    "public class Hint : Attribute",
+    "{",
+    "    public Hint(int weight) { }",
+    "}",
+    "",
+    "[Hint(1)]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0181.png"
 }

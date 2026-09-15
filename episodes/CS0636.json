@@ -1,9 +1,38 @@
 {
   "error_code": "CS0636",
   "message": "The FieldOffset attribute is only valid on types marked StructLayout(Explicit)",
-  "filename": "Attributes.cs",
-  "before": ["", "struct Data", "{", "    [FieldOffset(0)]", "    public int a;", "}"],
-  "after": ["[StructLayout(LayoutKind.Explicit)]", "struct Data", "{", "    [FieldOffset(0)]", "    public int a;", "}"],
-  "bug": "../assets/CS0636.png",
-  "focus_line": 1
+  "filename": "Packet.cs",
+  "before": [
+    "using System.Runtime.InteropServices;",
+    "",
+    "",
+    "public struct Packet",
+    "{",
+    "    [FieldOffset(0)]",
+    "    public int id;",
+    "}",
+    "",
+    "public class Host",
+    "{",
+    "    Packet packet;",
+    "}"
+  ],
+  "after": [
+    "using System.Runtime.InteropServices;",
+    "",
+    "[StructLayout(LayoutKind.Explicit)]",
+    "public struct Packet",
+    "{",
+    "    [FieldOffset(0)]",
+    "    public int id;",
+    "}",
+    "",
+    "public class Host",
+    "{",
+    "    Packet packet;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0636.png"
 }

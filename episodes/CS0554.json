@@ -1,9 +1,36 @@
 {
   "error_code": "CS0554",
   "message": "User-defined conversion from a derived class is not allowed",
-  "filename": "Conversions.cs",
-  "before": ["class Base", "{", "    public static implicit operator", "        Base(Child c) => null;", "}", "", "class Child : Base { }"],
-  "after": ["class Base", "{", "    public static implicit operator", "        Base(int n) => null;", "}", "", "class Child : Base { }"],
-  "bug": "../assets/CS0554.png",
-  "focus_line": 4
+  "filename": "Currency.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Currency",
+    "{",
+    "    public static implicit operator",
+    "        Currency(Gold coin) => null;",
+    "}",
+    "",
+    "public class Gold : Currency",
+    "{",
+    "    public int amount;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Currency",
+    "{",
+    "    public static implicit operator",
+    "        Currency(int raw) => null;",
+    "}",
+    "",
+    "public class Gold : Currency",
+    "{",
+    "    public int amount;",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0554.png"
 }

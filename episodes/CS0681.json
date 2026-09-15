@@ -1,9 +1,36 @@
 {
   "error_code": "CS0681",
   "message": "The modifier 'abstract' is not valid on fields; try using a property instead",
-  "filename": "FieldTypes.cs",
-  "before": ["abstract class Player", "{", "    public abstract int hp;", "}"],
-  "after": ["abstract class Player", "{", "    public abstract int hp { get; }", "}"],
-  "bug": "../assets/CS0681.png",
-  "focus_line": 3
+  "filename": "Unit.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public abstract class Unit",
+    "{",
+    "    public abstract int hp;",
+    "    public int mana = 50;",
+    "",
+    "    public void Log()",
+    "    {",
+    "        Debug.Log(mana);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public abstract class Unit",
+    "{",
+    "    public abstract int hp { get; }",
+    "    public int mana = 50;",
+    "",
+    "    public void Log()",
+    "    {",
+    "        Debug.Log(mana);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0681.png"
 }

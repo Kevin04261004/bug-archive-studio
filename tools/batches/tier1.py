@@ -1308,7 +1308,7 @@ public class Player : MonoBehaviour
     }
 }
 
-""" + "\n", 13)
+""", 13)
 
 # 34 CS0017 — 예제 코드를 프로젝트에 그대로 붙여 넣었다.
 ep('CS0017', 'Program.cs',

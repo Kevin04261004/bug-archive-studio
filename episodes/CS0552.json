@@ -1,9 +1,34 @@
 {
   "error_code": "CS0552",
   "message": "User-defined conversions to or from an interface are not allowed",
-  "filename": "Conversions.cs",
-  "before": ["interface IRun { }", "", "struct F", "{", "    public static implicit operator", "        IRun(F f) => null;", "}"],
-  "after": ["interface IRun { }", "", "struct F", "{", "    public static implicit operator", "        object(F f) => null;", "}"],
-  "bug": "../assets/CS0552.png",
-  "focus_line": 6
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public interface ICoin { }",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static implicit operator",
+    "        ICoin(Gold coin) => null;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public interface ICoin { }",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static implicit operator",
+    "        int(Gold coin) => 0;",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0552.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0673",
   "message": "System.Void cannot be used from C#; use typeof(void) instead",
-  "filename": "FieldTypes.cs",
-  "before": ["class Player", "{", "    public System.Void v;", "}"],
-  "after": ["class Player", "{", "    public object v;", "}"],
-  "bug": "../assets/CS0673.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public System.Void raw;",
+    "    public int mana = 50;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(mana);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public object raw;",
+    "    public int mana = 50;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(mana);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0673.png"
 }

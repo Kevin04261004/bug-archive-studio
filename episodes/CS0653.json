@@ -1,9 +1,32 @@
 {
   "error_code": "CS0653",
-  "message": "Cannot apply attribute class 'MyAttr' because it is abstract",
-  "filename": "Attributes.cs",
-  "before": ["abstract class MyAttr : Attribute { }", "", "[MyAttr]", "class Player { }"],
-  "after": ["class MyAttr : Attribute { }", "", "[MyAttr]", "class Player { }"],
-  "bug": "../assets/CS0653.png",
-  "focus_line": 1
+  "message": "Cannot apply attribute class 'Hint' because it is abstract",
+  "filename": "Hint.cs",
+  "before": [
+    "using System;",
+    "",
+    "public abstract class Hint : Attribute { }",
+    "",
+    "[Hint]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "    public int mana = 50;",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "",
+    "public class Hint : Attribute { }",
+    "",
+    "[Hint]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "    public int mana = 50;",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0653.png"
 }

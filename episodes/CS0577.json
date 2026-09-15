@@ -1,9 +1,38 @@
 {
   "error_code": "CS0577",
   "message": "The Conditional attribute is not valid on a constructor",
-  "filename": "Attributes.cs",
-  "before": ["class Player", "{", "    [Conditional(\"DEBUG\")]", "    public Player() { }", "}"],
-  "after": ["class Player", "{", "    [Conditional(\"DEBUG\")]", "    public void Log() { }", "}"],
-  "bug": "../assets/CS0577.png",
-  "focus_line": 4
+  "filename": "Player.cs",
+  "before": [
+    "using System.Diagnostics;",
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "    [Conditional(\"DEBUG\")]",
+    "    public Player()",
+    "    {",
+    "        hp = 100;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System.Diagnostics;",
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "",
+    "",
+    "    public Player()",
+    "    {",
+    "        hp = 100;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0577.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0216",
-  "message": "The operator 'F.operator ==(F, F)' requires a matching operator '!=' to be defined",
-  "filename": "Operators.cs",
-  "before": ["struct F", "{", "    public static bool operator ==(F a, F b)", "        => true;", "", "    public static bool operator <(F a, F b)", "        => false;", "}"],
-  "after": ["struct F", "{", "    public static bool operator ==(F a, F b)", "        => true;", "", "    public static bool operator !=(F a, F b)", "        => false;", "}"],
-  "bug": "../assets/CS0216.png",
-  "focus_line": 6
+  "message": "The operator 'Gold.operator ==(Gold, Gold)' requires a matching operator '!='",
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static bool operator ==(",
+    "        Gold left, Gold right) => true;",
+    "",
+    "    public static bool operator <(",
+    "        Gold left, Gold right) => false;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static bool operator ==(",
+    "        Gold left, Gold right) => true;",
+    "",
+    "    public static bool operator !=(",
+    "        Gold left, Gold right) => false;",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0216.png"
 }

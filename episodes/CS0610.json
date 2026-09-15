@@ -1,9 +1,38 @@
 {
   "error_code": "CS0610",
   "message": "Field or property cannot be of type 'System.TypedReference'",
-  "filename": "FieldTypes.cs",
-  "before": ["class Player", "{", "    public TypedReference r;", "}"],
-  "after": ["class Player", "{", "    public object r;", "}"],
-  "bug": "../assets/CS0610.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public TypedReference raw;",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public object raw;",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(hp);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS0610.png"
 }

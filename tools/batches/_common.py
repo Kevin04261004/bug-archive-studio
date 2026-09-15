@@ -7,13 +7,15 @@ from pathlib import Path
 def lines(block):
     """코드 블록을 줄 배열로 만든다.
 
-    앞의 빈 줄은 걷어내고, 끝은 개행 하나만 지운다. 블록이 빈 줄로 끝나면
-    (중괄호를 지운 자리처럼) 그 빈 줄을 살려 before 와 after 의 줄 수를 맞춘다.
+    앞뒤로 개행을 하나씩만 지운다. 삼중 따옴표 다음 줄바꿈과 닫기 전 줄바꿈만
+    걷어내므로, 첫 줄이나 마지막 줄을 비워 둔 경우(중괄호나 지시문을 지운 자리)
+    그 빈 줄이 살아남아 before 와 after 의 줄 수가 맞는다.
     """
-    block = block.lstrip('\n')
-    if block.endswith('\n\n'):
-        return block[:-1].rstrip('\n').split('\n') + ['']
-    return block.rstrip('\n').split('\n')
+    if block.startswith('\n'):
+        block = block[1:]
+    if block.endswith('\n'):
+        block = block[:-1]
+    return block.split('\n')
 
 
 def make(episodes):

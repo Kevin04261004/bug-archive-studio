@@ -1,9 +1,34 @@
 {
   "error_code": "CS0592",
-  "message": "Attribute 'MyAttr' is not valid on this declaration type",
-  "filename": "Attributes.cs",
-  "before": ["[AttributeUsage(AttributeTargets.Class)]", "class MyAttr : Attribute { }", "", "class Player", "{", "    [MyAttr]", "    public int hp;", "}"],
-  "after": ["[AttributeUsage(AttributeTargets.Field)]", "class MyAttr : Attribute { }", "", "class Player", "{", "    [MyAttr]", "    public int hp;", "}"],
-  "bug": "../assets/CS0592.png",
-  "focus_line": 1
+  "message": "Attribute 'Hint' is not valid on this declaration type",
+  "filename": "Player.cs",
+  "before": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "[AttributeUsage(AttributeTargets.Class)]",
+    "public class Hint : Attribute { }",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    [Hint]",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "using UnityEngine;",
+    "",
+    "[AttributeUsage(AttributeTargets.Field)]",
+    "public class Hint : Attribute { }",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    [Hint]",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "focus_line": 4,
+  "music": "random",
+  "bug": "../assets/CS0592.png"
 }

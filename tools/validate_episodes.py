@@ -65,7 +65,7 @@ def message_fits(message, maxsize, width):
     return False
 
 LAB_PATTERNS = [
-    (re.compile(r'\bclass\s+[A-Z]\b'),            '한 글자 클래스 이름'),
+    (re.compile(r'\b(?:class|struct|interface|record|enum)\s+[A-Z]\b'), '한 글자 타입 이름'),
     (re.compile(r'\b(?:void|int|bool|string|float)\s+[A-Z]\s*\('), '한 글자 메서드 이름'),
     (re.compile(r'\b(?:int|float|string|bool|var|double)\s+[a-z]\s*[=;,)]'), '한 글자 변수 이름'),
     (re.compile(r'\b(?:foo|bar|baz|qux)\b'),      'foo/bar 자리표시자'),

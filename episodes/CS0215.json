@@ -1,9 +1,36 @@
 {
   "error_code": "CS0215",
   "message": "The return type of operator true or operator false must be bool",
-  "filename": "Operators.cs",
-  "before": ["struct F", "{", "    public static int operator true(F f)", "        => 1;", "", "    public static bool operator false(F f)", "        => false;", "}"],
-  "after": ["struct F", "{", "    public static bool operator true(F f)", "        => 1;", "", "    public static bool operator false(F f)", "        => false;", "}"],
-  "bug": "../assets/CS0215.png",
-  "focus_line": 3
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static int operator true(",
+    "        Gold coin) => default;",
+    "",
+    "    public static bool operator false(",
+    "        Gold coin) => default;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static bool operator true(",
+    "        Gold coin) => default;",
+    "",
+    "    public static bool operator false(",
+    "        Gold coin) => default;",
+    "}"
+  ],
+  "focus_line": 7,
+  "music": "random",
+  "bug": "../assets/CS0215.png"
 }

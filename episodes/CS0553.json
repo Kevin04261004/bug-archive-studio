@@ -1,9 +1,36 @@
 {
   "error_code": "CS0553",
   "message": "User-defined conversion from a base class is not allowed",
-  "filename": "Conversions.cs",
-  "before": ["class Base { }", "", "class Child : Base", "{", "    public static implicit operator", "        Child(Base b) => null;", "}"],
-  "after": ["class Base { }", "", "class Child : Base", "{", "    public static implicit operator", "        Child(int n) => null;", "}"],
-  "bug": "../assets/CS0553.png",
-  "focus_line": 6
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Currency",
+    "{",
+    "    public int amount;",
+    "}",
+    "",
+    "public class Gold : Currency",
+    "{",
+    "    public static implicit operator",
+    "        Gold(Currency raw) => null;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Currency",
+    "{",
+    "    public int amount;",
+    "}",
+    "",
+    "public class Gold : Currency",
+    "{",
+    "    public static implicit operator",
+    "        Gold(int raw) => null;",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS0553.png"
 }

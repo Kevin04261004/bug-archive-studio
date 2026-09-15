@@ -1,9 +1,38 @@
 {
   "error_code": "CS0643",
-  "message": "'n' duplicate named attribute argument",
-  "filename": "Attributes.cs",
-  "before": ["class MyAttr : Attribute", "{", "    public int n;", "    public int m;", "}", "", "[MyAttr(n = 1, n = 2)]", "class Player { }"],
-  "after": ["class MyAttr : Attribute", "{", "    public int n;", "    public int m;", "}", "", "[MyAttr(n = 1, m = 2)]", "class Player { }"],
-  "bug": "../assets/CS0643.png",
-  "focus_line": 7
+  "message": "'weight' duplicate named attribute argument",
+  "filename": "Hint.cs",
+  "before": [
+    "using System;",
+    "",
+    "public class Hint : Attribute",
+    "{",
+    "    public int weight;",
+    "    public int order;",
+    "}",
+    "",
+    "[Hint(weight = 1, weight = 2)]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "",
+    "public class Hint : Attribute",
+    "{",
+    "    public int weight;",
+    "    public int order;",
+    "}",
+    "",
+    "[Hint(weight = 1, order = 2)]",
+    "public class Player",
+    "{",
+    "    public int hp = 100;",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0643.png"
 }

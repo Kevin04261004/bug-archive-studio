@@ -1,9 +1,40 @@
 {
   "error_code": "CS0233",
-  "message": "'Point' does not have a predefined size, so sizeof needs an unsafe context",
-  "filename": "Unsafe.cs",
-  "before": ["struct Point", "{", "    public int x;", "}", "", "void Start()", "{", "    Debug.Log(sizeof(Point));", "}"],
-  "after": ["struct Point", "{", "    public int x;", "}", "", "unsafe void Start()", "{", "    Debug.Log(sizeof(Point));", "}"],
-  "bug": "../assets/CS0233.png",
-  "focus_line": 6
+  "message": "'Slot' does not have a predefined size, so sizeof needs an unsafe context",
+  "filename": "Bag.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Slot",
+    "{",
+    "    public int id;",
+    "}",
+    "",
+    "public class Bag : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(sizeof(Slot));",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Slot",
+    "{",
+    "    public int id;",
+    "}",
+    "",
+    "public class Bag : MonoBehaviour",
+    "{",
+    "    unsafe void Start()",
+    "    {",
+    "        Debug.Log(sizeof(Slot));",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0233.png"
 }

@@ -1,9 +1,40 @@
 {
   "error_code": "CS0555",
   "message": "User-defined conversion cannot convert the enclosing type to itself",
-  "filename": "Conversions.cs",
-  "before": ["struct F", "{", "    public static implicit operator", "        F(F f) => default;", "}"],
-  "after": ["struct F", "{", "    public static implicit operator", "        F(int n) => default;", "}"],
-  "bug": "../assets/CS0555.png",
-  "focus_line": 4
+  "filename": "Gold.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static implicit operator",
+    "        Gold(Gold coin) => default;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public struct Gold",
+    "{",
+    "    public int amount;",
+    "",
+    "    public static implicit operator",
+    "        Gold(int raw) => default;",
+    "}",
+    "",
+    "public class Wallet : MonoBehaviour",
+    "{",
+    "    Gold coins;",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS0555.png"
 }
