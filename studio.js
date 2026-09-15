@@ -355,10 +355,26 @@ $('nextepisode').onclick=stepper(1);
    touched, so a half-finished episode in the editor cannot end up in the batch. */
 const picked=new Set();
 const bstatus=(s,error=false)=>{$('batchstatus').textContent=s;$('batchstatus').classList.toggle('error',error);};
+/* The rows under one tier heading, up to the next heading. */
+function tierRows(head){const rows=[];
+for(let n=head.nextElementSibling;n&&!n.classList.contains('tierhead');n=n.nextElementSibling)rows.push(n);
+return rows;}
+const takeable=head=>tierRows(head).filter(r=>!r.hidden&&!r.disabled);
 function countPicked(){const rows=[...$('batchlist').querySelectorAll('.batchrow')];
 const shown=rows.filter(r=>!r.hidden&&!r.disabled).length;
 $('batchcount').textContent=`${picked.size} selected · ${shown} shown · ${rows.filter(r=>r.disabled).length} waiting for a bug PNG`;
+for(const head of $('batchlist').querySelectorAll('.tierpick')){const rows=takeable(head);
+const on=rows.filter(r=>picked.has(r.dataset.code)).length;
+head.querySelector('.tiercount').textContent=rows.length?`${on} / ${rows.length}`:'no bug PNG yet';
+head.classList.toggle('full',!!rows.length&&on===rows.length);
+head.disabled=!rows.length;}
 $('batchrender').disabled=!picked.size||activeJob;}
+/* Selecting a tier is the common case: a series is shot tier by tier, and the checklist
+   already groups the episodes that way. Clicking the heading takes the whole group. */
+function setPicked(rows,on){for(const r of rows){
+if(on)picked.add(r.dataset.code);else picked.delete(r.dataset.code);
+r.classList.toggle('picked',on);}
+countPicked();}
 function batchRow(row){const code=(row.error_code||'').toUpperCase();
 const b=document.createElement('button');
 b.className='batchrow episoderow'+(row.bug?'':' nobug')+(picked.has(code)?' picked':'');
@@ -375,9 +391,18 @@ b.append(label,meta,msg);
 b.onclick=()=>{if(picked.has(code))picked.delete(code);else picked.add(code);
 b.classList.toggle('picked',picked.has(code));countPicked();};
 return b;}
+function tierHead(t){const h=document.createElement('button');
+h.type='button';h.className='tierhead tierpick';
+h.title='Take or drop every episode under this heading.';
+const name=document.createElement('b');name.textContent=t?`TIER ${t}`:'NOT ON THE CHECKLIST';
+const count=document.createElement('span');count.className='tiercount';
+h.append(name,count);
+/* Only what the filter is showing, so a heading click follows the same rule as Select all. */
+h.onclick=()=>{const rows=takeable(h);setPicked(rows,!rows.every(r=>picked.has(r.dataset.code)));};
+return h;}
 function batchNodes(rows){const out=[];let tier=null;
 for(const row of rows){const t=row.tier||0;
-if(t!==tier){tier=t;const h=document.createElement('p');h.className='tierhead';h.textContent=t?`TIER ${t}`:'NOT ON THE CHECKLIST';out.push(h);}
+if(t!==tier){tier=t;out.push(tierHead(t));}
 out.push(batchRow(row));}
 return out;}
 /* Filtering hides rows rather than rebuilding the list, so a selection survives typing in the box.
@@ -388,11 +413,7 @@ for(const head of $('batchlist').querySelectorAll('.tierhead')){let any=false;
 for(let n=head.nextElementSibling;n&&!n.classList.contains('tierhead');n=n.nextElementSibling)if(!n.hidden)any=true;
 head.hidden=!any;}
 countPicked();}
-function selectShown(on){for(const row of $('batchlist').querySelectorAll('.batchrow')){
-if(row.hidden||row.disabled)continue;
-if(on)picked.add(row.dataset.code);else picked.delete(row.dataset.code);
-row.classList.toggle('picked',on);}
-countPicked();}
+const selectShown=on=>setPicked([...$('batchlist').querySelectorAll('.batchrow')].filter(r=>!r.hidden&&!r.disabled),on);
 function batchLine(code,text,...nodes){const d=document.createElement('div');d.className='batchdone'+(nodes.length?'':' failed');
 const b=document.createElement('b');b.textContent=code;
 const s=document.createElement('span');s.textContent=text;

@@ -167,3 +167,15 @@ nav button{padding:9px 11px}
 .batchdone.failed b{color:#ff959c}
 .batchdone span{color:#8b9ba6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .batchdone a{color:#c3ff55}
+
+/* A tier heading in the batch list is a button for its whole group. It keeps the
+   heading typography so the list still reads as a grouped list, not a row of buttons. */
+#batchlist .tierpick{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+width:100%;text-align:left;background:none;border:0;border-bottom:1px solid #2f3a43;border-radius:0;
+padding:0 2px 6px;cursor:pointer}
+#batchlist .tierpick b{font:inherit;color:inherit}
+#batchlist .tierpick:hover:not(:disabled){background:none;color:#e7edf2;border-bottom-color:#536570}
+#batchlist .tierpick .tiercount{letter-spacing:0;color:#6f8290;font-size:11px}
+#batchlist .tierpick.full{color:#c3ff55;border-bottom-color:#4d6b25}
+#batchlist .tierpick.full .tiercount{color:#c3ff55}
+#batchlist .tierpick:disabled{opacity:.4;cursor:default}
