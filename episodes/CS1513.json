@@ -1,18 +1,44 @@
 {
   "error_code": "CS1513",
   "message": "} expected",
-  "filename": "EnemySpawner.cs",
+  "filename": "Spawner.cs",
   "before": [
-    "void Spawn()",
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
     "{",
-    "    Instantiate(enemy);"
-  ],
-  "after": [
-    "void Spawn()",
-    "{",
-    "    Instantiate(enemy);",
+    "    public GameObject enemy;",
+    "    public int total = 5;",
+    "",
+    "    void Start()",
+    "    {",
+    "        for (int i = 0; i < total; i++)",
+    "        {",
+    "            Instantiate(enemy);",
+    "            Debug.Log(\"Spawned \" + i);",
+    "",
+    "    }",
     "}"
   ],
-  "focus_line": 4,
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Spawner : MonoBehaviour",
+    "{",
+    "    public GameObject enemy;",
+    "    public int total = 5;",
+    "",
+    "    void Start()",
+    "    {",
+    "        for (int i = 0; i < total; i++)",
+    "        {",
+    "            Instantiate(enemy);",
+    "            Debug.Log(\"Spawned \" + i);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 14,
+  "music": "random",
   "bug": "../assets/CS1513.png"
 }
