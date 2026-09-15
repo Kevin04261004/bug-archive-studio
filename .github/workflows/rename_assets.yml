@@ -31,8 +31,8 @@ jobs:
             gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[] | "\(.id)\t\(.name)"' |
             while IFS=$'\t' read -r id name; do
               case "$name" in
-                *.mp4) want="C-QUIZ-ERROR-$code.mp4" ;;
-                *.png) want="C-QUIZ-ERROR-$code-locked.png" ;;
+                *.mp4) want="CS-QUIZ-ERROR-$code.mp4" ;;
+                *.png) want="CS-QUIZ-ERROR-$code-locked.png" ;;
                 *) continue ;;
               esac
               if [ "$name" = "$want" ]; then kept=$((kept+1)); continue; fi

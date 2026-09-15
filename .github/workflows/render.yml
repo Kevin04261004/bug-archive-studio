@@ -81,12 +81,13 @@ jobs:
           # Release assets get a name without '#' or spaces. Two reasons, both hard:
           # gh reads 'file#label' so a '#' in the path truncates it, and GitHub rewrites
           # characters it does not allow in an asset name anyway, which turned
-          # 'C# QUIZ - ERROR CS1002.mp4' into 'C.QUIZ.-.ERROR.CS1002.mp4'. The readable
-          # title survives where it can be kept: on disk, and inside the batch archive.
+          # 'C# QUIZ - ERROR CS1002.mp4' into 'C.QUIZ.-.ERROR.CS1002.mp4'. C# is written
+          # CS here, the way the language already spells itself in .cs and in CS0000.
+          # The readable title survives where it can be kept: on disk, and in the archive.
           mkdir -p upload
           for code in $(cat output/rendered.txt); do
             tag="episode-$code"
-            mp4="C-QUIZ-ERROR-$code.mp4"; png="C-QUIZ-ERROR-$code-locked.png"
+            mp4="CS-QUIZ-ERROR-$code.mp4"; png="CS-QUIZ-ERROR-$code-locked.png"
             cp "output/C# QUIZ - ERROR $code.mp4" "upload/$mp4"
             cp "output/C# QUIZ - ERROR $code-locked.png" "upload/$png"
             gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "$code" --notes "Rendered from episodes/$code.json by render.py."
