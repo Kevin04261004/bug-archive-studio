@@ -871,8 +871,8 @@
       "message": "Catch clauses cannot follow the general catch clause of a try statement",
       "filename": "Exceptions.cs",
       "lines": 12,
-      "bug": null,
-      "missing": "../assets/CS1017.png",
+      "bug": "assets/CS1017.png",
+      "missing": null,
       "order": 75,
       "tier": 2
     },
