@@ -348,6 +348,134 @@ const stepper=delta=>()=>{const b=[$('prevepisode'),$('nextepisode')];b.forEach(
 stepEpisode(delta).catch(e=>status(e.message,true)).finally(()=>b.forEach(x=>x.disabled=false));};
 $('prevepisode').onclick=stepper(-1);
 $('nextepisode').onclick=stepper(1);
+/* ---- Batch render -------------------------------------------------------------------
+   Rendering a series one episode at a time means one commit, one queued runner and one
+   wait per episode. A batch picks straight from the episode list and renders the whole
+   selection in a single run, from the JSON already in the repository. The editor is not
+   touched, so a half-finished episode in the editor cannot end up in the batch. */
+const picked=new Set();
+const bstatus=(s,error=false)=>{$('batchstatus').textContent=s;$('batchstatus').classList.toggle('error',error);};
+function countPicked(){const rows=[...$('batchlist').querySelectorAll('.batchrow')];
+const shown=rows.filter(r=>!r.hidden&&!r.disabled).length;
+$('batchcount').textContent=`${picked.size} selected · ${shown} shown · ${rows.filter(r=>r.disabled).length} waiting for a bug PNG`;
+$('batchrender').disabled=!picked.size||activeJob;}
+function batchRow(row){const code=(row.error_code||'').toUpperCase();
+const b=document.createElement('button');
+b.className='batchrow episoderow'+(row.bug?'':' nobug')+(picked.has(code)?' picked':'');
+b.dataset.code=code;
+b.dataset.find=`${code} ${row.filename||''} ${row.message||''}`.toLowerCase();
+if(!row.bug){b.disabled=true;b.title='render.py skips an episode with no bug PNG, so it cannot be in a batch yet.';}
+const mark=document.createElement('i');mark.className='pick';
+const label=document.createElement('b');label.textContent=code||row.file;
+const meta=document.createElement('span');meta.textContent=`${row.filename} · ${row.lines} lines`;
+const msg=document.createElement('em');msg.textContent=row.message;
+b.append(mark);
+if(row.order){const n=document.createElement('i');n.className='epnum';n.textContent=row.order;b.append(n);}
+b.append(label,meta,msg);
+b.onclick=()=>{if(picked.has(code))picked.delete(code);else picked.add(code);
+b.classList.toggle('picked',picked.has(code));countPicked();};
+return b;}
+function batchNodes(rows){const out=[];let tier=null;
+for(const row of rows){const t=row.tier||0;
+if(t!==tier){tier=t;const h=document.createElement('p');h.className='tierhead';h.textContent=t?`TIER ${t}`:'NOT ON THE CHECKLIST';out.push(h);}
+out.push(batchRow(row));}
+return out;}
+/* Filtering hides rows rather than rebuilding the list, so a selection survives typing in the box.
+   Select all then follows what is on screen, which is how a filter is expected to behave. */
+function filterBatch(){const q=$('batchfind').value.trim().toLowerCase();
+for(const row of $('batchlist').querySelectorAll('.batchrow'))row.hidden=q&&!row.dataset.find.includes(q);
+for(const head of $('batchlist').querySelectorAll('.tierhead')){let any=false;
+for(let n=head.nextElementSibling;n&&!n.classList.contains('tierhead');n=n.nextElementSibling)if(!n.hidden)any=true;
+head.hidden=!any;}
+countPicked();}
+function selectShown(on){for(const row of $('batchlist').querySelectorAll('.batchrow')){
+if(row.hidden||row.disabled)continue;
+if(on)picked.add(row.dataset.code);else picked.delete(row.dataset.code);
+row.classList.toggle('picked',on);}
+countPicked();}
+function batchLine(code,text,...nodes){const d=document.createElement('div');d.className='batchdone'+(nodes.length?'':' failed');
+const b=document.createElement('b');b.textContent=code;
+const s=document.createElement('span');s.textContent=text;
+d.append(b,s,...nodes);$('batchresults').append(d);return d;}
+/* Browsers drop downloads fired in a tight loop, so they go out one at a time with a gap. */
+async function downloadAll(rows){for(const row of rows){row.link.click();await sleep(700);}}
+function downloadAllButton(rows){const b=document.createElement('button');
+b.className='subtle';b.textContent=`Download all ${rows.length} MP4s`;
+b.onclick=()=>{b.disabled=true;downloadAll(rows).finally(()=>{b.disabled=false;});};
+return b;}
+async function batchOnActions(codes){const slug=repoSlug();
+if(!slug)throw Error('This editor is not on its GitHub Pages address, so it cannot reach the repository. Render on your own PC with START_STUDIO.bat.');
+const token=($('ghtoken').value||'').trim();
+if(!token){$('offline').showModal();$('ghtoken').focus();throw Error('Paste a GitHub token in the Render MP4 dialog first, then come back.');}
+gh={slug,token};try{sessionStorage.setItem('bugarchive-ghtoken',token);}catch{}
+bstatus(`Checking the token on ${slug.owner}/${slug.repo}…`);
+const repo=await api('');
+if(!repo.permissions||!repo.permissions.push)throw Error(`This token can read ${slug.owner}/${slug.repo} but cannot write to it. Set Contents and Actions to read and write.`);
+const since=new Date(Date.now()-20000);
+bstatus(`Starting render.py on GitHub for ${codes.length} episodes…`);
+await api('/actions/workflows/render.yml/dispatches',{method:'POST',body:JSON.stringify({ref:'main',inputs:{episode:codes.join(' ')}})});
+const run=await findRun(r=>r.event==='workflow_dispatch'&&new Date(r.created_at)>=since);
+if(!run)throw Error('The action did not start. Check that Actions are enabled for this repository.');
+/* One runner renders the selection in order, so the wait grows with it. */
+const label=`${codes.length} episodes`,tries=150+codes.length*15;
+const watch=async()=>{for(let i=0;i<tries;i++){const z=await api('/actions/runs/'+run.id);
+if(z.status==='completed')return z;
+const secs=Math.round((Date.now()-since)/1000);
+bstatus(z.status==='queued'?`Waiting for a runner to pick up ${label}… ${secs}s`:`Rendering ${label} on GitHub… ${secs}s. You can close this and come back.`);
+await sleep(4000);}
+throw Error('The action is taking too long. Open the run on GitHub to see where it got to.');};
+const finished=await watch();
+bstatus('Collecting the MP4s…');
+$('batchresults').replaceChildren();
+const ready=[];
+for(const code of codes){let asset=null;
+try{const z=await api('/releases/tags/episode-'+code);
+asset=(z.assets||[]).find(a=>a.name.endsWith('.mp4'))||null;}catch{}
+if(asset){const a=link('Download',asset.browser_download_url);
+batchLine(code,asset.name,a);ready.push({code,link:a});}
+else batchLine(code,'no MP4 on its release. Open the run on GitHub to see why.');}
+if(ready.length)$('batchresults').prepend(downloadAllButton(ready));
+const lost=codes.length-ready.length;
+if(finished.conclusion!=='success'&&!ready.length)throw Error(`The action finished as ${finished.conclusion} and rendered nothing. Open the run on GitHub.`);
+bstatus(lost?`${ready.length} of ${codes.length} rendered. ${lost} did not; their rows say so.`:`All ${ready.length} episodes rendered.`,!!lost);}
+async function batchLocally(codes){bstatus(`Queueing ${codes.length} episodes…`);
+const r=await fetch('api/render/batch',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({codes})});
+const queued=await r.json();
+if(!r.ok)throw Error(queued.error||'The studio could not queue the batch.');
+$('batchresults').replaceChildren();
+for(;;){await sleep(1000);
+const z=await(await fetch('api/job/'+queued.job,{cache:'no-store'})).json();
+if(z.error)throw Error(z.error);
+if(z.status!=='done'){bstatus(z.progress||'Rendering…');continue;}
+const ready=[];
+for(const item of z.done||[]){const a=document.createElement('a');
+a.textContent='Download';a.href=item.video;a.download=videoName(item.code);
+batchLine(item.code,videoName(item.code),a);ready.push({code:item.code,link:a});}
+for(const item of z.failed||[])batchLine(item.code,item.error);
+if(ready.length)$('batchresults').prepend(downloadAllButton(ready));
+const lost=(z.failed||[]).length;
+return bstatus(lost?`${ready.length} rendered, ${lost} failed.`:`All ${ready.length} episodes rendered into the output folder.`,!!lost);}}
+async function startBatch(){const codes=[...picked].sort();
+if(!codes.length)return bstatus('Pick at least one episode first.',true);
+activeJob=true;$('batchrender').disabled=true;$('render').disabled=true;
+try{await(localStudio?batchLocally(codes):batchOnActions(codes));}
+catch(e){bstatus(e.message,true);}
+finally{activeJob=false;$('render').disabled=false;countPicked();}}
+$('batchopen').onclick=async()=>{$('batchdlg').showModal();
+$('batchresults').replaceChildren();bstatus('Reading the episodes folder…');
+try{const rows=episodeCache=await listEpisodes();
+/* A code no longer in the list must not stay selected and be dispatched into a failing run. */
+const live=new Set(rows.map(r=>(r.error_code||'').toUpperCase()));
+for(const code of[...picked])if(!live.has(code))picked.delete(code);
+$('batchlist').replaceChildren(...batchNodes(rows));
+filterBatch();
+bstatus(rows.length?'Click the episodes you want, then press Render selected.':'The episodes folder has no JSON yet.');}
+catch(e){bstatus(e.message,true);}};
+$('batchfind').oninput=filterBatch;
+$('batchall').onclick=()=>selectShown(true);
+$('batchnone').onclick=()=>selectShown(false);
+$('batchrender').onclick=startBatch;
+$('closeBatch').onclick=()=>$('batchdlg').close();
 /* AI bug generation. The concept stays the established Bug Archive family; only one slight variation changes. */
 const MOTIFS={CS1002:'one tiny black semicolon-shaped mouth, exactly like the reference',CS1003:'holding one lime puzzle piece with an obviously missing matching slot',CS0103:'searching through one tiny magnifying glass',CS0246:'holding an empty name-tag frame with a small question symbol shape (no readable text)',CS1061:'trying one rounded key that visibly does not fit a tiny socket',CS0029:'holding two visibly mismatched rounded connector pieces',CS0161:'tossing one curved return-arrow boomerang',CS0165:'holding one empty translucent value capsule',CS0019:'holding two rounded puzzle pieces whose operator-shaped edges cannot meet',CS1503:'trying to place one round plug into a square socket',CS0201:'holding one unfinished dotted path that stops abruptly',CS0111:'holding two identical tiny toy blasters, one in each hand, clearly showing an accidental duplicate',CS0117:'checking one small empty name plate',CS0120:'reaching from a tiny pedestal toward an instance object below',CS1525:'surprised by one wrong puzzle token floating beside it',CS1729:'holding a constructor-shaped box with the wrong number of round slots',CS7036:'holding an empty required-argument socket with one missing plug'};
 const VARIATIONS=[['auto','Auto (slight)'],['cheeks','Rounder cheeks'],['antennae','Shorter antennae'],['pose','Playful pose'],['accessory','Small accessory'],['none','No variation']];

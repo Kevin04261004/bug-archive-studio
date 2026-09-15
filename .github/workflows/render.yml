@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       episode:
-        description: 'Error code to render, or all'
+        description: 'Error codes to render, space separated, or all'
         default: all
 
 permissions:
@@ -46,25 +46,39 @@ jobs:
           AFTER: ${{ github.sha }}
         run: python .github/workflows/pick_episodes.py >> "$GITHUB_OUTPUT"
 
+      # A batch from the studio arrives as one run, so a single bad episode must not throw
+      # away the ones that already rendered. Failures are collected and reported at the end,
+      # after everything that did render has been uploaded.
       - name: Render
         if: steps.pick.outputs.codes != ''
+        id: render
         run: |
+          mkdir -p output
+          : > output/rendered.txt
+          failed=''
           for code in ${{ steps.pick.outputs.codes }}; do
             echo "::group::$code"
             # The page downloads the MP4 straight from the release, and a cross-origin download
             # cannot be renamed by the browser, so the file carries its final name from here on.
             # GitHub strips brackets and turns spaces into dots in release asset names, so the
             # name is written the way GitHub will store it rather than being silently rewritten.
-            python render.py "episodes/$code.json" --output "output/ERROR.$code.mp4"
+            if python render.py "episodes/$code.json" --output "output/ERROR.$code.mp4"; then
+              echo "$code" >> output/rendered.txt
+            else
+              echo "::error title=$code::render.py could not render this episode."
+              failed="$failed $code"
+            fi
             echo "::endgroup::"
           done
+          echo "rendered: $(wc -l < output/rendered.txt)"
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
 
       - name: Attach each MP4 to its own release
         if: steps.pick.outputs.codes != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for code in ${{ steps.pick.outputs.codes }}; do
+          for code in $(cat output/rendered.txt); do
             tag="episode-$code"
             gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "$code" --notes "Rendered from episodes/$code.json by render.py."
             # Drop the old naming so a release never carries two MP4s; the page picks the first it finds.
@@ -74,7 +88,16 @@ jobs:
             gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[].name' | sed "s/^/  $code asset: /"
           done
 
+      - name: Report the episodes that failed
+        if: steps.render.outputs.failed != ''
+        run: |
+          echo 'These episodes did not render:${{ steps.render.outputs.failed }}' >&2
+          exit 1
+
+      # Runs even when an episode failed above: the list is about what is in episodes/,
+      # not about what rendered, and everyone else's page reads it.
       - name: Refresh the episode and music lists for GitHub Pages
+        if: always()
         run: |
           python server.py --index
           git add episodes/index.json music/index.json

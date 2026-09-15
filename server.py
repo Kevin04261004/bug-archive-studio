@@ -24,6 +24,27 @@ def render(job,config):
         with lock:jobs[job]={'status':'done','video':'/'+output.relative_to(ROOT).as_posix(),'thumbnail':'/'+output.with_name(output.stem+'-locked.png').relative_to(ROOT).as_posix(),'archive':saved[0],'bug':saved[1]}
     except Exception as e:
         with lock:jobs[job]={'status':'failed','error':str(e)}
+def render_batch(job,codes):
+    """Render several episodes straight from episodes/, one after another.
+
+    The single-episode job renders whatever is in the editor. A batch renders what is
+    already saved, so picking thirty episodes does not mean loading each one first.
+    One failure is recorded and the run carries on, matching the GitHub Action."""
+    folder=ROOT/'output'/'jobs'/job;folder.mkdir(parents=True,exist_ok=True)
+    done,failed=[],[]
+    for i,code in enumerate(codes,1):
+        with lock:jobs[job]={'status':'running','progress':f'Rendering {code}… ({i}/{len(codes)})','done':list(done),'failed':list(failed)}
+        output=folder/f'ERROR.{code}.mp4'
+        try:
+            p=subprocess.run([sys.executable,str(ROOT/'render.py'),str(ROOT/'episodes'/f'{code}.json'),'--output',str(output)],
+                             cwd=ROOT,capture_output=True,text=True)
+            if p.returncode!=0:raise RuntimeError((p.stdout+p.stderr)[-600:])
+            done.append({'code':code,
+                         'video':'/'+output.relative_to(ROOT).as_posix(),
+                         'thumbnail':'/'+output.with_name(output.stem+'-locked.png').relative_to(ROOT).as_posix()})
+        except Exception as e:
+            failed.append({'code':code,'error':str(e)})
+    with lock:jobs[job]={'status':'done','batch':True,'done':done,'failed':failed}
 INDEX=ROOT/'episodes'/'index.json'
 MUSIC_DIR=ROOT/'music'
 MUSIC_INDEX=MUSIC_DIR/'index.json'
@@ -127,10 +148,27 @@ class Handler(SimpleHTTPRequestHandler):
                 path.write_bytes(base64.b64decode(data.split(',',1)[1],validate=True))
             return self.send_json(write_music_index())
         except Exception as e:return self.send_json({'error':str(e)},400)
+    def do_batch(self):
+        try:
+            length=int(self.headers.get('Content-Length','0'))
+            if not 0<length<64*1024:raise ValueError('Selection is too large.')
+            codes=json.loads(self.rfile.read(length)).get('codes')
+            if not isinstance(codes,list) or not codes:raise ValueError('Pick at least one episode.')
+            if len(codes)>600:raise ValueError('Pick 600 episodes or fewer.')
+            wanted,seen=[],set()
+            for code in codes:
+                if not isinstance(code,str) or not re.fullmatch(r'CS\d{4}',code):raise ValueError(f'Invalid error code: {code!r}.')
+                if not (ROOT/'episodes'/f'{code}.json').is_file():raise ValueError(f'{code} is not an episode in the episodes folder.')
+                if code not in seen:seen.add(code);wanted.append(code)
+            job=uuid.uuid4().hex
+            with lock:jobs[job]={'status':'queued','progress':f'{len(wanted)} episodes queued…','done':[],'failed':[]}
+            pool.submit(render_batch,job,wanted);self.send_json({'job':job,'count':len(wanted)},202)
+        except Exception as e:self.send_json({'error':str(e)},400)
     def do_POST(self):
         origin=self.headers.get('Origin')
         if not self.local() or origin not in {None,f'http://127.0.0.1:{args.port}',f'http://localhost:{args.port}'}:return self.send_json({'error':'Local origin required.'},403)
         if self.path in {'/api/music','/api/music/delete'}:return self.do_music()
+        if self.path=='/api/render/batch':return self.do_batch()
         if self.path!='/api/render':return self.send_json({'error':'Unknown action.'},404)
         try:
             length=int(self.headers.get('Content-Length','0'))

@@ -49,9 +49,24 @@ def has_bug(code):
     return True
 
 
+def asked_for(wanted):
+    """Read the workflow_dispatch input: 'all', one code, or a whole selection.
+
+    The studio dispatches a batch as one space-separated list so a picker of thirty
+    episodes waits for a single runner instead of queueing thirty of them.
+    Order follows episodes/, not the order they were typed, so a batch renders
+    predictably. Codes with no episode file are reported rather than failing the run."""
+    have = known()
+    if wanted in {'', 'all'}:
+        return have
+    asked = {c.upper() for c in re.split(r'[\s,]+', wanted) if c}
+    for code in sorted(asked - set(have)):
+        print(f'{code} is not an episode in episodes/, so it is skipped.', file=sys.stderr)
+    return [c for c in have if c in asked]
+
+
 if os.environ.get('EVENT') == 'workflow_dispatch':
-    wanted = (os.environ.get('WANTED') or 'all').strip()
-    codes = known() if wanted in {'', 'all'} else [c for c in known() if c == wanted]
+    codes = asked_for((os.environ.get('WANTED') or 'all').strip())
 else:
     codes = changed(os.environ.get('BEFORE', ''), os.environ.get('AFTER', 'HEAD'))
 
