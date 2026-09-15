@@ -1051,8 +1051,8 @@
       "message": "Invalid rank specifier: expected , or ]",
       "filename": "Arrays.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0178.png",
+      "bug": "assets/CS0178.png",
+      "missing": null,
       "order": 90,
       "tier": 2
     },
