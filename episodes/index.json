@@ -991,8 +991,8 @@
       "message": "'in' expected",
       "filename": "Each.cs",
       "lines": 7,
-      "bug": null,
-      "missing": "../assets/CS1515.png",
+      "bug": "assets/CS1515.png",
+      "missing": null,
       "order": 85,
       "tier": 2
     },
