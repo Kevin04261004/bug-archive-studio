@@ -919,8 +919,8 @@
       "message": "The left-hand side of an assignment must be a variable, property or indexer",
       "filename": "Assign.cs",
       "lines": 5,
-      "bug": null,
-      "missing": "../assets/CS0131.png",
+      "bug": "assets/CS0131.png",
+      "missing": null,
       "order": 79,
       "tier": 2
     },
