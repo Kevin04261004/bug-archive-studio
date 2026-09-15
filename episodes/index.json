@@ -1351,8 +1351,8 @@
       "message": "Cannot assign void to an implicitly-typed variable",
       "filename": "Vars.cs",
       "lines": 7,
-      "bug": null,
-      "missing": "../assets/CS0815.png",
+      "bug": "assets/CS0815.png",
+      "missing": null,
       "order": 118,
       "tier": 3
     },
@@ -1363,8 +1363,8 @@
       "message": "Implicitly-typed variables must be initialized",
       "filename": "Vars.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0818.png",
+      "bug": "assets/CS0818.png",
+      "missing": null,
       "order": 119,
       "tier": 3
     },
@@ -1375,8 +1375,8 @@
       "message": "Implicitly-typed variables cannot have multiple declarators",
       "filename": "Vars.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0819.png",
+      "bug": "assets/CS0819.png",
+      "missing": null,
       "order": 120,
       "tier": 3
     },
@@ -1387,8 +1387,8 @@
       "message": "Cannot initialize an implicitly-typed variable with an array initializer",
       "filename": "Vars.cs",
       "lines": 4,
-      "bug": null,
-      "missing": "../assets/CS0820.png",
+      "bug": "assets/CS0820.png",
+      "missing": null,
       "order": 121,
       "tier": 3
     },
