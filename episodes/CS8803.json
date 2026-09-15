@@ -1,9 +1,42 @@
 {
   "error_code": "CS8803",
   "message": "Top-level statements must precede namespace and type declarations",
-  "filename": "Modern.cs",
-  "before": ["Debug.Log(1);", "", "class Player { }", "", "Debug.Log(2);"],
-  "after": ["Debug.Log(1);", "", "class Player { }", "", ""],
-  "bug": "../assets/CS8803.png",
-  "focus_line": 5
+  "filename": "Program.cs",
+  "before": [
+    "using System;",
+    "",
+    "Console.WriteLine(\"start\");",
+    "",
+    "class Player",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "Console.WriteLine(\"end\");",
+    "",
+    "class Enemy",
+    "{",
+    "    public int hp = 50;",
+    "}"
+  ],
+  "after": [
+    "using System;",
+    "",
+    "Console.WriteLine(\"start\");",
+    "",
+    "class Player",
+    "{",
+    "    public int hp = 100;",
+    "}",
+    "",
+    "",
+    "",
+    "class Enemy",
+    "{",
+    "    public int hp = 50;",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS8803.png"
 }

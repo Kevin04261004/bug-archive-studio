@@ -1,9 +1,36 @@
 {
   "error_code": "CS8714",
   "message": "The type 'string?' does not match the 'notnull' constraint on type parameter 'T'",
-  "filename": "Nullable.cs",
-  "before": ["#nullable enable", "", "class Box<T> where T : notnull { }", "", "void Start()", "{", "    var b = new Box<string?>();", "}"],
-  "after": ["#nullable enable", "", "class Box<T> where T : notnull { }", "", "void Start()", "{", "    var b = new Box<string>();", "}"],
-  "bug": "../assets/CS8714.png",
-  "focus_line": 7
+  "filename": "Bag.cs",
+  "before": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class Box<T> where T : notnull",
+    "{",
+    "    public T item;",
+    "}",
+    "",
+    "public class Bag : MonoBehaviour",
+    "{",
+    "    Box<string?> box = new();",
+    "}"
+  ],
+  "after": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class Box<T> where T : notnull",
+    "{",
+    "    public T item;",
+    "}",
+    "",
+    "public class Bag : MonoBehaviour",
+    "{",
+    "    Box<string> box = new();",
+    "}"
+  ],
+  "focus_line": 11,
+  "music": "random",
+  "bug": "../assets/CS8714.png"
 }

@@ -1,9 +1,38 @@
 {
   "error_code": "CS8619",
   "message": "Nullability of 'List<string?>' does not match target type 'List<string>'",
-  "filename": "Nullable.cs",
-  "before": ["#nullable enable", "", "void Start()", "{", "    var a = new List<string?>();", "    List<string> b = a;", "}"],
-  "after": ["#nullable enable", "", "void Start()", "{", "    var a = new List<string?>();", "    List<string?> b = a;", "}"],
-  "bug": "../assets/CS8619.png",
-  "focus_line": 6
+  "filename": "Inventory.cs",
+  "before": [
+    "#nullable enable",
+    "using System.Collections.Generic;",
+    "using UnityEngine;",
+    "",
+    "public class Inventory : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var raw = new List<string?>();",
+    "        List<string> items = raw;",
+    "        Debug.Log(items.Count);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "#nullable enable",
+    "using System.Collections.Generic;",
+    "using UnityEngine;",
+    "",
+    "public class Inventory : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        var raw = new List<string?>();",
+    "        List<string?> items = raw;",
+    "        Debug.Log(items.Count);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS8619.png"
 }

@@ -1,9 +1,36 @@
 {
   "error_code": "CS0219",
-  "message": "The variable 'n' is assigned but its value is never used",
-  "filename": "Unused.cs",
-  "before": ["void Start()", "{", "    int n = 1;", "    Debug.Log(2);", "}"],
-  "after": ["void Start()", "{", "    int n = 1;", "    Debug.Log(n);", "}"],
-  "bug": "../assets/CS0219.png",
-  "focus_line": 4
+  "message": "The variable 'damage' is assigned but its value is never used",
+  "filename": "Combat.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    public int power = 10;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int damage = 5;",
+    "        Debug.Log(power);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Combat : MonoBehaviour",
+    "{",
+    "    public int power = 10;",
+    "",
+    "    void Start()",
+    "    {",
+    "        int damage = 5;",
+    "        Debug.Log(damage);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0219.png"
 }

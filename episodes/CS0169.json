@@ -1,9 +1,36 @@
 {
   "error_code": "CS0169",
   "message": "The field 'Player.hp' is never used",
-  "filename": "Unused.cs",
-  "before": ["class Player", "{", "    private int hp;", "}"],
-  "after": ["class Player", "{", "", "}"],
-  "bug": "../assets/CS0169.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp;",
+    "    public int mana = 50;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(mana);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "",
+    "    public int mana = 50;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(mana);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0169.png"
 }

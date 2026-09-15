@@ -1,9 +1,42 @@
 {
   "error_code": "CS8601",
   "message": "Possible null reference assignment",
-  "filename": "Nullable.cs",
-  "before": ["#nullable enable", "", "class Player", "{", "    public string name = \"\";", "}", "", "void Set(Player p, string? s)", "{", "    p.name = s;", "}"],
-  "after": ["#nullable enable", "", "class Player", "{", "    public string name = \"\";", "}", "", "void Set(Player p, string? s)", "{", "    p.name = s ?? \"\";", "}"],
-  "bug": "../assets/CS8601.png",
-  "focus_line": 10
+  "filename": "Game.cs",
+  "before": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public string name = \"\";",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Rename(Player who, string? text)",
+    "    {",
+    "        who.name = text;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class Player",
+    "{",
+    "    public string name = \"\";",
+    "}",
+    "",
+    "public class Game : MonoBehaviour",
+    "{",
+    "    void Rename(Player who, string? text)",
+    "    {",
+    "        who.name = text ?? \"\";",
+    "    }",
+    "}"
+  ],
+  "focus_line": 13,
+  "music": "random",
+  "bug": "../assets/CS8601.png"
 }

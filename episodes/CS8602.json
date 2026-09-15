@@ -1,9 +1,34 @@
 {
   "error_code": "CS8602",
   "message": "Dereference of a possibly null reference",
-  "filename": "Nullable.cs",
-  "before": ["#nullable enable", "", "void Start()", "{", "    string? s = null;", "    Debug.Log(s.Length);", "}"],
-  "after": ["#nullable enable", "", "void Start()", "{", "    string? s = null;", "    Debug.Log(s?.Length);", "}"],
-  "bug": "../assets/CS8602.png",
-  "focus_line": 6
+  "filename": "SaveSlot.cs",
+  "before": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        string? saved = null;",
+    "        Debug.Log(saved.Length);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    void Start()",
+    "    {",
+    "        string? saved = null;",
+    "        Debug.Log(saved?.Length);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS8602.png"
 }

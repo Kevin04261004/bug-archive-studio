@@ -1,9 +1,40 @@
 {
   "error_code": "CS0184",
   "message": "The given expression is never of the provided type 'string'",
-  "filename": "Compare.cs",
-  "before": ["void Start()", "{", "    int n = 1;", "    if (n is string) { }", "}"],
-  "after": ["void Start()", "{", "    int n = 1;", "    if (n is int) { }", "}"],
-  "bug": "../assets/CS0184.png",
-  "focus_line": 4
+  "filename": "SaveSlot.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    public int score = 1200;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (score is string)",
+    "        {",
+    "            Debug.Log(score);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    public int score = 1200;",
+    "",
+    "    void Start()",
+    "    {",
+    "        if (score is int)",
+    "        {",
+    "            Debug.Log(score);",
+    "        }",
+    "    }",
+    "}"
+  ],
+  "focus_line": 9,
+  "music": "random",
+  "bug": "../assets/CS0184.png"
 }

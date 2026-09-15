@@ -1,9 +1,42 @@
 {
   "error_code": "CS8603",
   "message": "Possible null reference return",
-  "filename": "Nullable.cs",
-  "before": ["#nullable enable", "", "string Get()", "{", "    return null;", "}"],
-  "after": ["#nullable enable", "", "string? Get()", "{", "    return null;", "}"],
-  "bug": "../assets/CS8603.png",
-  "focus_line": 3
+  "filename": "SaveSlot.cs",
+  "before": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    string Load()",
+    "    {",
+    "        return null;",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(Load());",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class SaveSlot : MonoBehaviour",
+    "{",
+    "    string Load()",
+    "    {",
+    "        return \"\";",
+    "    }",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(Load());",
+    "    }",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS8603.png"
 }

@@ -1,9 +1,38 @@
 {
   "error_code": "CS8618",
-  "message": "Non-nullable field 'name' must contain a non-null value when exiting constructor",
-  "filename": "Nullable.cs",
-  "before": ["#nullable enable", "", "class Player", "{", "    public string name;", "}"],
-  "after": ["#nullable enable", "", "class Player", "{", "    public string name = \"\";", "}"],
-  "bug": "../assets/CS8618.png",
-  "focus_line": 5
+  "message": "Non-nullable field 'playerName' must contain a non-null value",
+  "filename": "Player.cs",
+  "before": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public string playerName;",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(playerName);",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "#nullable enable",
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    public string playerName = \"\";",
+    "    public int hp = 100;",
+    "",
+    "    void Start()",
+    "    {",
+    "        Debug.Log(playerName);",
+    "    }",
+    "}"
+  ],
+  "focus_line": 6,
+  "music": "random",
+  "bug": "../assets/CS8618.png"
 }

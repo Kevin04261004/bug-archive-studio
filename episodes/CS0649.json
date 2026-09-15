@@ -1,9 +1,36 @@
 {
   "error_code": "CS0649",
   "message": "Field 'Player.hp' is never assigned to, and will always have its default value",
-  "filename": "Unused.cs",
-  "before": ["class Player", "{", "    private int hp;", "", "    public int Get() => hp;", "}"],
-  "after": ["class Player", "{", "    private int hp = 1;", "", "    public int Get() => hp;", "}"],
-  "bug": "../assets/CS0649.png",
-  "focus_line": 3
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp;",
+    "    public int mana = 50;",
+    "",
+    "    public int GetHp()",
+    "    {",
+    "        return hp;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "    public int mana = 50;",
+    "",
+    "    public int GetHp()",
+    "    {",
+    "        return hp;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS0649.png"
 }

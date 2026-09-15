@@ -1,9 +1,36 @@
 {
   "error_code": "CS0414",
   "message": "The field 'Player.hp' is assigned but its value is never used",
-  "filename": "Unused.cs",
-  "before": ["class Player", "{", "    private int hp = 1;", "", "    public int Get() => 2;", "}"],
-  "after": ["class Player", "{", "    private int hp = 1;", "", "    public int Get() => hp;", "}"],
-  "bug": "../assets/CS0414.png",
-  "focus_line": 5
+  "filename": "Player.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "    public int mana = 50;",
+    "",
+    "    public int GetMana()",
+    "    {",
+    "        return mana;",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public class Player : MonoBehaviour",
+    "{",
+    "    int hp = 100;",
+    "    public int mana = 50;",
+    "",
+    "    public int GetMana()",
+    "    {",
+    "        return mana + hp;",
+    "    }",
+    "}"
+  ],
+  "focus_line": 10,
+  "music": "random",
+  "bug": "../assets/CS0414.png"
 }

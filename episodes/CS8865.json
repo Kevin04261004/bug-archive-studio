@@ -1,9 +1,34 @@
 {
   "error_code": "CS8865",
   "message": "Only records may inherit from records",
-  "filename": "Records.cs",
-  "before": ["record Unit", "{", "}", "", "class Boss : Unit", "{", "}"],
-  "after": ["record Unit", "{", "}", "", "record Boss : Unit", "{", "}"],
-  "bug": "../assets/CS8865.png",
-  "focus_line": 5
+  "filename": "Boss.cs",
+  "before": [
+    "using UnityEngine;",
+    "",
+    "public record Unit",
+    "{",
+    "    public int hp;",
+    "}",
+    "",
+    "public class Boss : Unit",
+    "{",
+    "    public int shield;",
+    "}"
+  ],
+  "after": [
+    "using UnityEngine;",
+    "",
+    "public record Unit",
+    "{",
+    "    public int hp;",
+    "}",
+    "",
+    "public record Boss : Unit",
+    "{",
+    "    public int shield;",
+    "}"
+  ],
+  "focus_line": 8,
+  "music": "random",
+  "bug": "../assets/CS8865.png"
 }
