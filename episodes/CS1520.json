@@ -2,8 +2,19 @@
   "error_code": "CS1520",
   "message": "Method must have a return type",
   "filename": "Methods.cs",
-  "before": ["class Player", "{", "    Heal() { }", "}"],
-  "after": ["class Player", "{", "    void Heal() { }", "}"],
-  "bug": "../assets/CS1520.png",
-  "focus_line": 3
+  "before": [
+    "class Player",
+    "{",
+    "    Heal() { }",
+    "}"
+  ],
+  "after": [
+    "class Player",
+    "{",
+    "    void Heal() { }",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS1520.png"
 }
