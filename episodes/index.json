@@ -943,8 +943,8 @@
       "message": "Type and identifier are both required in a foreach statement",
       "filename": "Each.cs",
       "lines": 7,
-      "bug": null,
-      "missing": "../assets/CS0230.png",
+      "bug": "assets/CS0230.png",
+      "missing": null,
       "order": 81,
       "tier": 2
     },
