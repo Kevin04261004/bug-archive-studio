@@ -2,8 +2,27 @@
   "error_code": "CS1579",
   "message": "foreach cannot operate on 'int' because it has no GetEnumerator",
   "filename": "Each.cs",
-  "before": ["void Start()", "{", "    int count = 3;", "    int[] hits = { 1, 2, 3 };", "    foreach (int n in count)", "    {", "    }", "}"],
-  "after": ["void Start()", "{", "    int count = 3;", "    int[] hits = { 1, 2, 3 };", "    foreach (int n in hits)", "    {", "    }", "}"],
-  "bug": "../assets/CS1579.png",
-  "focus_line": 5
+  "before": [
+    "void Start()",
+    "{",
+    "    int count = 3;",
+    "    int[] hits = { 1, 2, 3 };",
+    "    foreach (int n in count)",
+    "    {",
+    "    }",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int count = 3;",
+    "    int[] hits = { 1, 2, 3 };",
+    "    foreach (int n in hits)",
+    "    {",
+    "    }",
+    "}"
+  ],
+  "focus_line": 5,
+  "music": "random",
+  "bug": "../assets/CS1579.png"
 }
