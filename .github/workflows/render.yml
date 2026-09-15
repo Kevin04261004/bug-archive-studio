@@ -58,11 +58,11 @@ jobs:
           failed=''
           for code in ${{ steps.pick.outputs.codes }}; do
             echo "::group::$code"
-            # The page downloads the MP4 straight from the release, and a cross-origin download
-            # cannot be renamed by the browser, so the file carries its final name from here on.
-            # GitHub strips brackets and turns spaces into dots in release asset names, so the
-            # name is written the way GitHub will store it rather than being silently rewritten.
-            if python render.py "episodes/$code.json" --output "output/ERROR.$code.mp4"; then
+            # The page downloads the MP4 straight from the release. That host sends no CORS
+            # header, so the page cannot read the bytes and rename them: whatever the release
+            # asset is called is what lands in the viewer's downloads. The file therefore
+            # carries its final, upload-ready title from here on.
+            if python render.py "episodes/$code.json" --output "output/C# QUIZ - ERROR $code.mp4"; then
               echo "$code" >> output/rendered.txt
             else
               echo "::error title=$code::render.py could not render this episode."
@@ -81,10 +81,12 @@ jobs:
           for code in $(cat output/rendered.txt); do
             tag="episode-$code"
             gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "$code" --notes "Rendered from episodes/$code.json by render.py."
-            # Drop the old naming so a release never carries two MP4s; the page picks the first it finds.
-            gh release delete-asset "$tag" "$code-bug-archive.mp4" -y 2>/dev/null || true
-            gh release delete-asset "$tag" "$code-bug-archive-locked.png" -y 2>/dev/null || true
-            gh release upload "$tag" "output/ERROR.$code.mp4" "output/ERROR.$code-locked.png" --clobber
+            # Clear whatever is there before uploading. The page finds the MP4 by extension, so a
+            # release left holding an earlier naming would hand out the wrong file name forever.
+            # Deleting by id covers every past scheme without having to list them one by one.
+            gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[].id' |
+              while read -r id; do gh api --silent --method DELETE "repos/$GITHUB_REPOSITORY/releases/assets/$id"; done
+            gh release upload "$tag" "output/C# QUIZ - ERROR $code.mp4" "output/C# QUIZ - ERROR $code-locked.png" --clobber
             gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[].name' | sed "s/^/  $code asset: /"
           done
 

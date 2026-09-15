@@ -1,7 +1,8 @@
 name: Rename release assets
 
-# One-off backfill. Episodes rendered before the naming change still carry
-# <CODE>-bug-archive.mp4; this renames them in place, without re-rendering.
+# Renames what is already rendered to the current download title, without re-rendering.
+# The page finds the MP4 by extension, so it keeps working whatever the assets are called;
+# this is only about the name the viewer ends up with in their downloads folder.
 on:
   workflow_dispatch:
 
@@ -12,23 +13,34 @@ jobs:
   rename:
     runs-on: ubuntu-latest
     steps:
-      - name: Rename every episode asset to its download name
+      - name: Give every episode asset the current download title
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
             --jq '.[] | select(.tag_name | startswith("episode-")) | .tag_name' > tags.txt
           echo "releases: $(wc -l < tags.txt)"
+          renamed=0 kept=0 failed=0
           while read -r tag; do
             code="${tag#episode-}"
-            gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[] | "\(.id) \(.name)"' |
-            while read -r id name; do
+            # Match on extension, not on the old name: the assets have been through more than
+            # one naming scheme and an exact-name list would silently miss the older ones.
+            gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[] | "\(.id)\t\(.name)"' |
+            while IFS=$'\t' read -r id name; do
               case "$name" in
-                "$code-bug-archive.mp4")        want="[ERROR] $code.mp4" ;;
-                "$code-bug-archive-locked.png") want="[ERROR] $code-locked.png" ;;
+                *.mp4) want="C# QUIZ - ERROR $code.mp4" ;;
+                *.png) want="C# QUIZ - ERROR $code-locked.png" ;;
                 *) continue ;;
               esac
-              got=$(gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/assets/$id" -f name="$want" --jq '.name')
-              echo "$name -> $got"
+              if [ "$name" = "$want" ]; then kept=$((kept+1)); continue; fi
+              # GitHub rewrites characters it does not allow in asset names, so the stored
+              # result is read back rather than assumed.
+              if got=$(gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/assets/$id" -f name="$want" --jq '.name'); then
+                echo "  $code: $name -> $got"; renamed=$((renamed+1))
+              else
+                # One clash must not abandon the other hundred releases.
+                echo "::warning title=$code::could not rename $name"; failed=$((failed+1))
+              fi
             done
           done < tags.txt
+          echo "done."

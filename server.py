@@ -6,10 +6,13 @@ import json,re,subprocess,sys,uuid,threading,webbrowser,argparse,base64
 ROOT=Path(__file__).resolve().parent
 ap=argparse.ArgumentParser();ap.add_argument('--port',type=int,default=8765);ap.add_argument('--no-browser',action='store_true');ap.add_argument('--index',action='store_true',help='Only refresh episodes/index.json and exit');args=ap.parse_args()
 jobs={};pool=ThreadPoolExecutor(max_workers=1);lock=threading.Lock()
+# The name the finished file carries, matching studio.js. A colon cannot be in a Windows
+# file name and browsers drop it from a download name, so the title uses a dash instead.
+episode_title=lambda code:f'C# QUIZ - ERROR {code}'
 def render(job,config):
     folder=ROOT/'output'/'jobs'/job;folder.mkdir(parents=True,exist_ok=True)
     path=folder/'episode.json';path.write_text(json.dumps(config),encoding='utf-8')
-    output=folder/(config['error_code']+'-bug-archive.mp4')
+    output=folder/(episode_title(config['error_code'])+'.mp4')
     try:
         with lock:jobs[job]={'status':'running','progress':'Archiving the episode…'}
         saved=archive(config)
@@ -34,7 +37,7 @@ def render_batch(job,codes):
     done,failed=[],[]
     for i,code in enumerate(codes,1):
         with lock:jobs[job]={'status':'running','progress':f'Rendering {code}… ({i}/{len(codes)})','done':list(done),'failed':list(failed)}
-        output=folder/f'ERROR.{code}.mp4'
+        output=folder/f'{episode_title(code)}.mp4'
         try:
             p=subprocess.run([sys.executable,str(ROOT/'render.py'),str(ROOT/'episodes'/f'{code}.json'),'--output',str(output)],
                              cwd=ROOT,capture_output=True,text=True)
