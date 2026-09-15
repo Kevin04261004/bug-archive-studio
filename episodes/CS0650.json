@@ -2,8 +2,19 @@
   "error_code": "CS0650",
   "message": "Bad array declarator: put the rank specifier after the variable name",
   "filename": "Arrays.cs",
-  "before": ["void Start()", "{", "    int hits[3];", "}"],
-  "after": ["void Start()", "{", "    int[] hits = new int[3];", "}"],
-  "bug": "../assets/CS0650.png",
-  "focus_line": 3
+  "before": [
+    "void Start()",
+    "{",
+    "    int hits[3];",
+    "}"
+  ],
+  "after": [
+    "void Start()",
+    "{",
+    "    int[] hits = new int[3];",
+    "}"
+  ],
+  "focus_line": 3,
+  "music": "random",
+  "bug": "../assets/CS0650.png"
 }
