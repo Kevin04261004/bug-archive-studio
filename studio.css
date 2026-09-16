@@ -184,3 +184,14 @@ padding:0 2px 6px;cursor:pointer}
 .batchzip{border:1px solid #4d6b25;border-radius:9px;background:#18210f;padding:12px 14px;margin-bottom:10px}
 .batchzip a{color:#c3ff55;font-weight:700;font-size:14px}
 .batchzip p{margin:6px 0 0;font-size:12px;line-height:1.6;color:#9aa8b2}
+
+/* Finished batches. A long render outlives the tab, so the archives have to be reachable
+   from a cold open, not only from the run that made them. */
+#batcharchives{margin-bottom:12px}
+#batcharchives:empty{display:none}
+#batcharchives h3{font:12px monospace;letter-spacing:.18em;color:#8b9ba6;margin:0 0 8px;
+border-bottom:1px solid #2f3a43;padding-bottom:6px;font-weight:400}
+.batchold{display:flex;gap:10px;align-items:baseline;font-size:13px;padding:5px 2px}
+.batchold b{font:13px monospace;color:#e7edf2;min-width:92px}
+.batchold span{color:#8b9ba6;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.batchold a{color:#c3ff55}

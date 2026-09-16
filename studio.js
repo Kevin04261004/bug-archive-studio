@@ -61,7 +61,7 @@ const EPISODE_TITLE=code=>`C# QUIZ - ERROR ${code}`;
 const videoName=code=>EPISODE_TITLE(code)+'.mp4',thumbName=code=>EPISODE_TITLE(code)+'-locked.png';
 /* Release assets are cross-origin and send no CORS header, so the page can neither fetch the
    bytes nor override the filename with <a download>. The name has to come from the release
-   itself: the workflow writes the MP4 as "[ERROR] <CODE>.mp4" before uploading it. */
+   itself, which is why the workflow names the asset before uploading it. */
 async function showRelease(){const box=$('releasebox'),code=($('errorcode').value.trim()||'CS1002').toUpperCase(),slug=repoSlug();
 box.classList.remove('error');
 if(!slug)return releaseLine(box,'Open this editor from its GitHub Pages address to see the rendered files here.');
@@ -435,6 +435,38 @@ if(name)a.download=name;
 const note=document.createElement('p');
 note.textContent='Unpack it, then drag every MP4 into YouTube Studio at once. Each title is filled from its file name, and titles.tsv has the rest for the bulk editor.';
 box.append(a,note);return box;}
+/* A batch of thirty runs for a quarter of an hour and one of five hundred for most of a day.
+   The page cannot be the only way back to the result: close the tab, sleep the laptop, and the
+   archive would be unreachable even though GitHub finished it. The archives live on releases,
+   so the dialog lists them and a finished batch is always one click away. */
+async function repoGet(path){const slug=repoSlug();if(!slug)return null;
+const token=($('ghtoken').value||'').trim();
+const r=await fetch(`https://api.github.com/repos/${slug.owner}/${slug.repo}${path}`,
+{cache:'no-store',headers:token?{Authorization:'Bearer '+token}:{}});
+return r.ok?r.json():null;}
+function archiveRow(rel){const zip=(rel.assets||[]).find(a=>a.name.endsWith('.zip'));
+if(!zip)return null;
+const row=document.createElement('div');row.className='batchold';
+const when=document.createElement('b');
+when.textContent=new Date(rel.published_at||rel.created_at).toLocaleString();
+const what=document.createElement('span');what.textContent=rel.name||rel.tag_name;
+row.append(when,what,link('Download ZIP',zip.browser_download_url));return row;}
+async function showArchives(){const box=$('batcharchives');box.replaceChildren();
+const rels=await repoGet('/releases?per_page=30');
+const rows=(rels||[]).filter(z=>z.tag_name.startsWith('batch-')).map(archiveRow).filter(Boolean);
+if(!rows.length)return;
+const head=document.createElement('h3');head.textContent='FINISHED BATCHES';
+box.append(head,...rows);}
+/* A run that outlived its page. Reopening the dialog should say so rather than look idle. */
+const RUNNING='bugarchive-batchrun';
+function rememberRun(run,count){try{localStorage.setItem(RUNNING,JSON.stringify({run,count}));}catch{}}
+function forgetRun(){try{localStorage.removeItem(RUNNING);}catch{}}
+async function reportRunning(){let saved;try{saved=JSON.parse(localStorage.getItem(RUNNING)||'null');}catch{}
+if(!saved)return false;
+const z=await repoGet('/actions/runs/'+saved.run);
+if(!z||z.status==='completed'){forgetRun();return false;}
+bstatus(`A batch of ${saved.count} is still rendering on GitHub. It keeps going with this page closed — reopen this dialog later and the ZIP will be in the list below.`);
+return true;}
 async function batchOnActions(codes){const slug=repoSlug();
 if(!slug)throw Error('This editor is not on its GitHub Pages address, so it cannot reach the repository. Render on your own PC with START_STUDIO.bat.');
 const token=($('ghtoken').value||'').trim();
@@ -448,17 +480,29 @@ bstatus(`Starting render.py on GitHub for ${codes.length} episodes…`);
 await api('/actions/workflows/render.yml/dispatches',{method:'POST',body:JSON.stringify({ref:'main',inputs:{episode:codes.join(' ')}})});
 const run=await findRun(r=>r.event==='workflow_dispatch'&&new Date(r.created_at)>=since);
 if(!run)throw Error('The action did not start. Check that Actions are enabled for this repository.');
+rememberRun(run.id,codes.length);
 /* One runner renders the selection in order, so the wait grows with it. */
 const label=`${codes.length} episodes`,tries=150+codes.length*15;
 const watch=async()=>{for(let i=0;i<tries;i++){const z=await api('/actions/runs/'+run.id);
 if(z.status==='completed')return z;
 const secs=Math.round((Date.now()-since)/1000);
-bstatus(z.status==='queued'?`Waiting for a runner to pick up ${label}… ${secs}s`:`Rendering ${label} on GitHub… ${secs}s. You can close this and come back.`);
+bstatus(z.status==='queued'?`Waiting for a runner to pick up ${label}… ${secs}s`:`Rendering ${label} on GitHub… ${secs}s. Closing this page does not stop it; the ZIP shows up under FINISHED BATCHES.`);
 await sleep(4000);}
 throw Error('The action is taking too long. Open the run on GitHub to see where it got to.');};
 const finished=await watch();
-bstatus('Collecting the MP4s…');
+forgetRun();
 $('batchresults').replaceChildren();
+/* The archive first: it is what the batch was for, and waiting on a per-episode sweep of
+   five hundred releases before offering it would be the slowest part of the whole job. */
+bstatus('Fetching the archive…');
+let packed=0;
+try{const z=await api('/releases/tags/batch-'+run.id);
+const zip=(z.assets||[]).find(a=>a.name.endsWith('.zip'));
+if(zip){packed=parseInt(z.name,10)||codes.length;
+$('batchresults').append(archiveBox(zip.browser_download_url,packed));
+link('',zip.browser_download_url).click();}}catch{}
+showArchives();
+bstatus(packed?`${packed} episodes packed. Listing them…`:'Collecting the MP4s…');
 const ready=[];
 for(const code of codes){let asset=null;
 try{const z=await api('/releases/tags/episode-'+code);
@@ -466,12 +510,7 @@ asset=(z.assets||[]).find(a=>a.name.endsWith('.mp4'))||null;}catch{}
 if(asset){const a=link('Download',asset.browser_download_url);
 batchLine(code,asset.name,a);ready.push({code,link:a});}
 else batchLine(code,'no MP4 on its release. Open the run on GitHub to see why.');}
-if(ready.length)$('batchresults').prepend(downloadAllButton(ready));
-/* The run packs everything it rendered into one release of its own. Prefer it. */
-if(ready.length>1)try{const z=await api('/releases/tags/batch-'+run.id);
-const zip=(z.assets||[]).find(a=>a.name.endsWith('.zip'));
-if(zip){$('batchresults').prepend(archiveBox(zip.browser_download_url,ready.length));
-link('',zip.browser_download_url).click();}}catch{}
+if(ready.length>1)$('batchresults').append(downloadAllButton(ready));
 const lost=codes.length-ready.length;
 if(finished.conclusion!=='success'&&!ready.length)throw Error(`The action finished as ${finished.conclusion} and rendered nothing. Open the run on GitHub.`);
 bstatus(lost?`${ready.length} of ${codes.length} rendered. ${lost} did not; their rows say so.`:`All ${ready.length} episodes rendered.`,!!lost);}
@@ -501,12 +540,18 @@ catch(e){bstatus(e.message,true);}
 finally{activeJob=false;$('render').disabled=false;countPicked();}}
 $('batchopen').onclick=async()=>{$('batchdlg').showModal();
 $('batchresults').replaceChildren();bstatus('Reading the episodes folder…');
+/* Archives and any run still going are about earlier work, so they must not stomp on the
+   status line of a batch this page is currently watching. */
+const idle=!activeJob;
+if(idle)showArchives().catch(()=>{});
 try{const rows=episodeCache=await listEpisodes();
 /* A code no longer in the list must not stay selected and be dispatched into a failing run. */
 const live=new Set(rows.map(r=>(r.error_code||'').toUpperCase()));
 for(const code of[...picked])if(!live.has(code))picked.delete(code);
 $('batchlist').replaceChildren(...batchNodes(rows));
 filterBatch();
+if(!idle)return;
+if(await reportRunning().catch(()=>false))return;
 bstatus(rows.length?'Click the episodes you want, then press Render selected.':'The episodes folder has no JSON yet.');}
 catch(e){bstatus(e.message,true);}};
 $('batchfind').oninput=filterBatch;
