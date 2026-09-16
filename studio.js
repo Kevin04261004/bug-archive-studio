@@ -451,9 +451,18 @@ const when=document.createElement('b');
 when.textContent=new Date(rel.published_at||rel.created_at).toLocaleString();
 const what=document.createElement('span');what.textContent=rel.name||rel.tag_name;
 row.append(when,what,link('Download ZIP',zip.browser_download_url));return row;}
+/* Releases come back ordered by the tag's commit date, not by when the release was made, so
+   a batch can sit behind five hundred episode releases. Paging until the batches are found
+   beats sorting a single page that may not contain them. The workflow keeps five. */
+async function batchReleases(){const found=[];
+for(let page=1;page<=3;page++){
+const rels=await repoGet(`/releases?per_page=100&page=${page}`);
+if(!rels||!rels.length)break;
+found.push(...rels.filter(z=>z.tag_name.startsWith('batch-')));
+if(found.length>=5||rels.length<100)break;}
+return found.sort((a,b)=>new Date(b.published_at||b.created_at)-new Date(a.published_at||a.created_at)).slice(0,5);}
 async function showArchives(){const box=$('batcharchives');box.replaceChildren();
-const rels=await repoGet('/releases?per_page=30');
-const rows=(rels||[]).filter(z=>z.tag_name.startsWith('batch-')).map(archiveRow).filter(Boolean);
+const rows=(await batchReleases()).map(archiveRow).filter(Boolean);
 if(!rows.length)return;
 const head=document.createElement('h3');head.textContent='FINISHED BATCHES';
 box.append(head,...rows);}
