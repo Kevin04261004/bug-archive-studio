@@ -42,7 +42,7 @@
       "error_code": "CS1002",
       "message": "; expected",
       "filename": "Player.cs",
-      "lines": 16,
+      "lines": 4,
       "bug": "assets/CS1002.png",
       "missing": null,
       "order": 4,
