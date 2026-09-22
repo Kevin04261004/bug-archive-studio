@@ -631,7 +631,8 @@ $('propertyclose').onclick=()=>document.querySelector('.workspace')?.classList.a
 $('fitpreview').onclick=()=>{const w=document.querySelector('.workspace');w.classList.toggle('focus-preview');$('fitpreview').textContent=w.classList.contains('focus-preview')?'Restore':'Fit';};
 $('guidesmirror').onchange=()=>{$('guides').checked=$('guidesmirror').checked;$('guides').onchange();};
 $('soundmirror').onchange=()=>{$('sound').checked=$('soundmirror').checked;$('sound').onchange?.();};
-$('sound').onchange=()=>{if($('soundmirror'))$('soundmirror').checked=$('sound').checked;try{localStorage.setItem('bugarchive-sound',$('sound').checked?'1':'0');}catch{}};
+const originalSoundChange=$('sound').onchange;
+$('sound').onchange=()=>{if($('soundmirror'))$('soundmirror').checked=$('sound').checked;originalSoundChange?.();};
 document.querySelectorAll('[data-nudge]').forEach(x=>x.onclick=()=>{time=Math.max(0,Math.min(11.99,time+Number(x.dataset.nudge)));$('time').value=time;$('time').oninput();});
 function setZoom(value){value=Math.max(70,Math.min(180,value));$('timelinezoom').value=value;$('trackcontent').style.setProperty('--zoom',value/100);}
 $('timelinezoom').oninput=()=>setZoom(Number($('timelinezoom').value));$('zoomout').onclick=()=>setZoom(Number($('timelinezoom').value)-10);$('zoomin').onclick=()=>setZoom(Number($('timelinezoom').value)+10);
