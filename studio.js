@@ -26,6 +26,7 @@ function clearBug(){bugData=null;bug=null;$('bugthumb').src=BLANK_PNG;markBugSta
 function markBugState(){const missing=!bugData;
 for(const id of ['render','thumbnail'])$(id).disabled=missing||activeJob;
 $('bugthumb').classList.toggle('empty',missing);$('bugthumb').alt=missing?'':'Selected bug';
+document.querySelector('[data-bug-mirror]')?.classList.toggle('empty',missing);
 $('bugmissing').hidden=!missing;}
 function drawBug(x,y,height=80,gray=false,angle=0){if(!bug)return;ctx.save();ctx.translate(x,y);ctx.rotate(angle);if(gray)ctx.filter='grayscale(1)';const scale=height/bug.height;ctx.drawImage(bug,-bug.width*scale/2,-height/2,bug.width*scale,height);ctx.restore();}
 const CODEX_LIFT=330;/* the codex sits high so a Shorts sticker can take the lower half */
@@ -44,7 +45,7 @@ const k=Math.min(1,800/Math.max(bw,bh)),out=document.createElement('canvas');
 out.width=Math.max(1,Math.round(bw*k));out.height=Math.max(1,Math.round(bh*k));
 const g=out.getContext('2d');g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';
 g.drawImage(im,x0,y0,w,h,0,Math.round((out.height-h*k)/2),Math.round(w*k),Math.round(h*k));
-bugData=out.toDataURL('image/png');bug=await loadImage(bugData);$('bugthumb').src=bugData;markBugState();}
+bugData=out.toDataURL('image/png');bug=await loadImage(bugData);$('bugthumb').src=bugData;document.querySelectorAll('[data-bug-mirror]').forEach(x=>x.src=bugData);markBugState();}
 function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),10000);}
 function save(){try{build();download(new Blob([JSON.stringify(cfg(),null,2)],{type:'application/json'}),`${cfg().error_code}.json`);status('Project saved with its bug image.');}catch(e){status(e.message,true);}}
 /* Rendered files live on releases, made by render.py inside the GitHub Action. */
@@ -172,7 +173,9 @@ $('startrender').onclick=()=>renderOnActions().catch(e=>step(e.message,true));
 $('offlineSave').onclick=save;$('closeDialog').onclick=()=>$('offline').close();$('projectfile').onchange=async e=>{try{if(e.target.files[0])await setConfig(JSON.parse(await e.target.files[0].text()));}catch(e){status(e.message,true);}};
 $('choosebug').onclick=()=>$('bugfile').click();$('bugfile').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>8*1024*1024)throw Error('Use a PNG smaller than 8 MB.');const reader=new FileReader();reader.onload=async()=>{try{await setBug(reader.result);update();}catch(e){status(e.message,true);}};reader.readAsDataURL(f);}catch(e){status(e.message,true);}};
 for(const id of ['before','after','errorcode','message','filename','focus'])$(id).oninput=update;
-$('time').oninput=()=>{playing=false;bgmStop();$('play').textContent='Play';time=Number($('time').value);$('clock').textContent=`${time.toFixed(2)} / 12s`;draw();};$('guides').onchange=()=>draw();document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>{$('time').value=b.dataset.time;$('time').oninput();});
+const clockText=t=>`00:${t.toFixed(2).padStart(5,'0')} / 00:12.00`;
+function syncTimeline(){document.getElementById('trackcontent')?.style.setProperty('--time',time);$('clock').textContent=clockText(time);}
+$('time').oninput=()=>{playing=false;bgmStop();$('play').textContent='▶';time=Number($('time').value);syncTimeline();draw();};$('guides').onchange=()=>{if($('guidesmirror'))$('guidesmirror').checked=$('guides').checked;draw();};document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.clip').forEach(x=>x.classList.toggle('selected',x===b));$('time').value=b.dataset.time;$('time').oninput();});
 /* Background music: a list you keep in the music folder, chosen per episode or left to chance. */
 let musicChoice='random',tracks=[],bgm=null,bgmSrc='';
 const MUSIC_GAIN=.22;
@@ -265,7 +268,7 @@ function playCues(from,to){if(!$('sound').checked||to<=from)return;
 for(const [at,dur,freq,amp,decay]of CUES)if(at>from&&at<=to)tone(dur,freq,amp,decay);
 for(const [at,dur]of WHOOSH)if(at>from&&at<=to)whoosh(dur);}
 $('sound').onchange=()=>{try{localStorage.setItem('bugarchive-sound',$('sound').checked?'1':'0');}catch{}if($('sound').checked){audio();if(playing)bgmStart();}else bgmStop();};
-$('play').onclick=()=>{playing=!playing;if(playing&&time>11.9)time=0;if(playing&&$('sound').checked)audio();if(playing)bgmStart();else bgmStop();$('play').textContent=playing?'Pause':'Play';last=performance.now();};function loop(now){if(playing&&ready){const from=time;time+=(now-last)/1000;if(time>=12){time=11.99;playing=false;$('play').textContent='Play';bgmStop();}playCues(from,time);$('time').value=time;$('clock').textContent=`${time.toFixed(2)} / 12s`;try{draw();}catch(e){playing=false;status(e.message,true);}}last=now;requestAnimationFrame(loop);}requestAnimationFrame(loop);
+$('play').onclick=()=>{playing=!playing;if(playing&&time>11.9)time=0;if(playing&&$('sound').checked)audio();if(playing)bgmStart();else bgmStop();$('play').textContent=playing?'Ⅱ':'▶';last=performance.now();};function loop(now){if(playing&&ready){const from=time;time+=(now-last)/1000;if(time>=12){time=11.99;playing=false;$('play').textContent='▶';bgmStop();}playCues(from,time);$('time').value=time;syncTimeline();try{draw();}catch(e){playing=false;status(e.message,true);}}last=now;requestAnimationFrame(loop);}requestAnimationFrame(loop);
 /* LOCKED thumbnail. Its own layout, not a video frame: silhouette, rim glow, big error code. */
 function spaced(c,text,cx,baseline,size,color,gap){c.font=`${size}px ArchiveMono`;c.fillStyle=color;c.textAlign='left';c.textBaseline='alphabetic';
 const chars=[...text],w=chars.map(ch=>c.measureText(ch).width),total=w.reduce((a,b)=>a+b,0)+gap*(chars.length-1);
@@ -616,5 +619,22 @@ await setBug(url);update();$('aithumb').src=bugData;$('aithumb').hidden=false;$(
 aistatus(trimmed?'Bug applied. Its flat background was removed to get real transparency.':'Bug applied to the preview and to the episode.');status('AI bug generated and applied.');}
 catch(e){aistatus(e.message,true);}finally{$('generate').disabled=false;}};
 $('aisave').onclick=()=>download(dataUrlBlob(bugData),`${($('errorcode').value.trim()||'bug').toUpperCase()}.png`);
+/* Clipchamp-style workspace controls. Editing data still uses the original renderer; this layer
+   only makes the common actions reachable from the media rail, preview and timeline. */
+function openPanel(name){document.querySelectorAll('.tooltab').forEach(x=>x.classList.toggle('active',x.dataset.panel===name));document.querySelectorAll('.panelview').forEach(x=>x.classList.toggle('active',x.dataset.view===name));document.querySelector('.workspace')?.classList.remove('assets-collapsed');}
+document.querySelectorAll('.tooltab').forEach(x=>x.onclick=()=>openPanel(x.dataset.panel));
+document.querySelectorAll('[data-panel-link]').forEach(x=>x.onclick=()=>openPanel(x.dataset.panelLink));
+$('quickepisode').onclick=()=>$('loadepisode').click();
+document.querySelectorAll('[data-action="music"]').forEach(x=>x.onclick=()=>$('musiclist').click());
+$('panelclose').onclick=()=>document.querySelector('.workspace')?.classList.add('assets-collapsed');
+$('propertyclose').onclick=()=>document.querySelector('.workspace')?.classList.add('props-collapsed');
+$('fitpreview').onclick=()=>{const w=document.querySelector('.workspace');w.classList.toggle('focus-preview');$('fitpreview').textContent=w.classList.contains('focus-preview')?'Restore':'Fit';};
+$('guidesmirror').onchange=()=>{$('guides').checked=$('guidesmirror').checked;$('guides').onchange();};
+$('soundmirror').onchange=()=>{$('sound').checked=$('soundmirror').checked;$('sound').onchange?.();};
+$('sound').onchange=()=>{if($('soundmirror'))$('soundmirror').checked=$('sound').checked;try{localStorage.setItem('bugarchive-sound',$('sound').checked?'1':'0');}catch{}};
+document.querySelectorAll('[data-nudge]').forEach(x=>x.onclick=()=>{time=Math.max(0,Math.min(11.99,time+Number(x.dataset.nudge)));$('time').value=time;$('time').oninput();});
+function setZoom(value){value=Math.max(70,Math.min(180,value));$('timelinezoom').value=value;$('trackcontent').style.setProperty('--zoom',value/100);}
+$('timelinezoom').oninput=()=>setZoom(Number($('timelinezoom').value));$('zoomout').onclick=()=>setZoom(Number($('timelinezoom').value)-10);$('zoomin').onclick=()=>setZoom(Number($('timelinezoom').value)+10);
+document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.code==='Space'){e.preventDefault();$('play').click();}else if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();time=Math.max(0,Math.min(11.99,time+(e.key==='ArrowLeft'?-.033:.033)));$('time').value=time;$('time').oninput();}else if(e.key.toLowerCase()==='s'){const points=[0,3,6,7.5,10,11.2],next=points.find(x=>x>time+.05)??0;time=next;$('time').value=time;$('time').oninput();}});
 async function init(){try{await Promise.all([new FontFace('ArchiveMono',`url(${STUDIO_ASSETS.DejaVuSansMono})`).load(),new FontFace('ArchiveSans',`url(${STUDIO_ASSETS.DejaVuSans})`).load()].map(async p=>document.fonts.add(await p)));hosts=await Promise.all([0,1,2,3,4].map(i=>loadImage(STUDIO_ASSETS['host-'+i])));await setBug(STUDIO_ASSETS.CS1002);ready=true;let q=defaults;try{const saved=localStorage.getItem('bugarchive-v2');if(saved)q=JSON.parse(saved);}catch{}await setConfig(q);try{$('sound').checked=localStorage.getItem('bugarchive-sound')!=='0';const saved=localStorage.getItem('bugarchive-provider');if(saved)$('provider').value=saved;const key=sessionStorage.getItem('bugarchive-imagekey');if(key)$('apikey').value=key;const gt=sessionStorage.getItem('bugarchive-ghtoken');if(gt)$('ghtoken').value=gt;}catch{}$('provider').onchange();refreshPrompt();try{localStudio=['127.0.0.1','localhost'].includes(location.hostname)&&(await fetch('api/health',{cache:'no-store'})).ok;}catch{localStudio=false;}
 $('mode').textContent=localStudio?'LOCAL RENDER STUDIO':location.protocol==='file:'?'OFFLINE EDITOR':'WEB EDITOR';await loadTracks();if(document.modelContext?.registerTool)document.modelContext.registerTool({name:'inspect_episode',description:'Read the current episode and preview layout.',inputSchema:{type:'object',properties:{}},annotations:{readOnlyHint:true},execute:()=>({error_code:model?.error_code,lines:model?.count,visible:model?.visible,time})});}catch(e){status(e.message,true);}}init();
