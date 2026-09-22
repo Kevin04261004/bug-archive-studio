@@ -436,7 +436,7 @@ function archiveBox(href,count,name){const box=document.createElement('div');box
 const a=document.createElement('a');a.href=href;a.textContent=`Download all ${count} as one ZIP`;
 if(name)a.download=name;
 const note=document.createElement('p');
-note.textContent='Unpack it, then drag every MP4 into YouTube Studio at once. Each title is filled from its file name, and titles.tsv has the rest for the bulk editor.';
+note.textContent='Unpack it, then drag every MP4 into YouTube Studio at once. Each title is filled from its file name, and titles.tsv has the rest for the bulk editor. The archive is a run artifact, so the download asks for a GitHub login and GitHub clears it after three days.';
 box.append(a,note);return box;}
 /* A batch of thirty runs for a quarter of an hour and one of five hundred for most of a day.
    The page cannot be the only way back to the result: close the tab, sleep the laptop, and the
@@ -447,27 +447,29 @@ const token=($('ghtoken').value||'').trim();
 const r=await fetch(`https://api.github.com/repos/${slug.owner}/${slug.repo}${path}`,
 {cache:'no-store',headers:token?{Authorization:'Bearer '+token}:{}});
 return r.ok?r.json():null;}
-function archiveRow(rel){const zip=(rel.assets||[]).find(a=>a.name.endsWith('.zip'));
-if(!zip)return null;
+function archiveRow(art){const href=artifactHref(art);if(!href)return null;
 const row=document.createElement('div');row.className='batchold';
 const when=document.createElement('b');
-when.textContent=new Date(rel.published_at||rel.created_at).toLocaleString();
-const what=document.createElement('span');what.textContent=rel.name||rel.tag_name;
-row.append(when,what,link('Download ZIP',zip.browser_download_url));return row;}
-/* Releases come back ordered by the tag's commit date, not by when the release was made, so
-   a batch can sit behind five hundred episode releases. Paging until the batches are found
-   beats sorting a single page that may not contain them. The workflow keeps five. */
-async function batchReleases(){const found=[];
-for(let page=1;page<=3;page++){
-const rels=await repoGet(`/releases?per_page=100&page=${page}`);
-if(!rels||!rels.length)break;
-found.push(...rels.filter(z=>z.tag_name.startsWith('batch-')));
-if(found.length>=5||rels.length<100)break;}
-return found.sort((a,b)=>new Date(b.published_at||b.created_at)-new Date(a.published_at||a.created_at)).slice(0,5);}
+when.textContent=new Date(art.created_at).toLocaleString();
+const what=document.createElement('span');
+const left=Math.max(0,Math.round((new Date(art.expires_at)-Date.now())/86400000));
+what.textContent=`${(art.size_in_bytes/1e6).toFixed(0)} MB · expires in ${left} day${left===1?'':'s'}`;
+row.append(when,what,link('Download ZIP',href));return row;}
+/* The archive is a run artifact, not a release: every MP4 in it already lives on its own
+   episode release, and a kept copy would be the same footage stored twice. GitHub expires
+   artifacts on its own, so nothing piles up. The trade is that an artifact download needs a
+   GitHub login in the browser, which the person running renders has. */
+const BATCH_ARTIFACT='bug-archive-batch';
+function artifactHref(art){const slug=repoSlug();
+const run=art.workflow_run&&art.workflow_run.id;
+return slug&&run?`https://github.com/${slug.owner}/${slug.repo}/actions/runs/${run}/artifacts/${art.id}`:null;}
+async function batchArtifacts(){const z=await repoGet('/actions/artifacts?per_page=100');
+return ((z&&z.artifacts)||[]).filter(a=>a.name===BATCH_ARTIFACT&&!a.expired)
+.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)).slice(0,5);}
 async function showArchives(){const box=$('batcharchives');box.replaceChildren();
-const rows=(await batchReleases()).map(archiveRow).filter(Boolean);
+const rows=(await batchArtifacts()).map(archiveRow).filter(Boolean);
 if(!rows.length)return;
-const head=document.createElement('h3');head.textContent='FINISHED BATCHES';
+const head=document.createElement('h3');head.textContent='RECENT BATCHES';
 box.append(head,...rows);}
 /* A run that outlived its page. Reopening the dialog should say so rather than look idle. */
 const RUNNING='bugarchive-batchrun';
@@ -477,7 +479,7 @@ async function reportRunning(){let saved;try{saved=JSON.parse(localStorage.getIt
 if(!saved)return false;
 const z=await repoGet('/actions/runs/'+saved.run);
 if(!z||z.status==='completed'){forgetRun();return false;}
-bstatus(`A batch of ${saved.count} is still rendering on GitHub. It keeps going with this page closed — reopen this dialog later and the ZIP will be in the list below.`);
+bstatus(`A batch of ${saved.count} is still rendering on GitHub. It keeps going with this page closed — reopen this dialog within three days and the ZIP will be in the list below.`);
 return true;}
 async function batchOnActions(codes){const slug=repoSlug();
 if(!slug)throw Error('This editor is not on its GitHub Pages address, so it cannot reach the repository. Render on your own PC with START_STUDIO.bat.');
@@ -498,7 +500,7 @@ const label=`${codes.length} episodes`,tries=150+codes.length*15;
 const watch=async()=>{for(let i=0;i<tries;i++){const z=await api('/actions/runs/'+run.id);
 if(z.status==='completed')return z;
 const secs=Math.round((Date.now()-since)/1000);
-bstatus(z.status==='queued'?`Waiting for a runner to pick up ${label}… ${secs}s`:`Rendering ${label} on GitHub… ${secs}s. Closing this page does not stop it; the ZIP shows up under FINISHED BATCHES.`);
+bstatus(z.status==='queued'?`Waiting for a runner to pick up ${label}… ${secs}s`:`Rendering ${label} on GitHub… ${secs}s. Closing this page does not stop it; the ZIP shows up under RECENT BATCHES.`);
 await sleep(4000);}
 throw Error('The action is taking too long. Open the run on GitHub to see where it got to.');};
 const finished=await watch();
@@ -508,11 +510,12 @@ $('batchresults').replaceChildren();
    five hundred releases before offering it would be the slowest part of the whole job. */
 bstatus('Fetching the archive…');
 let packed=0;
-try{const z=await api('/releases/tags/batch-'+run.id);
-const zip=(z.assets||[]).find(a=>a.name.endsWith('.zip'));
-if(zip){packed=parseInt(z.name,10)||codes.length;
-$('batchresults').append(archiveBox(zip.browser_download_url,packed));
-link('',zip.browser_download_url).click();}}catch{}
+try{const z=await api(`/actions/runs/${run.id}/artifacts`);
+const art=((z&&z.artifacts)||[]).find(a=>a.name===BATCH_ARTIFACT&&!a.expired);
+const href=art&&artifactHref(art);
+if(href){packed=codes.length;
+$('batchresults').append(archiveBox(href,packed));
+link('',href).click();}}catch{}
 showArchives();
 bstatus(packed?`${packed} episodes packed. Listing them…`:'Collecting the MP4s…');
 const ready=[];
