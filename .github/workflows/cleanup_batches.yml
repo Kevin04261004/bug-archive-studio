@@ -22,15 +22,23 @@ jobs:
           gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
             --jq '.[] | select(.tag_name | startswith("batch-")) | .tag_name' > tags.txt
           echo "batch releases: $(wc -l < tags.txt)"
+          # Both deletes go through the API. 'gh release delete --cleanup-tag' shells out to
+          # git for the tag, and this job has no checkout, so it failed on every release
+          # while the step still reported success.
           while read -r tag; do
             [ -n "$tag" ] || continue
             # episode-* must never be touched: those are the rendered videos themselves.
             case "$tag" in batch-*) ;; *) echo "refusing $tag" >&2; continue ;; esac
-            gh release delete "$tag" -y --cleanup-tag && echo "  deleted $tag"
+            id=$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq '.id')
+            gh api --silent --method DELETE "repos/$GITHUB_REPOSITORY/releases/$id"
+            gh api --silent --method DELETE "repos/$GITHUB_REPOSITORY/git/refs/tags/$tag" || true
+            echo "  deleted $tag"
           done < tags.txt
+          # Check the work rather than trust it: the first run of this said success and had
+          # deleted nothing.
           left=$(gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
-            --jq '[.[] | select(.tag_name | startswith("batch-"))] | length' | paste -sd+ | bc)
-          echo "batch releases left: $left"
-          episodes=$(gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
-            --jq '[.[] | select(.tag_name | startswith("episode-"))] | length' | paste -sd+ | bc)
-          echo "episode releases untouched: $episodes"
+            --jq '.[] | select(.tag_name | startswith("batch-")) | .tag_name' | wc -l)
+          kept=$(gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
+            --jq '.[] | select(.tag_name | startswith("episode-")) | .tag_name' | wc -l)
+          echo "batch releases left: $left · episode releases untouched: $kept"
+          [ "$left" -eq 0 ] || { echo "batch releases survived" >&2; exit 1; }
