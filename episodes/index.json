@@ -1591,8 +1591,8 @@
       "message": "The type 'Vector3' cannot be declared const",
       "filename": "SpawnPoint.cs",
       "lines": 12,
-      "bug": null,
-      "missing": "../assets/CS0283.png",
+      "bug": "assets/CS0283.png",
+      "missing": null,
       "order": 138,
       "tier": 3
     },
@@ -1603,8 +1603,8 @@
       "message": "Evaluation of the decimal constant expression failed",
       "filename": "Money.cs",
       "lines": 12,
-      "bug": null,
-      "missing": "../assets/CS0463.png",
+      "bug": "assets/CS0463.png",
+      "missing": null,
       "order": 139,
       "tier": 3
     },
@@ -1615,8 +1615,8 @@
       "message": "A value of type 'int[]' cannot be used as a default parameter",
       "filename": "Weapon.cs",
       "lines": 14,
-      "bug": null,
-      "missing": "../assets/CS1750.png",
+      "bug": "assets/CS1750.png",
+      "missing": null,
       "order": 140,
       "tier": 3
     },
