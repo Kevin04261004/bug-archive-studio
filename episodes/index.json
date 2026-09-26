@@ -1447,8 +1447,8 @@
       "message": "Cannot assign 'void' to anonymous type property",
       "filename": "Report.cs",
       "lines": 15,
-      "bug": null,
-      "missing": "../assets/CS0828.png",
+      "bug": "assets/CS0828.png",
+      "missing": null,
       "order": 126,
       "tier": 3
     },
@@ -1459,8 +1459,8 @@
       "message": "An anonymous type cannot have multiple properties with the same name",
       "filename": "Report.cs",
       "lines": 10,
-      "bug": null,
-      "missing": "../assets/CS0833.png",
+      "bug": "assets/CS0833.png",
+      "missing": null,
       "order": 127,
       "tier": 3
     },
@@ -1471,8 +1471,8 @@
       "message": "Cannot use anonymous type in a constant expression",
       "filename": "Report.cs",
       "lines": 10,
-      "bug": null,
-      "missing": "../assets/CS0836.png",
+      "bug": "assets/CS0836.png",
+      "missing": null,
       "order": 128,
       "tier": 3
     },
@@ -1483,8 +1483,8 @@
       "message": "Cannot use local variable 'hp' before it is declared",
       "filename": "Health.cs",
       "lines": 13,
-      "bug": null,
-      "missing": "../assets/CS0841.png",
+      "bug": "assets/CS0841.png",
+      "missing": null,
       "order": 129,
       "tier": 3
     },
