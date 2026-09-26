@@ -1495,8 +1495,8 @@
       "message": "An auto-implemented property must be fully assigned before control is returned",
       "filename": "Bag.cs",
       "lines": 20,
-      "bug": null,
-      "missing": "../assets/CS0843.png",
+      "bug": "assets/CS0843.png",
+      "missing": null,
       "order": 130,
       "tier": 3
     },
@@ -1507,8 +1507,8 @@
       "message": "A nested array initializer is expected",
       "filename": "Board.cs",
       "lines": 11,
-      "bug": null,
-      "missing": "../assets/CS0846.png",
+      "bug": "assets/CS0846.png",
+      "missing": null,
       "order": 131,
       "tier": 3
     },
@@ -1519,8 +1519,8 @@
       "message": "An array initializer of length 3 is expected",
       "filename": "Scores.cs",
       "lines": 11,
-      "bug": null,
-      "missing": "../assets/CS0847.png",
+      "bug": "assets/CS0847.png",
+      "missing": null,
       "order": 132,
       "tier": 3
     },
