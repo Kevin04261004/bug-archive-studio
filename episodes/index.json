@@ -2359,8 +2359,8 @@
       "message": "Interfaces cannot contain instance constructors",
       "filename": "Unit.cs",
       "lines": 18,
-      "bug": null,
-      "missing": "../assets/CS0526.png",
+      "bug": "assets/CS0526.png",
+      "missing": null,
       "order": 203,
       "tier": 4
     },
@@ -2371,8 +2371,8 @@
       "message": "Type 'Clock' in interface list is not an interface",
       "filename": "Ticker.cs",
       "lines": 16,
-      "bug": null,
-      "missing": "../assets/CS0527.png",
+      "bug": "assets/CS0527.png",
+      "missing": null,
       "order": 204,
       "tier": 4
     },
@@ -2383,8 +2383,8 @@
       "message": "'IDamage' is already listed in the interface list",
       "filename": "Crate.cs",
       "lines": 17,
-      "bug": null,
-      "missing": "../assets/CS0528.png",
+      "bug": "assets/CS0528.png",
+      "missing": null,
       "order": 205,
       "tier": 4
     },
