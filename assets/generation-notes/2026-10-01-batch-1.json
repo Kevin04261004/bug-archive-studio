@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-01",
+  "method": "built-in image_gen",
+  "reference_episodes": [
+    "CS0103",
+    "CS0246",
+    "CS1061",
+    "CS1002",
+    "CS1513",
+    "CS1514",
+    "CS1026",
+    "CS1003",
+    "CS0029",
+    "CS0266"
+  ],
+  "base_prompt": "Use case: stylized-concept. Create one standalone Bug Archive episode character PNG. The attached contact sheet is STYLE REFERENCE ONLY showing the established first ten bugs; do not reproduce the sheet or labels. Match their glossy fluorescent yellow-lime rounded chibi bug species, dark plum outlines, huge black oval eyes with white shine, blushing cheeks, two thin stalk antennae with big round bulbs, tiny lime feet, polished smooth 2D anime illustration. One centered bug, entire antennae and props visible, generous small transparent margin. Make the error meaning immediately readable through one simple visual gag integrated into costume, body, or prop. No written text, letters, numbers, code, caption, card, scene, floor, cast shadow or watermark. Genuinely transparent background. ",
+  "episodes": [
+    {
+      "code": "CS0407",
+      "concept": "Wrong return type: Action expects no value but the bug's return chute spits out a solid cube. A cute courier bug wearing a tiny return-arrow-shaped harness, holding an unwanted cube against a visibly sealed receiving slot; puzzled expression."
+    },
+    {
+      "code": "CS1593",
+      "concept": "Delegate expects zero arguments but is given one: bug tries to feed one shiny pearl into its own tiny sealed feeding funnel helmet, whose entrance has a solid flat lid and no opening. Pearl clearly stopped at lid, puzzled expression."
+    },
+    {
+      "code": "CS0574",
+      "concept": "Destructor name mismatches its class: cleanup bug with a round moon emblem on its body, holding a dustpan marked with a completely different star-shaped emblem; bug compares the mismatched emblems in surprise. Emblems only, no text."
+    },
+    {
+      "code": "CS0575",
+      "concept": "Destructor is allowed only in a class, not a struct: bug inside a rigid square block-shell tries to attach a tiny cleanup broom to its shell, but the broom's circular mounting collar cannot fit the square mount. Clear shape mismatch, friendly."
+    },
+    {
+      "code": "CS0249",
+      "concept": "Cannot override Finalize directly: bug wearing a cleanup apron tries to wrench off a firmly sealed automatic cleanup gear on its belly; lock on gear, wrench slips, startled cute expression. One sealed cleanup mechanism."
+    },
+    {
+      "code": "CS0245",
+      "concept": "Cannot call destructor directly: bug's tiny hand reaches for a broom-shaped cleanup lever protected by a clear locked cover on its belly. Fingertip touches the cover, visibly blocked."
+    },
+    {
+      "code": "CS0260",
+      "concept": "Missing partial modifier: bug body wears two puzzle-shell halves; one half has a puzzle connector tab, the other has a flat unprepared edge so they cannot join. Bug holds them together with a small visible gap, puzzled."
+    },
+    {
+      "code": "CS0261",
+      "concept": "Partial declarations must agree class versus struct: bug wears two incompatible shell halves, left round curved smooth shell and right angular square rigid shell, with mismatched seam preventing assembly. One bug, no injury, costume halves only."
+    },
+    {
+      "code": "CS0262",
+      "concept": "Conflicting access modifiers on partial declarations: bug wears two halves of a jacket; one half has a wide-open little gate, other half has a tightly padlocked gate. A tugged zipper between halves refuses to close; clear open vs locked contrast."
+    },
+    {
+      "code": "CS0263",
+      "concept": "Partial class has different base classes: one bug with two shell halves each attached to a different incompatible base stand, one round pedestal and one square pedestal, pulling the two halves of its costume apart slightly. One puzzled centered character."
+    }
+  ]
+}
