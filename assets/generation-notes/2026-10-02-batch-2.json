@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-02",
+  "method": "built-in image_gen",
+  "reference_episodes": [
+    "CS0103",
+    "CS0246",
+    "CS1061",
+    "CS1002",
+    "CS1513",
+    "CS1514",
+    "CS1026",
+    "CS1003",
+    "CS0029",
+    "CS0266"
+  ],
+  "base_prompt": "Create ONE Bug Archive episode mascot, matching all ten supplied first-episode reference images as STYLE REFERENCES only. Polished smooth 2D anime sticker, fluorescent yellow-lime rounded soft bug, two long thin antennae with big round bulbs, huge black oval shiny eyes, rosy cheeks, tiny feet, dark plum fine outline, upper-left white gloss. Entire bug and props visible, centered with clear margin. A single clear visual gag expresses the compiler error, integrated into its costume/body/prop; readable at thumbnail size. Genuinely transparent PNG. No text, letters, numbers, code, labels, card, scene, floor, cast shadow, watermark. Do not make a collage. Error concept: ",
+  "episodes": [
+    {
+      "code": "CS1540",
+      "concept": "Protected member through wrong qualifier: bug wearing a gold heir crest reaches toward a padlocked heart compartment on a plain borrowed shell it holds, while matching crest on its own shell shows access belongs through itself. Clear barrier and rejected reach."
+    },
+    {
+      "code": "CS0572",
+      "concept": "Referencing nested type through an instance: bug holds a miniature finished nesting doll while trying to retrieve the inner doll's construction template from it; a template-shaped tag remains attached to the blueprint-like outer shell frame on its back. Simple nested doll gag."
+    },
+    {
+      "code": "CS0305",
+      "concept": "Generic type missing its required type argument: bug wears a box shell with exactly one conspicuously EMPTY star-shaped argument socket, peering into the empty hole while holding both hands up."
+    },
+    {
+      "code": "CS0307",
+      "concept": "Type arguments on a variable: bug tries fitting an oversized angle-bracket shaped collar around a plain solid counting bead on its belly; bead has no attachment sockets, collar slips off."
+    },
+    {
+      "code": "CS0308",
+      "concept": "Type arguments on a non-generic method: wind-up bug with a simple fixed crank mechanism tries adding a separate type-token cartridge to a smooth sealed top that has no cartridge slot."
+    },
+    {
+      "code": "CS0310",
+      "concept": "Public parameterless constructor required: factory bug holds a tiny egg incubator whose hatch is locked and whose starter only works with an inserted key, while bug's empty hand tries to start it without a key."
+    },
+    {
+      "code": "CS0311",
+      "concept": "Type fails required base-class inheritance: bug with a flower-shaped badge tries joining a family tree branch that accepts only crown-shaped badges; its badge visibly fails the crown-shaped clasp."
+    },
+    {
+      "code": "CS0312",
+      "concept": "Value type cannot box to required type parameter: bug tries packing a solid square gem into a round transparent capsule with a triangular receiving socket. Show square payload versus incompatible triangular connector."
+    },
+    {
+      "code": "CS0313",
+      "concept": "Nullable type fails interface constraint: bug wearing a half-empty transparent hourglass shell tries connect to a ticking gear socket; missing lower sand bulb appears as dotted empty outline so interface cannot connect reliably."
+    },
+    {
+      "code": "CS0314",
+      "concept": "Unconstrained type parameter fails base type constraint: bug carries a mystery parcel with several differently shaped unlabelled seals and tries enter a crown-shaped shell gate, unable to guarantee a matching crown identity."
+    }
+  ]
+}
