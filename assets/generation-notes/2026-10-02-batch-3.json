@@ -1,0 +1,59 @@
+{
+  "base_prompt": "Create ONE Bug Archive mascot matching supplied first-episode STYLE REFERENCES. Polished smooth 2D chibi anime, fluorescent yellow-lime rounded bug, two long antennae with round bulbs, huge black oval glossy eyes, pink cheeks, tiny feet, fine dark outline and upper-left white gloss. Full character and props centered with ample transparent margin. One large readable visual gag integrated into shell/body/accessories, clear at thumbnail size. Genuine transparent PNG. No text, letters, numbers, labels, background, card, ground, cast shadow or watermark. Error metaphor: ",
+  "reference_episodes": [
+    "CS0103.png",
+    "CS0246.png",
+    "CS1061.png",
+    "CS1002.png",
+    "CS1513.png",
+    "CS1514.png",
+    "CS1026.png",
+    "CS1003.png",
+    "CS0029.png",
+    "CS0266.png"
+  ],
+  "episodes": [
+    {
+      "code": "CS0315",
+      "concept": "Value type cannot box into unrelated class: square gem belly stuck in incompatible star shaped armor."
+    },
+    {
+      "code": "CS0452",
+      "concept": "Reference type required but solid value supplied: bug holds solid stone cube against a clasp designed for a dangling tether and hollow linked ring; solid cube cannot hook on. Confused bug wearing chain-link collar."
+    },
+    {
+      "code": "CS0453",
+      "concept": "Non-nullable value required: bug with airy translucent soap-bubble belly tries to insert bubble into heavy square solid-gem armor; bubble squishes and floats through, unlike required solid core."
+    },
+    {
+      "code": "CS0304",
+      "concept": "Missing constructor constraint: builder bug inside egg-shaped assembly shell pulling a starter cord whose end is missing its essential wind-up key, no mechanism can start. Empty key-shaped socket prominent."
+    },
+    {
+      "code": "CS0403",
+      "concept": "Cannot give null to potentially solid value: bug trying to fill its solid gemstone heart socket with an empty transparent bubble, puzzled by missing actual heart."
+    },
+    {
+      "code": "CS0413",
+      "concept": "Safe cast lacks reference-type constraint: bug wears conversion goggles with one hollow chain-ring lens and one solid square lens, conversion bridge between them cannot latch onto solid side."
+    },
+    {
+      "code": "CS0411",
+      "concept": "Cannot infer generic type: bug operating a little shell incubator with an empty shape-selector socket, looking indecisively at a star and square token in its hands; no clue selects either."
+    },
+    {
+      "code": "CS0401",
+      "concept": "Constructor constraint must be last: bug wears three-bead assembly belt with starter wind-up key incorrectly at front, blocking two remaining beads; empty key-shaped clasp clearly at tail end."
+    },
+    {
+      "code": "CS0405",
+      "concept": "Duplicate class constraint: bug tangled in TWO identical large chain-link collar clasps redundantly fastened around same neck, comparing identical matching emblems."
+    },
+    {
+      "code": "CS0406",
+      "concept": "Base class constraint must come first: bug wears a stacking shell tower with large foundation block incorrectly balanced on top of small connector blocks, tower tilting."
+    }
+  ],
+  "method": "built-in image_gen",
+  "date": "2026-10-02"
+}
