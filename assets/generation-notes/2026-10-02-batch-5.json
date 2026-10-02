@@ -1,0 +1,59 @@
+{
+  "base_prompt": "Create ONE Bug Archive mascot matching supplied first-episode STYLE REFERENCES. Polished smooth 2D chibi anime, fluorescent yellow-lime rounded bug, two long antennae with round bulbs, huge black oval glossy eyes, pink cheeks, tiny feet, fine dark outline and upper-left white gloss. Full character and props centered with ample transparent margin. One large readable visual gag integrated into shell/body/accessories, clear at thumbnail size. Genuine transparent PNG. No text, letters, numbers, labels, background, card, ground, cast shadow or watermark. Error metaphor: ",
+  "reference_episodes": [
+    "CS0103.png",
+    "CS0246.png",
+    "CS1061.png",
+    "CS1002.png",
+    "CS1513.png",
+    "CS1514.png",
+    "CS1026.png",
+    "CS1003.png",
+    "CS0029.png",
+    "CS0266.png"
+  ],
+  "method": "built-in image_gen",
+  "date": "2026-10-02",
+  "episodes": [
+    {
+      "code": "CS0692",
+      "concept": "Duplicate type parameters: bug's two antennae wear EXACT same conspicuous star-shaped identity medallions, tangled trying to enter one star-shaped slot."
+    },
+    {
+      "code": "CS0694",
+      "concept": "Type parameter shares containing type name: bug wears large heart crest on shell and identical tiny heart crest on enclosed little gem, confused pointing between outer and inner same identity."
+    },
+    {
+      "code": "CS0699",
+      "concept": "Constraint refers to undefined parameter: bug has two occupied sockets star and circle on its shell belt, but third triangular leash dangles unattached with no triangle socket."
+    },
+    {
+      "code": "CS0701",
+      "concept": "Sealed class cannot be constraint: bug with securely sealed padlocked turtle shell tries extending a new branch from smooth sealed shell; twig connection visibly blocked by lock."
+    },
+    {
+      "code": "CS0702",
+      "concept": "Special universal class cannot be constraint: bug attempts to use a huge all-encompassing circular hoop as a selective sieve, but every tiny shape passes through freely; bug startled at useless filter."
+    },
+    {
+      "code": "CS0703",
+      "concept": "Constraint less accessible than public class: bug wearing welcoming open display shell but vital fitting clasp locked inside tiny private padlocked chest on belly; visitors cannot use fitting."
+    },
+    {
+      "code": "CS0706",
+      "concept": "Primitive type invalid as constraint: bug uses solid little cube as measuring stencil, presses it to face and cannot see through because cube has no opening; clear confused expression."
+    },
+    {
+      "code": "CS0316",
+      "concept": "Parameter name conflicts with automatic value parameter: bug with automatic mechanical hand already placing a star badge into waist slot while own hand tries placing identical star badge into same slot."
+    },
+    {
+      "code": "CS0412",
+      "concept": "Local name duplicates type parameter: bug's tall antenna star name badge and small pocket star name badge are identical, two strings tangle at same identity clasp."
+    },
+    {
+      "code": "CS0306",
+      "concept": "Pointer cannot be generic type argument: bug carrying a sharp arrow-tipped pointer tries inserting it into a soft round generic egg cradle, cradle's safety rim blocks sharp arrow."
+    }
+  ]
+}
