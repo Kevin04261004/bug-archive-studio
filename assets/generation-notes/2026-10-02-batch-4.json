@@ -1,0 +1,59 @@
+{
+  "base_prompt": "Create ONE Bug Archive mascot matching supplied first-episode STYLE REFERENCES. Polished smooth 2D chibi anime, fluorescent yellow-lime rounded bug, two long antennae with round bulbs, huge black oval glossy eyes, pink cheeks, tiny feet, fine dark outline and upper-left white gloss. Full character and props centered with ample transparent margin. One large readable visual gag integrated into shell/body/accessories, clear at thumbnail size. Genuine transparent PNG. No text, letters, numbers, labels, background, card, ground, cast shadow or watermark. Error metaphor: ",
+  "reference_episodes": [
+    "CS0103.png",
+    "CS0246.png",
+    "CS1061.png",
+    "CS1002.png",
+    "CS1513.png",
+    "CS1514.png",
+    "CS1026.png",
+    "CS1003.png",
+    "CS0029.png",
+    "CS0266.png"
+  ],
+  "method": "built-in image_gen",
+  "date": "2026-10-02",
+  "episodes": [
+    {
+      "code": "CS0409",
+      "concept": "Constraint clause specified twice: bug has two identical rule scroll-shaped belts both trying to buckle into the single same waist clasp; blank scrolls with same pictorial star seal."
+    },
+    {
+      "code": "CS0449",
+      "concept": "Class or struct constraint must come first: bug pulling its large basic shell plate from behind a row of tiny accessory clasps that obstruct installation; empty shell-shaped first mounting frame on belly."
+    },
+    {
+      "code": "CS0450",
+      "concept": "Cannot combine base class and class/struct constraints: bug squeezed by incompatible double armor, soft chain-mail outer jacket and rigid gemstone inner block, both claiming same large central clasp."
+    },
+    {
+      "code": "CS0451",
+      "concept": "Struct and new constraint incompatible: bug with a naturally self-hatching gem egg shell carrying an unnecessary second crank starter that tangles against the already built-in starter."
+    },
+    {
+      "code": "CS0454",
+      "concept": "Circular constraint dependency: a round lime bug whose TWO antennae curl toward each other and are interlocked into ONE closed infinity loop above its head. A gold padlock and a silver padlock are interlinked at center of loop; each prevents the other from opening. The bug pulls both ends helplessly with tiny hands. Make circular self-dependency visually obvious, no loose unrelated locks, no text."
+    },
+    {
+      "code": "CS0455",
+      "concept": "Conflicting inherited value/reference constraints: bug's split shell has one rigid solid cube half and one hollow chain-link half, halves unable to join down central seam."
+    },
+    {
+      "code": "CS0456",
+      "concept": "Struct-constrained parameter cannot be another constraint: bug tries using a solid sealed gem as a flexible fitting stencil around a smaller token, but solid gem has no hole and blocks it."
+    },
+    {
+      "code": "CS0425",
+      "concept": "Method and interface constraints must match: bug holds star-shaped badge connector against square-shaped contract harness socket; clear matching placement but wrong shape."
+    },
+    {
+      "code": "CS0460",
+      "concept": "Override inherits constraints: bug wears a parent-shell harness with fixed star clasp and tries bolting a contradictory square clasp over it; original clasp clearly still governs fit."
+    },
+    {
+      "code": "CS0689",
+      "concept": "Cannot derive from type parameter: bug tries to build sturdy shell on top of an unstable mystery-shaped jelly foundation changing between circle and square silhouettes."
+    }
+  ]
+}
