@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-02",
+  "method": "built-in image_gen",
+  "reference_episodes": [
+    "CS0103",
+    "CS0246",
+    "CS1061",
+    "CS1002",
+    "CS1513",
+    "CS1514",
+    "CS1026",
+    "CS1003",
+    "CS0029",
+    "CS0266"
+  ],
+  "base_prompt": "Create ONE Bug Archive episode mascot, matching all ten supplied first-episode reference images as STYLE REFERENCES only. Polished smooth 2D anime sticker, fluorescent yellow-lime rounded soft bug, two long thin antennae with big round bulbs, huge black oval shiny eyes, rosy cheeks, tiny feet, dark plum fine outline, upper-left white gloss. Entire bug and props visible, centered with clear margin. A single clear visual gag expresses the compiler error, integrated into its costume/body/prop; readable at thumbnail size. Genuinely transparent PNG. No text, letters, numbers, code, labels, card, scene, floor, cast shadow, watermark. Do not make a collage. Error concept: ",
+  "episodes": [
+    {
+      "code": "CS0264",
+      "concept": "Partial declarations use inconsistent type parameter names: one bug trying to clasp two matching jacket halves, but each half has a different identity badge, a cyan star versus a purple crescent. Bug compares the contradictory badges with worried expression. Emphasize matching halves but mismatched identity emblems."
+    },
+    {
+      "code": "CS0267",
+      "concept": "Partial modifier in wrong position: a bug with a puzzle shell wearing its detachable puzzle connector awkwardly on top of its antenna instead of at the visibly empty matching shell seam. It points toward the correct empty seam, puzzled."
+    },
+    {
+      "code": "CS0751",
+      "concept": "Partial method inside a non-partial class: bug holds a small jigsaw-shaped gear up to its solid seamless shell, which has no matching split or connector to receive it. Tiny gear clearly cannot be installed."
+    },
+    {
+      "code": "CS0759",
+      "concept": "Implementation without a defining declaration: builder bug holds a finished toy gear mechanism over a completely empty outline-shaped blueprint frame, confused that there is no defining pattern. No written marks."
+    },
+    {
+      "code": "CS0756",
+      "concept": "Duplicate partial method definitions: bug holds two identical hollow outline-only gear stencils competing for one empty gear-shaped slot on its belly. Both stencils empty, not working solid gears."
+    },
+    {
+      "code": "CS0757",
+      "concept": "Duplicate partial method implementations: bug has two identical solid working wind-up gears trying to occupy a single mounting axle on its belly, jammed together. Solid filled gears and double crank handles make duplicate implementations obvious."
+    },
+    {
+      "code": "CS0229",
+      "concept": "Ambiguous inherited member: bug between two identical little jewel buttons on a split shoulder harness, each connected from a different side, finger hovering indecisively between the indistinguishable buttons."
+    },
+    {
+      "code": "CS1955",
+      "concept": "Trying to call a field like a method: bug desperately tries to turn a crank attached to a plain solid heart-shaped health gem on its belly; the gem has no machinery or socket and the loose crank fails to engage."
+    },
+    {
+      "code": "CS0462",
+      "concept": "Inherited methods collapse to same signature after generic substitution: bug holds two differently colored keys whose tooth patterns are EXACTLY identical, both jammed side by side at one tiny keyhole on its shell."
+    },
+    {
+      "code": "CS0663",
+      "concept": "Overloads differ only by ref/out/in: bug wears two identical toy blasters with exactly identical connector plugs, distinguished only by opposing tiny pictorial arrows on their straps; both compete for one holster."
+    }
+  ]
+}
