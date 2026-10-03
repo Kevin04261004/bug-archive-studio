@@ -1,0 +1,59 @@
+{
+  "base_prompt": "Use case: stylized-concept. Create ONE new Bug Archive mascot illustration matching the provided ORIGINAL STYLE REFERENCES. Polished 2D chibi anime illustration, fluorescent yellow-lime rounded soft bug, two long antennae ending in large glossy bulbs, oversized black oval eyes with white highlights, pink cheeks, tiny feet, dark fine outline, smooth upper-left white gloss. Keep the recognizable family proportions and cute expressive face. One large readable visual metaphor for the episode integrated into the bug and its prop. Entire bug and props visible centered with comfortable margins. True transparent background, no floor or cast shadow, no caption, words, letters, digits, error numbers, cards or watermark. ",
+  "reference_episodes": [
+    "CS0103.png",
+    "CS0246.png",
+    "CS1061.png",
+    "CS1002.png",
+    "CS1513.png",
+    "CS1514.png",
+    "CS1026.png",
+    "CS1003.png",
+    "CS0029.png",
+    "CS0266.png"
+  ],
+  "method": "built-in image_gen",
+  "date": "2026-10-03",
+  "episodes": [
+    {
+      "code": "CS0210",
+      "concept": "Missing initializer in using/fixed declaration. Bug carries a transparent EMPTY battery capsule in its belly harness, lid open, obvious empty battery-shaped recess, and holds a disconnected little cable; its antenna bulbs droop unpowered. Missing initial power is the central gag."
+    },
+    {
+      "code": "CS0211",
+      "concept": "Cannot take address of temporary expression. Bug tries to attach an arrow-shaped address pin to a floating translucent soap bubble, but the arrow passes through as the bubble dissolves. A temporary result has no stable place to pin. Bug looks surprised. One bubble and one blunt arrow."
+    },
+    {
+      "code": "CS0212",
+      "concept": "Cannot take address of movable object outside fixed block. Bug reaches with a blunt pointer-arrow toward a little storage chest on tiny wheels visibly rolling away; beside it a single unused open anchor clamp. Motion marks show the address target moving because it was not pinned."
+    },
+    {
+      "code": "CS0213",
+      "concept": "Attempt to fix an already fixed expression. Bug is firmly anchored by a chunky clamp at its feet and confusedly tries to squeeze a second redundant clamp over the first clamp; the first securely pins it already. Two clearly readable clamps, no chains."
+    },
+    {
+      "code": "CS0214",
+      "concept": "Pointer used outside unsafe context. Bug carries a large blunt arrow-pointer trying to pass through a small protective hoop around its body, but a red safety shield blocks the pointer at the rim. Pointer tool versus safe enclosure is the clear visual conflict."
+    },
+    {
+      "code": "CS0215",
+      "concept": "True/false operator returns wrong type instead of boolean. Bug has a small two-choice output gate with a green check-shaped socket and a coral cross-shaped socket, but attempts to push a golden round coin through; round coin visibly does not fit either boolean socket. No letters or numerals; check and cross are physical shapes."
+    },
+    {
+      "code": "CS0216",
+      "concept": "Operator requires matching paired operator. Bug has one bright golden mitten attached to one little arm and shows an empty matching mitten-shaped outline on the other, holding the two forearms up for direct comparison; a pairing ribbon joins the full and empty positions. Central concept is a required counterpart missing."
+    },
+    {
+      "code": "CS0217",
+      "concept": "Short circuit operator must return same operand type. Bug operates a tiny visible joining device: two lime star-shaped gems enter together from two upper openings, but wrong orange cube emerges at bottom, jams against a star-shaped output socket. Face looks worried at incompatible output. Large simple shapes, no complex machinery."
+    },
+    {
+      "code": "CS0219",
+      "concept": "Assigned variable never used. Bug wears a transparent little belly storage pocket containing a beautiful golden gem, but pocket is covered by one delicate cobweb and closed dusty latch. Bug looks away while holding a different actively glowing gem. Stored value neglected and never accessed is instantly readable."
+    },
+    {
+      "code": "CS0227",
+      "concept": "Unsafe compiler option not enabled. Bug in a cute safety helmet holds a blunt pointer-tool behind a closed safety gate attached to a large toggle switch clearly in OFF lower position, indicator dim gray, upper indicator unlit; bug reaches to enable switch. No labels or text. Disabled permission switch blocks unsafe work."
+    }
+  ]
+}
