@@ -6071,6 +6071,18 @@
       "missing": "../assets/CS0687.png",
       "order": 529,
       "tier": 9
+    },
+    {
+      "file": "CS9999.json",
+      "path": "episodes/CS9999.json",
+      "error_code": "CS9999",
+      "message": "Logic bug: an extra i++ skips every other array element",
+      "filename": "LootPreview.cs",
+      "lines": 15,
+      "bug": "assets/CS9999.png",
+      "missing": null,
+      "order": 530,
+      "tier": 9
     }
   ]
 }
