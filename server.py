@@ -183,7 +183,7 @@ class Handler(SimpleHTTPRequestHandler):
             if len(codes)>600:raise ValueError('Pick 600 episodes or fewer.')
             wanted,seen=[],set()
             for code in codes:
-                if not isinstance(code,str) or not re.fullmatch(r'CS\d{4}',code):raise ValueError(f'Invalid error code: {code!r}.')
+                if not isinstance(code,str) or not re.fullmatch(r'(?:CS\d{4}|0x[0-9A-F]{8})',code):raise ValueError(f'Invalid error code: {code!r}.')
                 if not (ROOT/'episodes'/f'{code}.json').is_file():raise ValueError(f'{code} is not an episode in the episodes folder.')
                 if code not in seen:seen.add(code);wanted.append(code)
             job=uuid.uuid4().hex
@@ -202,7 +202,7 @@ class Handler(SimpleHTTPRequestHandler):
             if 'application/json' not in self.headers.get('Content-Type',''):raise ValueError('JSON required.')
             c=json.loads(self.rfile.read(length))
             import re
-            if not re.fullmatch(r'CS\d{4}',c.get('error_code','')):raise ValueError('Invalid error code.')
+            if not re.fullmatch(r'(?:CS\d{4}|0x[0-9A-F]{8})',c.get('error_code','')):raise ValueError('Invalid error code.')
             if not isinstance(c.get('bug_data_url'),str) or not c['bug_data_url'].startswith('data:image/png;base64,'):raise ValueError('Save an embedded PNG first.')
             c={k:v for k,v in c.items() if k in {'error_code','filename','message','before','after','focus_line','bug_data_url','music'}}
             job=uuid.uuid4().hex
@@ -220,3 +220,4 @@ if not args.no_browser:threading.Timer(.5,lambda:webbrowser.open(url)).start()
 try:server.serve_forever()
 except KeyboardInterrupt:pass
 finally:server.server_close();pool.shutdown(wait=False)
+

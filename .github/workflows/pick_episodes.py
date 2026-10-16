@@ -9,7 +9,7 @@ EMPTY = '0' * 40
 
 def known():
     """Episodes render.py accepts: one CS0000.json per error code."""
-    return sorted(p.stem for p in EPISODES.glob('*.json') if re.fullmatch(r'CS\d{4}', p.stem))
+    return sorted(p.stem for p in EPISODES.glob('*.json') if re.fullmatch(r'(?:CS\d{4}|0x[0-9A-F]{8})', p.stem))
 
 
 def changed(before, after):
@@ -59,7 +59,7 @@ def asked_for(wanted):
     have = known()
     if wanted in {'', 'all'}:
         return have
-    asked = {c.upper() for c in re.split(r'[\s,]+', wanted) if c}
+    asked = {c.upper().replace('0X', '0x', 1) for c in re.split(r'[\s,]+', wanted) if c}
     for code in sorted(asked - set(have)):
         print(f'{code} is not an episode in episodes/, so it is skipped.', file=sys.stderr)
     return [c for c in have if c in asked]
@@ -75,3 +75,4 @@ for code in codes:
     if code not in ready:
         print(f'{code} has no bug PNG yet, so it is not rendered. Add assets/{code}.png.', file=sys.stderr)
 print('codes=' + ' '.join(ready))
+

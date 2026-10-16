@@ -14,7 +14,7 @@ const bez=(a,b,c,d,p)=>[0,1].map(i=>(1-p)**3*a[i]+3*(1-p)**2*p*b[i]+3*(1-p)*p*p*
 function loadImage(src){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Could not load image.'));im.src=src;});}
 function message(s,x,y,maxsize,maxw,align='left',color=FG){let lines=[],size=maxsize;for(;size>=23;size--){lines=[];let str='';for(const word of s.split(/\s+/)){const z=(str+' '+word).trim();if(width(z,size)<=maxw)str=z;else{if(str)lines.push(str);str=word;}}if(str)lines.push(str);if(lines.length<=2&&lines.every(z=>width(z,size)<=maxw))break;}if(size<23)throw Error('Compiler message is too long for the two-line area.');lines.forEach((z,i)=>tx(z,x,y+(i-(lines.length-1)/2)*(size+7),size,color,true,align));}
 function cfg(){const out={error_code:$('errorcode').value.trim(),filename:$('filename').value.trim()||'Player.cs',message:$('message').value,before:$('before').value.replace(/\t/g,'    ').split('\n'),after:$('after').value.replace(/\t/g,'    ').split('\n'),bug:'embedded.png',bug_data_url:bugData};if($('focus').value)out.focus_line=Number($('focus').value);out.music=musicChoice||'none';return out;}
-function build(){const q=cfg();if(!/^CS\d{4}$/.test(q.error_code))throw Error('Use an error code such as CS1002.');if(!q.message.trim()||q.message.includes('\n'))throw Error('Enter a compiler message.');const count=Math.max(q.before.length,q.after.length);if(count>200)throw Error('Up to 200 source lines are supported.');let changes=[];for(let row=0;row<count;row++){const a=q.before[row]||'',b=q.after[row]||'';if(a===b)continue;let p=0;while(p<Math.min(a.length,b.length)&&a[p]===b[p])p++;let ae=a.length,be=b.length;while(ae>p&&be>p&&a[ae-1]===b[be-1]){ae--;be--;}changes.push({row,start:p,oldend:ae,end:be});}if(!changes.length)throw Error('Before and After must contain a correction.');const focus=changes.find(c=>c.row===q.focus_line-1)||changes[0],visible=Math.min(count,28),start=Math.max(0,Math.min(count-visible,focus.row-Math.floor(visible/2))),end=start+visible;let size=40;for(;size>=26;size--){if([...q.before.slice(start,end),...q.after.slice(start,end)].every(s=>width(s,size)<=704))break;}if(size<26)throw Error('A visible code line is too wide. Shorten that line.');size=Math.min(size,Math.floor(980/visible)-5);const step=Math.min(58,size+9),bottom=Math.max(690,350+(visible-1)*step+54);const target=[Math.min(922,220+width((q.after[focus.row]||'').slice(0,focus.start),size)+Math.max(width((q.after[focus.row]||'').slice(focus.start,focus.end),size),12)/2),350+(focus.row-start)*step];return {...q,count,changes,focus,visible,start,end,size,step,bottom,diag:bottom+54,bar:bottom+106,target};}
+function build(){const q=cfg();if(!/^(?:CS\d{4}|0x[0-9A-F]{8})$/.test(q.error_code))throw Error('Use a compiler code such as CS1002 or an HRESULT such as 0x80131508.');if(!q.message.trim()||q.message.includes('\n'))throw Error('Enter an error message.');const count=Math.max(q.before.length,q.after.length);if(count>200)throw Error('Up to 200 source lines are supported.');let changes=[];for(let row=0;row<count;row++){const a=q.before[row]||'',b=q.after[row]||'';if(a===b)continue;let p=0;while(p<Math.min(a.length,b.length)&&a[p]===b[p])p++;let ae=a.length,be=b.length;while(ae>p&&be>p&&a[ae-1]===b[be-1]){ae--;be--;}changes.push({row,start:p,oldend:ae,end:be});}if(!changes.length)throw Error('Before and After must contain a correction.');const focus=changes.find(c=>c.row===q.focus_line-1)||changes[0],visible=Math.min(count,28),start=Math.max(0,Math.min(count-visible,focus.row-Math.floor(visible/2))),end=start+visible;let size=40;for(;size>=26;size--){if([...q.before.slice(start,end),...q.after.slice(start,end)].every(s=>width(s,size)<=704))break;}if(size<26)throw Error('A visible code line is too wide. Shorten that line.');size=Math.min(size,Math.floor(980/visible)-5);const step=Math.min(58,size+9),bottom=Math.max(690,350+(visible-1)*step+54);const target=[Math.min(922,220+width((q.after[focus.row]||'').slice(0,focus.start),size)+Math.max(width((q.after[focus.row]||'').slice(focus.start,focus.end),size),12)/2),350+(focus.row-start)*step];return {...q,count,changes,focus,visible,start,end,size,step,bottom,diag:bottom+54,bar:bottom+106,target};}
 function background(){const g=ctx.createRadialGradient(540,850,30,540,850,1300);g.addColorStop(0,'#181e25');g.addColorStop(1,'#0e1217');ctx.fillStyle=g;ctx.fillRect(0,0,1080,1920);for(let x=120;x<=960;x+=60)for(let y=90;y<=1900;y+=60){ctx.fillStyle='#303942';ctx.fillRect(x,y,1,1);}for(const x of [80,1000])line([[x,80],[x,1900]],'#283039');for(const y of [80,1900]){line([[80,y],[110,y]],'#4c5862',2);line([[970,y],[1000,y]],'#4c5862',2);}tx('BUG ARCHIVE',120,109,23,M,true);line([[120,143],[960,143]],'#333e48');}
 const keywords=new Set('void int float double string bool public private class return new if else null true false static var using'.split(' '));
 function codeLine(s,x,baseline,size){font(size,true);ctx.textBaseline='alphabetic';ctx.textAlign='left';const re=/("(?:\\.|[^"\\])*"|\/\/.*|\b\d+(?:\.\d+)?\b|\b[A-Za-z_]\w*\b|.)/g;let m;while((m=re.exec(s))){let c=FG,t=m[0];if(t.startsWith('"'))c='#dcaf92';else if(t.startsWith('//'))c='#839582';else if(keywords.has(t))c='#c3a6e8';else if(/^\d/.test(t))c='#b6cca4';else if(['Debug','Console'].includes(t))c='#87d9e7';else if(/^[A-Za-z_]/.test(t)&&s.slice(re.lastIndex).trimStart().startsWith('('))c='#d9d4a9';ctx.fillStyle=c;ctx.fillText(t,x,baseline);x+=ctx.measureText(t).width;}}
@@ -63,7 +63,7 @@ const videoName=code=>EPISODE_TITLE(code)+'.mp4',thumbName=code=>EPISODE_TITLE(c
 /* Release assets are cross-origin and send no CORS header, so the page can neither fetch the
    bytes nor override the filename with <a download>. The name has to come from the release
    itself, which is why the workflow names the asset before uploading it. */
-async function showRelease(){const box=$('releasebox'),code=($('errorcode').value.trim()||'CS1002').toUpperCase(),slug=repoSlug();
+async function showRelease(){const box=$('releasebox'),code=($('errorcode').value.trim()||'CS1002').toUpperCase().replace(/^0X/,'0x'),slug=repoSlug();
 box.classList.remove('error');
 if(!slug)return releaseLine(box,'Open this editor from its GitHub Pages address to see the rendered files here.');
 const repo=`https://github.com/${slug.owner}/${slug.repo}`,actions=link('Action runs',`${repo}/actions/workflows/render.yml`);
@@ -184,7 +184,7 @@ const trackByName=n=>tracks.find(t=>t.file===n)||null;
 function fnv1a(text){let h=0x811C9DC5;for(const b of new TextEncoder().encode(text)){h^=b;h=Math.imul(h,0x01000193)>>>0;}return h>>>0;}
 /* Every error code keeps its track for good: the score depends on the code and that one file name,
    so adding or removing other tracks never moves an episode to a different song. render.py matches. */
-function pickRandom(){if(!tracks.length)return null;const code=($('errorcode').value.trim()||'CS1002').toUpperCase();
+function pickRandom(){if(!tracks.length)return null;const code=($('errorcode').value.trim()||'CS1002').toUpperCase().replace(/^0X/,'0x');
 return tracks.reduce((best,t)=>{const s=fnv1a(code+'|'+t.file);const b=fnv1a(code+'|'+best.file);
 return s>b||(s===b&&t.file>best.file)?t:best;});}
 function resolvedTrack(){if(musicChoice==='random')return pickRandom();return musicChoice?trackByName(musicChoice):null;}
@@ -335,16 +335,16 @@ $('episodeopen').onclick=()=>{$('episodes').close();$('projectfile').click();};
 let episodeCache=null;
 async function orderedEpisodes(){if(!episodeCache)episodeCache=await listEpisodes();return episodeCache;}
 function syncPosition(){if(!episodeCache)return;
-const code=($('errorcode').value||'').trim().toUpperCase();
-showPosition(episodeCache,episodeCache.findIndex(r=>(r.error_code||'').toUpperCase()===code));}
+const code=($('errorcode').value||'').trim().toUpperCase().replace(/^0X/,'0x');
+showPosition(episodeCache,episodeCache.findIndex(r=>(r.error_code||'').toUpperCase().replace(/^0X/,'0x')===code));}
 function showPosition(rows,index){const box=$('episodepos');
 if(!rows||index<0){box.textContent='';box.title='';return;}
 const row=rows[index];box.textContent=`${index+1} / ${rows.length}`;
 box.title=`${row.error_code}${row.order?` · checklist #${row.order}`:''}`;}
-async function stepEpisode(delta){const code=($('errorcode').value||'').trim().toUpperCase();
+async function stepEpisode(delta){const code=($('errorcode').value||'').trim().toUpperCase().replace(/^0X/,'0x');
 const rows=await orderedEpisodes();
 if(!rows.length)throw Error('The episodes folder has no JSON yet.');
-const at=rows.findIndex(r=>(r.error_code||'').toUpperCase()===code);
+const at=rows.findIndex(r=>(r.error_code||'').toUpperCase().replace(/^0X/,'0x')===code);
 /* Unknown code in the editor: Next starts at the top, Prev at the end. */
 const next=at<0?(delta>0?0:rows.length-1):at+delta;
 if(next<0)throw Error(`${code} is the first episode on the checklist.`);
@@ -381,7 +381,7 @@ function setPicked(rows,on){for(const r of rows){
 if(on)picked.add(r.dataset.code);else picked.delete(r.dataset.code);
 r.classList.toggle('picked',on);}
 countPicked();}
-function batchRow(row){const code=(row.error_code||'').toUpperCase();
+function batchRow(row){const code=(row.error_code||'').toUpperCase().replace(/^0X/,'0x');
 const b=document.createElement('button');
 b.className='batchrow episoderow'+(row.bug?'':' nobug')+(picked.has(code)?' picked':'');
 b.dataset.code=code;
@@ -561,7 +561,7 @@ const idle=!activeJob;
 if(idle)showArchives().catch(()=>{});
 try{const rows=episodeCache=await listEpisodes();
 /* A code no longer in the list must not stay selected and be dispatched into a failing run. */
-const live=new Set(rows.map(r=>(r.error_code||'').toUpperCase()));
+const live=new Set(rows.map(r=>(r.error_code||'').toUpperCase().replace(/^0X/,'0x')));
 for(const code of[...picked])if(!live.has(code))picked.delete(code);
 $('batchlist').replaceChildren(...batchNodes(rows));
 filterBatch();
@@ -581,9 +581,9 @@ const VARIATION_TEXT={cheeks:'slightly rounder cheeks',antennae:'slightly shorte
 const autoVariation=code=>['cheeks','antennae','pose','accessory'][[...code].reduce((a,c)=>a+c.charCodeAt(0),0)%4];
 const aistatus=(s,error=false)=>{$('aistatus').textContent=s;$('aistatus').classList.toggle('error',error);};
 function inferredMotif(message){const m=message.toLowerCase();if(/already defines|already contains|same parameter|duplicate/.test(m))return 'holding two identical tiny objects, one in each hand, to directly symbolize an accidental duplicate';if(/could not be found|does not exist|not found/.test(m))return 'searching through one tiny magnifying glass for a clearly missing object';if(/cannot convert|implicitly convert|argument/.test(m))return 'trying to join one round plug to one square socket';if(/inaccessible|protection level|private/.test(m))return 'standing behind one tiny rounded padlock';if(/ambiguous/.test(m))return 'looking between two equally sized direction arrows';if(/return/.test(m))return 'catching one curved return-arrow boomerang';if(/expected|unexpected|invalid token/.test(m))return 'holding one puzzle piece beside a visibly wrong or missing slot';if(/static|object reference/.test(m))return 'reaching from a small pedestal toward one separate instance object';return 'interacting with one simple lime-and-charcoal coding puzzle prop that directly symbolizes the error';}
-function bugPrompt(){const code=($('errorcode').value.trim()||'CS1002').toUpperCase(),msg=$('message').value.trim(),concept=$('concept').value.trim()||`${code} — ${msg||'; expected'}`,motif=MOTIFS[code]||inferredMotif(msg);
+function bugPrompt(){const code=($('errorcode').value.trim()||'CS1002').toUpperCase().replace(/^0X/,'0x'),msg=$('message').value.trim(),concept=$('concept').value.trim()||`${code} — ${msg||'; expected'}`,motif=MOTIFS[code]||inferredMotif(msg);
 return [`Create a new pose of the EXACT SAME Bug Archive mascot species shown in this public reference image: https://kevin04261004.github.io/bug-archive-studio/assets/CS1002.png . Inspect that reference before generating.`,`Identity lock: nearly perfect circular fluorescent yellow-lime head/body with no separate torso; two very long thin lime stalk antennae ending in oversized round bulbs; two huge vertical black oval eyes with one small white highlight each; tiny black dot nose; tiny black semicolon-shaped mouth; exactly four small lime oval feet/side nubs; thin dark plum outline; smooth 2D chibi vector/anime rendering; strong white glossy highlights at upper-left; subtle lime edge shading. Preserve these proportions, face placement, outline weight, palette and rendering so it is unmistakably the same mascot, not a redesigned insect.`,`Episode concept: ${concept}. Give it one clear visual joke: ${motif}. The prop or pose must make the error idea understandable at a glance, while the mascot anatomy and face stay unchanged.`,`Do not make a generic beetle, caterpillar, alien, robot, bee, or monster. No wings, shell, fur, extra limbs, clothing, realistic anatomy, gradients outside the character, or arbitrary decorative markings.`,`One centered full-body character, entirely visible with a clear margin, genuinely transparent PNG background. No words, letters, digits, error code, caption, card, floor, scenery, border, or cast shadow.`].join(' ');}
-function refreshPrompt(){const code=($('errorcode').value.trim()||'CS1002').toUpperCase();$('concept').placeholder=`${code} — ${$('message').value.trim()||'; expected'}`;$('aiprompt').value=bugPrompt();}
+function refreshPrompt(){const code=($('errorcode').value.trim()||'CS1002').toUpperCase().replace(/^0X/,'0x');$('concept').placeholder=`${code} — ${$('message').value.trim()||'; expected'}`;$('aiprompt').value=bugPrompt();}
 function dataUrlBlob(url){const bin=atob(url.split(',')[1]),bytes=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return new Blob([bytes],{type:'image/png'});}
 async function apiFetch(url,init){try{return await fetch(url,init);}catch{throw Error('The image API could not be reached. Open START_STUDIO.bat and retry from http://127.0.0.1:8765, then check the key and the network.');}}
 async function openaiBug(key,prompt,ref){let url='https://api.openai.com/v1/images/generations',init={method:'POST',headers:{Authorization:'Bearer '+key}};
@@ -621,7 +621,7 @@ if(opaque(im)){url=cutout(im);trimmed=true;}
 await setBug(url);update();$('aithumb').src=bugData;$('aithumb').hidden=false;$('aisave').hidden=false;
 aistatus(trimmed?'Bug applied. Its flat background was removed to get real transparency.':'Bug applied to the preview and to the episode.');status('AI bug generated and applied.');}
 catch(e){aistatus(e.message,true);}finally{$('generate').disabled=false;}};
-$('aisave').onclick=()=>download(dataUrlBlob(bugData),`${($('errorcode').value.trim()||'bug').toUpperCase()}.png`);
+$('aisave').onclick=()=>download(dataUrlBlob(bugData),`${($('errorcode').value.trim()||'bug').toUpperCase().replace(/^0X/,'0x')}.png`);
 /* Clipchamp-style workspace controls. Editing data still uses the original renderer; this layer
    only makes the common actions reachable from the media rail, preview and timeline. */
 function openPanel(name){document.querySelectorAll('.tooltab').forEach(x=>x.classList.toggle('active',x.dataset.panel===name));document.querySelectorAll('.panelview').forEach(x=>x.classList.toggle('active',x.dataset.view===name));document.querySelector('.workspace')?.classList.remove('assets-collapsed');}
@@ -642,3 +642,4 @@ $('timelinezoom').oninput=()=>setZoom(Number($('timelinezoom').value));$('zoomou
 document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.code==='Space'){e.preventDefault();$('play').click();}else if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();time=Math.max(0,Math.min(11.99,time+(e.key==='ArrowLeft'?-.033:.033)));$('time').value=time;$('time').oninput();}else if(e.key.toLowerCase()==='s'){const points=[0,3,6,7.5,10,11.2],next=points.find(x=>x>time+.05)??0;time=next;$('time').value=time;$('time').oninput();}});
 async function init(){try{await Promise.all([new FontFace('ArchiveMono',`url(${STUDIO_ASSETS.DejaVuSansMono})`).load(),new FontFace('ArchiveSans',`url(${STUDIO_ASSETS.DejaVuSans})`).load()].map(async p=>document.fonts.add(await p)));hosts=await Promise.all([0,1,2,3,4].map(i=>loadImage(STUDIO_ASSETS['host-'+i])));await setBug(STUDIO_ASSETS.CS1002);ready=true;let q=defaults;try{const saved=localStorage.getItem('bugarchive-v2');if(saved)q=JSON.parse(saved);}catch{}await setConfig(q);try{$('sound').checked=localStorage.getItem('bugarchive-sound')!=='0';const saved=localStorage.getItem('bugarchive-provider');if(saved)$('provider').value=saved;const key=sessionStorage.getItem('bugarchive-imagekey');if(key)$('apikey').value=key;const gt=sessionStorage.getItem('bugarchive-ghtoken');if(gt)$('ghtoken').value=gt;}catch{}$('provider').onchange();refreshPrompt();try{localStudio=['127.0.0.1','localhost'].includes(location.hostname)&&(await fetch('api/health',{cache:'no-store'})).ok;}catch{localStudio=false;}
 $('mode').textContent=localStudio?'LOCAL RENDER STUDIO':location.protocol==='file:'?'OFFLINE EDITOR':'WEB EDITOR';await loadTracks();if(document.modelContext?.registerTool)document.modelContext.registerTool({name:'inspect_episode',description:'Read the current episode and preview layout.',inputSchema:{type:'object',properties:{}},annotations:{readOnlyHint:true},execute:()=>({error_code:model?.error_code,lines:model?.count,visible:model?.visible,time})});}catch(e){status(e.message,true);}}init();
+

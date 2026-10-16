@@ -27,7 +27,7 @@ except Exception as e:parser.error(str(e))
 for key in ("error_code","message","before","after"):
     if key not in cfg:parser.error(f"Missing field: {key}")
 CODE=cfg["error_code"];MESSAGE=cfg["message"]
-if not re.fullmatch(r"CS\d{4}",CODE):parser.error("error_code must look like CS1002.")
+if not re.fullmatch(r"(?:CS\d{4}|0x[0-9A-F]{8})",CODE):parser.error("error_code must look like CS1002 or 0x80131508.")
 if not isinstance(MESSAGE,str) or not MESSAGE or "\n" in MESSAGE:parser.error("message must be one nonempty English line.")
 before=cfg["before"];after=cfg["after"]
 if not isinstance(before,list) or not isinstance(after,list) or not all(isinstance(s,str) and "\n" not in s for s in before+after):parser.error("before/after must be arrays of code lines.")
@@ -379,3 +379,4 @@ if __name__=='__main__':
   if i%90==0:print('frame',i,flush=True)
  proc.stdin.close();assert proc.wait()==0
  print('complete',flush=True)
+
