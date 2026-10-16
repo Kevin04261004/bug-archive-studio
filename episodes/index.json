@@ -6073,13 +6073,13 @@
       "tier": 9
     },
     {
-      "file": "CS9999.json",
-      "path": "episodes/CS9999.json",
-      "error_code": "CS9999",
-      "message": "Logic bug: an extra i++ skips every other array element",
+      "file": "0x80131508.json",
+      "path": "episodes/0x80131508.json",
+      "error_code": "0x80131508",
+      "message": "IndexOutOfRangeException: Index was outside the bounds of the array.",
       "filename": "LootPreview.cs",
       "lines": 15,
-      "bug": "assets/CS9999.png",
+      "bug": "assets/0x80131508.png",
       "missing": null,
       "order": 0,
       "tier": 0
